@@ -2,13 +2,13 @@ package ps.ns.eatapp.model;
 
 public class MyCartModel {
 
-    int meal_pic;
+    String meal_pic;
     String meal_name;
     String meal_description;
-    Float meal_price;
+    String meal_price;
     int meal_quantity;
 
-    public MyCartModel(int meal_pic, String meal_name, String meal_description, Float meal_price, int meal_quantity) {
+    public MyCartModel(String meal_pic, String meal_name, String meal_description, String meal_price, int meal_quantity) {
         this.meal_pic = meal_pic;
         this.meal_name = meal_name;
         this.meal_description = meal_description;
@@ -16,11 +16,11 @@ public class MyCartModel {
         this.meal_quantity = meal_quantity;
     }
 
-    public int getMeal_pic_pic() {
+    public String getMeal_pic() {
         return meal_pic;
     }
 
-    public void setMeal_pic_pic(int meal_pic) {
+    public void setMeal_pic(String meal_pic) {
         this.meal_pic = meal_pic;
     }
 
@@ -40,11 +40,11 @@ public class MyCartModel {
         this.meal_description = meal_description;
     }
 
-    public Float getMeal_price() {
+    public String getMeal_price() {
         return meal_price;
     }
 
-    public void setMeal_price(Float meal_price) {
+    public void setMeal_price(String meal_price) {
         this.meal_price = meal_price;
     }
 

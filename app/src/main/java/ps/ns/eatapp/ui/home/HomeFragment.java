@@ -44,18 +44,19 @@ public class HomeFragment extends Fragment implements HomeAdapter.ListItemClickL
     }
 
     private void getDataHome(){
-        list.add(new HomeModel(R.drawable.resturant1, "Mountain Standard,", "Open", "193 Gore Creek Dr, Vail, CO 81657, USA", 3.5f, 3.5f));
-        list.add(new HomeModel(R.drawable.res_image, "Mountain Standard,", "Close", "193 Gore Creek Dr, Vail, CO 81657, USA", 2.5f, 2.5f));
-        list.add(new HomeModel(R.drawable.resturant1, "Mountain Standard,", "Open", "193 Gore Creek Dr, Vail, CO 81657, USA", 3.5f, 3.5f));
-        list.add(new HomeModel(R.drawable.res2_image, "Mountain Standard,", "Close", "193 Gore Creek Dr, Vail, CO 81657, USA", 2.5f, 2.5f));
-        list.add(new HomeModel(R.drawable.resturant1, "Mountain Standard,", "Open", "193 Gore Creek Dr, Vail, CO 81657, USA", 3.5f, 3.5f));
-        list.add(new HomeModel(R.drawable.resturant1, "Mountain Standard,", "Close", "193 Gore Creek Dr, Vail, CO 81657, USA", 2.5f, 2.5f));
-        list.add(new HomeModel(R.drawable.resturant1, "Mountain Standard,", "Open", "193 Gore Creek Dr, Vail, CO 81657, USA", 3.5f, 3.5f));
-        list.add(new HomeModel(R.drawable.resturant1, "Mountain Standard,", "Close", "193 Gore Creek Dr, Vail, CO 81657, USA", 2.5f, 2.5f));
-        list.add(new HomeModel(R.drawable.resturant1, "Mountain Standard,", "Open", "193 Gore Creek Dr, Vail, CO 81657, USA", 3.5f, 3.5f));
-        list.add(new HomeModel(R.drawable.resturant1, "Mountain Standard,", "Close", "193 Gore Creek Dr, Vail, CO 81657, USA", 2.5f, 2.5f));
-        list.add(new HomeModel(R.drawable.resturant1, "Mountain Standard,", "Open", "193 Gore Creek Dr, Vail, CO 81657, USA", 3.5f, 3.5f));
-        list.add(new HomeModel(R.drawable.resturant1, "Mountain Standard,", "Close", "193 Gore Creek Dr, Vail, CO 81657, USA", 2.5f, 2.5f));
+        list.add(new HomeModel("R.drawable.resturant1", "Mountain Standard,", "Open", "193 Gore Creek Dr, Vail, CO 81657, USA", 3.5f, 3.5f));
+        list.add(new HomeModel("R.drawable.res_image", "Mountain Standard,", "Close", "193 Gore Creek Dr, Vail, CO 81657, USA", 2.5f, 2.5f));
+        list.add(new HomeModel("R.drawable.resturant1", "Mountain Standard,", "Open", "193 Gore Creek Dr, Vail, CO 81657, USA", 3.5f, 3.5f));
+        list.add(new HomeModel("R.drawable.res_image", "Mountain Standard,", "Close", "193 Gore Creek Dr, Vail, CO 81657, USA", 2.5f, 2.5f));
+        list.add(new HomeModel("R.drawable.resturant1", "Mountain Standard,", "Open", "193 Gore Creek Dr, Vail, CO 81657, USA", 3.5f, 3.5f));
+        list.add(new HomeModel("R.drawable.res_image", "Mountain Standard,", "Close", "193 Gore Creek Dr, Vail, CO 81657, USA", 2.5f, 2.5f));
+        list.add(new HomeModel("R.drawable.resturant1", "Mountain Standard,", "Open", "193 Gore Creek Dr, Vail, CO 81657, USA", 3.5f, 3.5f));
+        list.add(new HomeModel("R.drawable.res_image", "Mountain Standard,", "Close", "193 Gore Creek Dr, Vail, CO 81657, USA", 2.5f, 2.5f));
+        list.add(new HomeModel("R.drawable.resturant1", "Mountain Standard,", "Open", "193 Gore Creek Dr, Vail, CO 81657, USA", 3.5f, 3.5f));
+        list.add(new HomeModel("R.drawable.res_image", "Mountain Standard,", "Close", "193 Gore Creek Dr, Vail, CO 81657, USA", 2.5f, 2.5f));
+        list.add(new HomeModel("R.drawable.resturant1", "Mountain Standard,", "Open", "193 Gore Creek Dr, Vail, CO 81657, USA", 3.5f, 3.5f));
+        list.add(new HomeModel("R.drawable.res_image", "Mountain Standard,", "Close", "193 Gore Creek Dr, Vail, CO 81657, USA", 2.5f, 2.5f));
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new HomeAdapter(getActivity(), list, HomeFragment.this);
         recyclerView.setAdapter(adapter);

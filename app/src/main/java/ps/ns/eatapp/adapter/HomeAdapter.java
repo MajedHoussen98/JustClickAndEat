@@ -1,6 +1,5 @@
 package ps.ns.eatapp.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -12,6 +11,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.model.HomeModel;
@@ -44,7 +46,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.ViewHolder holder, int position) {
         final HomeModel data = list.get(position);
-        holder.resturant_pic.setImageResource(data.getResturant_pic());
+        Picasso.with(context).load(data.getResturant_pic()).into(holder.resturant_pic);
         holder.resturant_name.setText(data.getResturant_name());
         holder.resturant_status.setText(data.getResturant_status());
         holder.resturant_address.setText(data.getResturant_address());

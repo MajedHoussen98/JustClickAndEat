@@ -2,14 +2,14 @@ package ps.ns.eatapp.model;
 
 public class HomeModel {
 
-    int resturant_pic;
+    String resturant_pic;
     String resturant_name;
     String resturant_status;
     String resturant_address;
     Float resturant_rating;
     Float rating_number;
 
-    public HomeModel(int resturant_pic, String resturant_name, String resturant_status, String resturant_address, Float resturant_rating, Float rating_number) {
+    public HomeModel(String resturant_pic, String resturant_name, String resturant_status, String resturant_address, Float resturant_rating, Float rating_number) {
         this.resturant_pic = resturant_pic;
         this.resturant_name = resturant_name;
         this.resturant_status = resturant_status;
@@ -18,11 +18,11 @@ public class HomeModel {
         this.rating_number = rating_number;
     }
 
-    public int getResturant_pic() {
+    public String getResturant_pic() {
         return resturant_pic;
     }
 
-    public void setResturant_pic(int resturant_pic) {
+    public void setResturant_pic(String resturant_pic) {
         this.resturant_pic = resturant_pic;
     }
 

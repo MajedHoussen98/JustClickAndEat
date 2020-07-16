@@ -44,12 +44,13 @@ public class CartFragment extends Fragment implements  MyCartAdapter.ListItemCli
 
     private void getDataMyCart() {
 
-        list.add(new MyCartModel(R.drawable.meal2, "Braised Fish Head", "2x tuna sahimi, 3x vegetables ", 4.90f, 2));
-        list.add(new MyCartModel(R.drawable.meal3, "Salad Fritters", "2x tuna sahimi, 3x vegetables ", 15.00f, 1));
-        list.add(new MyCartModel(R.drawable.meal2, "Braised Fish Head", "2x tuna sahimi, 3x vegetables ", 4.90f, 2));
-        list.add(new MyCartModel(R.drawable.meal3, "Salad Fritters", "2x tuna sahimi, 3x vegetables ", 15.00f, 1));
-        list.add(new MyCartModel(R.drawable.meal2, "Braised Fish Head", "2x tuna sahimi, 3x vegetables ", 4.90f, 2));
-        list.add(new MyCartModel(R.drawable.meal3, "Salad Fritters", "2x tuna sahimi, 3x vegetables ",15.00f , 1));
+        list.add(new MyCartModel("R.drawable.meal2", "Braised Fish Head", "2x tuna sahimi, 3x vegetables ", "$4.90", 2));
+        list.add(new MyCartModel("R.drawable.meal3", "Salad Fritters", "2x tuna sahimi, 3x vegetables ", "$15.00", 1));
+        list.add(new MyCartModel("R.drawable.meal2", "Braised Fish Head", "2x tuna sahimi, 3x vegetables ", "$4.90", 2));
+        list.add(new MyCartModel("R.drawable.meal3", "Salad Fritters", "2x tuna sahimi, 3x vegetables ", "$15.00", 1));
+        list.add(new MyCartModel("R.drawable.meal2", "Braised Fish Head", "2x tuna sahimi, 3x vegetables ", "$4.90", 2));
+        list.add(new MyCartModel("R.drawable.meal3", "Salad Fritters", "2x tuna sahimi, 3x vegetables ", "$15.00", 1));
+
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new MyCartAdapter(getActivity(), list, CartFragment.this);
