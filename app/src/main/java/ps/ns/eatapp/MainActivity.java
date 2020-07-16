@@ -1,6 +1,7 @@
 package ps.ns.eatapp;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ps.ns.eatapp.ui.Favorites.Favorites;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -71,7 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     navController.navigate(R.id.nav_notification);
 
                 }else if (item.getItemId() == R.id.nav_favorites){
-                    navController.navigate(R.id.nav_favorites);
+                 //  navController.navigate(R.id.nav_favorites);
+                    startActivity(new Intent(MainActivity.this, Favorites.class));
                 }
                 drawer.closeDrawer(Gravity.LEFT);
                 return true;

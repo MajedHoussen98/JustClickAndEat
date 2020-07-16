@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/ll_restaurants_fav"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/restaurants_pic_fav"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:src="@drawable/resturant1"
+            app:riv_corner_radius="5dp"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/restaurants_name_fav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:text="Oriental Bistro" />
+
+            <TextView
+                android:id="@+id/restaurants_body_fav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="#43496A"
+                android:text="The restaurant made a new meal" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/fav_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_fav" />
+
+    </LinearLayout>
+</LinearLayout>

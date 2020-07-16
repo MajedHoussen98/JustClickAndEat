@@ -10,9 +10,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 import ps.ns.eatapp.R;
@@ -49,7 +46,7 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
     public void onBindViewHolder(@NonNull MyCartAdapter.ViewHolder holder, int position) {
 
         final MyCartModel data = list.get(position);
-        Picasso.with(context).load(data.getMeal_pic()).into(holder.meal_pic);
+      //  Picasso.with(context).load(data.getMeal_pic()).into(holder.meal_pic);
         holder.meal_name.setText(data.getMeal_name());
         holder.meal_description.setText(data.getMeal_description());
         holder.meal_price.setText(data.getMeal_price());
@@ -84,7 +81,6 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
         @Override
         public void onClick(View v) {
             mOnClickListener.onListItemClicked(getAdapterPosition(), v.getId());
-
         }
     }
 }

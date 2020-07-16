@@ -49,7 +49,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         final MyNotificationModel data = list.get(position);
 
-        Picasso.with(context).load(data.getNotificationPic()).into(holder.notificationPic);
+     //   Picasso.with(context).load(data.getNotificationPic()).into(holder.notificationPic);
         holder.notificationTitle.setText(data.getNotificationTitle());
         holder.notificationBody.setText(data.getNotificationBody());
         holder.notificationTime.setText(data.getNotificationTime());
