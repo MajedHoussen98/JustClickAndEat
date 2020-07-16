@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="ps.ns.eatapp.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_account"
+        android:name="ps.ns.eatapp.ui.account.MyAccount"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_my_account" />
+
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="ps.ns.eatapp.ui.cart.CartFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_cart" />
+
+    <fragment
+        android:id="@+id/nav_order"
+        android:name="ps.ns.eatapp.ui.order.OrderFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_order" />
+
+    <fragment
+        android:id="@+id/nav_location"
+        android:name="ps.ns.eatapp.ui.location.Location"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_location" />
+
+    <fragment
+        android:id="@+id/nav_notification"
+        android:name="ps.ns.eatapp.ui.notification.Notification"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_notification" />
+
+    <fragment
+        android:id="@+id/nav_favorites"
+        android:name="ps.ns.eatapp.ui.favorites.Favorites"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_favorites" />
+</navigation>
