@@ -1,29 +1,38 @@
 package ps.ns.eatapp.ui.cart;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MyCartAdapter;
+import ps.ns.eatapp.adapter.MyLocationAdapter;
+import ps.ns.eatapp.dialogs.MyCartNextDialog;
 import ps.ns.eatapp.model.MyCartModel;
+import ps.ns.eatapp.model.MyLocationModel;
 
-public class CartFragment extends Fragment implements  MyCartAdapter.ListItemClickListener {
+public class CartFragment extends Fragment implements MyCartAdapter.ListItemClickListener, View.OnClickListener{
+
 
     private RecyclerView recyclerView;
     private MyCartAdapter adapter;
     private ArrayList<MyCartModel> list;
     private View view;
-
+    private Button cartNext;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -39,8 +48,11 @@ public class CartFragment extends Fragment implements  MyCartAdapter.ListItemCli
 
         recyclerView = view.findViewById(R.id.recyclerMyCart);
         list = new ArrayList<>();
+        cartNext = view.findViewById(R.id.cart_next_btn);
         getDataMyCart();
+        cartNext.setOnClickListener(this);
     }
+
 
     private void getDataMyCart() {
 
@@ -62,4 +74,18 @@ public class CartFragment extends Fragment implements  MyCartAdapter.ListItemCli
     public void onListItemClicked(int position, int viewId) {
 
     }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.cart_next_btn) {
+           openDialog();
+        }
+    }
+
+    private void openDialog() {
+        MyCartNextDialog dialog = new MyCartNextDialog();
+        dialog.show(getParentFragmentManager(), "SSSS");
+    }
+
 }
+
