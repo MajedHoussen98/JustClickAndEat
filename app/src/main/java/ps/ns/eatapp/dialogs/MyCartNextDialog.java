@@ -1,6 +1,5 @@
 package ps.ns.eatapp.dialogs;
 
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.Color;
