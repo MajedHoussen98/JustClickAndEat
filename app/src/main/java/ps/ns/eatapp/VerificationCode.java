@@ -18,9 +18,6 @@ public class VerificationCode extends AppCompatActivity {
 
     private ActivityVerificationCodeBinding binding;
 
-
-//    private Activtity binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

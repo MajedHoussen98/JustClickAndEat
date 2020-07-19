@@ -20,7 +20,7 @@ import ps.ns.eatapp.ui.menu.ui.main.SectionsPagerAdapter;
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.ib_back)
-    ImageView bacHome;
+    ImageView backHome;
     @BindView(R.id.editTextSearchMenu)
     EditText editTextSearchMenu;
 
@@ -40,13 +40,13 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void viewListener() {
-        bacHome.setOnClickListener(this);
+        backHome.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.bac_home:
+            case R.id.ib_back:
                 startActivity(new Intent(MenuActivity.this, ResturentDetails.class));
                 finish();
                 break;

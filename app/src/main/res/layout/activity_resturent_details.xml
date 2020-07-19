@@ -11,7 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="340dp"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -26,7 +26,7 @@
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/image_slider"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="320dp"
                 app:iss_auto_cycle="true"
                 app:iss_delay="0"
                 app:iss_period="1000"
@@ -38,22 +38,18 @@
                     android:layout_width="412dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
                     android:layout_marginStart="3dp"
-                    android:layout_marginLeft="3dp"
                     android:layout_marginTop="3dp"
-                    android:layout_marginEnd="-3dp"
-                    android:layout_marginRight="-3dp">
+                    android:layout_marginEnd="-3dp">
 
-                    <ImageView
-                        android:id="@+id/bac_home"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <ImageButton
+                        android:id="@+id/ib_back"
+                        android:background="@null"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="?attr/actionBarSize"
                         android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="16dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +62,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
                         android:layout_marginBottom="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +74,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="24dp"
-                        android:layout_marginRight="24dp"
                         android:layout_marginBottom="4dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/ic_fav"
@@ -104,112 +98,115 @@
             android:layout_height="match_parent"
             tools:context=".ResturentDetails">
 
-            <TextView
-
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Oriental Bistro"
-                android:textColor="#000"
-                android:textSize="28dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="1dp"
-                android:text="963 Madyson Drive Suite 679"
-                android:textColor="#909090"
-                android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView14"
-                app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-            <ImageView
-                android:id="@+id/imageView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView10"
-                app:srcCompat="@drawable/location_pint" />
-
-            <RatingBar
-                android:id="@+id/ratingBar"
-                style="@style/Widget.AppCompat.RatingBar.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="6dp"
-
-                android:numStars="5"
-                android:rating="2.5"
-                android:stepSize="0.5"
-                android:theme="@style/RatingBar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:text="2.5"
-                android:textColor="#FFCB3C"
-                android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@+id/ratingBar"
-                app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-            <Button
-                android:id="@+id/view_menu"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:drawableLeft="@drawable/ic_menu"
-                android:paddingLeft="140dp"
-                android:paddingRight="140dp"
-                android:text="View Menu"
-                android:textColor="#909090"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
-
             <LinearLayout
-                android:id="@+id/linearLayout3"
+                android:id="@+id/ll_part1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/back_map"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view_menu">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
+
+                    android:id="@+id/tv_resturant_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:text="@string/resturant_name"
+                    android:textColor="#000"
+                    android:textSize="28sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:id="@+id/imageView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/location_pint" />
+
+                    <TextView
+                        android:id="@+id/tv_resturant_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:text="@string/resturant_address"
+                        android:textColor="#909090"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Address"
+                    android:orientation="horizontal">
+
+                    <RatingBar
+                        android:id="@+id/ratingBar"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:rating="2.5"
+                        android:stepSize="0.5"
+                        android:theme="@style/RatingBar" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rating_value"
+                        android:textColor="#FFCB3C"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_menu"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_menu"
+                    android:paddingLeft="130dp"
+                    android:paddingRight="130dp"
+                    android:text="@string/btn_menu"
                     android:textColor="#909090"
-                    android:textSize="13sp" />
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_part2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/back_map"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_part1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="963 Madyson Drive Suite 679"
+                    android:text="@string/address"
+                    android:textColor="#909090"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_address"
                     android:textColor="#0E0E2D"
                     android:textSize="13sp" />
 
@@ -217,34 +214,32 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="Mobile Number"
+                    android:text="@string/mobile_number"
                     android:textColor="#909090"
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/tv_mobile_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="+12947 47923 383"
+                    android:text="@string/tv_mobile_number"
                     android:textColor="#0E0E2D"
                     android:textSize="13sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="Status"
+                    android:text="@string/status"
                     android:textColor="#909090"
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/tv_resturant_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="The restuarant is too busy right now. "
+                    android:text="@string/tv_resturant_status"
                     android:textColor="#2C32BE"
                     android:textSize="13sp" />
 
@@ -252,17 +247,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="Category"
+                    android:text="@string/category"
                     android:textColor="#909090"
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/tv_category"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="Sushi Restaurant"
+                    android:text="@string/tv_category"
                     android:textColor="#000"
                     android:textSize="13sp" />
 
@@ -273,16 +267,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+                app:layout_constraintTop_toBottomOf="@+id/ll_part2">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Category"
+                    android:text="@string/hours"
                     android:textColor="#909090"
                     android:textSize="13sp" />
 
@@ -292,19 +287,18 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView23"
+                        android:id="@+id/tv_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:text="Open "
+                        android:text="@string/tv_status"
                         android:textColor="#2C32BE"
                         android:textSize="13sp" />
 
                     <TextView
+                        android:id="@+id/tv_work_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="4dp"
-                        android:text="at 11:00 AM-9:00 PM"
+                        android:text="@string/tv_work_time"
                         android:textColor="#000"
                         android:textSize="13sp" />
 
@@ -313,17 +307,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="Features"
+                    android:text="@string/features"
                     android:textColor="#909090"
                     android:textSize="13sp" />
 
                 <TextView
+                    android:id="@+id/tv_features"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="Does not take reservations\nAccepts credit cards\nHas outdoor seating\nHas Wi-Fi\nDining Options"
+                    android:text="@string/tv_features"
                     android:textColor="#000"
                     android:textSize="13sp" />
 

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -46,7 +47,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
         final MenuModel data = list.get(position);
 
-     //   Picasso.with(context).load(data.getMealsPic()).into(holder.mealsPic);
+       // Glide.with(context).load(data.getMealsPic()).into(holder.mealsPic);
         holder.mealsName.setText(data.getMealsName());
         holder.mealsBody.setText(data.getMealsBody());
         holder.mealsPrice.setText(data.getMealsPrice());

@@ -27,8 +27,8 @@ public class ResturentDetails extends AppCompatActivity implements View.OnClickL
 
     @BindView(R.id.image_slider)
     ImageSlider imageSlider;
-    @BindView(R.id.bac_home)
-    ImageView bacHome;
+    @BindView(R.id.ib_back)
+    ImageView ib_back;
     @BindView(R.id.ic_fav)
     ImageView icFav;
     @BindView(R.id.ic_share)
@@ -37,10 +37,9 @@ public class ResturentDetails extends AppCompatActivity implements View.OnClickL
     List<SlideModel> list = new ArrayList<>();
     @BindView(R.id.appbar)
     AppBarLayout appbar;
-    @BindView(R.id.view_menu)
+    @BindView(R.id.btn_menu)
     Button viewMenu;
-    @BindView(R.id.textView23)
-    TextView textView23;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +60,7 @@ public class ResturentDetails extends AppCompatActivity implements View.OnClickL
     }
 
     private void listenerViews() {
-        bacHome.setOnClickListener(this);
+        ib_back.setOnClickListener(this);
         icFav.setOnClickListener(this);
         icShare.setOnClickListener(this);
         viewMenu.setOnClickListener(this);
@@ -71,12 +70,12 @@ public class ResturentDetails extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.bac_home:
+            case R.id.ib_back:
                 startActivity(new Intent(ResturentDetails.this, MainActivity.class));
                 finish();
                 break;
 
-            case R.id.view_menu:
+            case R.id.btn_menu:
                 startActivity(new Intent(ResturentDetails.this, MenuActivity.class));
                 break;
         }

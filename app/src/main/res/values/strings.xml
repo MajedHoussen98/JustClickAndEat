@@ -11,10 +11,29 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_fav">Fav</string>
     <string name="tab_text_1">Meals</string>
     <string name="tab_text_2">Restaurants</string>
     <string name="title_activity_favorites">Favorites</string>
     <string name="title_activity_menu">Menu</string>
+
+
+    <!-- TODO: Resturent Details Text -->
+    <string name="resturant_name">Oriental Bistro</string>
+    <string name="resturant_address">963 Madyson Drive Suite 679</string>
+    <string name="rating_value">2.5</string>
+    <string name="btn_menu">View Menu</string>
+    <string name="address">Address</string>
+    <string name="tv_address">963 Madyson Drive Suite 679</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="tv_mobile_number">+12947 47923 383</string>
+    <string name="status">Status</string>
+    <string name="tv_resturant_status">The restuarant is too busy right now.</string>
+    <string name="category">Category</string>
+    <string name="tv_category">Sushi Restaurant</string>
+    <string name="hours">Hours</string>
+    <string name="tv_status">Open</string>
+    <string name="tv_work_time">at 11:00 AM-9:00 PM</string>
+    <string name="features">Features</string>
+    <string name="tv_features">Does not take reservations\nAccepts credit cards\nHas outdoor seating\nHas Wi-Fi\nDining Options</string>
 </resources>

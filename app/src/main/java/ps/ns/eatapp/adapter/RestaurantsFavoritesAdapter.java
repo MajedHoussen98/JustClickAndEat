@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class RestaurantsFavoritesAdapter extends RecyclerView.Adapter<Restaurant
     @Override
     public void onBindViewHolder(@NonNull RestaurantsFavoritesAdapter.ViewHolder holder, int position) {
         final RestaurantsFavoritesModel data = list.get(position);
-       // Picasso.with(context).load(data.getRestaurantsPicFavorites()).into(holder.restaurantsPicFavorites);
+       // Glide.with(context).load(data.getRestaurantsPicFavorites()).into(holder.restaurantsPicFavorites);
         holder.restaurantNameFavorites.setText(data.getRestaurantsNameFavorites());
         holder.restaurantBodyFavorites.setText(data.getRestaurantsBodyFavorites());
     }

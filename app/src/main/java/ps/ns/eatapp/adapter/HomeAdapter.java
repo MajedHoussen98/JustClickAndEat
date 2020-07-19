@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -46,7 +47,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.ViewHolder holder, int position) {
         final HomeModel data = list.get(position);
-        //Picasso.with(context).load(data.getResturant_pic()).into(holder.resturant_pic);
+//        Glide.with(context).load(data.getResturantPic()).into(holder.resturant_pic);
         holder.resturant_name.setText(data.getResturant_name());
         holder.resturant_status.setText(data.getResturant_status());
         holder.resturant_address.setText(data.getResturant_address());

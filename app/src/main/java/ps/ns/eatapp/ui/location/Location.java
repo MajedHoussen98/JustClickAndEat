@@ -1,5 +1,6 @@
 package ps.ns.eatapp.ui.location;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,15 +14,18 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import ps.ns.eatapp.AddLocationActivity;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MyLocationAdapter;
+import ps.ns.eatapp.databinding.FragmentLocationBinding;
+import ps.ns.eatapp.databinding.FragmentMyAccountBinding;
 import ps.ns.eatapp.model.MyLocationModel;
 
-public class Location extends Fragment implements MyLocationAdapter.ListItemClickListener {
+public class Location extends Fragment implements MyLocationAdapter.ListItemClickListener, View.OnClickListener{
 
-    private RecyclerView recyclerView;
     private MyLocationAdapter adapter;
     private ArrayList<MyLocationModel> list;
+    private FragmentLocationBinding binding;
     private View view;
 
     @Override
@@ -29,16 +33,24 @@ public class Location extends Fragment implements MyLocationAdapter.ListItemClic
                              Bundle savedInstanceState) {
         TextView titleBar = getActivity().findViewById(R.id.title_bar);
         titleBar.setText("My Location");
-        view = inflater.inflate(R.layout.fragment_location, container, false);
+        binding = FragmentLocationBinding.inflate(getLayoutInflater());
+        view = binding.getRoot();
         initViews();
+        lisetnerViews();
         return view;
     }
 
+
     private void initViews() {
-        recyclerView = view.findViewById(R.id.recyclerMyLocation);
         list = new ArrayList<>();
         getLocationData();
     }
+
+    private void lisetnerViews() {
+        binding.btnAddAddress.setOnClickListener(this);
+    }
+
+
 
     private void getLocationData() {
         list.add(new MyLocationModel("Home address", "Piata Unirii 2, Apartment 23…"));
@@ -57,13 +69,20 @@ public class Location extends Fragment implements MyLocationAdapter.ListItemClic
         list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
         list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerMyLocation.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new MyLocationAdapter(getActivity(), list, Location.this);
-        recyclerView.setAdapter(adapter);
+        binding.recyclerMyLocation.setAdapter(adapter);
     }
 
     @Override
     public void onListItemClicked(int position, int viewId) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btn_add_address){
+            startActivity(new Intent(getContext(), AddLocationActivity.class));
+        }
     }
 }
