@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:textDirection="ltr"
-    android:layoutDirection="ltr"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
     android:background="@drawable/back_signin"
     tools:context=".VerificationCode">
 
@@ -14,14 +14,14 @@
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="150dp"
         app:srcCompat="@drawable/logo2" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
         android:orientation="horizontal">
 
         <TextView

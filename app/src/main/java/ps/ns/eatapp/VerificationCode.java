@@ -2,6 +2,7 @@ package ps.ns.eatapp;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,19 +11,25 @@ import com.mukesh.OtpView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ps.ns.eatapp.databinding.ActivityVerificationCodeBinding;
 
 public class VerificationCode extends AppCompatActivity {
 
-    @BindView(R.id.otp_view)
-    OtpView otpView;
+
+    private ActivityVerificationCodeBinding binding;
+
+
+//    private Activtity binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verification_code);
-        ButterKnife.bind(this);
+        binding = ActivityVerificationCodeBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
-        otpView.setOtpCompletionListener(new OnOtpCompletionListener() {
+
+        binding.otpView.setOtpCompletionListener(new OnOtpCompletionListener() {
             @Override public void onOtpCompleted(String otp) {
                 // do Stuff
                 Log.d("onOtpCompleted=>", otp);

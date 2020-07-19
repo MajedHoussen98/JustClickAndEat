@@ -19,7 +19,7 @@ import ps.ns.eatapp.ui.menu.ui.main.SectionsPagerAdapter;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.bac_home)
+    @BindView(R.id.ib_back)
     ImageView bacHome;
     @BindView(R.id.editTextSearchMenu)
     EditText editTextSearchMenu;
