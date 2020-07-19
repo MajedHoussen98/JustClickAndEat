@@ -43,6 +43,19 @@ public class Location extends Fragment implements MyLocationAdapter.ListItemClic
     private void getLocationData() {
         list.add(new MyLocationModel("Home address", "Piata Unirii 2, Apartment 23…"));
         list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new MyLocationAdapter(getActivity(), list, Location.this);

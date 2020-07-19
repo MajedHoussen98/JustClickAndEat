@@ -1,5 +1,6 @@
 package ps.ns.eatapp.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import ps.ns.eatapp.R;
+import ps.ns.eatapp.ResturentDetails;
 import ps.ns.eatapp.adapter.HomeAdapter;
 import ps.ns.eatapp.model.HomeModel;
 
@@ -65,5 +67,11 @@ public class HomeFragment extends Fragment implements HomeAdapter.ListItemClickL
     @Override
     public void onListItemClicked(int position, int viewId) {
 
+        switch (viewId){
+           case  R.id.ll_home:
+               Intent intent = new Intent(getActivity(), ResturentDetails.class);
+               startActivity(intent);
+            break;
+        }
     }
 }
