@@ -46,7 +46,7 @@ public class MealsFavoritesAdapter extends RecyclerView.Adapter<MealsFavoritesAd
 
         final MealsFavoritesModel data = list.get(position);
 
-        //Picasso.with(context).load(data.getMealsPicFavorites()).into(holder.mealsPicFavorites);
+       // Picasso.with(context).load(data.getMealsPicFavorites()).into(holder.mealsPicFavorites);
         holder.mealsNameFavorites.setText(data.getMealsNameFavorites());
         holder.mealsBodyFavorites.setText(data.getMealsBodyFavorites());
         holder.mealsPriceFavorites.setText(data.getMealsPriceFavorites());

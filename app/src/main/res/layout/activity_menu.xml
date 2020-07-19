@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.menu.MenuActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/bac_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/backk"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="130dp"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="170dp"
+                    android:layout_marginRight="170dp"
+                    android:gravity="center"
+                    android:text="Menu"
+                    android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+                    android:textColor="#000"
+                    android:textSize="17sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bac_home"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <EditText
+                android:id="@+id/editTextSearchMenu"
+                android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:drawableLeft="@drawable/icons_search"
+                android:drawablePadding="15sp"
+                android:paddingLeft="16dp"
+                android:inputType="textPersonName"
+                android:hint="Search…"
+                android:textColorHint="#CECECE"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/saerch_bac"/>
+
+        </LinearLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_marginTop="2dp"
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="#2C32BE"
+            app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
+            app:tabSelectedTextColor="#2C32BE"
+            app:tabTextColor="#000"
+            android:background="#fff" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <fragment
+            android:id="@+id/fragment"
+            android:name="ps.ns.eatapp.ui.menu.StartersMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.viewpager.widget.ViewPager>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

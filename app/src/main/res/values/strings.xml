@@ -16,4 +16,5 @@
     <string name="tab_text_1">Meals</string>
     <string name="tab_text_2">Restaurants</string>
     <string name="title_activity_favorites">Favorites</string>
+    <string name="title_activity_menu">Menu</string>
 </resources>
