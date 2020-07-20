@@ -36,4 +36,23 @@
     <string name="tv_work_time">at 11:00 AM-9:00 PM</string>
     <string name="features">Features</string>
     <string name="tv_features">Does not take reservations\nAccepts credit cards\nHas outdoor seating\nHas Wi-Fi\nDining Options</string>
+    <string name="meals_name">Chicken Livers Peri-Peri</string>
+    <string name="title_description_meal">Description</string>
+    <string name="description_meal_body">If you’ve ever eaten chicken liver pate/mousse/spread, and liked it, you will LOVE chicken livers cooked in this spicy peri-peri sauce. I have turned many a chicken liver-hater into chicken liver-lovers with this recipe.</string>
+    <string name="ingredient">Ingredient</string>
+    <string name="rb_1">2 tablespoons butter</string>
+    <string name="rb_2">500 g chicken livers cleaned</string>
+    <string name="rb_3">3 garlic cloves crushed</string>
+    <string name="rb_4">3-4 tablespoons peri-peri sauce</string>
+    <string name="rb_5">juice of 1 lemon</string>
+    <string name="rb_6">½ cup cream</string>
+    <string name="rb_7"><![CDATA[salt & pepper to taste]]></string>
+    <string name="add_note">Add Note</string>
+    <string name="add_to_order">Add to Order</string>
+    <string name="price">Price</string>
+    <string name="request_type">Request Type</string>
+    <string name="delivery">Delivery</string>
+    <string name="user_address">Piata Unirii 2, Apartment 23…</string>
+    <string name="order_status">Order status</string>
+    <string name="ready_to_deliver">Ready to Deliver</string>
 </resources>

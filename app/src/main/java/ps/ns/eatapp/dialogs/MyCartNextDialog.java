@@ -2,6 +2,7 @@ package ps.ns.eatapp.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import ps.ns.eatapp.AddLocationActivity;
+import ps.ns.eatapp.OrderActivity;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MyLocationAdapter;
 import ps.ns.eatapp.model.MyLocationModel;
@@ -30,6 +33,7 @@ public class MyCartNextDialog extends AppCompatDialogFragment implements MyLocat
     private MyLocationAdapter locationAdapter;
     private ArrayList<MyLocationModel> locationList;
 
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -41,7 +45,6 @@ public class MyCartNextDialog extends AppCompatDialogFragment implements MyLocat
         getLocationData();
         viewListener();
         builder.setView(view);
-
         return builder.create();
 
 
@@ -61,13 +64,18 @@ public class MyCartNextDialog extends AppCompatDialogFragment implements MyLocat
         pickup_btn.setOnClickListener(this);
         delivery_btn.setOnClickListener(this);
         submit_order_btn.setOnClickListener(this);
+        add_address_next_cart.setOnClickListener(this);
     }
 
     private void getLocationData() {
         locationList.add(new MyLocationModel("Home address", "Piata Unirii 2, Apartment 23…"));
         locationList.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        locationList.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        locationList.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
+        locationList.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
         recycler_next_cart.setLayoutManager(new LinearLayoutManager(getContext()));
         locationAdapter = new MyLocationAdapter(getActivity(), locationList, MyCartNextDialog.this);
+        locationAdapter.setShowHide(true);
         recycler_next_cart.setAdapter(locationAdapter);
     }
 
@@ -93,7 +101,11 @@ public class MyCartNextDialog extends AppCompatDialogFragment implements MyLocat
                 break;
 
             case R.id.submit_order_btn:
-                Toast.makeText(getContext(), "Submit", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), OrderActivity.class));
+                break;
+
+            case R.id.add_address_next_cart:
+                startActivity(new Intent(getContext(), AddLocationActivity.class));
                 break;
         }
     }

@@ -1,5 +1,6 @@
 package ps.ns.eatapp.ui.menu;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import ps.ns.eatapp.MealsDetailsActivity;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MenuAdapter;
 import ps.ns.eatapp.model.MenuModel;
@@ -54,6 +56,9 @@ public class GrilledMeat extends Fragment implements MenuAdapter.ListItemClickLi
 
     @Override
     public void onListItemClicked(int position, int viewId) {
-
+        switch (viewId){
+            case R.id.ll_menu:
+                startActivity(new Intent(getActivity(), MealsDetailsActivity.class));
+        }
     }
 }

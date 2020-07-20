@@ -13,6 +13,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/ll_cart_item"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
@@ -67,6 +68,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_add_item"
         android:layout_width="match_parent"
         android:layout_gravity="center"
         android:gravity="center"

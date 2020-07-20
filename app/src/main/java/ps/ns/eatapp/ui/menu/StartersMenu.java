@@ -1,5 +1,6 @@
 package ps.ns.eatapp.ui.menu;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,14 +13,18 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import ps.ns.eatapp.MealsDetailsActivity;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MenuAdapter;
+import ps.ns.eatapp.databinding.FragmentStartersMenuBinding;
 import ps.ns.eatapp.model.MealsFavoritesModel;
 import ps.ns.eatapp.model.MenuModel;
 
 
 public class StartersMenu extends Fragment implements MenuAdapter.ListItemClickListener {
-    private RecyclerView recyclerView;
+
+    private FragmentStartersMenuBinding binding;
+
     private MenuAdapter adapter;
     private ArrayList<MenuModel> list;
     private View view;
@@ -27,13 +32,13 @@ public class StartersMenu extends Fragment implements MenuAdapter.ListItemClickL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view =  inflater.inflate(R.layout.fragment_starters_menu, container, false);
+        binding = FragmentStartersMenuBinding.inflate(getLayoutInflater());
+        view = binding.getRoot();
         initViews();
         return view;
     }
 
     private void initViews() {
-        recyclerView = view.findViewById(R.id.recyclerStarters);
         list = new ArrayList<>();
         getStartersData();
     }
@@ -44,13 +49,16 @@ public class StartersMenu extends Fragment implements MenuAdapter.ListItemClickL
         list.add(new MenuModel("R.drawable.meal2","Braised Fish Head","2x tuna sahimi, 3x vegetables ","$15.00"));
         list.add(new MenuModel("R.drawable.meal2","Salad Fritters","2x tuna sahimi, 3x vegetables","$4.90"));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerStarters.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter= new MenuAdapter(getContext(), list, this);
-        recyclerView.setAdapter(adapter);
+        binding.recyclerStarters.setAdapter(adapter);
     }
 
     @Override
     public void onListItemClicked(int position, int viewId) {
-
+            switch (viewId){
+                case R.id.ll_menu:
+                    startActivity(new Intent(getActivity(), MealsDetailsActivity.class));
+            }
     }
 }

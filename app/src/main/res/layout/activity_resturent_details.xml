@@ -2,9 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
@@ -174,7 +172,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_menu"
-                    android:paddingLeft="130dp"
+                    android:paddingLeft="110dp"
                     android:paddingRight="130dp"
                     android:text="@string/btn_menu"
                     android:textColor="#909090"

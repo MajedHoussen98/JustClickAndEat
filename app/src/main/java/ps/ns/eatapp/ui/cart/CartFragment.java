@@ -63,6 +63,7 @@ public class CartFragment extends Fragment implements MyCartAdapter.ListItemClic
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new MyCartAdapter(getActivity(), list, CartFragment.this);
+        adapter.setShowHide(false);
         recyclerView.setAdapter(adapter);
 
     }

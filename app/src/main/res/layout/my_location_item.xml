@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:textColor="#909090"
             android:textSize="12sp"
-            android:layout_marginLeft="35dp"
+            android:layout_marginStart="35dp"
             android:text="Work address" />
 
         <RadioButton

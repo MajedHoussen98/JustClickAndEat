@@ -20,6 +20,15 @@ public class MyLocationAdapter extends RecyclerView.Adapter<MyLocationAdapter.Vi
     Context context;
     List<MyLocationModel> list;
     final private MyLocationAdapter.ListItemClickListener mOnClickListener;
+    private boolean showHide;
+
+    public boolean isShowHide() {
+        return showHide;
+    }
+
+    public void setShowHide(boolean showHide) {
+        this.showHide = showHide;
+    }
 
     public interface ListItemClickListener{
         void onListItemClicked(int position, int viewId);
@@ -44,6 +53,12 @@ public class MyLocationAdapter extends RecyclerView.Adapter<MyLocationAdapter.Vi
         final MyLocationModel data = list.get(position);
         holder.addressName.setText(data.getAddressName());
         holder.addressDetails.setText(data.getDetailsAddress());
+
+        if (showHide){
+            holder.changeAddress.setVisibility(View.GONE);
+        }else {
+            holder.changeAddress.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

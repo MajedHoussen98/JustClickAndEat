@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,15 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
     Context context;
     List<MyCartModel> list;
     final private MyCartAdapter.ListItemClickListener mOnClickListener;
+    private boolean showHide;
+
+    public boolean isShowHide() {
+        return showHide;
+    }
+
+    public void setShowHide(boolean showHide) {
+        this.showHide = showHide;
+    }
 
     public interface ListItemClickListener {
         void onListItemClicked(int position, int viewId);
@@ -55,6 +65,14 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
         holder.meal_price.setText(data.getMeal_price());
         holder.meal_quantity.setText(String.valueOf(data.getMeal_quantity()));
 
+        if (showHide){
+            //TODO: INvisable
+            holder.ll_add_item.setVisibility(View.GONE);
+        }else{
+            //TODO: visable
+            holder.ll_add_item.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @Override
@@ -66,6 +84,8 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
 
         ImageView meal_pic, ic_add, ic_clear;
         TextView meal_name, meal_description, meal_price, meal_quantity;
+        LinearLayout ll_add_item;
+        LinearLayout ll_cart_item;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,9 +96,13 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
             meal_description = itemView.findViewById(R.id.meal_description);
             meal_price = itemView.findViewById(R.id.meal_price);
             meal_quantity = itemView.findViewById(R.id.quantity);
+            ll_add_item = itemView.findViewById(R.id.ll_add_item);
+            ll_cart_item = itemView.findViewById(R.id.ll_cart_item);
+
 
             ic_add.setOnClickListener(this);
             ic_clear.setOnClickListener(this);
+            ll_cart_item.setOnClickListener(this);
         }
 
         @Override
