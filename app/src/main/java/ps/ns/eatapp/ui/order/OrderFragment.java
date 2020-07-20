@@ -1,10 +1,13 @@
 package ps.ns.eatapp.ui.order;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import ps.ns.eatapp.OrderActivity;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MyCartAdapter;
 import ps.ns.eatapp.adapter.MyOrderAdapter;
@@ -25,6 +29,7 @@ public class OrderFragment extends Fragment implements MyOrderAdapter.ListItemCl
     private MyOrderAdapter adapter;
     private ArrayList<MyOrderModel> list;
     private View view;
+    MyOrderModel model;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -43,18 +48,18 @@ public class OrderFragment extends Fragment implements MyOrderAdapter.ListItemCl
     }
 
     private void getDataMyOrder() {
-
-        list.add(new MyOrderModel("Order #456123", "Irving PlaceHawk Point, MO 63349", "$52.25", "1 minutes ago","Cancel"));
-        list.add(new MyOrderModel("Order #456123", "Irving PlaceHawk Point, MO 63349", "$52.25", "3 minutes ago", "Cancel"));
-        list.add(new MyOrderModel("Order #456123", "Irving PlaceHawk Point, MO 63349", "$52.25", "5 minutes ago","Cancel"));
-        list.add(new MyOrderModel("Order #456123", "Irving PlaceHawk Point, MO 63349", "$52.25", "7 minutes ago","Cancel"));
-        list.add(new MyOrderModel("Order #485948", "909 Wyatt Street Doral, FL 33172", "$28.00", "July 20, 2018","saved"));
-        list.add(new MyOrderModel("Order #364746", "Fulton Street Walkersville, WV 26447", "$34.00", "July 20, 2018", "saved"));
-        list.add(new MyOrderModel("Order #485948", "909 Wyatt Street Doral, FL 33172", "$28.00", "July 20, 2018","saved"));
-        list.add(new MyOrderModel("Order #364746", "Fulton Street Walkersville, WV 26447", "$34.00", "July 20, 2018","saved"));
-        list.add(new MyOrderModel("Order #485948", "909 Wyatt Street Doral, FL 33172", "$28.00", "July 20, 2018","saved"));
-        list.add(new MyOrderModel("Order #364746", "Fulton Street Walkersville, WV 26447", "$34.00", "July 20, 2018","saved"));
-        list.add(new MyOrderModel("Order #456123", "Irving PlaceHawk Point, MO 63349", "$52.25", "1 minutes ago","Cancel"));
+        model =  new MyOrderModel("Order #456123", "Irving PlaceHawk Point, MO 63349", "$52.25", "1 minutes ago", "Cancel");
+        list.add(model);
+        list.add(model);
+        list.add(model);
+        list.add(model);
+        list.add(model);
+        list.add(model);
+        list.add(model);
+        list.add(model);
+        list.add(model);
+        list.add(model);
+        list.add(model);
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -65,5 +70,10 @@ public class OrderFragment extends Fragment implements MyOrderAdapter.ListItemCl
     @Override
     public void onListItemClicked(int position, int viewId) {
 
+        if (viewId == R.id.ll_order) {
+            Intent intent = new Intent(getContext(), OrderActivity.class);
+            intent.putExtra("showHide", true);
+            startActivity(intent);
+        }
     }
 }

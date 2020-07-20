@@ -67,11 +67,9 @@ public class HomeFragment extends Fragment implements HomeAdapter.ListItemClickL
     @Override
     public void onListItemClicked(int position, int viewId) {
 
-        switch (viewId){
-           case  R.id.ll_home:
-               Intent intent = new Intent(getActivity(), ResturentDetails.class);
-               startActivity(intent);
-            break;
+        if (viewId == R.id.ll_home) {
+            Intent intent = new Intent(getActivity(), ResturentDetails.class);
+            startActivity(intent);
         }
     }
 }

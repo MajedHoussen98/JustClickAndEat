@@ -1,6 +1,7 @@
 package ps.ns.eatapp.ui.cart;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,8 +82,9 @@ public class CartFragment extends Fragment implements MyCartAdapter.ListItemClic
     }
 
     private void openDialog() {
-        MyCartNextDialog dialog = new MyCartNextDialog();
-        dialog.show(getParentFragmentManager(), "SSSS");
+//        MyCartNextDialog dialog = new MyCartNextDialog();
+//        dialog.show(getParentFragmentManager(), "SSSS");
+        startActivity(new Intent(getContext() ,MyCartNextDialog.class));
     }
 
 }

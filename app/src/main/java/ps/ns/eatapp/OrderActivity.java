@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -19,12 +20,25 @@ public class OrderActivity extends AppCompatActivity implements MyCartAdapter.Li
     private MyCartAdapter adapter;
     private List<MyCartModel> list = new ArrayList<>();
     private View view;
+    static boolean showHide;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityOrderBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
+
+        showHide = getIntent().getExtras().getBoolean("showHide");
+
+        if (showHide){
+            binding.llOrderStatus.setVisibility(View.VISIBLE);
+            binding.btnOk.setVisibility(View.GONE);
+        }else {
+            binding.llOrderStatus.setVisibility(View.GONE);
+            binding.btnOk.setVisibility(View.VISIBLE);
+
+        }
         listenarViews();
         getCartData();
         setContentView(view);
@@ -48,7 +62,7 @@ public class OrderActivity extends AppCompatActivity implements MyCartAdapter.Li
 
     @Override
     public void onListItemClicked(int position, int viewId) {
-        switch (viewId){
+        switch (viewId) {
             case R.id.ll_cart_item:
                 startActivity(new Intent(OrderActivity.this, MealsDetailsActivity.class));
         }

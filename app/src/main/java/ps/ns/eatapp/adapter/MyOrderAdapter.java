@@ -86,7 +86,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
 
         @Override
         public void onClick(View v) {
-
+            mOnClickListener.onListItemClicked(getAdapterPosition(), v.getId());
         }
     }
 }

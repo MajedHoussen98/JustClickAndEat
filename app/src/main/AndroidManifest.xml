@@ -10,10 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".OrderActivity"></activity>
-        <activity android:name=".MealsDetailsActivity" />
+        <activity
+            android:name=".MealsDetailsActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".AddLocationActivity" />
-        <activity android:name=".EditPasswordActivity" />
-        <activity android:name=".EditAccountActivity" />
+        <activity
+            android:name=".EditPasswordActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".EditAccountActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.menu.MenuActivity"
             android:label="@string/title_activity_menu"
@@ -29,6 +35,9 @@
         <activity android:name=".Signin" />
         <activity android:name=".StartingApp" />
         <activity android:name=".MainActivity" />
+        <activity
+            android:name=".dialogs.MyCartNextDialog"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
         <activity
             android:name=".Splash"
             android:label="@string/app_name"

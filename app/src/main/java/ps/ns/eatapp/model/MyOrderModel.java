@@ -8,6 +8,9 @@ public class MyOrderModel {
     String orderTime;
     String orderStatus;
 
+    public MyOrderModel() {
+    }
+
     public MyOrderModel(String orderId, String orderDescription, String orderPrice, String orderTime, String orderStatus) {
         this.orderId = orderId;
         this.orderDescription = orderDescription;
