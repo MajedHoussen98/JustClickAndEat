@@ -1,12 +1,10 @@
-package ps.ns.eatapp;
+package ps.ns.eatapp.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,34 +18,24 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ps.ns.eatapp.ui.home.HomeFragment;
+import ps.ns.eatapp.MainActivity;
+import ps.ns.eatapp.R;
+import ps.ns.eatapp.databinding.ActivityResturentDetailsBinding;
 import ps.ns.eatapp.ui.menu.MenuActivity;
 
-public class ResturentDetails extends AppCompatActivity implements View.OnClickListener {
+public class ResturentDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-    @BindView(R.id.image_slider)
-    ImageSlider imageSlider;
-    @BindView(R.id.ib_back)
-    ImageView ib_back;
-    @BindView(R.id.ic_fav)
-    ImageView icFav;
-    @BindView(R.id.ic_share)
-    ImageView icShare;
-
+    private View view;
+    private ActivityResturentDetailsBinding binding;
     List<SlideModel> list = new ArrayList<>();
-    @BindView(R.id.appbar)
-    AppBarLayout appbar;
-    @BindView(R.id.btn_menu)
-    Button viewMenu;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_resturent_details);
-        ButterKnife.bind(this);
+        binding = ActivityResturentDetailsBinding.inflate(getLayoutInflater());
+        view = binding.getRoot();
+        setContentView(view);
 
         addSilderImage();
         listenerViews();
@@ -58,14 +46,14 @@ public class ResturentDetails extends AppCompatActivity implements View.OnClickL
 
         list.add(new SlideModel(R.drawable.slideimage1, ScaleTypes.CENTER_CROP));
         list.add(new SlideModel(R.drawable.slideimage2, ScaleTypes.CENTER_CROP));
-        imageSlider.setImageList(list, ScaleTypes.CENTER_CROP);
+        binding.imageSlider.setImageList(list, ScaleTypes.CENTER_CROP);
     }
 
     private void listenerViews() {
-        ib_back.setOnClickListener(this);
-        icFav.setOnClickListener(this);
-        icShare.setOnClickListener(this);
-        viewMenu.setOnClickListener(this);
+        binding.ibBack.setOnClickListener(this);
+        binding.icFav.setOnClickListener(this);
+        binding.icShare.setOnClickListener(this);
+        binding.btnMenu.setOnClickListener(this);
     }
 
 
@@ -73,12 +61,12 @@ public class ResturentDetails extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ib_back:
-                startActivity(new Intent(ResturentDetails.this, MainActivity.class));
+                startActivity(new Intent(ResturentDetailsActivity.this, MainActivity.class));
                 finish();
                 break;
 
             case R.id.btn_menu:
-                startActivity(new Intent(ResturentDetails.this, MenuActivity.class));
+                startActivity(new Intent(ResturentDetailsActivity.this, MenuActivity.class));
                 break;
         }
     }

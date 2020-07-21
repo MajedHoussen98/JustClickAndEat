@@ -13,7 +13,8 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import ps.ns.eatapp.MealsDetailsActivity;
+import ps.ns.eatapp.databinding.FragmentGrilledMeatBinding;
+import ps.ns.eatapp.ui.MealsDetailsActivity;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MenuAdapter;
 import ps.ns.eatapp.model.MenuModel;
@@ -21,23 +22,21 @@ import ps.ns.eatapp.model.MenuModel;
 
 public class GrilledMeat extends Fragment implements MenuAdapter.ListItemClickListener {
 
-    private RecyclerView recyclerView;
     private MenuAdapter adapter;
     private ArrayList<MenuModel> list;
     private View view;
+    private FragmentGrilledMeatBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-         view = inflater.inflate(R.layout.fragment_grilled_meat, container, false);
+        binding = FragmentGrilledMeatBinding.inflate(getLayoutInflater());
+        view = binding.getRoot();
         initViews();
         return view;
     }
 
     private void initViews() {
-
-        recyclerView = view.findViewById(R.id.recyclerGrilledMeat);
         list = new ArrayList<>();
         getGrilledMeatData();
     }
@@ -49,9 +48,9 @@ public class GrilledMeat extends Fragment implements MenuAdapter.ListItemClickLi
         list.add(new MenuModel("R.drawable.meal2","Braised Fish Head","2x tuna sahimi, 3x vegetables ","$15.00"));
         list.add(new MenuModel("R.drawable.meal2","Salad Fritters","2x tuna sahimi, 3x vegetables","$4.90"));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.rvGrilledMeat.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter= new MenuAdapter(getContext(), list, this);
-        recyclerView.setAdapter(adapter);
+        binding.rvGrilledMeat.setAdapter(adapter);
     }
 
     @Override

@@ -2,50 +2,48 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:textDirection="ltr"
+    android:layoutDirection="ltr">
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/addressName"
+            android:id="@+id/tv_address_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#909090"
             android:textSize="12sp"
             android:layout_marginStart="35dp"
-            android:text="Work address" />
+            android:text="@string/work_address" />
 
         <RadioButton
-            android:id="@+id/detailsAddress"
+            android:id="@+id/tv_details_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="13sp"
-            android:text="Piata Unirii 2, Apartment 23…" />
+            android:text="@string/user_address" />
 
     </RadioGroup>
 
     <Button
-        android:id="@+id/change_address"
+        android:id="@+id/btn_change_address"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="169dp"
-        android:layout_marginLeft="169dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginRight="16dp"
-        android:text="Change"
+        android:text="@string/change"
         android:textSize="14sp"
         android:textColor="#2C32BE"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +52,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/view4"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="4dp"

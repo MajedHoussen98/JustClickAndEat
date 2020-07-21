@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="ps.ns.eatapp">
 
     <application
@@ -9,37 +10,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OrderActivity"></activity>
+        <activity android:name=".ui.NotificationActivity"></activity>
+        <activity android:name=".ui.MyLocationActivity" />
+        <activity android:name=".ui.MyOrderActivity" />
+        <activity android:name=".ui.MyCartActivity" />
+        <activity android:name=".ui.MyAccountActivity" />
+        <activity android:name=".ui.OrderActivity" />
         <activity
-            android:name=".MealsDetailsActivity"
+            android:name=".ui.MealsDetailsActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".AddLocationActivity" />
         <activity
-            android:name=".EditPasswordActivity"
+            android:name=".ui.AddLocationActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".EditAccountActivity"
+            android:name=".ui.EditPasswordActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.EditAccountActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.menu.MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ResturentDetails" />
+        <activity android:name=".ui.ResturentDetailsActivity" />
         <activity
             android:name=".ui.Favorites.Favorites"
             android:label="@string/title_activity_favorites"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".VerificationCode" />
-        <activity android:name=".ForgetPassword" />
-        <activity android:name=".SignUp" />
-        <activity android:name=".Signin" />
-        <activity android:name=".StartingApp" />
+
+        <activity android:name=".ui.VerificationCodeActivity" />
+        <activity android:name=".ui.ForgetPasswordActivity" />
+        <activity android:name=".ui.SignUpActivity" />
+        <activity android:name=".ui.SignInActivity" />
+        <activity android:name=".ui.StartingAppActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".dialogs.MyCartNextDialog"
             android:theme="@style/Theme.AppCompat.Dialog.Alert" />
         <activity
-            android:name=".Splash"
+            android:name=".ui.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

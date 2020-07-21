@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:textDirection="ltr"
+    android:layoutDirection="ltr"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -14,10 +16,10 @@
         android:layout_marginRight="8dp">
 
         <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/meal_pic_fav"
+            android:id="@+id/iv_meal_fav"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:src="@drawable/res_image"
             app:riv_corner_radius="5dp"/>
@@ -30,32 +32,32 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/meal_name_fav"
+                android:id="@+id/tv_meal_name_fav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
                 android:textSize="16sp"
-                android:text="Oriental Bistro" />
+                android:text="@string/meals_name" />
 
             <TextView
-                android:id="@+id/meal_body_fav"
+                android:id="@+id/tv_meal_body_fav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
                 android:textColor="#43496A"
-                android:text="The restaurant made a new meal" />
+                android:text="@string/meal_body" />
 
             <TextView
-                android:id="@+id/meal_price_fav"
+                android:id="@+id/tv_meal_price_fav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textColor="#2C32BE"
-                android:text="$29.50" />
+                android:text="@string/price_meal" />
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/fav_click"
+            android:id="@+id/ic_fav_click"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

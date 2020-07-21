@@ -76,12 +76,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            resturant_pic = itemView.findViewById(R.id.resturant_pic);
-            resturant_name = itemView.findViewById(R.id.resturant_name);
-            resturant_status = itemView.findViewById(R.id.resturant_status);
-            resturant_address = itemView.findViewById(R.id.resturant_address);
-            resturant_rating = itemView.findViewById(R.id.resturant_rating);
-            rating_number = itemView.findViewById(R.id.rating_number);
+            resturant_pic = itemView.findViewById(R.id.iv_resturant);
+            resturant_name = itemView.findViewById(R.id.tv_resturant_name);
+            resturant_status = itemView.findViewById(R.id.tv_resturant_status);
+            resturant_address = itemView.findViewById(R.id.tv_resturant_address);
+            resturant_rating = itemView.findViewById(R.id.rb_resturant);
+            rating_number = itemView.findViewById(R.id.tv_rating_value);
             ll_home = itemView.findViewById(R.id.ll_home);
             ll_home.setOnClickListener(this);
         }

@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:textDirection="ltr"
+    android:layoutDirection="ltr"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -12,18 +13,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/meal_pic"
+            android:id="@+id/iv_meal"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:src="@drawable/res_image"
             app:riv_corner_radius="5dp" />
@@ -36,26 +37,26 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/meal_name"
+                android:id="@+id/tv_meal_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Oriental Bistro"
+                android:text="@string/meals_name"
                 android:textColor="#000"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/meal_body"
+                android:id="@+id/tv_meal_body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="The restaurant made a new meal"
+                android:text="@string/meal_body"
                 android:textColor="#43496A"
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/meal_price"
+                android:id="@+id/tv_meal_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$29.50"
+                android:text="@string/price_meal"
                 android:textColor="#2C32BE"
                 android:textSize="15sp" />
         </LinearLayout>

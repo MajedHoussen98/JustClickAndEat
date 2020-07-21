@@ -68,11 +68,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            notificationPic = itemView.findViewById(R.id.notification_pic);
-            clickNotification = itemView.findViewById(R.id.notification_click);
-            notificationTitle = itemView.findViewById(R.id.notification_title);
-            notificationBody = itemView.findViewById(R.id.notification_body);
-            notificationTime = itemView.findViewById(R.id.notification_time);
+            notificationPic = itemView.findViewById(R.id.iv_notification);
+            clickNotification = itemView.findViewById(R.id.ic_notification_click);
+            notificationTitle = itemView.findViewById(R.id.tv_notification_title);
+            notificationBody = itemView.findViewById(R.id.tv_notification_body);
+            notificationTime = itemView.findViewById(R.id.tv_notification_time);
             ll_notification = itemView.findViewById(R.id.ll_notification);
 
             ll_notification.setOnClickListener(this);

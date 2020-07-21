@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/outline_dilog"
+    android:textDirection="ltr"
+    android:layoutDirection="ltr"
+    android:background="@drawable/outline_dialog"
     android:orientation="vertical"
     android:theme="@style/alert"
     style="@style/alert">
@@ -15,14 +17,14 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/outline_dilog"
+        android:background="@drawable/outline_dialog"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Select the request type"
+            android:text="@string/select_the_request_type"
             android:textColor="#000"
             android:textSize="15sp" />
 
@@ -34,11 +36,11 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/pickup_btn"
+                android:id="@+id/btn_pickup"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:background="@drawable/outline_button_cart"
-                android:text="Pickup"
+                android:text="@string/pickup"
                 android:textColor="#2C32BE"
                 android:textSize="14sp" />
 
@@ -47,14 +49,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:background="@drawable/get_start"
-                android:text="Delivery"
+                android:text="@string/delivery"
                 android:textColor="#fff"
                 android:textSize="14sp" />
 
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_next_cart"
+            android:id="@+id/rv_next_cart"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginLeft="16dp"
@@ -69,7 +71,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginRight="16dp"
-            android:text="Add another address"
+            android:text="@string/add_another_address"
             android:textColor="#909090"
             android:textSize="14sp" />
 
@@ -85,24 +87,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mobile Number"
+                android:text="@string/mobile_number"
                 android:textColor="#000"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/mobile_number"
+                android:id="@+id/tv_mobile_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
                 android:paddingRight="16dp"
-                android:text="+1234 4594 423"
+                android:text="@string/tv_mobile_number"
                 android:textColor="#909090"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                tools:ignore="RtlHardcoded,RtlSymmetry" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/submit_order_btn"
+            android:id="@+id/btn_submit_order"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -110,7 +113,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/get_start"
-            android:text="Submit Order"
+            android:text="@string/submit_order"
             android:textColor="#fff"
             android:textSize="14sp" />
 

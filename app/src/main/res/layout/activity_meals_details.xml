@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MealsDetailsActivity">
+    android:textDirection="ltr"
+    android:layoutDirection="ltr"
+    tools:context=".ui.MealsDetailsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -86,15 +88,14 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ResturentDetails">
+            android:layout_height="wrap_content"
+            tools:context=".ui.ResturentDetailsActivity">
 
             <LinearLayout
                 android:id="@+id/ll_part1"
@@ -108,7 +109,6 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-
                     android:id="@+id/tv_meals_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -118,25 +118,24 @@
                     android:textSize="28sp" />
 
                 <TextView
-                    android:id="@+id/tv_description_meal_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
                     android:layout_marginTop="4dp"
+                    android:text="@string/title_description_meal"
                     android:textColor="#000000"
-                    android:text="@string/title_description_meal" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/tv_description_meal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@string/description_meal_body"
                     android:textColor="#909090"
-                    android:textSize="15sp"
-                    android:text="@string/description_meal_body" />
+                    android:textSize="15sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:orientation="vertical">
 
@@ -144,66 +143,66 @@
                         android:id="@+id/tv_ingredient"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@string/ingredient"
                         android:textColor="#000000"
-                        android:textSize="15sp"
-                        android:text="@string/ingredient" />
+                        android:textSize="15sp" />
 
 
-                        <RadioButton
-                            android:id="@+id/rb_1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#909090"
-                            android:textSize="14sp"
-                            android:text="@string/rb_1" />
+                    <RadioButton
+                        android:id="@+id/rb_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rb_1"
+                        android:textColor="#909090"
+                        android:textSize="14sp" />
 
-                        <RadioButton
-                            android:id="@+id/rb_2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#909090"
-                            android:textSize="14sp"
-                            android:text="@string/rb_2" />
+                    <RadioButton
+                        android:id="@+id/rb_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rb_2"
+                        android:textColor="#909090"
+                        android:textSize="14sp" />
 
-                        <RadioButton
-                            android:id="@+id/rb_3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#909090"
-                            android:textSize="14sp"
-                            android:text="@string/rb_3" />
+                    <RadioButton
+                        android:id="@+id/rb_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rb_3"
+                        android:textColor="#909090"
+                        android:textSize="14sp" />
 
-                        <RadioButton
-                            android:id="@+id/rb_4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#909090"
-                            android:textSize="14sp"
-                            android:text="@string/rb_4" />
+                    <RadioButton
+                        android:id="@+id/rb_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rb_4"
+                        android:textColor="#909090"
+                        android:textSize="14sp" />
 
-                        <RadioButton
-                            android:id="@+id/rb_5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#909090"
-                            android:textSize="14sp"
-                            android:text="@string/rb_5" />
+                    <RadioButton
+                        android:id="@+id/rb_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rb_5"
+                        android:textColor="#909090"
+                        android:textSize="14sp" />
 
-                        <RadioButton
-                            android:id="@+id/rb_6"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#909090"
-                            android:textSize="14sp"
-                            android:text="@string/rb_6" />
+                    <RadioButton
+                        android:id="@+id/rb_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rb_6"
+                        android:textColor="#909090"
+                        android:textSize="14sp" />
 
-                        <RadioButton
-                            android:id="@+id/rb_7"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#909090"
-                            android:textSize="14sp"
-                            android:text="@string/rb_7" />
+                    <RadioButton
+                        android:id="@+id/rb_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rb_7"
+                        android:textColor="#909090"
+                        android:textSize="14sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
@@ -214,18 +213,14 @@
                             android:id="@+id/et_add_note"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
-                            android:textSize="14sp"
+                            android:hint="@string/add_note"
+                            android:inputType="textEmailAddress"
                             android:paddingStart="8dp"
                             android:paddingEnd="8dp"
-                            android:hint="@string/add_note"
-                            android:inputType="textEmailAddress" />
+                            android:textSize="14sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-
-
                 </LinearLayout>
-
-
             </LinearLayout>
 
 

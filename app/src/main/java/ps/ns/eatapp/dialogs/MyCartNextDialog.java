@@ -1,8 +1,5 @@
 package ps.ns.eatapp.dialogs;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,26 +7,23 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import ps.ns.eatapp.AddLocationActivity;
-import ps.ns.eatapp.OrderActivity;
+import ps.ns.eatapp.databinding.ActivityMyCartBinding;
+import ps.ns.eatapp.ui.AddLocationActivity;
+import ps.ns.eatapp.ui.OrderActivity;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MyLocationAdapter;
 import ps.ns.eatapp.model.MyLocationModel;
 
 public class MyCartNextDialog extends AppCompatActivity implements MyLocationAdapter.ListItemClickListener, View.OnClickListener {
 
-    // private View view;
     private RecyclerView recycler_next_cart;
     private Button submit_order_btn, pickup_btn, delivery_btn, add_address_next_cart;
     TextView mobile_number;
@@ -50,12 +44,12 @@ public class MyCartNextDialog extends AppCompatActivity implements MyLocationAda
 
 
     private void initView() {
-        pickup_btn = findViewById(R.id.pickup_btn);
+        pickup_btn = findViewById(R.id.btn_pickup);
         delivery_btn = findViewById(R.id.delivery_btn);
         add_address_next_cart = findViewById(R.id.add_address_next_cart);
-        mobile_number = findViewById(R.id.mobile_number);
-        submit_order_btn = findViewById(R.id.submit_order_btn);
-        recycler_next_cart = findViewById(R.id.recycler_next_cart);
+        mobile_number = findViewById(R.id.tv_mobile_number);
+        submit_order_btn = findViewById(R.id.btn_submit_order);
+        recycler_next_cart = findViewById(R.id.rv_next_cart);
         locationList = new ArrayList<>();
     }
 
@@ -81,7 +75,7 @@ public class MyCartNextDialog extends AppCompatActivity implements MyLocationAda
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.pickup_btn:
+            case R.id.btn_pickup:
                 pickup_btn.setBackgroundResource(R.drawable.get_start);
                 pickup_btn.setTextColor(Color.parseColor("#ffffff"));
                 delivery_btn.setBackgroundResource(R.drawable.outline_button_cart);
@@ -99,7 +93,7 @@ public class MyCartNextDialog extends AppCompatActivity implements MyLocationAda
                 recycler_next_cart.setVisibility(View.VISIBLE);
                 break;
 
-            case R.id.submit_order_btn:
+            case R.id.btn_submit_order:
 
                 Intent intent = new Intent(this, OrderActivity.class);
                 intent.putExtra("showHide", false);

@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textDirection="ltr"
+    android:layoutDirection="ltr"
     tools:context=".ui.menu.StartersMenu" >
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerStarters"
+        android:id="@+id/rv_starters"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="8dp"

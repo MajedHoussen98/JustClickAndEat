@@ -13,28 +13,29 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import ps.ns.eatapp.MealsDetailsActivity;
+import ps.ns.eatapp.databinding.FragmentBeveragesBinding;
+import ps.ns.eatapp.ui.MealsDetailsActivity;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MenuAdapter;
 import ps.ns.eatapp.model.MenuModel;
 
 
 public class Beverages extends Fragment implements MenuAdapter.ListItemClickListener {
-    private RecyclerView recyclerView;
     private MenuAdapter adapter;
     private ArrayList<MenuModel> list;
     private View view;
+    private FragmentBeveragesBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-         view = inflater.inflate(R.layout.fragment_beverages, container, false);
+        binding = FragmentBeveragesBinding.inflate(getLayoutInflater());
+        view = binding.getRoot();
         initViews();
         return view;
     }
 
     private void initViews() {
-        recyclerView = view.findViewById(R.id.recyclerBeverages);
         list = new ArrayList<>();
         getBeveragesData();
     }
@@ -45,9 +46,9 @@ public class Beverages extends Fragment implements MenuAdapter.ListItemClickList
         list.add(new MenuModel("R.drawable.meal2","Braised Fish Head","2x tuna sahimi, 3x vegetables ","$15.00"));
         list.add(new MenuModel("R.drawable.meal2","Salad Fritters","2x tuna sahimi, 3x vegetables","$4.90"));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.rvBeverages.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter= new MenuAdapter(getContext(), list, this);
-        recyclerView.setAdapter(adapter);
+        binding.rvBeverages.setAdapter(adapter);
     }
 
     @Override

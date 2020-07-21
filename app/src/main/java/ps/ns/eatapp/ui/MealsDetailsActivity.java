@@ -1,4 +1,4 @@
-package ps.ns.eatapp;
+package ps.ns.eatapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +12,7 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import ps.ns.eatapp.adapter.MenuAdapter;
+import ps.ns.eatapp.R;
 import ps.ns.eatapp.databinding.ActivityMealsDetailsBinding;
 import ps.ns.eatapp.ui.menu.MenuActivity;
 

@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textDirection="ltr"
+    android:layoutDirection="ltr"
     android:orientation="vertical"
-    tools:context=".StartingApp">
+    tools:context=".ui.StartingAppActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_starting_app"
         android:layout_marginTop="20dp"
-        android:id="@+id/recyclerStarted"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1" />
 
     <LinearLayout
@@ -23,24 +25,24 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/sign_in_btn"
+            android:id="@+id/btn_sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/signin_shape"
             android:layout_weight="1"
-            android:text="Sign in" />
+            android:text="@string/sign_in" />
 
         <Button
-            android:id="@+id/start_btn"
+            android:id="@+id/btn_get_started"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:textColor="#FFF"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:background="@drawable/get_start"
-            android:text="Get Started" />
+            android:text="@string/get_started" />
     </LinearLayout>
 
 </LinearLayout>

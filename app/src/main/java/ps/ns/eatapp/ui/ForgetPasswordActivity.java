@@ -1,4 +1,4 @@
-package ps.ns.eatapp;
+package ps.ns.eatapp.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ps.ns.eatapp.R;
 
-public class ForgetPassword extends AppCompatActivity implements View.OnClickListener {
+public class ForgetPasswordActivity extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.back_icon)
     ImageView backIcon;
@@ -33,7 +34,7 @@ public class ForgetPassword extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
 
         if (v.getId() == R.id.back_icon){
-            startActivity(new Intent(ForgetPassword.this, Signin.class));
+            startActivity(new Intent(ForgetPasswordActivity.this, SignInActivity.class));
         }
     }
 }

@@ -53,7 +53,7 @@ public class StartingAdapter extends RecyclerView.Adapter<StartingAdapter.ViewHo
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.imageView);
+            imageView = itemView.findViewById(R.id.iv_starting);
             imageViewCircle = itemView.findViewById(R.id.imageViewCircle);
             textViewTitle = itemView.findViewById(R.id.tv_title);
             textViewDescription = itemView.findViewById(R.id.tv_description);

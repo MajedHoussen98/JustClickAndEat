@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:textDirection="ltr"
+    android:layoutDirection="ltr"
     android:orientation="vertical">
 
     <LinearLayout
@@ -17,10 +19,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginTop="12dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="RtlHardcoded">
 
             <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/resturant_pic"
+                android:id="@+id/iv_resturant"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="8dp"
@@ -42,31 +45,31 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/resturant_name"
+                        android:id="@+id/tv_resturant_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
-                        android:text="Oriental Bistro,"
+                        android:text="@string/resturant_name"
                         android:textColor="#000"
                         android:textSize="15sp" />
 
                     <TextView
-                        android:id="@+id/resturant_status"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tv_resturant_status"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
                         android:layout_weight="1"
-                        android:text="Open"
+                        android:text="@string/open"
                         android:textColor="#74B743"
                         android:textSize="13sp" />
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/resturant_address"
+                    android:id="@+id/tv_resturant_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:text="963 Madyson Drive Suite 679"
+                    android:text="@string/resturant_address"
                     android:textColor="#909090"
                     android:textSize="13sp" />
 
@@ -76,7 +79,7 @@
                     android:layout_height="wrap_content">
 
                     <RatingBar
-                        android:id="@+id/resturant_rating"
+                        android:id="@+id/rb_resturant"
                         style="@style/Widget.AppCompat.RatingBar.Small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -88,15 +91,15 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/rating_number"
+                        android:id="@+id/tv_rating_value"
                         android:layout_width="70dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="70dp"
                         android:layout_marginRight="70dp"
-                        android:text="(0.4)"
+                        android:text="@string/rating_value"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/resturant_rating"
+                        app:layout_constraintStart_toEndOf="@+id/rb_resturant"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

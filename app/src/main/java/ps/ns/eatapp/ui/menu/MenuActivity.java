@@ -14,21 +14,23 @@ import com.google.android.material.tabs.TabLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ps.ns.eatapp.R;
-import ps.ns.eatapp.ResturentDetails;
+import ps.ns.eatapp.databinding.ActivityMenuBinding;
+import ps.ns.eatapp.ui.ResturentDetailsActivity;
 import ps.ns.eatapp.ui.menu.ui.main.SectionsPagerAdapter;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.ib_back)
-    ImageView backHome;
-    @BindView(R.id.editTextSearchMenu)
-    EditText editTextSearchMenu;
+    private View view;
+    private ActivityMenuBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
-        ButterKnife.bind(this);
+        binding = ActivityMenuBinding.inflate(getLayoutInflater());
+        view = binding.getRoot();
+        setContentView(view);
+
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
@@ -40,14 +42,14 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void viewListener() {
-        backHome.setOnClickListener(this);
+        binding.ibBack.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ib_back:
-                startActivity(new Intent(MenuActivity.this, ResturentDetails.class));
+                startActivity(new Intent(MenuActivity.this, ResturentDetailsActivity.class));
                 finish();
                 break;
         }

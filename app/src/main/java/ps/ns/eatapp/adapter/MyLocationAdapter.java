@@ -74,9 +74,9 @@ public class MyLocationAdapter extends RecyclerView.Adapter<MyLocationAdapter.Vi
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            addressName = itemView.findViewById(R.id.addressName);
-            addressDetails = itemView.findViewById(R.id.detailsAddress);
-            changeAddress = itemView.findViewById(R.id.change_address);
+            addressName = itemView.findViewById(R.id.tv_address_name);
+            addressDetails = itemView.findViewById(R.id.tv_details_address);
+            changeAddress = itemView.findViewById(R.id.btn_change_address);
             changeAddress.setOnClickListener(this);
         }
 

@@ -1,4 +1,4 @@
-package ps.ns.eatapp;
+package ps.ns.eatapp.ui;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ps.ns.eatapp.databinding.ActivityVerificationCodeBinding;
 
-public class VerificationCode extends AppCompatActivity {
+public class VerificationCodeActivity extends AppCompatActivity {
 
 
     private ActivityVerificationCodeBinding binding;

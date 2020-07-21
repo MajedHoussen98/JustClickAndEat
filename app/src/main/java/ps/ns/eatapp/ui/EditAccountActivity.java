@@ -1,4 +1,4 @@
-package ps.ns.eatapp;
+package ps.ns.eatapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import ps.ns.eatapp.R;
 import ps.ns.eatapp.databinding.ActivityEditAccountBinding;
-import ps.ns.eatapp.ui.account.MyAccount;
 
-public class EditAccountActivity extends AppCompatActivity {
+public class EditAccountActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ActivityEditAccountBinding binding;
     private View view;
@@ -20,18 +20,21 @@ public class EditAccountActivity extends AppCompatActivity {
         binding = ActivityEditAccountBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         setContentView(view);
-        clickListener();
-
+        listenerViews();
     }
 
-    private void clickListener() {
-        binding.ibBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*startActivity(new Intent(EditAccountActivity.this, MyAccount.class));
-                finish();*/
-            }
-        });
+    private void listenerViews() {
+        binding.ibBack.setOnClickListener(this);
+    }
 
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.ib_back:
+                startActivity(new Intent(EditAccountActivity.this, MyAccountActivity.class));
+                finish();
+                break;
+        }
     }
 }

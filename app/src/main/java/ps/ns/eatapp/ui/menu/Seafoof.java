@@ -10,33 +10,31 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
-import ps.ns.eatapp.MealsDetailsActivity;
+import ps.ns.eatapp.databinding.FragmentSeafoofBinding;
+import ps.ns.eatapp.ui.MealsDetailsActivity;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MenuAdapter;
 import ps.ns.eatapp.model.MenuModel;
 
 public class Seafoof extends Fragment implements MenuAdapter.ListItemClickListener{
-    private RecyclerView recyclerView;
     private MenuAdapter adapter;
     private ArrayList<MenuModel> list;
     private  View view;
+    private FragmentSeafoofBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_seafoof, container, false);
+        binding = FragmentSeafoofBinding.inflate(getLayoutInflater());
+        view = binding.getRoot();
         initViews();
         return view;
     }
 
     private void initViews() {
-
-        recyclerView = view.findViewById(R.id.recyclerSeafoof);
         list = new ArrayList<>();
         getSeafoofdata();
     }
@@ -47,9 +45,9 @@ public class Seafoof extends Fragment implements MenuAdapter.ListItemClickListen
         list.add(new MenuModel("R.drawable.meal2","Braised Fish Head","2x tuna sahimi, 3x vegetables ","$15.00"));
         list.add(new MenuModel("R.drawable.meal2","Salad Fritters","2x tuna sahimi, 3x vegetables","$4.90"));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.rvSeafoof.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter= new MenuAdapter(getContext(), list, this);
-        recyclerView.setAdapter(adapter);
+        binding.rvSeafoof.setAdapter(adapter);
     }
 
     @Override

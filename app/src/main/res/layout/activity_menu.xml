@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textDirection="ltr"
+    android:layoutDirection="ltr"
     tools:context=".ui.menu.MenuActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#fff"
+        android:background="@color/white"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <LinearLayout
@@ -32,12 +34,11 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Menu"
+                    android:text="@string/menu"
                     android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
                     android:textColor="#000"
                     android:textSize="17sp"
@@ -50,7 +51,7 @@
 
 
             <EditText
-                android:id="@+id/editTextSearchMenu"
+                android:id="@+id/et_search_menu"
                 android:layout_width="match_parent"
                 android:layout_marginTop="16dp"
                 android:layout_height="40dp"
@@ -59,7 +60,7 @@
                 android:drawablePadding="15sp"
                 android:paddingLeft="16dp"
                 android:inputType="textPersonName"
-                android:hint="Search…"
+                android:hint="@string/search"
                 android:textColorHint="#CECECE"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"

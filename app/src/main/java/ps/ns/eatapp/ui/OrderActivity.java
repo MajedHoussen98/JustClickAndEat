@@ -1,16 +1,16 @@
-package ps.ns.eatapp;
+package ps.ns.eatapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MyCartAdapter;
 import ps.ns.eatapp.databinding.ActivityOrderBinding;
 import ps.ns.eatapp.model.MyCartModel;
@@ -58,6 +58,7 @@ public class OrderActivity extends AppCompatActivity implements MyCartAdapter.Li
 
     private void listenarViews() {
         binding.btnOk.setOnClickListener(this);
+        binding.ibBack.setOnClickListener(this);
     }
 
     @Override
@@ -70,6 +71,11 @@ public class OrderActivity extends AppCompatActivity implements MyCartAdapter.Li
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()){
+            case R.id.ib_back:
+                startActivity(new Intent(OrderActivity.this, MyCartActivity.class));
+                finish();
+                break;
+        }
     }
 }

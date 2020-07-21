@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textDirection="ltr"
+    android:layoutDirection="ltr"
     android:background="@drawable/back_signin"
     android:orientation="vertical"
-    tools:context=".Signin">
+    tools:context=".ui.SignInActivity">
 
 
     <ScrollView
@@ -25,7 +27,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -35,32 +37,29 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView2"
                     android:layout_width="80dp"
                     android:layout_height="60dp"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="25dp"
                     app:srcCompat="@drawable/logo" />
 
                 <TextView
-                    android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="10dp"
-                    android:text="Welcome Back,"
+                    android:text="@string/welcome_back"
                     android:textColor="#000"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:text="Sign in to continue."
+                    android:layout_marginStart="16dp"
+                    android:text="@string/sign_in_to_continue"
                     android:textColor="#000000"
-                    android:textSize="17dp" />
+                    android:textSize="17sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -70,9 +69,10 @@
                     android:layout_marginRight="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Email"
+                        android:hint="@string/email"
                         android:inputType="textEmailAddress" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,35 +84,38 @@
                     android:layout_marginRight="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
+                       android:id="@+id/et_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Password"
+                        android:hint="@string/password"
                         android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
-                    android:id="@+id/forget_password_tv"
+                    android:id="@+id/tv_forget_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginEnd="16dp"
                     android:gravity="right"
-                    android:text="Forgot Password?"
+                    android:text="@string/forgot_password_signin"
                     android:textColor="#909090"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="RtlHardcoded" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/btn_sign_in"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="40dp"
                     android:layout_marginRight="16dp"
                     android:background="@drawable/get_start"
-                    android:text="Sign In"
+                    android:text="@string/sign_in"
                     android:textColor="#fff" />
 
                 <LinearLayout
+                    android:id="@+id/ll_sign_with_facebook"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -120,18 +123,16 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/imageView3"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         app:srcCompat="@drawable/facebook_icon" />
 
                     <TextView
-                        android:id="@+id/sign_in_facebook_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="#fff"
-                        android:text="Sign In with Facebook"
+                        android:text="@string/sign_in_with_facebook"
                         android:textColor="#2672CB"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -144,21 +145,20 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Don't have an account?"
+                        android:text="@string/don_t_have_an_account"
                         android:textColor="#000"
                         android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/sign_up_tv"
+                        android:id="@+id/tv_sign_up"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
                         android:layout_weight="1"
-                        android:text="Sign up here."
+                        android:text="@string/sign_up_here"
                         android:textColor="#2C32BE"
                         android:textSize="14sp" />
                 </LinearLayout>

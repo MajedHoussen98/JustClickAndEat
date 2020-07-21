@@ -89,10 +89,10 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            meal_pic = itemView.findViewById(R.id.meal_pic);
+            meal_pic = itemView.findViewById(R.id.iv_meal);
             ic_add = itemView.findViewById(R.id.ic_add);
             ic_clear = itemView.findViewById(R.id.ic_clear);
-            meal_name = itemView.findViewById(R.id.meal_name);
+            meal_name = itemView.findViewById(R.id.tv_meal_name);
             meal_description = itemView.findViewById(R.id.meal_description);
             meal_price = itemView.findViewById(R.id.meal_price);
             meal_quantity = itemView.findViewById(R.id.quantity);

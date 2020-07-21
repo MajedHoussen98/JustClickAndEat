@@ -74,12 +74,12 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            orderId = itemView.findViewById(R.id.order_id);
-            orderDescription = itemView.findViewById(R.id.order_description);
-            orderPrice = itemView.findViewById(R.id.order_price);
-            orderTime = itemView.findViewById(R.id.order_time);
+            orderId = itemView.findViewById(R.id.tv_order_id);
+            orderDescription = itemView.findViewById(R.id.tv_order_description);
+            orderPrice = itemView.findViewById(R.id.tv_order_price);
+            orderTime = itemView.findViewById(R.id.tv_order_time);
             ll_order = itemView.findViewById(R.id.ll_order);
-            statusBtn = itemView.findViewById(R.id.status_btn);
+            statusBtn = itemView.findViewById(R.id.btn_status);
             statusBtn.setOnClickListener(this);
             ll_order.setOnClickListener(this);
         }

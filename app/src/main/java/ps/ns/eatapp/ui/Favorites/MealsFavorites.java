@@ -1,5 +1,6 @@
 package ps.ns.eatapp.ui.Favorites;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,26 +16,28 @@ import java.util.ArrayList;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MealsFavoritesAdapter;
 import ps.ns.eatapp.adapter.MyCartAdapter;
+import ps.ns.eatapp.databinding.FragmentMealsFavoritesBinding;
 import ps.ns.eatapp.model.MealsFavoritesModel;
 import ps.ns.eatapp.model.MyCartModel;
+import ps.ns.eatapp.ui.MealsDetailsActivity;
 
 
 public class MealsFavorites extends Fragment implements MealsFavoritesAdapter.ListItemClickListener {
-
-    private RecyclerView recyclerView;
+    private View view;
+    private FragmentMealsFavoritesBinding binding;
     private MealsFavoritesAdapter adapter;
     private ArrayList<MealsFavoritesModel> list;
-    private View view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_meals_favorites, container, false);
+        binding = FragmentMealsFavoritesBinding.inflate(getLayoutInflater());
+        view = binding.getRoot();
         initViews();
         return view;
     }
 
     private void initViews() {
-        recyclerView = view.findViewById(R.id.recyclerMealsFavorites);
         list = new ArrayList<>();
         getMealsFavoritesData();
     }
@@ -46,13 +49,17 @@ public class MealsFavorites extends Fragment implements MealsFavoritesAdapter.Li
         list.add(new MealsFavoritesModel("R.drawable.meal2","Braised Fish Head","2x tuna sahimi, 3x vegetables ","$15.00"));
         list.add(new MealsFavoritesModel("R.drawable.meal2","Salad Fritters","2x tuna sahimi, 3x vegetables","$4.90"));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.rvMealsFavorites.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new MealsFavoritesAdapter(getActivity(),list,this);
-        recyclerView.setAdapter(adapter);
+        binding.rvMealsFavorites.setAdapter(adapter);
     }
 
     @Override
     public void onListItemClicked(int position, int viewId) {
-
+        switch (viewId){
+            case R.id.ll_meal_fav:
+                startActivity(new Intent(getContext(), MealsDetailsActivity.class));
+                break;
+        }
     }
 }

@@ -21,6 +21,11 @@ import com.google.android.material.navigation.NavigationView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ps.ns.eatapp.ui.Favorites.Favorites;
+import ps.ns.eatapp.ui.MyAccountActivity;
+import ps.ns.eatapp.ui.MyCartActivity;
+import ps.ns.eatapp.ui.MyLocationActivity;
+import ps.ns.eatapp.ui.NotificationActivity;
+import ps.ns.eatapp.ui.MyOrderActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,12 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navigationView, navController);
-
         initListeners();
     }
 
@@ -58,22 +61,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     navController.navigate(R.id.nav_home);
 
                 } else if (item.getItemId() == R.id.nav_cart) {
-                    navController.navigate(R.id.nav_cart);
+                    startActivity(new Intent(MainActivity.this, MyCartActivity.class));
 
-                }else if (item.getItemId() == R.id.nav_account){
-                    navController.navigate(R.id.nav_account);
+                } else if (item.getItemId() == R.id.nav_account) {
+                    startActivity(new Intent(MainActivity.this, MyAccountActivity.class));
 
-                }else if (item.getItemId() == R.id.nav_order){
-                    navController.navigate(R.id.nav_order);
+                } else if (item.getItemId() == R.id.nav_order) {
+                    startActivity(new Intent(MainActivity.this, MyOrderActivity.class));
 
-                }else if (item.getItemId() == R.id.nav_location){
-                    navController.navigate(R.id.nav_location);
+                } else if (item.getItemId() == R.id.nav_location) {
+                    startActivity(new Intent(MainActivity.this, MyLocationActivity.class));
 
-                }else if (item.getItemId() == R.id.nav_notification){
-                    navController.navigate(R.id.nav_notification);
+                } else if (item.getItemId() == R.id.nav_notification) {
+                    startActivity(new Intent(MainActivity.this, NotificationActivity.class));
 
-                }else if (item.getItemId() == R.id.nav_favorites){
-                 //  navController.navigate(R.id.nav_favorites);
+                } else if (item.getItemId() == R.id.nav_favorites) {
                     startActivity(new Intent(MainActivity.this, Favorites.class));
                 }
                 drawer.closeDrawer(Gravity.LEFT);

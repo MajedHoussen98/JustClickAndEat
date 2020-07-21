@@ -8,27 +8,27 @@
     android:textDirection="ltr"
     android:layoutDirection="ltr"
     android:background="@drawable/back_signin"
-    tools:context=".VerificationCode">
+    tools:context=".ui.VerificationCodeActivity">
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="150dp"
         app:srcCompat="@drawable/logo2" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Just"
+            android:text="@string/just"
             android:textColor="#fff"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -37,9 +37,9 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="CLICK"
+            android:text="@string/click"
             android:textColor="#FFAE33"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -48,9 +48,9 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="and"
+            android:text="@string/and"
             android:textColor="#fff"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -59,9 +59,9 @@
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="EAT"
+            android:text="@string/eat"
             android:textColor="#FFAE33"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -77,14 +77,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:textSize="18sp"
             android:textColor="#000"
-            android:text="Enter code sent via SMS to" />
+            android:text="@string/enter_code" />
 
         <TextView
             android:id="@+id/textView12"
@@ -94,7 +93,7 @@
             android:textSize="18sp"
             android:textColor="#909090"
             android:layout_marginTop="16dp"
-            android:text="+1919 345 8756" />
+            android:text="@string/tv_mobile_number" />
 
         <com.mukesh.OtpView
             android:id="@+id/otp_view"
@@ -103,7 +102,6 @@
             android:layout_gravity="center"
             android:inputType="number"
             android:textColor="#000"
-
             app:itemCount="4"
             app:lineColor="#2C32BE"
             app:viewType="line" />
@@ -120,16 +118,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="13sp"
-                android:text="Verify by"
+                android:text="@string/verify_by"
                 android:textColor="#000"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
+                android:layout_marginStart="2dp"
                 android:layout_weight="1"
                 android:textSize="13sp"
-                android:text="Email Address"
+                android:text="@string/email_address"
                 android:textColor="#2C32BE" />
         </LinearLayout>
 

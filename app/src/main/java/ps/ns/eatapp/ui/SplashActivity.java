@@ -1,4 +1,4 @@
-package ps.ns.eatapp;
+package ps.ns.eatapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class Splash extends AppCompatActivity {
+import ps.ns.eatapp.R;
+
+public class SplashActivity extends AppCompatActivity {
 
     private static int SPLASH_TIMER = 3000;
 
@@ -18,7 +20,7 @@ public class Splash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(Splash.this, StartingApp.class));
+                startActivity(new Intent(SplashActivity.this, StartingAppActivity.class));
                 finish();
             }
         }, SPLASH_TIMER);

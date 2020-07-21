@@ -65,12 +65,12 @@ public class MealsFavoritesAdapter extends RecyclerView.Adapter<MealsFavoritesAd
         LinearLayout llMealSFavorites;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mealsPicFavorites = itemView.findViewById(R.id.meal_pic_fav);
-            mealsNameFavorites = itemView.findViewById(R.id.meal_name_fav);
-            mealsBodyFavorites = itemView.findViewById(R.id.meal_body_fav);
-            mealsPriceFavorites = itemView.findViewById(R.id.meal_price_fav);
+            mealsPicFavorites = itemView.findViewById(R.id.iv_meal_fav);
+            mealsNameFavorites = itemView.findViewById(R.id.tv_meal_name_fav);
+            mealsBodyFavorites = itemView.findViewById(R.id.tv_meal_body_fav);
+            mealsPriceFavorites = itemView.findViewById(R.id.tv_meal_price_fav);
             llMealSFavorites = itemView.findViewById(R.id.ll_meal_fav);
-            favClick = itemView.findViewById(R.id.fav_click);
+            favClick = itemView.findViewById(R.id.ic_fav_click);
 
             llMealSFavorites.setOnClickListener(this);
             favClick.setOnClickListener(this);

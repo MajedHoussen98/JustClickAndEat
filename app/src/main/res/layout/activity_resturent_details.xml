@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textDirection="ltr"
+    android:layoutDirection="ltr"
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -26,6 +28,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="320dp"
                 app:iss_auto_cycle="true"
+                app:iss_error_image="@drawable/loading_res"
+                app:iss_placeholder="@drawable/loading_res"
                 app:iss_delay="0"
                 app:iss_period="1000"
                 app:iss_selected_dot="@drawable/default_selected_dot"
@@ -33,7 +37,7 @@
                 app:iss_unselected_dot="@drawable/default_unselected_dot">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="412dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
@@ -86,7 +90,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
 
 
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
@@ -94,7 +98,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ResturentDetails">
+            tools:context=".ui.ResturentDetailsActivity">
 
             <LinearLayout
                 android:id="@+id/ll_part1"
@@ -108,7 +112,6 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-
                     android:id="@+id/tv_resturant_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -123,7 +126,6 @@
                     tools:ignore="UseCompoundDrawables">
 
                     <ImageView
-                        android:id="@+id/imageView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -157,7 +159,7 @@
                         android:theme="@style/RatingBar" />
 
                     <TextView
-                        android:id="@+id/textView15"
+                        android:id="@+id/tv_rating_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/rating_value"
@@ -296,6 +298,7 @@
                         android:id="@+id/tv_work_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
                         android:text="@string/tv_work_time"
                         android:textColor="#000"
                         android:textSize="13sp" />

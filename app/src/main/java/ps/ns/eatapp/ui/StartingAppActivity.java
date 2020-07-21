@@ -1,4 +1,4 @@
-package ps.ns.eatapp;
+package ps.ns.eatapp.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,17 +13,23 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ps.ns.eatapp.MainActivity;
+import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.StartingAdapter;
+import ps.ns.eatapp.databinding.ActivityStartingAppBinding;
 import ps.ns.eatapp.model.StartingData;
 
-public class StartingApp extends AppCompatActivity implements View.OnClickListener {
+public class StartingAppActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.start_btn)
-    Button getStarted;
-    @BindView(R.id.recyclerStarted)
-    RecyclerView recyclerView;
-    @BindView(R.id.sign_in_btn)
-    Button signIN_btn;
+    private View view;
+    private ActivityStartingAppBinding binding;
+
+//    @BindView(R.id.start_btn)
+//    Button getStarted;
+//    @BindView(R.id.recyclerStarted)
+//    RecyclerView recyclerView;
+//    @BindView(R.id.sign_in_btn)
+//    Button signIN_btn;
     private StartingAdapter adapter;
     private ArrayList<StartingData> data = new ArrayList<>();
     private RecyclerView.LayoutManager manager;
@@ -32,9 +38,9 @@ public class StartingApp extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_starting_app);
-        ButterKnife.bind(this);
-
+        binding = ActivityStartingAppBinding.inflate(getLayoutInflater());
+        view = binding.getRoot();
+        setContentView(view);
         viewListener();
 
         data.add(new StartingData(R.drawable.group1, "Select food items", "When you order Eatstreet, we'll" +"\n"+
@@ -50,25 +56,25 @@ public class StartingApp extends AppCompatActivity implements View.OnClickListen
                 "you order online .", R.drawable.group03));
 
         manager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setLayoutManager(manager);
+        binding.rvStartingApp.setLayoutManager(new LinearLayoutManager(this));
+        binding.rvStartingApp.setLayoutManager(manager);
         adapter = new StartingAdapter(this, data);
-        recyclerView.setAdapter(adapter);
+        binding.rvStartingApp.setAdapter(adapter);
 
     }
 
     private void viewListener() {
-        signIN_btn.setOnClickListener(this);
-        getStarted.setOnClickListener(this::onClick);
+        binding.btnSignIn.setOnClickListener(this);
+        binding.btnGetStarted.setOnClickListener(this::onClick);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.start_btn) {
-            startActivity(new Intent(StartingApp.this, MainActivity.class));
+        if (v.getId() == R.id.btn_get_started) {
+            startActivity(new Intent(StartingAppActivity.this, MainActivity.class));
             finish();
-        }else if (v.getId() == R.id.sign_in_btn){
-            startActivity(new Intent(StartingApp.this, Signin.class));
+        }else if (v.getId() == R.id.btn_sign_in){
+            startActivity(new Intent(StartingAppActivity.this, SignInActivity.class));
         }
     }
 }

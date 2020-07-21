@@ -39,7 +39,8 @@ public class RestaurantsFavoritesAdapter extends RecyclerView.Adapter<Restaurant
     @Override
     public RestaurantsFavoritesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.restaurants_favorites_item, parent, false);
-        return new ViewHolder(view);    }
+        return new ViewHolder(view);
+    }
 
     @Override
     public void onBindViewHolder(@NonNull RestaurantsFavoritesAdapter.ViewHolder holder, int position) {
@@ -61,14 +62,14 @@ public class RestaurantsFavoritesAdapter extends RecyclerView.Adapter<Restaurant
         LinearLayout llRestaurantSFavorites;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            restaurantsPicFavorites = itemView.findViewById(R.id.restaurants_pic_fav);
-            restaurantNameFavorites = itemView.findViewById(R.id.restaurants_name_fav);
-            restaurantBodyFavorites = itemView.findViewById(R.id.restaurants_body_fav);
+            restaurantsPicFavorites = itemView.findViewById(R.id.iv_restaurants_fav);
+            restaurantNameFavorites = itemView.findViewById(R.id.tv_restaurants_name_fav);
+            restaurantBodyFavorites = itemView.findViewById(R.id.tv_restaurants_body_fav);
             llRestaurantSFavorites = itemView.findViewById(R.id.ll_restaurants_fav);
-            favClick = itemView.findViewById(R.id.fav_click);
+            favClick = itemView.findViewById(R.id.ic_fav_click);
 
             llRestaurantSFavorites.setOnClickListener(this);
-            favClick.setOnClickListener(this);
+         //   favClick.setOnClickListener(this);
         }
 
         @Override

@@ -8,8 +8,8 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="title_activity_fav">Fav</string>
     <string name="tab_text_1">Meals</string>
@@ -23,10 +23,7 @@
     <string name="resturant_address">963 Madyson Drive Suite 679</string>
     <string name="rating_value">2.5</string>
     <string name="btn_menu">View Menu</string>
-    <string name="address">Address</string>
     <string name="tv_address">963 Madyson Drive Suite 679</string>
-    <string name="mobile_number">Mobile Number</string>
-    <string name="tv_mobile_number">+12947 47923 383</string>
     <string name="status">Status</string>
     <string name="tv_resturant_status">The restuarant is too busy right now.</string>
     <string name="category">Category</string>
@@ -36,6 +33,40 @@
     <string name="tv_work_time">at 11:00 AM-9:00 PM</string>
     <string name="features">Features</string>
     <string name="tv_features">Does not take reservations\nAccepts credit cards\nHas outdoor seating\nHas Wi-Fi\nDining Options</string>
+
+
+
+    <!-- TODO: AddNewLocation Text -->
+    <string name="add_new_location">Add New Location</string>
+    <string name="hint_address_name">Enter the address name (work, home)</string>
+    <string name="use_map">Use map</string>
+    <string name="make_this_my_default_address">Make this my default address?</string>
+    <string name="save_address">Save address</string>
+
+
+    <!-- TODO: EditAccount Text -->
+    <string name="hint_name">Name</string>
+    <string name="hint_email">Email</string>
+
+    <!-- TODO: EditPassword Text -->
+    <string name="edit_password">Edit Password</string>
+    <string name="current_password">Current password</string>
+    <string name="new_password">New password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="save">Save</string>
+
+    <!-- TODO: Favorites Text -->
+    <string name="favorites">Favorites</string>
+    <string name="forgot_password">Forgot Password,</string>
+
+
+    <!-- TODO: forgetPassword Text -->
+    <string name="forget_password_text">We\'ll send you an email with a link to reset you password</string>
+    <string name="send">Send</string>
+
+
+
+    <!-- TODO: Meals Text -->
     <string name="meals_name">Chicken Livers Peri-Peri</string>
     <string name="title_description_meal">Description</string>
     <string name="description_meal_body">If you’ve ever eaten chicken liver pate/mousse/spread, and liked it, you will LOVE chicken livers cooked in this spicy peri-peri sauce. I have turned many a chicken liver-hater into chicken liver-lovers with this recipe.</string>
@@ -49,10 +80,125 @@
     <string name="rb_7"><![CDATA[salt & pepper to taste]]></string>
     <string name="add_note">Add Note</string>
     <string name="add_to_order">Add to Order</string>
+
+    <!-- TODO: Menu Text -->
+    <string name="menu">Menu</string>
+    <string name="search">Search…</string>
+
+    <!-- TODO: My Account Text -->
+    <string name="my_account">My Account</string>
+    <string name="edit_account">Edit Account</string>
+    <string name="edit_name">Edit Name…</string>
+    <string name="change_password">Change Password</string>
+    <string name="modify_your_password">Modify your password</string>
+    <string name="address">Address</string>
+    <string name="add_or_remove_a_delivery_address">Add or remove a delivery address</string>
+    <string name="favorite_body">See your favorite restaurants and meals</string>
+
+    <!-- TODO: MyCart Text -->
+    <string name="my_cart">My Cart</string>
+    <string name="next">Next</string>
+    <string name="price_order">$52.25</string>
+
+    <!-- TODO: MyLocations Text -->
+    <string name="my_locations">My Locations</string>
+
+    <!-- TODO: MyOrder Text -->
+    <string name="my_order">My Order</string>
+
+
+    <!-- TODO: Notification Text -->
+    <string name="notification">Notification</string>
+
+
+    <!-- TODO: Order Text -->
+    <string name="order">Order</string>
+    <string name="ok">Ok</string>
     <string name="price">Price</string>
     <string name="request_type">Request Type</string>
     <string name="delivery">Delivery</string>
-    <string name="user_address">Piata Unirii 2, Apartment 23…</string>
     <string name="order_status">Order status</string>
     <string name="ready_to_deliver">Ready to Deliver</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="tv_mobile_number">+12947 47923 383</string>
+
+    <!-- TODO: SignUp Text -->
+    <string name="welcome_back">Welcome Back,</string>
+    <string name="sign_up_to_continue">Sign up to continue.</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="mobile">Mobile</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in_here">Sign in here.</string>
+
+
+    <!-- TODO: SignIn Text -->
+    <string name="sign_in_to_continue">Sign in to continue.</string>
+    <string name="forgot_password_signin">Forgot Password?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_with_facebook">Sign In with Facebook</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up_here">Sign up here.</string>
+
+    <!-- TODO: Splash Text -->
+    <string name="just">Just</string>
+    <string name="click">CLICK</string>
+    <string name="and">and</string>
+    <string name="eat">EAT</string>
+
+    <!-- TODO: StartingApp Text -->
+    <string name="get_started">Get Started</string>
+
+    <!-- TODO: VerificationCode Text -->
+    <string name="enter_code">Enter code sent via SMS to</string>
+    <string name="verify_by">Verify by</string>
+    <string name="email_address">Email Address</string>
+
+    <!-- TODO: Dialog Text -->
+    <string name="select_the_request_type">Select the request type</string>
+    <string name="pickup">Pickup</string>
+    <string name="add_another_address">Add another address</string>
+    <string name="submit_order">Submit Order</string>
+
+    <!-- TODO: Home Text -->
+    <string name="what_are_you_looking_for">What are you looking for?</string>
+
+    <!-- TODO: HomeItem Text -->
+    <string name="open">Open</string>
+
+    <!-- TODO: MealFavItem Text -->
+    <string name="meal_body">The restaurant made a new meal</string>
+    <string name="price_meal">$29.50</string>
+
+    <!-- TODO: CartItem Text -->
+    <string name="meal_body_cart">2x tuna sahimi, 3x vegetables</string>
+    <string name="quantity">1</string>
+
+
+    <!-- TODO: LocationItem Text -->
+    <string name="work_address">Work address</string>
+    <string name="user_address">Piata Unirii 2, Apartment 23…</string>
+    <string name="change">Change</string>
+
+
+    <!-- TODO: OrderItem Text -->
+    <string name="order_name">Order #456123</string>
+    <string name="order_body">Irving PlaceHawk Point, MO 63349</string>
+    <string name="cancel">Cancel</string>
+    <string name="order_time">5 minutes ago</string>
+
+    <!-- TODO: NavHeader Text -->
+    <string name="user_name">Joslin Rodgers</string>
+    <string name="user_email">joslin_rodgers@gmail.com</string>
+
+    <!-- TODO: NotificationItem Text -->
+    <string name="notification_title">Oriental Bistro</string>
+    <string name="notification_body">The restaurant made a new meal</string>
+    <string name="notification_time">2 minutes ago</string>
+
+    <!-- TODO: RestaurantFavItem Text -->
+    <string name="restaurant_body">The restaurant made a new meal</string>
+
 </resources>
