@@ -4,42 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textDirection="ltr"
     android:layoutDirection="ltr"
     android:orientation="vertical"
+    android:textDirection="ltr"
     tools:context=".ui.OrderActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/ToolBarStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
+        <androidx.constraintlayout.widget.ConstraintLayout style="@style/ToolBarConstraint">
 
             <ImageButton
                 android:id="@+id/ib_back"
-                android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@null"
-                android:src="@drawable/backk"
+                style="@style/ToolBarImageBack"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
+                style="@style/ToolBarTitle"
                 android:text="@string/order"
-                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-                android:textColor="#000"
-                android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,127 +37,72 @@
     </androidx.cardview.widget.CardView>
 
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ScrollView style="@style/HeightWidthMatch">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <LinearLayout style="@style/linearAccountBody">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="16dp">
+            <androidx.cardview.widget.CardView style="@style/CardViewStyle">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:orientation="vertical">
+                <LinearLayout style="@style/linearOrderBody">
 
                     <LinearLayout
                         android:id="@+id/ll_order_status"
-                        android:layout_marginTop="8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        style="@style/linearOrderStatus">
 
                         <TextView
                             android:id="@+id/tv_order_status"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:textColor="#000"
-                            android:textSize="16sp"
+                            style="@style/textTitle"
                             android:layout_weight="1"
                             android:text="@string/order_status" />
 
                         <TextView
                             android:id="@+id/tv_order_status_body"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#2C32BE"
-                            android:textSize="16sp"
+                            style="@style/textStatusBody"
                             android:text="@string/ready_to_deliver" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
-                        android:orientation="horizontal">
+                    <LinearLayout style="@style/linearOrderStatus">
 
                         <TextView
-                            android:layout_width="0dp"
-                            android:textSize="22sp"
-                            android:textColor="#2C32BE"
-                            android:layout_height="wrap_content"
+                            style="@style/textPrice"
                             android:layout_weight="1"
                             android:text="@string/price" />
 
                         <TextView
                             android:id="@+id/tv_order_price"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="22sp"
-                            android:textColor="#2C32BE"
+                            style="@style/textPriceBody"
                             android:text="@string/price_order" />
                     </LinearLayout>
 
                     <TextView
                         android:id="@+id/tv_request_type_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textSize="12sp"
-                        android:textColor="#909090"
+                        style="@style/requestTitle"
                         android:text="@string/request_type" />
 
                     <TextView
                         android:id="@+id/tv_request_type_body"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:textColor="#000000"
+                        style="@style/requestType"
                         android:text="@string/delivery" />
 
                     <TextView
                         android:id="@+id/tv_address_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textSize="12sp"
-                        android:textColor="#909090"
+                        style="@style/requestTitle"
                         android:text="@string/address" />
 
                     <TextView
                         android:id="@+id/tv_request_address_body"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:textColor="#000000"
+                        style="@style/requestType"
                         android:text="@string/user_address" />
 
                     <TextView
                         android:id="@+id/tv_mobile_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textSize="12sp"
-                        android:textColor="#909090"
+                        style="@style/requestTitle"
                         android:text="@string/mobile_number" />
 
                     <TextView
                         android:id="@+id/tv_request_mobile_body"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:textSize="14sp"
-                        android:textColor="#000000"
+                        style="@style/requestType"
+                        android:layout_marginBottom="@dimen/_8sdp"
                         android:text="@string/tv_mobile_number" />
 
 
@@ -177,33 +110,21 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                style="@style/CardViewStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp">
+                android:layout_height="wrap_content">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_order_meals"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="#fff" />
+                    style="@style/recycler"
+                    android:layout_marginBottom="@dimen/_8sdp" />
 
             </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/btn_ok"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:background="@drawable/get_start"
-                android:textColor="#fff"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/MainButton"
+                android:layout_marginTop="@dimen/_32sdp"
                 android:text="@string/ok" />
 
         </LinearLayout>

@@ -6,9 +6,12 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -31,10 +34,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @BindView(R.id.icons_menu)
     ImageView iconsMenu;
+    Button btnClear;
+
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private NavController navController;
     private Toolbar toolbar;
+    public static ActionBar actionBar;
+    public static View viewMAin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +50,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navigationView, navController);
+        initViews();
         initListeners();
+        actionBar = getSupportActionBar();
+
+    }
+
+    private void initViews() {
+
+    }
+
+
+    public static void hide() {
+        actionBar.hide();
+    }
+    public static void show() {
+        actionBar.show();
     }
 
     private void initListeners() {
+
         iconsMenu.setOnClickListener(this);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -90,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.icons_menu:
                 drawer.openDrawer(Gravity.LEFT);
                 break;
+
         }
     }
 }

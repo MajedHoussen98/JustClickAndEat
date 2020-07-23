@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textDirection="ltr"
+    android:fitsSystemWindows="true"
     android:layoutDirection="ltr"
-    android:fitsSystemWindows="true">
+    android:textDirection="ltr">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="340dp"
+        style="@style/hightSlirder"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#2C32BE"
+            android:background="@color/colorAccent"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
@@ -25,34 +24,22 @@
 
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/image_slider"
-                android:layout_width="match_parent"
-                android:layout_height="320dp"
+                style="@style/hightSlirder"
                 app:iss_auto_cycle="true"
-                app:iss_error_image="@drawable/loading_res"
-                app:iss_placeholder="@drawable/loading_res"
                 app:iss_delay="0"
+                app:iss_error_image="@drawable/loading_res"
                 app:iss_period="1000"
+                app:iss_placeholder="@drawable/loading_res"
                 app:iss_selected_dot="@drawable/default_selected_dot"
                 app:iss_text_align="@string/app_name"
                 app:iss_unselected_dot="@drawable/default_unselected_dot">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginEnd="-3dp">
+                   style="@style/barSlider">
 
                     <ImageButton
                         android:id="@+id/ib_back"
-                        android:background="@null"
-                        android:layout_width="?attr/actionBarSize"
-                        android:layout_height="?attr/actionBarSize"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
+                        style="@style/backImageSlider"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -60,11 +47,7 @@
 
                     <ImageView
                         android:id="@+id/ic_fav"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="4dp"
+                        style="@style/ImageFavSlider"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -72,11 +55,7 @@
 
                     <ImageView
                         android:id="@+id/ic_share"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="24dp"
-                        android:layout_marginBottom="4dp"
+                        style="@style/ImageShareSlider"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/ic_fav"
                         app:layout_constraintTop_toTopOf="parent"
@@ -89,64 +68,46 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/WidthHeight"
 
 
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            style="@style/HeightWidthMatch"
             tools:context=".ui.ResturentDetailsActivity">
 
             <LinearLayout
                 android:id="@+id/ll_part1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:orientation="vertical"
+                style="@style/linearInNestedMeals"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/tv_resturant_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/resturant_name"
-                    android:textColor="#000"
-                    android:textSize="28sp" />
+                    style="@style/titleNestedMeals"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/resturant_name" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/WidthHeight"
                     android:orientation="horizontal"
                     tools:ignore="UseCompoundDrawables">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/heightWidthWrap"
                         android:layout_gravity="center"
                         app:srcCompat="@drawable/location_pint" />
 
                     <TextView
                         android:id="@+id/tv_resturant_address"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:text="@string/resturant_address"
-                        android:textColor="#909090"
-                        android:textSize="15sp" />
+                        style="@style/addressRes"
+                        android:text="@string/resturant_address" />
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:orientation="horizontal">
+                <LinearLayout style="@style/linearRating">
 
                     <RatingBar
                         android:id="@+id/ratingBar"
@@ -160,25 +121,14 @@
 
                     <TextView
                         android:id="@+id/tv_rating_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rating_value"
-                        android:textColor="#FFCB3C"
-                        android:textSize="12sp" />
+                        style="@style/ratingValue"
+                        android:text="@string/rating_value" />
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/btn_menu"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="8dp"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_menu"
-                    android:paddingLeft="110dp"
-                    android:paddingRight="130dp"
-                    android:text="@string/btn_menu"
-                    android:textColor="#909090"
-                    android:textSize="18sp" />
+                    style="@style/btnMenu"
+                    android:text="@string/btn_menu" />
 
             </LinearLayout>
 
@@ -186,140 +136,90 @@
                 android:id="@+id/ll_part2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/back_map"
-                android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/back_map"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_part1">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/address"
-                    android:textColor="#909090"
-                    android:textSize="13sp" />
+                    style="@style/addressTitle"
+                    android:text="@string/address" />
 
                 <TextView
                     android:id="@+id/tv_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_address"
-                    android:textColor="#0E0E2D"
-                    android:textSize="13sp" />
+                    style="@style/addressType"
+                    android:text="@string/tv_address" />
 
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/mobile_number"
-                    android:textColor="#909090"
-                    android:textSize="13sp" />
+                    style="@style/addressTitle"
+                    android:text="@string/mobile_number" />
 
                 <TextView
                     android:id="@+id/tv_mobile_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_mobile_number"
-                    android:textColor="#0E0E2D"
-                    android:textSize="13sp" />
+                    style="@style/addressType"
+                    android:text="@string/tv_mobile_number" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/status"
-                    android:textColor="#909090"
-                    android:textSize="13sp" />
+                    style="@style/addressTitle"
+                    android:text="@string/status" />
 
                 <TextView
                     android:id="@+id/tv_resturant_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/addressType"
                     android:text="@string/tv_resturant_status"
-                    android:textColor="#2C32BE"
-                    android:textSize="13sp" />
+                    android:textColor="@color/colorAccent" />
 
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/category"
-                    android:textColor="#909090"
-                    android:textSize="13sp" />
+                    style="@style/addressTitle"
+                    android:text="@string/category" />
 
                 <TextView
                     android:id="@+id/tv_category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_category"
-                    android:textColor="#000"
-                    android:textSize="13sp" />
+                    style="@style/addressType"
+                    android:text="@string/tv_category" />
 
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
+                style="@style/linearHours"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_part2">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hours"
-                    android:textColor="#909090"
-                    android:textSize="13sp" />
+                    style="@style/addressTitle"
+                    android:text="@string/hours" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                <LinearLayout style="@style/linearOpen">
 
                     <TextView
                         android:id="@+id/tv_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tv_status"
-                        android:textColor="#2C32BE"
-                        android:textSize="13sp" />
+                        style="@style/addressType"
+                        android:textColor="@color/colorAccent"
+                        android:text="@string/tv_status" />
 
                     <TextView
                         android:id="@+id/tv_work_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:text="@string/tv_work_time"
-                        android:textColor="#000"
-                        android:textSize="13sp" />
+                        style="@style/textOpen"
+                        android:text="@string/tv_work_time"/>
 
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/features"
-                    android:textColor="#909090"
-                    android:textSize="13sp" />
+                    style="@style/addressTitle"
+                    android:text="@string/features" />
 
                 <TextView
                     android:id="@+id/tv_features"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tv_features"
-                    android:textColor="#000"
-                    android:textSize="13sp" />
+                    style="@style/textFeatures"
+                    android:text="@string/tv_features" />
 
             </LinearLayout>
 

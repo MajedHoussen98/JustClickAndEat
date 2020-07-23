@@ -36,7 +36,7 @@
                 android:id="@+id/tv_restaurants_name_fav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
+                android:textColor="@color/blackColor"
                 android:textSize="16sp"
                 android:text="@string/resturant_name" />
 
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
-                android:textColor="#43496A"
+                android:textColor="@color/melasBodyColor"
                 android:text="@string/restaurant_body" />
 
         </LinearLayout>

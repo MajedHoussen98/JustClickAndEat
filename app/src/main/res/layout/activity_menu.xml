@@ -9,39 +9,27 @@
     tools:context=".ui.menu.MenuActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
+        style="@style/WidthHeight"
+        android:background="@color/whiteColor"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            style="@style/HeightWidthMatch"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize">
+                style="@style/ToolBarConstraint">
 
                 <ImageButton
                     android:id="@+id/ib_back"
-                    android:layout_width="?attr/actionBarSize"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="@null"
-                    android:src="@drawable/backk"
+                    style="@style/ToolBarImageBack"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    style="@style/ToolBarTitle"
                     android:text="@string/menu"
-                    android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-                    android:textColor="#000"
-                    android:textSize="17sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -51,19 +39,10 @@
 
 
             <EditText
+                style="@style/searchMenu"
                 android:id="@+id/et_search_menu"
-                android:layout_width="match_parent"
-                android:layout_marginTop="16dp"
-                android:layout_height="40dp"
-                android:ems="10"
-                android:drawableLeft="@drawable/icons_search"
-                android:drawablePadding="15sp"
-                android:paddingLeft="16dp"
                 android:inputType="textPersonName"
                 android:hint="@string/search"
-                android:textColorHint="#CECECE"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:background="@drawable/saerch_bac"/>
 
         </LinearLayout>
@@ -71,20 +50,18 @@
         <com.google.android.material.tabs.TabLayout
             android:layout_marginTop="2dp"
             android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:tabIndicatorColor="#2C32BE"
+            style="@style/WidthHeight"
+            app:tabIndicatorColor="@color/colorAccent"
             app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
-            app:tabSelectedTextColor="#2C32BE"
-            app:tabTextColor="#000"
-            android:background="#fff" />
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabTextColor="@color/blackColor"
+            android:background="@color/whiteColor" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/HeightWidthMatch"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <fragment

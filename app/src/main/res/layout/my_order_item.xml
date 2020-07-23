@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/order_name"
-            android:textColor="#000"
+            android:textColor="@color/blackColor"
             android:textSize="15sp" />
 
         <TextView
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/order_body"
-            android:textColor="#909090"
+            android:textColor="@color/hintColor"
             android:textSize="13sp" />
 
         <TextView
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:text="@string/price_order"
             android:layout_marginTop="10dp"
-            android:textColor="#2C32BE"
+            android:textColor="@color/colorAccent"
             android:textSize="15sp" />
     </LinearLayout>
 
@@ -61,7 +61,7 @@
             android:layout_height="25dp"
             android:background="@drawable/outline_button_red"
             android:text="@string/cancel"
-            android:textColor="#BE2C2C"
+            android:textColor="@color/cancelColor"
             android:textSize="12sp" />
 
         <TextView
@@ -71,7 +71,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:text="@string/order_time"
-            android:textColor="#909090"
+            android:textColor="@color/hintColor"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -79,7 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="5dp"
-        android:background="#D8D8D8"
+        android:background="@color/viewColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_order" />

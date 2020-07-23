@@ -35,7 +35,7 @@
                 android:id="@+id/tv_meal_name_fav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
+                android:textColor="@color/blackColor"
                 android:textSize="16sp"
                 android:text="@string/meals_name" />
 
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
-                android:textColor="#43496A"
+                android:textColor="@color/melasBodyColor"
                 android:text="@string/meal_body" />
 
             <TextView
@@ -52,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
-                android:textColor="#2C32BE"
+                android:textColor="@color/colorAccent"
                 android:text="@string/price_meal" />
         </LinearLayout>
 

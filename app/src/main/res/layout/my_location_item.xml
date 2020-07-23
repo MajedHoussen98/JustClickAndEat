@@ -20,7 +20,7 @@
             android:id="@+id/tv_address_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#909090"
+            android:textColor="@color/hintColor"
             android:textSize="12sp"
             android:layout_marginStart="35dp"
             android:text="@string/work_address" />
@@ -29,7 +29,7 @@
             android:id="@+id/tv_details_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000"
+            android:textColor="@color/blackColor"
             android:textSize="13sp"
             android:text="@string/user_address" />
 
@@ -45,7 +45,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/change"
         android:textSize="14sp"
-        android:textColor="#2C32BE"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/radioGroup"
@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="4dp"
-        android:background="#D8D8D8"
+        android:background="@color/viewColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />

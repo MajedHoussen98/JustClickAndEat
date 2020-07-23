@@ -2,22 +2,19 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:textDirection="ltr"
+    style="@style/HeightWidthMatch"
     android:layoutDirection="ltr"
+    android:textDirection="ltr"
     tools:context=".ui.MealsDetailsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="340dp"
+        style="@style/hightSlirder"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#2C32BE"
+            style="@style/HeightWidthMatch"
+            android:background="@color/colorAccent"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
@@ -25,8 +22,7 @@
 
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/image_slider"
-                android:layout_width="match_parent"
-                android:layout_height="340dp"
+                style="@style/hightSlirder"
                 app:iss_auto_cycle="true"
                 app:iss_delay="0"
                 app:iss_period="1000"
@@ -34,23 +30,11 @@
                 app:iss_text_align="@string/app_name"
                 app:iss_unselected_dot="@drawable/default_unselected_dot">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="412dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginEnd="-3dp">
+                <androidx.constraintlayout.widget.ConstraintLayout style="@style/barSlider">
 
                     <ImageButton
                         android:id="@+id/ib_back"
-                        android:layout_width="?attr/actionBarSize"
-                        android:layout_height="?attr/actionBarSize"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@null"
+                        style="@style/backImageSlider"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -58,11 +42,7 @@
 
                     <ImageView
                         android:id="@+id/ic_fav"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="4dp"
+                        style="@style/ImageFavSlider"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -70,11 +50,7 @@
 
                     <ImageView
                         android:id="@+id/ic_share"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="24dp"
-                        android:layout_marginBottom="4dp"
+                        style="@style/ImageShareSlider"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/ic_fav"
                         app:layout_constraintTop_toTopOf="parent"
@@ -87,137 +63,88 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        style="@style/nestedScrollMeals"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/WidthHeight"
             tools:context=".ui.ResturentDetailsActivity">
 
             <LinearLayout
                 android:id="@+id/ll_part1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:orientation="vertical"
+                style="@style/linearInNestedMeals"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/tv_meals_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/meals_name"
-                    android:textColor="#000"
-                    android:textSize="28sp" />
+                    style="@style/titleNestedMeals"
+                    android:text="@string/meals_name" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/title_description_meal"
-                    android:textColor="#000000"
-                    android:textSize="15sp" />
+                    style="@style/descriptionTitleNestedMeals"
+                    android:text="@string/title_description_meal" />
 
                 <TextView
                     android:id="@+id/tv_description_meal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/description_meal_body"
-                    android:textColor="#909090"
-                    android:textSize="15sp" />
+                    style="@style/descriptionBodyNestedMeals"
+                    android:text="@string/description_meal_body" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    style="@style/WidthHeight"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tv_ingredient"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ingredient"
-                        android:textColor="#000000"
-                        android:textSize="15sp" />
+                        style="@style/textIngredient"
+                        android:text="@string/ingredient" />
 
 
                     <RadioButton
                         android:id="@+id/rb_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rb_1"
-                        android:textColor="#909090"
-                        android:textSize="14sp" />
+                        style="@style/radioButtonNestedMeals"
+                        android:text="@string/rb_1" />
 
                     <RadioButton
                         android:id="@+id/rb_2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rb_2"
-                        android:textColor="#909090"
-                        android:textSize="14sp" />
+                        style="@style/radioButtonNestedMeals"
+                        android:text="@string/rb_2" />
 
                     <RadioButton
                         android:id="@+id/rb_3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rb_3"
-                        android:textColor="#909090"
-                        android:textSize="14sp" />
+                        style="@style/radioButtonNestedMeals"
+                        android:text="@string/rb_3" />
 
                     <RadioButton
                         android:id="@+id/rb_4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rb_4"
-                        android:textColor="#909090"
-                        android:textSize="14sp" />
+                        style="@style/radioButtonNestedMeals"
+                        android:text="@string/rb_4" />
 
                     <RadioButton
                         android:id="@+id/rb_5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rb_5"
-                        android:textColor="#909090"
-                        android:textSize="14sp" />
+                        style="@style/radioButtonNestedMeals"
+                        android:text="@string/rb_5" />
 
                     <RadioButton
                         android:id="@+id/rb_6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rb_6"
-                        android:textColor="#909090"
-                        android:textSize="14sp" />
+                        style="@style/radioButtonNestedMeals"
+                        android:text="@string/rb_6" />
 
                     <RadioButton
                         android:id="@+id/rb_7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rb_7"
-                        android:textColor="#909090"
-                        android:textSize="14sp" />
+                        style="@style/radioButtonNestedMeals"
+                        android:text="@string/rb_7" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp">
+                    <com.google.android.material.textfield.TextInputLayout style="@style/EditText">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_add_note"
-                            android:layout_width="match_parent"
+                            style="@style/ChangePasswordEdit"
                             android:layout_height="50dp"
                             android:hint="@string/add_note"
-                            android:inputType="textEmailAddress"
-                            android:paddingStart="8dp"
-                            android:paddingEnd="8dp"
-                            android:textSize="14sp" />
+                            android:inputType="textEmailAddress" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -226,14 +153,9 @@
 
             <Button
                 android:id="@+id/btn_add_to_order"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/get_start"
+                style="@style/MainButton"
+                android:layout_marginTop="@dimen/_32sdp"
                 android:text="@string/add_to_order"
-                android:textColor="#fff"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_part1" />

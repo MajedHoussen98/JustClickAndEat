@@ -22,7 +22,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivitySignUpBinding.bind(getCurrentFocus());
+        binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         setContentView(view);
         viewListener();

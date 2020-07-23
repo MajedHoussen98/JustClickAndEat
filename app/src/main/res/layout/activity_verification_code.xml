@@ -12,10 +12,7 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="150dp"
+        style="@style/logoVerfication"
         app:srcCompat="@drawable/logo2" />
 
     <LinearLayout
@@ -29,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/just"
-            android:textColor="#fff"
+            android:textColor="@color/whiteColor"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -40,7 +37,7 @@
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:text="@string/click"
-            android:textColor="#FFAE33"
+            android:textColor="@color/appNameColor"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -51,7 +48,7 @@
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:text="@string/and"
-            android:textColor="#fff"
+            android:textColor="@color/whiteColor"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -62,7 +59,7 @@
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:text="@string/eat"
-            android:textColor="#FFAE33"
+            android:textColor="@color/appNameColor"
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -82,7 +79,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:textSize="18sp"
-            android:textColor="#000"
+            android:textColor="@color/blackColor"
             android:text="@string/enter_code" />
 
         <TextView
@@ -91,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize="18sp"
-            android:textColor="#909090"
+            android:textColor="@color/hintColor"
             android:layout_marginTop="16dp"
             android:text="@string/tv_mobile_number" />
 
@@ -101,9 +98,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:inputType="number"
-            android:textColor="#000"
+            android:textColor="@color/blackColor"
             app:itemCount="4"
-            app:lineColor="#2C32BE"
+            app:lineColor="@color/colorAccent"
             app:viewType="line" />
 
         <LinearLayout
@@ -128,7 +125,7 @@
                 android:layout_weight="1"
                 android:textSize="13sp"
                 android:text="@string/email_address"
-                android:textColor="#2C32BE" />
+                android:textColor="@color/colorAccent" />
         </LinearLayout>
 
     </LinearLayout>

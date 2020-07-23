@@ -61,7 +61,7 @@
 
 
     <!-- TODO: forgetPassword Text -->
-    <string name="forget_password_text">We\'ll send you an email with a link to reset you password</string>
+    <string name="forget_password_text">We\'ll send you an email with a link to \n reset you password</string>
     <string name="send">Send</string>
 
 
@@ -200,5 +200,17 @@
 
     <!-- TODO: RestaurantFavItem Text -->
     <string name="restaurant_body">The restaurant made a new meal</string>
+
+    <!-- TODO: Filter Text -->
+    <string name="filter">Filter</string>
+    <string name="clear">Clear</string>
+    <string name="sort_by">Sort by</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="nearest_me">Nearest Me</string>
+    <string name="most_popular">Most Popular</string>
+    <string name="starters">#Starters</string>
+    <string name="open_now">Open Now</string>
+    <string name="price_filters">Price Filters</string>
+    <string name="apply">Apply</string>
 
 </resources>

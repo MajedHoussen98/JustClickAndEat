@@ -42,10 +42,652 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="alert" parent="AppTheme.NoActionBar">
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowNoTitle">false</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:colorBackgroundCacheHint">@null</item>
+    <style name="ToolBarStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
+
+    <style name="ToolBarConstraint">
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="ToolBarImageBack">
+        <item name="android:layout_width">?attr/actionBarSize</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">@null</item>
+        <item name="android:src">@drawable/backk</item>
+    </style>
+
+    <style name="ToolBarTitle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/blackColor</item>
+    </style>
+
+    <style name="CardViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginTop">@dimen/_16sdp</item>
+        <item name="cardElevation">@dimen/_20sdp</item>
+    </style>
+
+    <style name="WidthHeight">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="HeightWidth">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="HeightWidthMatch">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_50sdp</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="btnUseMap">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/whiteColor</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginTop">@dimen/_32sdp</item>
+        <item name="android:drawablePadding">@dimen/_10sdp</item>
+        <item name="android:padding">@dimen/_10sdp</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="radioButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginTop">@dimen/_32sdp</item>
+        <item name="android:layout_marginBottom">@dimen/_8sdp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="MainButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginBottom">@dimen/_32sdp</item>
+        <item name="android:background">@drawable/get_start</item>
+        <item name="android:textColor">@color/whiteColor</item>
+    </style>
+
+
+    <style name="ImageEditAccount">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_147sdp</item>
+        <item name="android:layout_marginTop">@dimen/_15sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_147sdp</item>
+        <item name="android:src">@drawable/reset_image</item>
+    </style>
+    <style name="cameraImageEditAccount">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/_32sdp</item>
+
+    </style>
+
+    <style name="ChangePasswordEdit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_marginBottom">@dimen/_8sdp</item>
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+
+    <style name="recycler">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginTop">@dimen/_16sdp</item>
+        <item name="android:background">@color/whiteColor</item>
+    </style>
+
+
+    <style name="btnNext">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/_18sdp</item>
+        <item name="android:layout_marginStart">@dimen/_18sdp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingStart">@dimen/_35sdp</item>
+        <item name="android:textColor">@color/whiteColor</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
+    <style name="textViewPrice">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_20sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_15sdp</item>
+        <item name="android:textColor">@color/whiteColor</item>
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+
+    <style name="imageRegisterApp">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_40sdp</item>
+        <item name="android:layout_marginTop">@dimen/_60sdp</item>
+        <item name="android:padding">@dimen/_8sdp</item>
+    </style>
+
+    <style name="bodyTextNormal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_40sdp</item>
+        <item name="android:layout_marginTop">@dimen/_2sdp</item>
+        <item name="android:textColor">@color/whiteColor</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+
+    <style name="linearRegister">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginStart">@dimen/_20sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_20sdp</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:background">@drawable/backsign</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+    <style name="hightSlirder">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_190sdp</item>
+    </style>
+
+    <style name="barSlider">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_marginStart">@dimen/_3sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_3sdp</item>
+        <item name="android:layout_marginTop">@dimen/_3sdp</item>
+    </style>
+
+    <style name="backImageSlider">
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:layout_width">?attr/actionBarSize</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginTop">@dimen/_16sdp</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="ImageFavSlider">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/_4sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginTop">@dimen/_16sdp</item>
+    </style>
+
+    <style name="ImageShareSlider">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/_4sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_24sdp</item>
+        <item name="android:layout_marginTop">@dimen/_16sdp</item>
+    </style>
+
+    <style name="nestedScrollMeals">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/_20sdp</item>
+    </style>
+
+
+    <style name="linearInNestedMeals">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="heightWidthWrap">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+    <style name="titleNestedMeals">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/_16sdp</item>
+        <item name="android:textColor">@color/blackColor</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="descriptionTitleNestedMeals">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/_4sdp</item>
+        <item name="android:textColor">@color/blackColor</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="descriptionBodyNestedMeals">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/hintColor</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="addressRes">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/hintColor</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+
+    <style name="textIngredient">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blackColor</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="textTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blackColor</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="textStatusBody">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="textPriceBody">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="textPrice">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+
+
+    <style name="radioButtonNestedMeals">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/hintColor</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <style name="requestTitle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/hintColor</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+    <style name="requestType">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/blackColor</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="searchMenu">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_40sdp</item>
+        <item name="android:layout_marginTop">@dimen/_16sdp</item>
+        <item name="android:ems">10</item>
+        <item name="android:drawableLeft">@drawable/icons_search</item>
+        <item name="android:drawablePadding">@dimen/_15sdp</item>
+        <item name="android:paddingLeft">@dimen/_16sdp</item>
+        <item name="android:textColorHint">@color/searchMenuColor</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+    </style>
+
+    <style name="linearAccount">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="linearAccountBody">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="linearOrderStatus">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="linearRating">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="linearOrderBody">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+
+    <style name="titleAccountLinear">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blackColor</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="bodyAccountLinear">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/hintColor</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="viewAccountLinear">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_1sdp</item>
+        <item name="android:textColor">@color/viewColor</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:layout_marginBottom">@dimen/_8sdp</item>
+    </style>
+
+    <style name="ratingValue">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/ratingColor</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="btnMenu">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:drawableStart">@drawable/ic_menu</item>
+        <item name="android:paddingEnd">@dimen/_90sdp</item>
+        <item name="android:paddingStart">@dimen/_90sdp</item>
+        <item name="android:textColor">@color/hintColor</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="addressTitle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/hintColor</item>
+        <item name="android:layout_marginTop">@dimen/_16sdp</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="addressType">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/addressColor</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="linearHours">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="linearOpen">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+
+    <style name="textOpen">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_4sdp</item>
+       <item name="android:textColor">@color/blackColor</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+
+    <style name="textFeatures">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blackColor</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="linearWelcomeBack">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+        <item name="android:layout_marginTop">140dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="textWelcomeBack">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textColor">@color/whiteColor</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="textSignUpWelcomeBack">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:textColor">@color/whiteColor</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+
+    <style name="scrollSignUp">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginTop">220dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+    </style>
+
+
+    <style name="linearEditTextSignUp">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="linearHaveAccount">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="textSignInHere">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="textHaveAccount">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/blackColor</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+
+    <style name="scrollSignIn">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginStart">@dimen/_10sdp</item>
+        <item name="android:layout_marginTop">@dimen/_120sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_10sdp</item>
+    </style>
+
+    <style name="linearScroll">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="linearSignIn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginBottom">@dimen/_20sdp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="logoSignIn">
+        <item name="android:layout_width">@dimen/_80sdp</item>
+        <item name="android:layout_height">@dimen/_60sdp</item>
+        <item name="android:layout_marginStart">@dimen/_8sdp</item>
+        <item name="android:layout_marginTop">@dimen/_25sdp</item>
+    </style>
+
+
+    <style name="tvWelcomeSignIn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginTop">@dimen/_10sdp</item>
+        <item name="android:textColor">@color/blackColor</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="tvContinueSignIn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:textColor">@color/blackColor</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="textForgetPassword">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginTop">@dimen/_20sdp</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textColor">@color/hintColor</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+
+    <style name="linearFacebook">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/_30sdp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/hintColor</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+
+    <style name="textFacebook">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/facebookColor</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <style name="recyclerStarting">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/_20sdp</item>
+        <item name="android:textColor">@color/facebookColor</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <style name="linearButtonStarting">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_70sdp</item>
+        <item name="android:layout_marginBottom">@dimen/_50sdp</item>
+        <item name="android:layout_marginStart">@dimen/_8sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_8sdp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+
+    <style name="logoVerfication">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/_150sdp</item>
+        <item name="android:layout_marginStart">@dimen/_40sdp</item>
+    </style>
+
 </resources>

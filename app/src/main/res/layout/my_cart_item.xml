@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:text="@string/meals_name"
-                    android:textColor="#000"
+                    android:textColor="@color/blackColor"
                     android:textSize="15sp" />
 
                 <TextView
@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:text="@string/meal_body_cart"
-                    android:textColor="#909090"
+                    android:textColor="@color/hintColor"
                     android:textSize="13sp" />
 
                 <TextView
@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:text="@string/price_meal"
-                    android:textColor="#2C32BE"
+                    android:textColor="@color/colorAccent"
                     android:textSize="15sp" />
 
             </LinearLayout>

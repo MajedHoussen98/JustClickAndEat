@@ -4,123 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textDirection="ltr"
-    android:layoutDirection="ltr"
     android:background="@drawable/back_signin"
+    android:layoutDirection="ltr"
     android:orientation="vertical"
+    android:textDirection="ltr"
     tools:context=".ui.SignInActivity">
 
 
     <ScrollView
-        android:layout_width="380dp"
-        android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        style="@style/scrollSignIn"
         android:background="@drawable/backsign"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <LinearLayout style="@style/linearScroll">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="20dp"
-                android:orientation="vertical">
+            <LinearLayout style="@style/linearSignIn">
 
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="25dp"
+                    style="@style/logoSignIn"
                     app:srcCompat="@drawable/logo" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/welcome_back"
-                    android:textColor="#000"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
+                    style="@style/tvWelcomeSignIn"
+                    android:text="@string/welcome_back" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="@string/sign_in_to_continue"
-                    android:textColor="#000000"
-                    android:textSize="17sp" />
+                    style="@style/tvContinueSignIn"
+                    android:text="@string/sign_in_to_continue" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="16dp">
+                <com.google.android.material.textfield.TextInputLayout style="@style/EditText">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/WidthHeight"
                         android:hint="@string/email"
                         android:inputType="textEmailAddress" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="16dp">
+                <com.google.android.material.textfield.TextInputLayout style="@style/EditText">
 
                     <com.google.android.material.textfield.TextInputEditText
-                       android:id="@+id/et_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/et_password"
+                        style="@style/WidthHeight"
                         android:hint="@string/password"
                         android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:id="@+id/tv_forget_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="16dp"
-                    android:gravity="right"
+                    style="@style/textForgetPassword"
                     android:text="@string/forgot_password_signin"
-                    android:textColor="#909090"
-                    android:textSize="14sp"
                     tools:ignore="RtlHardcoded" />
 
                 <Button
                     android:id="@+id/btn_sign_in"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginRight="16dp"
-                    android:background="@drawable/get_start"
-                    android:text="@string/sign_in"
-                    android:textColor="#fff" />
+                    style="@style/MainButton"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:text="@string/sign_in" />
 
                 <LinearLayout
                     android:id="@+id/ll_sign_with_facebook"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="@dimen/_8sdp"
+                    style="@style/linearFacebook">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -128,39 +76,24 @@
                         app:srcCompat="@drawable/facebook_icon" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="#fff"
-                        android:text="@string/sign_in_with_facebook"
-                        android:textColor="#2672CB"
-                        android:textSize="14sp" />
+                        style="@style/textFacebook"
+                        android:text="@string/sign_in_with_facebook" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
-                    android:orientation="horizontal">
+                    style="@style/linearHaveAccount"
+                    android:layout_marginTop="@dimen/_10sdp">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/textHaveAccount"
                         android:layout_weight="1"
-                        android:text="@string/don_t_have_an_account"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
+                        android:text="@string/don_t_have_an_account" />
 
                     <TextView
                         android:id="@+id/tv_sign_up"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
+                        style="@style/textSignInHere"
                         android:layout_weight="1"
-                        android:text="@string/sign_up_here"
-                        android:textColor="#2C32BE"
-                        android:textSize="14sp" />
+                        android:text="@string/sign_up_here" />
                 </LinearLayout>
 
             </LinearLayout>

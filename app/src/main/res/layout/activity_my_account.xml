@@ -4,43 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textDirection="ltr"
     android:layoutDirection="ltr"
+    android:textDirection="ltr"
     tools:context=".ui.MyAccountActivity">
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/WidthHeight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
+        <androidx.constraintlayout.widget.ConstraintLayout style="@style/ToolBarConstraint">
 
             <ImageButton
                 android:id="@+id/ib_back"
-                android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@null"
-                android:src="@drawable/backk"
+                style="@style/ToolBarImageBack"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
+                style="@style/ToolBarTitle"
                 android:text="@string/my_account"
-                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-                android:textColor="#000"
-                android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -50,138 +38,79 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
+        style="@style/CardViewStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView_toolbar">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="vertical">
+        <LinearLayout style="@style/linearAccount">
 
             <LinearLayout
                 android:id="@+id/ll_edit_account"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:orientation="vertical">
+                style="@style/linearAccountBody">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/edit_account"
-                    android:textColor="#000"
-                    android:textSize="15sp" />
+                    style="@style/titleAccountLinear"
+                    android:text="@string/edit_account" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/edit_name"
-                    android:textColor="#909090"
-                    android:textSize="13sp" />
+                    style="@style/bodyAccountLinear"
+                    android:text="@string/edit_name" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="#D8D8D8" />
+                <View style="@style/viewAccountLinear" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_change_password"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                style="@style/linearAccountBody">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/change_password"
-                    android:textColor="#000"
-                    android:textSize="15sp" />
+                    style="@style/titleAccountLinear"
+                    android:text="@string/change_password" />
 
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/modify_your_password"
-                    android:textColor="#909090"
-                    android:textSize="13sp" />
+                    style="@style/bodyAccountLinear"
+                    android:text="@string/modify_your_password" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="#D8D8D8" />
+                <View style="@style/viewAccountLinear" />
 
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_edit_address"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                style="@style/linearAccountBody">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/address"
-                    android:textColor="#000"
-                    android:textSize="15sp" />
+                    style="@style/titleAccountLinear"
+                    android:text="@string/address" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/add_or_remove_a_delivery_address"
-                    android:textColor="#909090"
-                    android:textSize="13sp" />
+                    style="@style/bodyAccountLinear"
+                    android:text="@string/add_or_remove_a_delivery_address" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="#D8D8D8" />
+                <View style="@style/viewAccountLinear" />
+
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_favorites"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                style="@style/linearAccountBody">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/favorites"
-                    android:textColor="#000"
-                    android:textSize="15sp" />
+                    style="@style/titleAccountLinear"
+                    android:text="@string/favorites" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/favorite_body"
-                    android:textColor="#909090"
-                    android:textSize="13sp" />
+                    style="@style/bodyAccountLinear"
+                    android:text="@string/favorite_body" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="#D8D8D8" />
+                <View style="@style/viewAccountLinear" />
+
             </LinearLayout>
 
         </LinearLayout>

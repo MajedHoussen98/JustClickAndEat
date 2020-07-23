@@ -27,7 +27,7 @@
             android:layout_marginTop="40dp"
             android:gravity="center"
             android:textSize="20sp"
-            android:textColor="#0E0E2D"
+            android:textColor="@color/startingTitleColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -35,7 +35,7 @@
             android:id="@+id/tv_description"
             android:layout_marginTop="7dp"
             android:gravity="center"
-            android:textColor="#9A9DB0"
+            android:textColor="@color/startingBodyColor"
             android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#3E000000"
+    android:clickable="true"
+    android:textDirection="ltr"
+    android:layoutDirection="ltr"
+    android:orientation="vertical"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_filter"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingStart="70dp"
+                android:text="@string/filter"
+                android:textColor="@color/blackColor"
+                android:textSize="17sp"
+                tools:ignore="RtlSymmetry" />
+
+            <Button
+                android:id="@+id/btn_clear"
+                style="@android:style/Widget.Material.Button.Borderless.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clear"
+                android:textColor="@color/colorAccent"
+                tools:targetApi="lollipop" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sort_by"
+                android:textStyle="bold"
+                android:textColor="@color/blackColor"
+                android:textSize="15sp" />
+
+            <CheckedTextView
+                android:id="@+id/ctv_top_rated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:padding="16dp"
+                android:text="@string/top_rated" />
+
+            <CheckedTextView
+                android:id="@+id/ctv_nearest_me"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+
+                android:checked="false"
+                android:text="@string/nearest_me" />
+
+            <CheckedTextView
+                android:id="@+id/ctv_most_popular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:checked="false"
+                android:text="@string/most_popular" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/category"
+                android:textStyle="bold"
+                android:textColor="@color/blackColor"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_search_filter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/viewColor"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/icons_search"
+                android:drawablePadding="8dp"
+                android:padding="16dp"
+                android:ems="10"
+                android:hint="@string/starters"
+                android:inputType="textPersonName"
+                android:textSize="13sp"
+                tools:targetApi="lollipop" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/filter"
+                android:textStyle="bold"
+                android:textColor="@color/blackColor"
+                android:textSize="15sp" />
+
+            <CheckedTextView
+                android:id="@+id/ctv_open_now"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:checked="false"
+                android:text="@string/open_now" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/price_filters"
+                android:textStyle="bold"
+                android:textColor="@color/blackColor"
+                android:textSize="15sp" />
+
+            <org.florescu.android.rangeseekbar.RangeSeekBar
+                android:id="@+id/seek_bar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:absoluteMinValue="0"
+                app:absoluteMaxValue="400" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_apply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/get_start"
+            android:text="@string/apply"
+            android:textColor="@color/whiteColor" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/viewColorFilter"/>
+
+</LinearLayout>

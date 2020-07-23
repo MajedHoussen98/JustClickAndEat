@@ -60,7 +60,7 @@
                         android:layout_marginLeft="8dp"
                         android:layout_weight="1"
                         android:text="@string/open"
-                        android:textColor="#74B743"
+                        android:textColor="@color/openColor"
                         android:textSize="13sp" />
                 </LinearLayout>
 
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:text="@string/resturant_address"
-                    android:textColor="#909090"
+                    android:textColor="@color/hintColor"
                     android:textSize="13sp" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -113,7 +113,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
-            android:background="#D8D8D8" />
+            android:background="@color/viewColor" />
 
     </LinearLayout>
 

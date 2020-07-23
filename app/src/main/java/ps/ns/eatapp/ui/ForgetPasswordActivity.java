@@ -10,30 +10,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ps.ns.eatapp.R;
+import ps.ns.eatapp.databinding.ActivityForgetPasswordBinding;
 
 public class ForgetPasswordActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.back_icon)
-    ImageView backIcon;
+    private View view;
+    private ActivityForgetPasswordBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forget_password);
-        ButterKnife.bind(this);
+        binding = ActivityForgetPasswordBinding.inflate(getLayoutInflater());
+        view = binding.getRoot();
+        setContentView(view);
 
         viewListener();
 
     }
 
     private void viewListener(){
-        backIcon.setOnClickListener(this);
+        binding.ivBack.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
 
-        if (v.getId() == R.id.back_icon){
+        if (v.getId() == R.id.iv_back){
             startActivity(new Intent(ForgetPasswordActivity.this, SignInActivity.class));
         }
     }

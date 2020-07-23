@@ -2,8 +2,23 @@
 <resources>
     <color name="colorPrimary">#3700B3</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#3700B3</color>
-    <color name="white">#fff</color>
+    <color name="colorAccent">#2C32BE</color>
+    <color name="whiteColor">#fff</color>
+    <color name="blackColor">#000</color>
+    <color name="hintColor">#909090</color>
+    <color name="titleColor">#0E0E2D</color>
+    <color name="searchMenuColor">#CECECE</color>
+    <color name="viewColor">#D8D8D8</color>
+    <color name="ratingColor">#FFCB3C</color>
+    <color name="addressColor">#0E0E2D</color>
+    <color name="facebookColor">#2672CB</color>
+    <color name="appNameColor">#FFAE33</color>
+    <color name="openColor">#74B743</color>
+    <color name="viewColorFilter">#3E000000</color>
+    <color name="melasBodyColor">#43496A</color>
+    <color name="cancelColor">#BE2C2C</color>
+    <color name="timeNotificationColor">#8A8FAB</color>
+    <color name="startingTitleColor">#0E0E2D</color>
+    <color name="startingBodyColor">#9A9DB0</color>
 
-    #fff
 </resources>

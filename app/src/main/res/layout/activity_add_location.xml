@@ -3,44 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:textDirection="ltr"
-    android:layoutDirection="ltr"
     android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:textDirection="ltr"
     tools:context=".ui.AddLocationActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/ToolBarStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            style="@style/ToolBarConstraint"
+            android:layout_width="match_parent">
 
             <ImageButton
                 android:id="@+id/ib_back"
-                android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@null"
-                android:src="@drawable/backk"
+                style="@style/ToolBarImageBack"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
+                style="@style/ToolBarTitle"
                 android:text="@string/add_new_location"
                 android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-                android:textColor="#000"
-                android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -51,64 +40,37 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
+        style="@style/CardViewStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView_toolbar">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/WidthHeight"
             android:orientation="vertical">
 
-
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/WidthHeight"
                 android:layout_marginTop="8dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_address_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:background="@null"
-                    android:hint="@string/hint_address_name"
-                    android:inputType="text"
-                    android:textSize="14sp" />
+                    style="@style/EditText"
+                    android:hint="@string/hint_address_name" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_use_map"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:drawableLeft="@drawable/marker"
-                android:drawablePadding="10dp"
+                style="@style/btnUseMap"
+                android:drawableStart="@drawable/marker"
                 android:text="@string/use_map"
-                android:textAlignment="viewStart"
-                android:textColor="#909090" />
+                android:textColor="@color/hintColor" />
 
             <RadioButton
                 android:id="@+id/rb_make_default"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="8dp"
+                style="@style/radioButtonStyle"
                 android:text="@string/make_this_my_default_address"
-                android:textColor="#0E0E2D"
-                android:textSize="14sp" />
+                android:textColor="@color/titleColor" />
 
 
         </LinearLayout>
@@ -118,13 +80,7 @@
 
     <Button
         android:id="@+id/btn_save_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/get_start"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:textColor="#fff"
+        style="@style/MainButton"
         android:text="@string/save_address"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

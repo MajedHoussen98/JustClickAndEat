@@ -14,7 +14,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#2C32BE"
+        android:background="@color/colorAccent"
         app:layout_anchor="@+id/toolbar"
         app:layout_anchorGravity="center">
 
@@ -36,10 +36,10 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:paddingEnd="20dp"
+                android:paddingEnd="@dimen/_50sdp"
                 android:text="@string/menu_home"
                 android:layout_weight="1"
-                android:textColor="#fff"
+                android:textColor="@color/whiteColor"
                 android:textSize="17sp"
                 android:textStyle="bold"
                 tools:ignore="RtlSymmetry" />

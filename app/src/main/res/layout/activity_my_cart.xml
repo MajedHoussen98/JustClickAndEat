@@ -4,41 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textDirection="ltr"
     android:layoutDirection="ltr"
+    android:textDirection="ltr"
     tools:context=".ui.MyCartActivity">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/cardView"
+        style="@style/ToolBarStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
+        <androidx.constraintlayout.widget.ConstraintLayout style="@style/ToolBarConstraint">
 
             <ImageButton
                 android:id="@+id/ib_back"
-                android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@null"
-                android:src="@drawable/backk"
+                style="@style/ToolBarImageBack"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
+                style="@style/ToolBarTitle"
                 android:text="@string/my_cart"
-                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-                android:textColor="#000"
-                android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,54 +37,29 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_cart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:background="#fff"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        style="@style/recycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView_toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
         tools:listitem="@layout/my_cart_item" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/get_start"
+        style="@style/MainButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/btn_next"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="18dp"
-            android:layout_marginStart="18dp"
-            android:layout_weight="1"
-            android:background="#2C32BE"
-            android:paddingStart="35dp"
+            style="@style/btnNext"
             android:text="@string/next"
-            android:textColor="#fff"
-            android:textSize="16sp"
             tools:ignore="RtlSymmetry" />
 
         <TextView
             android:id="@+id/tv_price_order"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15sp"
-            android:layout_marginStart="20dp"
-            android:text="@string/price_order"
-            android:textColor="#fff"
-            android:textSize="16sp" />
+            style="@style/textViewPrice"
+            android:text="@string/price_order"/>
 
     </LinearLayout>
 
