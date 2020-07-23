@@ -1,5 +1,6 @@
 package ps.ns.eatapp.dialogs;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -13,11 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import org.florescu.android.rangeseekbar.RangeSeekBar;
 
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.databinding.FragmentFilterDialogkBinding;
+import ps.ns.eatapp.ui.HomeFragment;
 
 
 public class FilterDialogFragment extends DialogFragment implements View.OnClickListener {
@@ -136,6 +139,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
                     binding.ctvOpenNow.setTextColor(Color.parseColor("#2C32BE"));
                 }
                 break;
+
         }
     }
 }
