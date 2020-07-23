@@ -1,5 +1,6 @@
 package ps.ns.eatapp.ui;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -13,7 +14,7 @@ import ps.ns.eatapp.MainActivity;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MyCartAdapter;
 import ps.ns.eatapp.databinding.ActivityMyCartBinding;
-import ps.ns.eatapp.dialogs.MyCartNextDialog;
+import ps.ns.eatapp.dialogs.CartDialogFragment;
 import ps.ns.eatapp.model.MyCartModel;
 
 public class MyCartActivity extends AppCompatActivity implements MyCartAdapter.ListItemClickListener, View.OnClickListener {
@@ -29,11 +30,9 @@ public class MyCartActivity extends AppCompatActivity implements MyCartAdapter.L
         binding = ActivityMyCartBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         setContentView(view);
-
         initViews();
         listenerViews();
     }
-
 
     private void initViews() {
         list = new ArrayList<>();
@@ -49,7 +48,6 @@ public class MyCartActivity extends AppCompatActivity implements MyCartAdapter.L
         list.add(new MyCartModel("R.drawable.meal2", "Braised Fish Head", "2x tuna sahimi, 3x vegetables ", "$4.90", 2));
         list.add(new MyCartModel("R.drawable.meal3", "Salad Fritters", "2x tuna sahimi, 3x vegetables ", "$15.00", 1));
         list.add(new MyCartModel("R.drawable.meal3", "Salad Fritters", "2x tuna sahimi, 3x vegetables ", "$15.00", 1));
-
         binding.rvCart.setLayoutManager(new LinearLayoutManager(MyCartActivity.this));
         adapter = new MyCartAdapter(MyCartActivity.this, list, MyCartActivity.this);
         adapter.setShowHide(false);
@@ -78,9 +76,11 @@ public class MyCartActivity extends AppCompatActivity implements MyCartAdapter.L
 
     private void openDialog() {
 
+        CartDialogFragment dialog =new CartDialogFragment();
+        dialog.show(getSupportFragmentManager(), "CartDialog");
         // MyCartNextDialog dialog = new MyCartNextDialog();
         //dialog.show(getParentFragmentManager(), "SSSS");
-        startActivity(new Intent(MyCartActivity.this, MyCartNextDialog.class));
+        //startActivity(new Intent(MyCartActivity.this, MyCartNextDialog.class));
     }
 
 

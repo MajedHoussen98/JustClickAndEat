@@ -45,9 +45,6 @@
         <activity android:name=".ui.StartingAppActivity" />
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".dialogs.MyCartNextDialog"
-            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
-        <activity
             android:name=".ui.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">

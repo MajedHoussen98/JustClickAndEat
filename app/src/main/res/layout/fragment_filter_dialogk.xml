@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#3E000000"
-    android:clickable="true"
     android:textDirection="ltr"
     android:layoutDirection="ltr"
     android:orientation="vertical"
+    tools:context=".dialogs.FilterDialogFragment"
     android:focusable="true">
 
     <LinearLayout
@@ -164,6 +164,7 @@
                 android:id="@+id/seek_bar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_30sdp"
                 app:absoluteMinValue="0"
                 app:absoluteMaxValue="400" />
 
@@ -181,11 +182,5 @@
             android:text="@string/apply"
             android:textColor="@color/whiteColor" />
     </LinearLayout>
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/viewColorFilter"/>
 
 </LinearLayout>

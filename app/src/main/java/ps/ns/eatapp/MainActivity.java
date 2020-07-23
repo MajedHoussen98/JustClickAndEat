@@ -32,47 +32,29 @@ import ps.ns.eatapp.ui.MyOrderActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.icons_menu)
-    ImageView iconsMenu;
-    Button btnClear;
 
+    private ImageView iconsMenu;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private NavController navController;
-    private Toolbar toolbar;
-    public static ActionBar actionBar;
-    public static View viewMAin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupWithNavController(navigationView, navController);
         initViews();
         initListeners();
-        actionBar = getSupportActionBar();
 
     }
 
     private void initViews() {
-
+        iconsMenu = findViewById(R.id.icons_menu);
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupWithNavController(navigationView, navController);
     }
-
-
-    public static void hide() {
-        actionBar.hide();
-    }
-    public static void show() {
-        actionBar.show();
-    }
-
     private void initListeners() {
 
         iconsMenu.setOnClickListener(this);
@@ -107,14 +89,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
-
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.icons_menu:
-                drawer.openDrawer(Gravity.LEFT);
-                break;
-
+        if (v.getId() == R.id.icons_menu) {
+            drawer.openDrawer(Gravity.LEFT);
         }
     }
 }

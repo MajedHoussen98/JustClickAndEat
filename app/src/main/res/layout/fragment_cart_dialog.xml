@@ -2,18 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/whiteColor"
+    android:layout_height="wrap_content"
     android:layoutDirection="ltr"
-    android:textDirection="ltr">
+    android:textDirection="ltr"
+    tools:context=".dialogs.CartDialogFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
         android:background="@drawable/outline_dialog"
+        android:layout_marginRight="16dp"
         android:orientation="vertical">
 
         <TextView
@@ -41,7 +41,7 @@
                 android:textSize="14sp" />
 
             <Button
-                android:id="@+id/delivery_btn"
+                android:id="@+id/btn_delivery"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:background="@drawable/get_start"
@@ -52,7 +52,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_next_cart"
+            android:id="@+id/rv_cat_dialog"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginLeft="16dp"
@@ -60,7 +60,7 @@
             android:layout_marginRight="16dp" />
 
         <Button
-            android:id="@+id/add_address_next_cart"
+            android:id="@+id/btn_add_address"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -35,7 +35,6 @@
     <string name="tv_features">Does not take reservations\nAccepts credit cards\nHas outdoor seating\nHas Wi-Fi\nDining Options</string>
 
 
-
     <!-- TODO: AddNewLocation Text -->
     <string name="add_new_location">Add New Location</string>
     <string name="hint_address_name">Enter the address name (work, home)</string>
@@ -63,7 +62,6 @@
     <!-- TODO: forgetPassword Text -->
     <string name="forget_password_text">We\'ll send you an email with a link to \n reset you password</string>
     <string name="send">Send</string>
-
 
 
     <!-- TODO: Meals Text -->
@@ -212,5 +210,7 @@
     <string name="open_now">Open Now</string>
     <string name="price_filters">Price Filters</string>
     <string name="apply">Apply</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
