@@ -112,7 +112,7 @@
             <androidx.cardview.widget.CardView
                 style="@style/CardViewStyle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_order_meals"
@@ -124,7 +124,8 @@
             <Button
                 android:id="@+id/btn_ok"
                 style="@style/MainButton"
-                android:layout_marginTop="@dimen/_32sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_16sdp"
                 android:text="@string/ok" />
 
         </LinearLayout>

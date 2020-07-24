@@ -1,11 +1,9 @@
 package ps.ns.eatapp.dialogs;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.Gravity;
@@ -14,13 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import org.florescu.android.rangeseekbar.RangeSeekBar;
 
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.databinding.FragmentFilterDialogkBinding;
-import ps.ns.eatapp.ui.HomeFragment;
 
 
 public class FilterDialogFragment extends DialogFragment implements View.OnClickListener {
@@ -84,7 +80,6 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
         binding.etSearchFilter.setOnClickListener(this);
         binding.ctvOpenNow.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View v) {
 

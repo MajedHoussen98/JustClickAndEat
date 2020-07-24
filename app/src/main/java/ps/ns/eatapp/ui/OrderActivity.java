@@ -33,7 +33,7 @@ public class OrderActivity extends AppCompatActivity implements MyCartAdapter.Li
 
         if (showHide){
             binding.llOrderStatus.setVisibility(View.VISIBLE);
-            binding.btnOk.setVisibility(View.GONE);
+          //  binding.btnOk.setVisibility(View.GONE);
         }else {
             binding.llOrderStatus.setVisibility(View.GONE);
             binding.btnOk.setVisibility(View.VISIBLE);

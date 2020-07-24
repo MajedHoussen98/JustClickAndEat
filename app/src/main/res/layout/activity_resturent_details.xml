@@ -14,8 +14,7 @@
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            style="@style/HeightWidthMatch"
             android:background="@color/colorAccent"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
@@ -24,15 +23,16 @@
 
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/image_slider"
+                android:layout_height="@dimen/_235sdp"
                 style="@style/hightSlirder"
                 app:iss_auto_cycle="true"
                 app:iss_delay="0"
                 app:iss_error_image="@drawable/loading_res"
                 app:iss_period="1000"
                 app:iss_placeholder="@drawable/loading_res"
-                app:iss_selected_dot="@drawable/default_selected_dot"
+                app:iss_selected_dot="@drawable/dot_selected"
                 app:iss_text_align="@string/app_name"
-                app:iss_unselected_dot="@drawable/default_unselected_dot">
+                app:iss_unselected_dot="@drawable/dot_unselected">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                    style="@style/barSlider">

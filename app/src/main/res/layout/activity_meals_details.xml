@@ -26,9 +26,9 @@
                 app:iss_auto_cycle="true"
                 app:iss_delay="0"
                 app:iss_period="1000"
-                app:iss_selected_dot="@drawable/default_selected_dot"
+                app:iss_selected_dot="@drawable/dot_selected"
                 app:iss_text_align="@string/app_name"
-                app:iss_unselected_dot="@drawable/default_unselected_dot">
+                app:iss_unselected_dot="@drawable/dot_unselected">
 
                 <androidx.constraintlayout.widget.ConstraintLayout style="@style/barSlider">
 

@@ -15,6 +15,7 @@
     </style>
 
     <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="textAllCaps">false</item>
         <item name="android:textSize">10.5sp</item>
     </style>
 
@@ -67,6 +68,7 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/blackColor</item>
     </style>
 
@@ -76,8 +78,10 @@
         <item name="android:layout_marginStart">@dimen/_16sdp</item>
         <item name="android:layout_marginEnd">@dimen/_16sdp</item>
         <item name="android:layout_marginTop">@dimen/_16sdp</item>
-        <item name="cardElevation">@dimen/_20sdp</item>
+        <item name="cardElevation">@dimen/_10sdp</item>
     </style>
+
+
 
     <style name="WidthHeight">
         <item name="android:layout_width">match_parent</item>
@@ -108,13 +112,13 @@
     <style name="btnUseMap">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:background">@color/whiteColor</item>
         <item name="android:layout_marginStart">@dimen/_16sdp</item>
         <item name="android:layout_marginEnd">@dimen/_16sdp</item>
         <item name="android:layout_marginTop">@dimen/_32sdp</item>
         <item name="android:drawablePadding">@dimen/_10sdp</item>
         <item name="android:padding">@dimen/_10sdp</item>
         <item name="android:textAlignment">viewStart</item>
+        <item name="android:background">@null</item>
     </style>
 
     <style name="radioButtonStyle">
@@ -134,6 +138,7 @@
         <item name="android:layout_marginEnd">@dimen/_16sdp</item>
         <item name="android:layout_marginBottom">@dimen/_32sdp</item>
         <item name="android:background">@drawable/get_start</item>
+        <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/whiteColor</item>
     </style>
 
@@ -225,7 +230,7 @@
 
     <style name="hightSlirder">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/_190sdp</item>
+        <item name="android:layout_height">@dimen/_250sdp</item>
     </style>
 
     <style name="barSlider">
@@ -309,6 +314,7 @@
     <style name="addressRes">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_4sdp</item>
         <item name="android:textColor">@color/hintColor</item>
         <item name="android:textSize">15sp</item>
     </style>

@@ -42,6 +42,7 @@
                 style="@style/searchMenu"
                 android:id="@+id/et_search_menu"
                 android:inputType="textPersonName"
+                android:textColor="@color/blackColor"
                 android:hint="@string/search"
                 android:background="@drawable/saerch_bac"/>
 
