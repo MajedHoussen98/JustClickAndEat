@@ -165,6 +165,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_30sdp"
+                android:maxWidth="@dimen/_80sdp"
                 app:absoluteMinValue="0"
                 app:absoluteMaxValue="400" />
 

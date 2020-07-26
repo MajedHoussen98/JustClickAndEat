@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -95,6 +96,7 @@ public class HomeFragment extends Fragment implements HomeAdapter.ListItemClickL
 
     private void openDialog() {
         FilterDialogFragment dialog = new FilterDialogFragment();
+      //  dialog.setStyle(DialogFragment.STYLE_NORMAL,0);
         dialog.show(getChildFragmentManager(), "FilterDialog");
     }
 

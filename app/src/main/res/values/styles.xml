@@ -16,7 +16,7 @@
 
     <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
         <item name="textAllCaps">false</item>
-        <item name="android:textSize">10.5sp</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
     <style name="RatingBar" parent="Theme.AppCompat">
@@ -75,10 +75,10 @@
     <style name="CardViewStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>v
         <item name="android:layout_marginEnd">@dimen/_16sdp</item>
         <item name="android:layout_marginTop">@dimen/_16sdp</item>
-        <item name="cardElevation">@dimen/_10sdp</item>
+        <item name="cardElevation">@dimen/_1sdp</item>
     </style>
 
 
@@ -695,5 +695,8 @@
         <item name="android:layout_marginTop">@dimen/_150sdp</item>
         <item name="android:layout_marginStart">@dimen/_40sdp</item>
     </style>
+
+
+
 
 </resources>

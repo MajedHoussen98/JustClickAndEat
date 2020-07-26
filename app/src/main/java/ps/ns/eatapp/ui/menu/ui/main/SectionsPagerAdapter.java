@@ -56,7 +56,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 2:
                 return "Seafoof";
             case 3:
-                return "GrilledMeat";
+                return "Grilled Meat";
             case 4:
                 return "Beverages";
         }

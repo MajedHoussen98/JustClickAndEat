@@ -2,6 +2,8 @@ package ps.ns.eatapp.dialogs;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
@@ -50,8 +52,7 @@ public class CartDialogFragment extends DialogFragment implements MyLocationAdap
         window.setGravity(Gravity.CENTER_HORIZONTAL);
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         WindowManager.LayoutParams params = window.getAttributes();
-        params.x = 1;
-        params.y = 1;
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         window.setAttributes(params);
 
     }

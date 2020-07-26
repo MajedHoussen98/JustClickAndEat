@@ -1,6 +1,7 @@
 package ps.ns.eatapp.dialogs;
 
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.DialogFragment;
@@ -40,11 +41,11 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
         super.onResume();
 
         Window window = getDialog().getWindow();
-        window.setGravity(Gravity.CENTER_HORIZONTAL);
+        window.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         WindowManager.LayoutParams params = window.getAttributes();
-        params.x = 1;
-        params.y = 1;
+
         window.setAttributes(params);
     }
 
