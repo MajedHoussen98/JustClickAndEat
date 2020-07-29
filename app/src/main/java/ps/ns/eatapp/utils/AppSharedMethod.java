@@ -9,12 +9,12 @@ import com.mukesh.OtpView;
 public class AppSharedMethod {
 
     //TODO: Check Edit Text
-    public static boolean checkEditText(EditText editText){
+    public static boolean isEmptyEditText(EditText editText){
         return TextUtils.isEmpty(editText.getText().toString().trim());
     }
 
     //TODO: Check Email Patterns
-    public static boolean checkEmailPatterns(EditText editText){
+    public static boolean isInvalidEmail(EditText editText){
         return !Patterns.EMAIL_ADDRESS.matcher(editText.getText().toString().trim()).matches();
     }
 
@@ -32,6 +32,19 @@ public class AppSharedMethod {
     //TODO: Get Text From Otp (Verification)
     public static String getTextFromOtp(OtpView otpView){
         return otpView.getText().toString().trim();
+    }
+
+
+    //TODO: Set Error EditText
+    public static void setErrorEditText(EditText editText, String message){
+        editText.setError(message);
+        editText.requestFocus();
+    }
+
+    //TODO: Set Error Code
+    public static void setErrorVerification(OtpView otpView, String message){
+        otpView.setError(message);
+        otpView.requestFocus();
     }
 
 }

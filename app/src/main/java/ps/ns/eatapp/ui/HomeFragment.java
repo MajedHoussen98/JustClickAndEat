@@ -1,5 +1,6 @@
 package ps.ns.eatapp.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -25,9 +26,13 @@ import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.HomeAdapter;
 import ps.ns.eatapp.databinding.FragmentHomeBinding;
 import ps.ns.eatapp.dialogs.FilterDialogFragment;
+import ps.ns.eatapp.feature.login.view.LoginActivity;
 import ps.ns.eatapp.model.HomeModel;
 
+import static ps.ns.eatapp.utils.ConstantApp.FROM_WHERE;
+
 public class HomeFragment extends Fragment implements HomeAdapter.ListItemClickListener, View.OnClickListener {
+
 
     private HomeAdapter adapter;
     private ArrayList<HomeModel> list;

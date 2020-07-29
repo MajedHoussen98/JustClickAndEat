@@ -25,26 +25,22 @@ public class EditAccountActivity extends AppCompatActivity implements EditAccoun
         setContentView(view);
         initViews();
         initPresenter();
-        listenerViews();
+        initListener();
     }
 
     private void initViews() {
     }
 
+
     private void initPresenter() {
         presenter = new EditAccountPresenter(this, this);
     }
 
-    private void listenerViews() {
+    private void initListener() {
         binding.bntSave.setOnClickListener(v -> presenter.validationInput(String.valueOf(binding.ivUser), binding.etName, binding.etEmail));
-        binding.ibBack.setOnClickListener(v -> {startActivity(new Intent(EditAccountActivity.this, MyAccountActivity.class));});
+        binding.ibBack.setOnClickListener(v -> presenter.goToMyAccount());
     }
 
-
-    @Override
-    public void formData(String image, String name, String email) {
-        Log.e("EditAccount", "image: " + image  + "name: " + name + "email: " + email);
-    }
 
     @Override
     public void showProgress() {

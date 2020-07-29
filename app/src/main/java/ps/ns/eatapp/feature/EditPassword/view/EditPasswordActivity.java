@@ -30,6 +30,7 @@ public class EditPasswordActivity extends AppCompatActivity implements EditPassw
     private void initViews() {
     }
 
+
     private void initPresenter() {
         presenter = new EditPasswordPresenter(this, this);
     }
@@ -37,17 +38,9 @@ public class EditPasswordActivity extends AppCompatActivity implements EditPassw
 
     private void listenerViews() {
         binding.bntSave.setOnClickListener(v -> presenter.validationInputs(binding.etCurrentPassword, binding.etNewPassword, binding.etRepeatPassword));
-        binding.ibBack.setOnClickListener(v -> {
-            startActivity(new Intent(EditPasswordActivity.this, MyAccountActivity.class));
-        });
+        binding.ibBack.setOnClickListener(v -> presenter.goToMyAccount());
     }
 
-
-    @Override
-    public void formData(String currentPassword, String newPassword, String confirmPassword) {
-        Log.e("changePassword", "current " + currentPassword + "new" + newPassword +"con" + confirmPassword);
-
-    }
 
     @Override
     public void showProgress() {

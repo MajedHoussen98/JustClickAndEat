@@ -7,8 +7,12 @@ import android.widget.EditText;
 import com.mukesh.OnOtpCompletionListener;
 import com.mukesh.OtpView;
 
+import ps.ns.eatapp.R;
+import ps.ns.eatapp.feature.login.view.LoginActivity;
 import ps.ns.eatapp.feature.verfication.view.VerificationView;
 import ps.ns.eatapp.utils.AppSharedMethod;
+
+import static ps.ns.eatapp.utils.ConstantApp.FROM_FORGET_PASSWORD;
 
 public class VerificationPresenter {
     private Activity mActivity;
@@ -22,29 +26,20 @@ public class VerificationPresenter {
 
 
     public void validationInputs(OtpView otpCode) {
+        if (AppSharedMethod.checkOtpView(otpCode)) {
+            AppSharedMethod.setErrorVerification(otpCode, mActivity.getString(R.string.enter_code));
+            return;
+        }
 
-        otpCode.setOtpCompletionListener(new OnOtpCompletionListener() {
-            @Override
-            public void onOtpCompleted(String otp) {
-                if (AppSharedMethod.checkOtpView(otpCode)) {
-                    otpCode.setError("Enter Your Code Please");
-                    otpCode.requestFocus();
-                    return;
-                }
-            }
-        });
-
-
-        mView.formData(AppSharedMethod.getTextFromEditText(otpCode));
 
         ArrayMap<String, Object> params = new ArrayMap<>();
         params.put("code", AppSharedMethod.getTextFromOtp(otpCode));
 
-        VerificationRequest(params);
+        verificationRequest(params);
 
 
     }
 
-    private void VerificationRequest(ArrayMap<String, Object> params) {
+    private void verificationRequest(ArrayMap<String, Object> params) {
     }
 }

@@ -1,4 +1,4 @@
-package ps.ns.eatapp.ui;
+package ps.ns.eatapp.feature.introApp;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +18,6 @@ import ps.ns.eatapp.model.IntroModel;
 
 public class IntroAppActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private View view;
     private ActivityIntroAppBinding binding;
 
     IntroAdapter adapter;
@@ -29,7 +28,7 @@ public class IntroAppActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityIntroAppBinding.inflate(getLayoutInflater());
-        view = binding.getRoot();
+        View view = binding.getRoot();
         setContentView(view);
         initViews();
         getDataIntro();

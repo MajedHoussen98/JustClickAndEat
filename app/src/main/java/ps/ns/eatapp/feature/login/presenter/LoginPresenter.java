@@ -1,25 +1,27 @@
 package ps.ns.eatapp.feature.login.presenter;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
-import android.os.Build;
-import android.text.TextUtils;
+import android.os.Handler;
 import android.util.ArrayMap;
-import android.util.Patterns;
+
 import com.google.android.material.textfield.TextInputEditText;
 
+import ps.ns.eatapp.MainActivity;
 import ps.ns.eatapp.R;
-import ps.ns.eatapp.feature.login.view.LoginActivity;
+import ps.ns.eatapp.feature.forgetPassword.view.ForgetPasswordActivity;
 import ps.ns.eatapp.feature.login.view.LoginView;
+import ps.ns.eatapp.feature.signUp.view.SignUpActivity;
+import ps.ns.eatapp.ui.HomeFragment;
 import ps.ns.eatapp.utils.AppSharedMethod;
+import ps.ns.eatapp.utils.BaseActivity;
 
-import static ps.ns.eatapp.utils.ConstantApp.FROM_FORGET;
-import static ps.ns.eatapp.utils.ConstantApp.FROM_SIGNUp;
+import static ps.ns.eatapp.utils.ConstantApp.FROM_LOGIN;
 
-public class LoginPresenter {
+public class LoginPresenter{
 
     private LoginView mView;
     private Activity mActivity;
+
 
     public LoginPresenter(Activity mActivity, LoginView mView) {
         this.mView = mView;
@@ -27,59 +29,55 @@ public class LoginPresenter {
     }
 
     public void goToSignUp() {
-        mActivity.startActivity(LoginActivity.newInstance(mActivity, FROM_SIGNUp));
+        mActivity.startActivity(SignUpActivity.newInstance(mActivity, FROM_LOGIN));
     }
 
     public void goToForget() {
-        //TODO:MOUSE
-        mActivity.startActivity(LoginActivity.newInstance(mActivity, FROM_FORGET));
-
-        //LoginActivity.initIntent(mActivity,new ForgetPasswordActivity() , "" , "");
-
+        mActivity.startActivity(ForgetPasswordActivity.newInstance(mActivity, FROM_LOGIN));
     }
 
 
     public void validateInputs(TextInputEditText etEmail, TextInputEditText etPassword) {
 
-        if (AppSharedMethod.checkEditText(etEmail)) {
-            etEmail.setError(mActivity.getString(R.string.emty_email));
-            etEmail.requestFocus();
+
+        if (AppSharedMethod.isEmptyEditText(etEmail)) {
+            AppSharedMethod.setErrorEditText(etEmail, mActivity.getString(R.string.emty_email));
             return;
         }
 
-        if (AppSharedMethod.checkEmailPatterns(etEmail)) {
-            etEmail.setError(mActivity.getString(R.string.errorEmail));
-            etEmail.requestFocus();
-
+        if (AppSharedMethod.isInvalidEmail(etEmail)) {
+            AppSharedMethod.setErrorEditText(etEmail, mActivity.getString(R.string.errorEmail));
             return;
         }
 
-        if (AppSharedMethod.checkEditText(etPassword)) {
-            etPassword.setError(mActivity.getString(R.string.enter_password));
-            etPassword.requestFocus();
-            mView.showMessage(mActivity.getString(R.string.enter_password));
+        if (AppSharedMethod.isEmptyEditText(etPassword)) {
+            AppSharedMethod.setErrorEditText(etPassword, mActivity.getString(R.string.enter_password));
             return;
         }
-        mView.formData(etEmail.getText().toString().trim(), etPassword.getText().toString().trim());
-        mView.showProgress();
 
         ArrayMap<String, Object> params = new ArrayMap<>();
-        params.put("email", etEmail.getText().toString().trim());
-        params.put("password", etPassword.getText().toString().trim());
+        params.put("email", AppSharedMethod.getTextFromEditText(etEmail));
+        params.put("password", AppSharedMethod.getTextFromEditText(etPassword));
         loginRequest(params);
+
     }
 
     private void loginRequest(ArrayMap<String, Object> params) {
+
+        if (mView != null) {
+            mView.showProgress();
+        }
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (mView != null) {
+                    mView.hideProgress();
+                }
+            }
+        },3000);
+        mActivity.startActivity(MainActivity.newInstance(mActivity, FROM_LOGIN));
     }
 
-
-    public void DialogProgress(int i) {
-        ProgressDialog dialog = new ProgressDialog(mActivity);
-        dialog.setMessage("Please wait...");
-        if (i == 1)
-            dialog.show();
-        else
-            dialog.dismiss();
-    }
 
 }

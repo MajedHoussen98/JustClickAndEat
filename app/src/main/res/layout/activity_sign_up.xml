@@ -8,7 +8,7 @@
     android:layoutDirection="ltr"
     android:orientation="vertical"
     android:textDirection="ltr"
-    tools:context=".feature.signup.view.SignUpActivity">
+    tools:context=".feature.signUp.view.SignUpActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"

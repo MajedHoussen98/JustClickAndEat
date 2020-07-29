@@ -8,7 +8,10 @@ import android.widget.Toast;
 
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.feature.editAccount.view.EditAccountView;
+import ps.ns.eatapp.ui.MyAccountActivity;
 import ps.ns.eatapp.utils.AppSharedMethod;
+
+import static ps.ns.eatapp.utils.ConstantApp.FROM_EDIT_ACCOUNT;
 
 public class EditAccountPresenter {
 
@@ -20,42 +23,42 @@ public class EditAccountPresenter {
         this.mView = mView;
     }
 
-    public void validationInput(String image, EditText etName, EditText etEmail){
-        if (TextUtils.isEmpty(image)){
-            Toast.makeText(mActivity, "Choose a picture please", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        
-        if (AppSharedMethod.checkEditText(etName)){
-            etName.setError(mActivity.getString(R.string.enter_name));
-            etName.requestFocus();
+    public void goToMyAccount() {
+        mActivity.startActivity(MyAccountActivity.newInstance(mActivity, FROM_EDIT_ACCOUNT));
+    }
+
+    public void validationInput(String image, EditText etName, EditText etEmail) {
+        if (TextUtils.isEmpty(image)) {
             return;
         }
 
-        if (AppSharedMethod.checkEditText(etEmail)) {
-            etEmail.setError("Enter Your Email Please");
-            etEmail.requestFocus();
+        if (AppSharedMethod.isEmptyEditText(etName)) {
+            AppSharedMethod.setErrorEditText(etName, mActivity.getString(R.string.enter_name));
             return;
         }
 
-        if (AppSharedMethod.checkEmailPatterns(etEmail)) {
-            etEmail.setError(mActivity.getString(R.string.errorEmail));
+        if (AppSharedMethod.isEmptyEditText(etEmail)) {
+            AppSharedMethod.setErrorEditText(etEmail, mActivity.getString(R.string.emty_email));
+
             return;
         }
-        
-        mView.formData(image, AppSharedMethod.getTextFromEditText(etName), AppSharedMethod.getTextFromEditText(etEmail));
+
+        if (AppSharedMethod.isInvalidEmail(etEmail)) {
+            AppSharedMethod.setErrorEditText(etEmail, mActivity.getString(R.string.errorEmail));
+            return;
+        }
 
 
         ArrayMap<String, Object> params = new ArrayMap<>();
-        
+
         params.put("image", image);
         params.put("name", AppSharedMethod.getTextFromEditText(etName));
         params.put("email", AppSharedMethod.getTextFromEditText(etEmail));
-        
-        EditAccountRequest();
-        
+
+        editAccountRequest();
+
     }
 
-    private void EditAccountRequest() {
+    private void editAccountRequest() {
     }
 }

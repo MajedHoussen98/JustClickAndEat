@@ -1,6 +1,7 @@
 package ps.ns.eatapp;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -25,13 +26,22 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ps.ns.eatapp.databinding.ActivityMainBinding;
 import ps.ns.eatapp.ui.Favorites.Favorites;
+import ps.ns.eatapp.ui.HomeFragment;
 import ps.ns.eatapp.ui.MyAccountActivity;
 import ps.ns.eatapp.ui.MyCartActivity;
 import ps.ns.eatapp.ui.MyLocationActivity;
 import ps.ns.eatapp.ui.NotificationActivity;
 import ps.ns.eatapp.ui.MyOrderActivity;
 
+import static ps.ns.eatapp.utils.ConstantApp.FROM_WHERE;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    public static Intent newInstance(Activity mActivity, int fromWhere) {
+        Intent intent = new Intent(mActivity, MainActivity.class);
+        intent.putExtra(FROM_WHERE, fromWhere);
+        return intent;
+    }
 
     private ActivityMainBinding binding;
 

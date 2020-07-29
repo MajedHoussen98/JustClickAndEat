@@ -7,7 +7,7 @@
     android:layoutDirection="ltr"
     android:orientation="vertical"
     android:textDirection="ltr"
-    tools:context=".ui.IntroAppActivity">
+    tools:context=".feature.introApp.IntroAppActivity">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"

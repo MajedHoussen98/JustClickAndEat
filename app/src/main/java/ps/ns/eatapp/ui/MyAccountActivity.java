@@ -2,6 +2,7 @@ package ps.ns.eatapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,9 +14,17 @@ import ps.ns.eatapp.feature.EditPassword.view.EditPasswordActivity;
 import ps.ns.eatapp.feature.editAccount.view.EditAccountActivity;
 import ps.ns.eatapp.ui.Favorites.Favorites;
 
+import static ps.ns.eatapp.utils.ConstantApp.FROM_WHERE;
+
 public class MyAccountActivity extends AppCompatActivity implements View.OnClickListener {
     private View view;
     private ActivityMyAccountBinding binding;
+
+    public static Intent newInstance(Activity mActivity, int fromWhere) {
+        Intent intent = new Intent(mActivity, MyAccountActivity.class);
+        intent.putExtra(FROM_WHERE, fromWhere);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

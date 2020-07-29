@@ -6,7 +6,10 @@ import android.widget.EditText;
 
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.feature.EditPassword.view.EditPasswordView;
+import ps.ns.eatapp.ui.MyAccountActivity;
 import ps.ns.eatapp.utils.AppSharedMethod;
+
+import static ps.ns.eatapp.utils.ConstantApp.FROM_EDIT_ACCOUNT;
 
 public class EditPasswordPresenter {
     private Activity mActivity;
@@ -16,48 +19,50 @@ public class EditPasswordPresenter {
         this.mActivity = mActivity;
         this.mView = mView;
     }
-    
-    
-    public void validationInputs(EditText etCurrentPassword, EditText etNewPassword, EditText etConfirmPassword){
-        
-        if (AppSharedMethod.checkEditText(etCurrentPassword)) {
-            etCurrentPassword.setError("Enter your password please");
-            etCurrentPassword.requestFocus();
+
+    public void goToMyAccount() {
+        mActivity.startActivity(MyAccountActivity.newInstance(mActivity, FROM_EDIT_ACCOUNT));
+    }
+
+
+    public void validationInputs(EditText etCurrentPassword, EditText etNewPassword, EditText etConfirmPassword) {
+
+        if (AppSharedMethod.isEmptyEditText(etCurrentPassword)) {
+            AppSharedMethod.setErrorEditText(etCurrentPassword, mActivity.getString(R.string.enter_currentPassword));
             return;
         }
 
-        if (AppSharedMethod.checkEditText(etNewPassword)) {
-            etNewPassword.setError("Enter your password please");
-            etNewPassword.requestFocus();
+        if (AppSharedMethod.isEmptyEditText(etNewPassword)) {
+            AppSharedMethod.setErrorEditText(etNewPassword, mActivity.getString(R.string.enter_new_password));
             return;
         }
 
         if (AppSharedMethod.getTextFromEditText(etNewPassword).length() < 8) {
-            etNewPassword.setError(mActivity.getString(R.string.password_less));
-            etNewPassword.requestFocus();
+            AppSharedMethod.setErrorEditText(etNewPassword, mActivity.getString(R.string.password_less));
             return;
         }
 
-        if (AppSharedMethod.checkEditText(etConfirmPassword)) {
-            etConfirmPassword.setError("Enter your password please");
-            etConfirmPassword.requestFocus();
+        if (AppSharedMethod.isEmptyEditText(etConfirmPassword)) {
+            AppSharedMethod.setErrorEditText(etConfirmPassword, mActivity.getString(R.string.enter_password));
+            return;
+        }
+
+        if (AppSharedMethod.getTextFromEditText(etConfirmPassword).length() < 8) {
+            AppSharedMethod.setErrorEditText(etConfirmPassword, mActivity.getString(R.string.password_less));
             return;
         }
 
         if (!AppSharedMethod.getTextFromEditText(etNewPassword).equals(AppSharedMethod.getTextFromEditText(etConfirmPassword))) {
-            etConfirmPassword.setError(mActivity.getString(R.string.password_not_match));
-            etConfirmPassword.requestFocus();
+            AppSharedMethod.setErrorEditText(etConfirmPassword, mActivity.getString(R.string.password_not_match));
             return;
         }
-        
-        mView.formData(AppSharedMethod.getTextFromEditText(etCurrentPassword), AppSharedMethod.getTextFromEditText(etNewPassword), AppSharedMethod.getTextFromEditText(etConfirmPassword));
 
         ArrayMap<String, Object> params = new ArrayMap<>();
-        
+
         params.put("currentPassword", AppSharedMethod.getTextFromEditText(etCurrentPassword));
         params.put("newPassword", AppSharedMethod.getTextFromEditText(etNewPassword));
         params.put("confirmPassword", AppSharedMethod.getTextFromEditText(etConfirmPassword));
-        
+
         ChangePasswordRequest();
     }
 

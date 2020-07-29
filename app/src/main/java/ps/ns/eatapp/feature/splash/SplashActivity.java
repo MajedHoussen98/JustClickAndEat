@@ -1,4 +1,4 @@
-package ps.ns.eatapp.ui;
+package ps.ns.eatapp.feature.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import ps.ns.eatapp.R;
+import ps.ns.eatapp.feature.introApp.IntroAppActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
