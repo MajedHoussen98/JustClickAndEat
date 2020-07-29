@@ -23,6 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ps.ns.eatapp.databinding.ActivityMainBinding;
 import ps.ns.eatapp.ui.Favorites.Favorites;
 import ps.ns.eatapp.ui.MyAccountActivity;
 import ps.ns.eatapp.ui.MyCartActivity;
@@ -32,6 +33,7 @@ import ps.ns.eatapp.ui.MyOrderActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private ActivityMainBinding binding;
 
     private ImageView iconsMenu;
     private DrawerLayout drawer;
@@ -41,7 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
         initViews();
         initListeners();
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
+
     private void initListeners() {
 
         iconsMenu.setOnClickListener(this);
@@ -89,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
+
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.icons_menu) {
