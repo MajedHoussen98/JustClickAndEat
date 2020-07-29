@@ -25,9 +25,12 @@
             <ImageView
                 android:id="@+id/icons_menu"
                 android:layout_width="wrap_content"
-                android:padding="15dp"
+                android:paddingBottom="15dp"
+                android:paddingEnd="15dp"
+                android:paddingTop="15dp"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/icon_menu" />
+                app:srcCompat="@drawable/icon_menu"
+                tools:ignore="RtlSymmetry" />
 
             <TextView
                 android:id="@+id/title_bar"
