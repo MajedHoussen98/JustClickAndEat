@@ -45,7 +45,7 @@ public class RestaurantsFavoritesAdapter extends RecyclerView.Adapter<Restaurant
     @Override
     public void onBindViewHolder(@NonNull RestaurantsFavoritesAdapter.ViewHolder holder, int position) {
         final RestaurantsFavoritesModel data = list.get(position);
-       // Glide.with(context).load(data.getRestaurantsPicFavorites()).into(holder.restaurantsPicFavorites);
+        Glide.with(context).load(data.getRestaurantsPicFavorites()).into(holder.restaurantsPicFavorites);
         holder.restaurantNameFavorites.setText(data.getRestaurantsNameFavorites());
         holder.restaurantBodyFavorites.setText(data.getRestaurantsBodyFavorites());
     }
@@ -60,6 +60,7 @@ public class RestaurantsFavoritesAdapter extends RecyclerView.Adapter<Restaurant
         ImageView restaurantsPicFavorites, favClick;
         TextView restaurantNameFavorites, restaurantBodyFavorites;
         LinearLayout llRestaurantSFavorites;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             restaurantsPicFavorites = itemView.findViewById(R.id.iv_restaurants_fav);
@@ -69,7 +70,7 @@ public class RestaurantsFavoritesAdapter extends RecyclerView.Adapter<Restaurant
             favClick = itemView.findViewById(R.id.ic_fav_click);
 
             llRestaurantSFavorites.setOnClickListener(this);
-         //   favClick.setOnClickListener(this);
+            //   favClick.setOnClickListener(this);
         }
 
         @Override

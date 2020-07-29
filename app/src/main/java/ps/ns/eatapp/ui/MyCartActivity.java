@@ -45,9 +45,9 @@ public class MyCartActivity extends AppCompatActivity implements MyCartAdapter.L
     }
 
     private void getDataMyCart() {
-        list.add(new MyCartModel("R.drawable.meal2", "Braised Fish Head", "2x tuna sahimi, 3x vegetables ", "$4.90", 2));
-        list.add(new MyCartModel("R.drawable.meal3", "Salad Fritters", "2x tuna sahimi, 3x vegetables ", "$15.00", 1));
-        list.add(new MyCartModel("R.drawable.meal3", "Salad Fritters", "2x tuna sahimi, 3x vegetables ", "$15.00", 1));
+        list.add(new MyCartModel("https://www.samaa.tv/wp-content/uploads/2017/09/meals.jpg", "Braised Fish Head", "2x tuna sahimi, 3x vegetables ", "$4.90", 2));
+        list.add(new MyCartModel("https://www.samaa.tv/wp-content/uploads/2017/09/meals.jpg", "Salad Fritters", "2x tuna sahimi, 3x vegetables ", "$15.00", 1));
+        list.add(new MyCartModel("https://www.samaa.tv/wp-content/uploads/2017/09/meals.jpg", "Salad Fritters", "2x tuna sahimi, 3x vegetables ", "$15.00", 1));
         binding.rvCart.setLayoutManager(new LinearLayoutManager(MyCartActivity.this));
         adapter = new MyCartAdapter(MyCartActivity.this, list, MyCartActivity.this);
         adapter.setShowHide(false);

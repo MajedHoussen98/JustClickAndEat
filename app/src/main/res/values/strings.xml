@@ -212,5 +212,18 @@
     <string name="apply">Apply</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title1">Select food items</string>
+    <string name="description1">When you order Eatstreet, we\'ll"\n" hook you up with exclusive"\n" coupons, specials and rewards.</string>
+    <string name="title2">Enter your address</string>
+    <string name="description2">We make it simple to find the "\n"food you crave. Enter your"\n" address and let us do the rest.</string>
+    <string name="title3">Delivery to your home</string>
+    <string name="description3">We make food ordering"\n" fast, simple - no matter if"\n" you order online .</string>
+    <string name="errorEmail">Enter Valid Email Please,</string>
+    <string name="emty_email">Enter Your Email please,</string>
+    <string name="enter_password">\"Enter Your Password Please, \"</string>
+    <string name="enter_name">Enter Your Name please</string>
+    <string name="error_mobile">Enter valid phone number please</string>
+    <string name="password_less">Password must contain 8 characters</string>
+    <string name="password_not_match">Password does not match</string>
 
 </resources>

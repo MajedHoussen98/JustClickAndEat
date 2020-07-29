@@ -19,10 +19,10 @@ import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MenuAdapter;
 import ps.ns.eatapp.model.MenuModel;
 
-public class Seafoof extends Fragment implements MenuAdapter.ListItemClickListener{
+public class Seafoof extends Fragment implements MenuAdapter.ListItemClickListener {
     private MenuAdapter adapter;
     private ArrayList<MenuModel> list;
-    private  View view;
+    private View view;
     private FragmentSeafoofBinding binding;
 
     @Override
@@ -40,19 +40,19 @@ public class Seafoof extends Fragment implements MenuAdapter.ListItemClickListen
     }
 
     private void getSeafoofdata() {
-        list.add(new MenuModel("R.drawable.meal2","Crispy Chicken San","2x tuna sahimi, 3x vegetables","$29.50"));
-        list.add(new MenuModel("R.drawable.meal2","Prawn & Chicken Roll","2x tuna sahimi, 3x vegetables","$9.50"));
-        list.add(new MenuModel("R.drawable.meal2","Braised Fish Head","2x tuna sahimi, 3x vegetables ","$15.00"));
-        list.add(new MenuModel("R.drawable.meal2","Salad Fritters","2x tuna sahimi, 3x vegetables","$4.90"));
+        list.add(new MenuModel("https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimg1.cookinglight.timeinc.net%2Fsites%2Fdefault%2Ffiles%2F1530030147%2Fchicken-and-bulgur-salad-with-peaches-1808-p17.jpg", "Braised Fish Head", "2x tuna sahimi, 3x vegetables ", "$15.00"));
+        list.add(new MenuModel("https://www.samaa.tv/wp-content/uploads/2017/09/meals.jpg", "Salad Fritters", "2x tuna sahimi, 3x vegetables", "$4.90"));
+        list.add(new MenuModel("https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimg1.cookinglight.timeinc.net%2Fsites%2Fdefault%2Ffiles%2F1530030147%2Fchicken-and-bulgur-salad-with-peaches-1808-p17.jpg", "Braised Fish Head", "2x tuna sahimi, 3x vegetables ", "$15.00"));
+        list.add(new MenuModel("https://www.samaa.tv/wp-content/uploads/2017/09/meals.jpg", "Salad Fritters", "2x tuna sahimi, 3x vegetables", "$4.90"));
 
         binding.rvSeafoof.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter= new MenuAdapter(getContext(), list, this);
+        adapter = new MenuAdapter(getContext(), list, this);
         binding.rvSeafoof.setAdapter(adapter);
     }
 
     @Override
     public void onListItemClicked(int position, int viewId) {
-        switch (viewId){
+        switch (viewId) {
             case R.id.ll_menu:
                 startActivity(new Intent(getActivity(), MealsDetailsActivity.class));
         }

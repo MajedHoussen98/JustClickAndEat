@@ -78,6 +78,7 @@
         <item name="android:layout_marginStart">@dimen/_16sdp</item>v
         <item name="android:layout_marginEnd">@dimen/_16sdp</item>
         <item name="android:layout_marginTop">@dimen/_16sdp</item>
+        <item name="android:layout_marginBottom">@dimen/_16sdp</item>
         <item name="cardElevation">@dimen/_1sdp</item>
     </style>
 
@@ -136,7 +137,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/_16sdp</item>
         <item name="android:layout_marginEnd">@dimen/_16sdp</item>
-        <item name="android:layout_marginBottom">@dimen/_32sdp</item>
+        <item name="android:layout_marginBottom">@dimen/_16sdp</item>
         <item name="android:background">@drawable/get_start</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/whiteColor</item>
@@ -169,7 +170,7 @@
 
     <style name="recycler">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:layout_marginStart">@dimen/_16sdp</item>
         <item name="android:layout_marginEnd">@dimen/_16sdp</item>
         <item name="android:layout_marginTop">@dimen/_16sdp</item>
@@ -203,7 +204,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/_40sdp</item>
-        <item name="android:layout_marginTop">@dimen/_60sdp</item>
+        <item name="android:layout_marginTop">@dimen/_120sdp</item>
         <item name="android:padding">@dimen/_8sdp</item>
     </style>
 

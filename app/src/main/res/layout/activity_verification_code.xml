@@ -8,7 +8,7 @@
     android:textDirection="ltr"
     android:layoutDirection="ltr"
     android:background="@drawable/back_signin"
-    tools:context=".ui.VerificationCodeActivity">
+    tools:context=".feature.verfication.view.VerificationActivity">
 
     <ImageView
         android:id="@+id/imageView5"

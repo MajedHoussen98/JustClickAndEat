@@ -47,7 +47,7 @@ public class MealsFavoritesAdapter extends RecyclerView.Adapter<MealsFavoritesAd
 
         final MealsFavoritesModel data = list.get(position);
 
-//        Glide.with(context).load(data.getMealsPicFavorites()).into(holder.mealsPicFavorites);
+        Glide.with(context).load(data.getMealsPicFavorites()).into(holder.mealsPicFavorites);
         holder.mealsNameFavorites.setText(data.getMealsNameFavorites());
         holder.mealsBodyFavorites.setText(data.getMealsBodyFavorites());
         holder.mealsPriceFavorites.setText(data.getMealsPriceFavorites());
@@ -63,6 +63,7 @@ public class MealsFavoritesAdapter extends RecyclerView.Adapter<MealsFavoritesAd
         ImageView mealsPicFavorites, favClick;
         TextView mealsNameFavorites, mealsBodyFavorites, mealsPriceFavorites;
         LinearLayout llMealSFavorites;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             mealsPicFavorites = itemView.findViewById(R.id.iv_meal_fav);

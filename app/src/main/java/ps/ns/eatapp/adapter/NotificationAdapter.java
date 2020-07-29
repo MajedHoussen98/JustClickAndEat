@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -49,7 +50,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         final MyNotificationModel data = list.get(position);
 
-     //   Picasso.with(context).load(data.getNotificationPic()).into(holder.notificationPic);
+        Glide.with(context).load(data.getNotificationPic()).into(holder.notificationPic);
         holder.notificationTitle.setText(data.getNotificationTitle());
         holder.notificationBody.setText(data.getNotificationBody());
         holder.notificationTime.setText(data.getNotificationTime());

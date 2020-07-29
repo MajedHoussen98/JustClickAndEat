@@ -42,9 +42,9 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
     }
 
     private void getNotificationData() {
-        list.add(new MyNotificationModel("R.drawable.res2_image", "Oriental Bistro", "The restaurant made a new meal", "2 minutes ago"));
-        list.add(new MyNotificationModel("R.drawable.res2_image", "Mountain Standard", "The restaurant made a new meal", "23 minutes ago"));
-        list.add(new MyNotificationModel("R.drawable.res2_image", "Perry’s Steakhouse", "The restaurant made a new meal", "45 minutes ago"));
+        list.add(new MyNotificationModel("https://www.samm-honfleur.com/gallery/20180315171008(1).jpg", "Oriental Bistro", "The restaurant made a new meal", "2 minutes ago"));
+        list.add(new MyNotificationModel("https://media-cdn.tripadvisor.com/media/photo-s/11/4a/54/fe/essence-restaurant.jpg", "Mountain Standard", "The restaurant made a new meal", "23 minutes ago"));
+        list.add(new MyNotificationModel("https://media-cdn.tripadvisor.com/media/photo-s/1a/08/56/10/le-restaurant-avec-sa.jpg", "Perry’s Steakhouse", "The restaurant made a new meal", "45 minutes ago"));
 
         binding.rvNotification.setLayoutManager(new LinearLayoutManager(NotificationActivity.this));
         adapter = new NotificationAdapter(NotificationActivity.this, list, NotificationActivity.this);

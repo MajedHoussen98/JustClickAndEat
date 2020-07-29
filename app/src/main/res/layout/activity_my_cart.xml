@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
+    android:orientation="vertical"
     android:textDirection="ltr"
     tools:context=".ui.MyCartActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        style="@style/ToolBarStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        style="@style/WidthHeight">
 
         <androidx.constraintlayout.widget.ConstraintLayout style="@style/ToolBarConstraint">
 
@@ -38,17 +36,16 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_cart"
         style="@style/recycler"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_weight="1"
+        android:background="@null"
         tools:listitem="@layout/my_cart_item" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         style="@style/MainButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/_16sdp">
 
         <Button
             android:id="@+id/btn_next"
@@ -59,9 +56,9 @@
         <TextView
             android:id="@+id/tv_price_order"
             style="@style/textViewPrice"
-            android:text="@string/price_order"/>
+            android:text="@string/price_order" />
 
     </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -46,12 +46,12 @@ public class RestaurantsFavorites extends Fragment implements RestaurantsFavorit
     }
 
     private void getRestaurantsFavoritesData() {
-        list.add(new RestaurantsFavoritesModel("R.drawable.meal2","Jimmy’s Food Store,", "4901 Bryan St, Dallas, TX 75206, USA"));
-        list.add(new RestaurantsFavoritesModel("R.drawable.meal2","Gogo Sushi,", "NW 10th St, Oklahoma City, OK 73103, "));
-        list.add(new RestaurantsFavoritesModel("R.drawable.meal2","Jimmy’s Food Store,", "4901 Bryan St, Dallas, TX 75206, USA"));
-        list.add(new RestaurantsFavoritesModel("R.drawable.meal2","Gogo Sushi,", "NW 10th St, Oklahoma City, OK 73103, "));
-        list.add(new RestaurantsFavoritesModel("R.drawable.meal2","Jimmy’s Food Store,", "4901 Bryan St, Dallas, TX 75206, USA"));
-        list.add(new RestaurantsFavoritesModel("R.drawable.meal2","Gogo Sushi,", "NW 10th St, Oklahoma City, OK 73103, "));
+        list.add(new RestaurantsFavoritesModel("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80","Jimmy’s Food Store,", "4901 Bryan St, Dallas, TX 75206, USA"));
+        list.add(new RestaurantsFavoritesModel("https://media-cdn.tripadvisor.com/media/photo-s/11/4a/54/fe/essence-restaurant.jpg","Gogo Sushi,", "NW 10th St, Oklahoma City, OK 73103, "));
+        list.add(new RestaurantsFavoritesModel("https://www.samm-honfleur.com/gallery/20180315171008(1).jpg","Jimmy’s Food Store,", "4901 Bryan St, Dallas, TX 75206, USA"));
+        list.add(new RestaurantsFavoritesModel("https://www.wien.info/media/images/41993-das-loft-sofitel-so-vienna-3to2.jpeg/image_teaser-all","Gogo Sushi,", "NW 10th St, Oklahoma City, OK 73103, "));
+        list.add(new RestaurantsFavoritesModel("https://restaurantengine.com/wp-content/uploads/2015/05/startup-restaurants-typically-overspend.jpg","Jimmy’s Food Store,", "4901 Bryan St, Dallas, TX 75206, USA"));
+        list.add(new RestaurantsFavoritesModel("https://media-cdn.tripadvisor.com/media/photo-s/1a/08/56/10/le-restaurant-avec-sa.jpg","Gogo Sushi,", "NW 10th St, Oklahoma City, OK 73103, "));
 
         binding.rvRestaurantsFavorites.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new RestaurantsFavoritesAdapter(getActivity(), list, this);

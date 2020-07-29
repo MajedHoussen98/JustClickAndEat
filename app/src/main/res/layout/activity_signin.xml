@@ -8,7 +8,7 @@
     android:layoutDirection="ltr"
     android:orientation="vertical"
     android:textDirection="ltr"
-    tools:context=".ui.SignInActivity">
+    tools:context=".feature.login.view.LoginActivity">
 
 
     <ScrollView

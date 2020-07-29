@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ps.ns.eatapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,10 +24,10 @@
             android:name=".ui.AddLocationActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.EditPasswordActivity"
+            android:name=".feature.EditPassword.view.EditPasswordActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.EditAccountActivity"
+            android:name=".feature.editAccount.view.EditAccountActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.menu.MenuActivity"
@@ -38,11 +39,13 @@
             android:label="@string/title_activity_favorites"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".ui.VerificationCodeActivity" />
-        <activity android:name=".ui.ForgetPasswordActivity" />
-        <activity android:name=".ui.SignUpActivity" />
-        <activity android:name=".ui.SignInActivity" />
-        <activity android:name=".ui.StartingAppActivity" />
+        <activity android:name=".feature.verfication.view.VerificationActivity" />
+        <activity
+            android:name=".feature.forgetPassword.view.ForgetPasswordActivity"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".feature.signup.view.SignUpActivity" />
+        <activity android:name=".feature.login.view.LoginActivity" />
+        <activity android:name=".ui.IntroAppActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".ui.SplashActivity"

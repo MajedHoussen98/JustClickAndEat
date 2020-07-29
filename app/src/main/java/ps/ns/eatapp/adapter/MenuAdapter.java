@@ -47,7 +47,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
         final MenuModel data = list.get(position);
 
-       // Glide.with(context).load(data.getMealsPic()).into(holder.mealsPic);
+        Glide.with(context).load(data.getMealsPic()).into(holder.mealsPic);
         holder.mealsName.setText(data.getMealsName());
         holder.mealsBody.setText(data.getMealsBody());
         holder.mealsPrice.setText(data.getMealsPrice());
