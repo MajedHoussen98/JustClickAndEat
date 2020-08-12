@@ -92,9 +92,6 @@ public class MyCartActivity extends AppCompatActivity implements MyCartAdapter.L
     private void openDialog() {
         CartDialogFragment dialog = new CartDialogFragment();
         dialog.show(getSupportFragmentManager(), "CartDialog");
-        // MyCartNextDialog dialog = new MyCartNextDialog();
-        //dialog.show(getParentFragmentManager(), "SSSS");
-        //startActivity(new Intent(MyCartActivity.this, MyCartNextDialog.class));
     }
 
 

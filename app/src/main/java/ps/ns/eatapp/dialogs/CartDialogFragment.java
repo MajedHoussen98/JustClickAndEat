@@ -90,17 +90,17 @@ public class CartDialogFragment extends DialogFragment implements MyLocationAdap
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_pickup:
-                binding.btnPickup.setBackgroundResource(R.drawable.get_start);
+                binding.btnPickup.setBackgroundResource(R.drawable.btn_backgrount_selected);
                 binding.btnPickup.setTextColor(Color.parseColor("#ffffff"));
-                binding.btnDelivery.setBackgroundResource(R.drawable.outline_button_cart);
+                binding.btnDelivery.setBackgroundResource(R.drawable.btn_background_white);
                 binding.btnDelivery.setTextColor(Color.parseColor("#2C32BE"));
                 binding.btnAddAddress.setVisibility(View.GONE);
                 binding.rvCatDialog.setVisibility(View.GONE);
                 break;
             case R.id.btn_delivery:
-                binding.btnDelivery.setBackgroundResource(R.drawable.get_start);
+                binding.btnDelivery.setBackgroundResource(R.drawable.btn_backgrount_selected);
                 binding.btnDelivery.setTextColor(Color.parseColor("#ffffff"));
-                binding.btnPickup.setBackgroundResource(R.drawable.outline_button_cart);
+                binding.btnPickup.setBackgroundResource(R.drawable.btn_background_white);
                 binding.btnPickup.setTextColor(Color.parseColor("#2C32BE"));
                 binding.btnAddAddress.setVisibility(View.VISIBLE);
                 binding.rvCatDialog.setVisibility(View.VISIBLE);
