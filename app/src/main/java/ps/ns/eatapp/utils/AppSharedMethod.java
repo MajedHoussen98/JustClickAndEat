@@ -1,10 +1,16 @@
 package ps.ns.eatapp.utils;
 
+import android.app.Activity;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.mukesh.OtpView;
+
+import ps.ns.eatapp.R;
 
 public class AppSharedMethod {
 
@@ -22,7 +28,6 @@ public class AppSharedMethod {
     public static String getTextFromEditText(EditText editText){
         return editText.getText().toString().trim();
    }
-
 
     //TODO: Check Otp (Verification)
     public static boolean checkOtpView(OtpView otpView){
@@ -47,4 +52,24 @@ public class AppSharedMethod {
         otpView.requestFocus();
     }
 
+
+    public static void statusBarLight(Activity activity){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            activity.getWindow().setStatusBarColor(activity.getResources().getColor(R.color.whiteColor, activity.getTheme()));
+
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            activity.getWindow().setStatusBarColor(activity.getResources().getColor(R.color.whiteColor));
+        }
+    }
+
+
+    public static void statusBarHide(View view){
+        view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                                  |View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                                  |View.SYSTEM_UI_FLAG_FULLSCREEN);
+    }
+
+    public static void statusBarShow(Activity activity){
+        activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
 }

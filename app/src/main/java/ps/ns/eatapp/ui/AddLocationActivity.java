@@ -8,6 +8,7 @@ import android.view.View;
 
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.databinding.ActivityAddLocationBinding;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 public class AddLocationActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -20,8 +21,9 @@ public class AddLocationActivity extends AppCompatActivity implements View.OnCli
         binding = ActivityAddLocationBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         setContentView(view);
-
         listenerViews();
+        AppSharedMethod.statusBarLight(this);
+
     }
 
     private void listenerViews() {

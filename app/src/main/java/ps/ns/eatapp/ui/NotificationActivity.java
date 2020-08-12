@@ -14,6 +14,7 @@ import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.NotificationAdapter;
 import ps.ns.eatapp.databinding.ActivityNotificationBinding;
 import ps.ns.eatapp.model.MyNotificationModel;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 public class NotificationActivity extends AppCompatActivity implements NotificationAdapter.ListItemClickListener, View.OnClickListener {
     private View view;
@@ -27,9 +28,10 @@ public class NotificationActivity extends AppCompatActivity implements Notificat
         binding = ActivityNotificationBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         setContentView(view);
-
         initViews();
         listenerViews();
+        AppSharedMethod.statusBarLight(this);
+
 
     }
     private void initViews() {

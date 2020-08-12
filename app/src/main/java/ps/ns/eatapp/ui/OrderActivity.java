@@ -14,6 +14,7 @@ import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MyCartAdapter;
 import ps.ns.eatapp.databinding.ActivityOrderBinding;
 import ps.ns.eatapp.model.MyCartModel;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 public class OrderActivity extends AppCompatActivity implements MyCartAdapter.ListItemClickListener, View.OnClickListener {
     private ActivityOrderBinding binding;
@@ -28,6 +29,7 @@ public class OrderActivity extends AppCompatActivity implements MyCartAdapter.Li
         super.onCreate(savedInstanceState);
         binding = ActivityOrderBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
+        AppSharedMethod.statusBarLight(this);
 
         showHide = getIntent().getExtras().getBoolean("showHide");
 
@@ -46,9 +48,9 @@ public class OrderActivity extends AppCompatActivity implements MyCartAdapter.Li
 
     private void getCartData() {
 
-        list.add(new MyCartModel("R.drawable.meal2", "Braised Fish Head", "2x tuna sahimi, 3x vegetables ", "$4.90", 2));
-        list.add(new MyCartModel("R.drawable.meal3", "Salad Fritters", "2x tuna sahimi, 3x vegetables ", "$15.00", 1));
-        list.add(new MyCartModel("R.drawable.meal3", "Salad Fritters", "2x tuna sahimi, 3x vegetables ", "$15.00", 1));
+        list.add(new MyCartModel("https://www.samaa.tv/wp-content/uploads/2017/09/meals.jpg", "Braised Fish Head", "2x tuna sahimi, 3x vegetables ", "$4.90", "1"));
+        list.add(new MyCartModel("https://www.samaa.tv/wp-content/uploads/2017/09/meals.jpg", "Salad Fritters", "2x tuna sahimi, 3x vegetables ", "$15.00", "1"));
+        list.add(new MyCartModel("https://www.samaa.tv/wp-content/uploads/2017/09/meals.jpg", "Salad Fritters", "2x tuna sahimi, 3x vegetables ", "$15.00", "1"));
 
         binding.rvOrderMeals.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         adapter = new MyCartAdapter(getApplicationContext(), list, this);

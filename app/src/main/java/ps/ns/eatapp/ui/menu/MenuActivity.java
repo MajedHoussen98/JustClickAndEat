@@ -17,6 +17,7 @@ import ps.ns.eatapp.R;
 import ps.ns.eatapp.databinding.ActivityMenuBinding;
 import ps.ns.eatapp.ui.ResturentDetailsActivity;
 import ps.ns.eatapp.ui.menu.ui.main.SectionsPagerAdapter;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,7 +31,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         binding = ActivityMenuBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         setContentView(view);
-
+        AppSharedMethod.statusBarLight(this);
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);

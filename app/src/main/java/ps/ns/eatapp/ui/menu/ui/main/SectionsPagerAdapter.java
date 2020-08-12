@@ -12,11 +12,13 @@ import ps.ns.eatapp.ui.menu.GrilledMeat;
 import ps.ns.eatapp.ui.menu.Salads;
 import ps.ns.eatapp.ui.menu.Seafoof;
 import ps.ns.eatapp.ui.menu.StartersMenu;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
+
     }
 
     @Override

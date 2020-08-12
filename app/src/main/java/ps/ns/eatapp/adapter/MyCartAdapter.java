@@ -48,10 +48,8 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
     @NonNull
     @Override
     public MyCartAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(context).inflate(R.layout.my_cart_item, parent, false);
         return new ViewHolder(view);
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -62,13 +60,13 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
         Glide.with(context).load(data.getMeal_pic()).into(holder.meal_pic);
         holder.meal_name.setText(data.getMeal_name());
         holder.meal_description.setText(data.getMeal_description());
-        holder.meal_price.setText(data.getMeal_price());
+        holder.meal_price.setText(data.getMeal_price() + " $");
         holder.meal_quantity.setText(String.valueOf(data.getMeal_quantity()));
 
-        if (showHide){
+        if (showHide) {
             //TODO: INvisable
             holder.ll_add_item.setVisibility(View.GONE);
-        }else{
+        } else {
             //TODO: visable
             holder.ll_add_item.setVisibility(View.VISIBLE);
         }
@@ -99,15 +97,45 @@ public class MyCartAdapter extends RecyclerView.Adapter<MyCartAdapter.ViewHolder
             ll_add_item = itemView.findViewById(R.id.ll_add_item);
             ll_cart_item = itemView.findViewById(R.id.ll_cart_item);
 
-
             ic_add.setOnClickListener(this);
             ic_clear.setOnClickListener(this);
             ll_cart_item.setOnClickListener(this);
         }
 
+        @SuppressLint("SetTextI18n")
         @Override
         public void onClick(View v) {
-            mOnClickListener.onListItemClicked(getAdapterPosition(), v.getId());
+
+            if (v.getId() == R.id.ic_add) {
+                int quantity = Integer.parseInt(String.valueOf(meal_quantity.getText()));
+                int price = Integer.parseInt(list.get(getAdapterPosition()).getMeal_price());
+                quantity++;
+                meal_quantity.setText(String.valueOf(quantity));
+                int quantityPrice = price * quantity;
+                meal_price.setText(quantityPrice + " $");
+                totalPrice(list);
+
+            } else if (v.getId() == R.id.ic_clear) {
+                int quantity = Integer.parseInt(String.valueOf(meal_quantity.getText()));
+                int price = Integer.parseInt(list.get(getAdapterPosition()).getMeal_price());
+                if (quantity == 1) {
+                    meal_quantity.setText("1");
+                } else {
+                    quantity--;
+                    meal_quantity.setText(String.valueOf(quantity));
+                    int quantityPrice = price * quantity;
+                    meal_price.setText(quantityPrice + " $");
+                }
+
+            }
         }
+    }
+
+    public int totalPrice(List<MyCartModel> items){
+        int totalPrice = 0;
+        for(int i = 0 ; i < items.size(); i++) {
+            totalPrice += Integer.parseInt(items.get(i).getMeal_price());
+        }
+        return totalPrice;
     }
 }

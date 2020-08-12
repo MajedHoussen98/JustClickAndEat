@@ -15,6 +15,7 @@ import java.util.List;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.databinding.ActivityMealsDetailsBinding;
 import ps.ns.eatapp.ui.menu.MenuActivity;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 public class MealsDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,12 +28,13 @@ public class MealsDetailsActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         binding = ActivityMealsDetailsBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
-        addSilderImage();
+        addSliderImage();
         listenerViews();
+        AppSharedMethod.statusBarHide(view);
         setContentView(view);
     }
 
-    private void addSilderImage() {
+    private void addSliderImage() {
         list.add(new SlideModel(R.drawable.slideimage1, ScaleTypes.CENTER_CROP));
         list.add(new SlideModel(R.drawable.slideimage2, ScaleTypes.CENTER_CROP));
         binding.imageSlider.setImageList(list, ScaleTypes.CENTER_CROP);

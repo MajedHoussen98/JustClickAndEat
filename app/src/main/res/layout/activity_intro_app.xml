@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/whiteColor"
     android:layoutDirection="ltr"
     android:orientation="vertical"
     android:textDirection="ltr"
@@ -12,21 +13,19 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         style="@style/recyclerStarting"
-        android:layout_weight="1">
+        android:layout_weight="1"/>
 
-        <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
-            android:id="@+id/spring_dots_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:dampingRatio="0.5"
-            app:dotsColor="@color/colorAccent"
-            app:dotsCornerRadius="2dp"
-            app:dotsSize="16dp"
-            app:dotsSpacing="6dp"
-            app:dotsStrokeColor="@color/colorAccent"
-            app:dotsStrokeWidth="2dp"
-            app:stiffness="300" />
-    </androidx.viewpager.widget.ViewPager>
+    <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+        android:id="@+id/spring_dots_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:dotsColor="@color/colorAccent"
+        app:dotsStrokeColor="@color/viewColor"
+        app:dotsCornerRadius="8dp"
+        app:dotsSize="12dp"
+        android:layout_marginBottom="@dimen/_50sdp"
+        app:dotsStrokeWidth="1dp"/>
 
     <LinearLayout style="@style/linearButtonStarting">
 

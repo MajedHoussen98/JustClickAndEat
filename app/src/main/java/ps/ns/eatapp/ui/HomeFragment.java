@@ -28,6 +28,7 @@ import ps.ns.eatapp.databinding.FragmentHomeBinding;
 import ps.ns.eatapp.dialogs.FilterDialogFragment;
 import ps.ns.eatapp.feature.login.view.LoginActivity;
 import ps.ns.eatapp.model.HomeModel;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 import static ps.ns.eatapp.utils.ConstantApp.FROM_WHERE;
 
@@ -51,6 +52,11 @@ public class HomeFragment extends Fragment implements HomeAdapter.ListItemClickL
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        AppSharedMethod.statusBarShow(getActivity());
+    }
 
     private void initViews() {
         list = new ArrayList<>();
@@ -88,8 +94,8 @@ public class HomeFragment extends Fragment implements HomeAdapter.ListItemClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ic_filter:
-               // getActivity().getActionBar().hide();
                 openDialog();
+            //    AppSharedMethod.statusBarHide(view);
                 break;
         }
     }

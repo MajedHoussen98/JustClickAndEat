@@ -3,6 +3,8 @@ package ps.ns.eatapp.feature.introApp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,11 +17,11 @@ import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.IntroAdapter;
 import ps.ns.eatapp.databinding.ActivityIntroAppBinding;
 import ps.ns.eatapp.model.IntroModel;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 public class IntroAppActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ActivityIntroAppBinding binding;
-
     IntroAdapter adapter;
     ArrayList<IntroModel> list;
 
@@ -33,7 +35,7 @@ public class IntroAppActivity extends AppCompatActivity implements View.OnClickL
         initViews();
         getDataIntro();
         viewListener();
-
+        AppSharedMethod.statusBarLight(this);
 
     }
 
@@ -55,8 +57,8 @@ public class IntroAppActivity extends AppCompatActivity implements View.OnClickL
         adapter = new IntroAdapter(list);
         binding.viewPager.setAdapter(adapter);
         binding.springDotsIndicator.setViewPager(binding.viewPager);
-
     }
+
 
 
     @Override

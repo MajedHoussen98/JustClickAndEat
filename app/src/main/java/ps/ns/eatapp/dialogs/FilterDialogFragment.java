@@ -18,6 +18,7 @@ import org.florescu.android.rangeseekbar.RangeSeekBar;
 
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.databinding.FragmentFilterDialogkBinding;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 
 public class FilterDialogFragment extends DialogFragment implements View.OnClickListener {
@@ -32,6 +33,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
         view = binding.getRoot();
         listenerViews();
         seekBar();
+        AppSharedMethod.statusBarHide(view);
         return view;
     }
 

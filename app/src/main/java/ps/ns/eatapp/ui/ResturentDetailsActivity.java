@@ -22,6 +22,7 @@ import ps.ns.eatapp.MainActivity;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.databinding.ActivityResturentDetailsBinding;
 import ps.ns.eatapp.ui.menu.MenuActivity;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 public class ResturentDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -36,9 +37,10 @@ public class ResturentDetailsActivity extends AppCompatActivity implements View.
         binding = ActivityResturentDetailsBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         setContentView(view);
-
         addSilderImage();
         listenerViews();
+        AppSharedMethod.statusBarHide(view);
+
 
     }
 

@@ -23,7 +23,7 @@
 
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/image_slider"
-                android:layout_height="@dimen/_235sdp"
+                android:layout_height="match_parent"
                 style="@style/hightSlirder"
                 app:iss_auto_cycle="true"
                 app:iss_delay="0"

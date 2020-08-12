@@ -14,6 +14,7 @@ import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MyOrderAdapter;
 import ps.ns.eatapp.databinding.ActivityMyOrderBinding;
 import ps.ns.eatapp.model.MyOrderModel;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 public class MyOrderActivity extends AppCompatActivity implements MyOrderAdapter.ListItemClickListener, View.OnClickListener {
     private View view;
@@ -31,6 +32,7 @@ public class MyOrderActivity extends AppCompatActivity implements MyOrderAdapter
         setContentView(view);
         initViews();
         listenerViews();
+        AppSharedMethod.statusBarLight(this);
     }
 
 

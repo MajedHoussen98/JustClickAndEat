@@ -11,6 +11,7 @@ import ps.ns.eatapp.R;
 import ps.ns.eatapp.databinding.ActivityEditPasswordBinding;
 import ps.ns.eatapp.feature.EditPassword.presenter.EditPasswordPresenter;
 import ps.ns.eatapp.ui.MyAccountActivity;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 public class EditPasswordActivity extends AppCompatActivity implements EditPasswordView {
     private EditPasswordPresenter presenter;
@@ -25,6 +26,8 @@ public class EditPasswordActivity extends AppCompatActivity implements EditPassw
         initViews();
         initPresenter();
         listenerViews();
+        AppSharedMethod.statusBarLight(this);
+
     }
 
     private void initViews() {

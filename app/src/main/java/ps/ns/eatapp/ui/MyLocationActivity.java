@@ -14,6 +14,7 @@ import ps.ns.eatapp.R;
 import ps.ns.eatapp.adapter.MyLocationAdapter;
 import ps.ns.eatapp.databinding.ActivityMyLocationBinding;
 import ps.ns.eatapp.model.MyLocationModel;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 public class MyLocationActivity extends AppCompatActivity implements MyLocationAdapter.ListItemClickListener, View.OnClickListener {
     private View view;
@@ -29,6 +30,7 @@ public class MyLocationActivity extends AppCompatActivity implements MyLocationA
         setContentView(view);
         initViews();
         listenerViews();
+        AppSharedMethod.statusBarLight(this);
 
     }
     private void initViews() {

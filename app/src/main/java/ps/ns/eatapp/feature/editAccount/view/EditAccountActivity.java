@@ -11,6 +11,7 @@ import ps.ns.eatapp.R;
 import ps.ns.eatapp.databinding.ActivityEditAccountBinding;
 import ps.ns.eatapp.feature.editAccount.presenter.EditAccountPresenter;
 import ps.ns.eatapp.ui.MyAccountActivity;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 public class EditAccountActivity extends AppCompatActivity implements EditAccountView {
 
@@ -26,6 +27,8 @@ public class EditAccountActivity extends AppCompatActivity implements EditAccoun
         initViews();
         initPresenter();
         initListener();
+        AppSharedMethod.statusBarLight(this);
+
     }
 
     private void initViews() {

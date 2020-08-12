@@ -29,7 +29,6 @@
             <TextView
                 style="@style/ToolBarTitle"
                 android:text="@string/add_new_location"
-                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,9 +48,9 @@
             style="@style/WidthHeight"
             android:orientation="vertical">
 
+
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/WidthHeight"
-                android:layout_marginTop="8dp">
+                style="@style/WidthHeight">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_address_name"
@@ -59,12 +58,16 @@
                     android:hint="@string/hint_address_name" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <View style="@style/viewAddLocation" />
+
             <Button
                 android:id="@+id/btn_use_map"
                 style="@style/btnUseMap"
                 android:drawableStart="@drawable/marker"
                 android:text="@string/use_map"
                 android:textColor="@color/hintColor" />
+
+            <View style="@style/viewAddLocation"/>
 
             <RadioButton
                 android:id="@+id/rb_make_default"

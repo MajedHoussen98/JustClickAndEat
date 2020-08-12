@@ -6,9 +6,12 @@ public class MyCartModel {
     String meal_name;
     String meal_description;
     String meal_price;
-    int meal_quantity;
+    String meal_quantity;
 
-    public MyCartModel(String meal_pic, String meal_name, String meal_description, String meal_price, int meal_quantity) {
+    public MyCartModel() {
+    }
+
+    public MyCartModel(String meal_pic, String meal_name, String meal_description, String meal_price, String meal_quantity) {
         this.meal_pic = meal_pic;
         this.meal_name = meal_name;
         this.meal_description = meal_description;
@@ -48,11 +51,11 @@ public class MyCartModel {
         this.meal_price = meal_price;
     }
 
-    public int getMeal_quantity() {
+    public String getMeal_quantity() {
         return meal_quantity;
     }
 
-    public void setMeal_quantity(int meal_quantity) {
+    public void setMeal_quantity(String meal_quantity) {
         this.meal_quantity = meal_quantity;
     }
 }

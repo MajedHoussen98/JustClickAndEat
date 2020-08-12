@@ -11,41 +11,58 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.NotificationActivity"></activity>
-        <activity android:name=".ui.MyLocationActivity" />
-        <activity android:name=".ui.MyOrderActivity" />
-        <activity android:name=".ui.MyCartActivity" />
-        <activity android:name=".ui.MyAccountActivity" />
-        <activity android:name=".ui.OrderActivity" />
+        <activity
+            android:name=".ui.NotificationActivity"
+            android:theme="@style/statusBarLight" />
+        <activity
+            android:name=".ui.MyLocationActivity"
+            android:theme="@style/statusBarLight" />
+        <activity
+            android:name=".ui.MyOrderActivity"
+            android:theme="@style/statusBarLight" />
+        <activity
+            android:name=".ui.MyCartActivity"
+            android:theme="@style/statusBarLight" />
+        <activity
+            android:name=".ui.MyAccountActivity"
+            android:theme="@style/statusBarLight" />
+        <activity
+            android:name=".ui.OrderActivity"
+            android:theme="@style/statusBarLight" />
         <activity
             android:name=".ui.MealsDetailsActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.AddLocationActivity"
+            android:theme="@style/statusBarLight"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".feature.EditPassword.view.EditPasswordActivity"
+            android:theme="@style/statusBarLight"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".feature.editAccount.view.EditAccountActivity"
+            android:theme="@style/statusBarLight"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.menu.MenuActivity"
             android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/statusBarLight" />
         <activity android:name=".ui.ResturentDetailsActivity" />
         <activity
             android:name=".ui.Favorites.Favorites"
             android:label="@string/title_activity_favorites"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/statusBarLight" />
 
         <activity android:name=".feature.verfication.view.VerificationActivity" />
         <activity
             android:name=".feature.forgetPassword.view.ForgetPasswordActivity"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".feature.signUp.view.SignUpActivity" />
         <activity android:name=".feature.login.view.LoginActivity" />
-        <activity android:name=".feature.introApp.IntroAppActivity" />
+        <activity
+            android:name=".feature.introApp.IntroAppActivity"
+            android:theme="@style/statusBarLight" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".feature.splash.SplashActivity"

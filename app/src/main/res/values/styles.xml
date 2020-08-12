@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -6,13 +6,19 @@
         <item name="colorPrimaryDark">#2C32BE</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
-
     </style>
+
+
+    <style name="statusBarLight" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+    </style>
+
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
 
     <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
         <item name="textAllCaps">false</item>
@@ -68,7 +74,6 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">17sp</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/blackColor</item>
     </style>
 
@@ -81,7 +86,6 @@
         <item name="android:layout_marginBottom">@dimen/_16sdp</item>
         <item name="cardElevation">@dimen/_1sdp</item>
     </style>
-
 
 
     <style name="WidthHeight">
@@ -115,7 +119,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_marginStart">@dimen/_16sdp</item>
         <item name="android:layout_marginEnd">@dimen/_16sdp</item>
-        <item name="android:layout_marginTop">@dimen/_32sdp</item>
+        <item name="android:layout_marginTop">@dimen/_16sdp</item>
         <item name="android:drawablePadding">@dimen/_10sdp</item>
         <item name="android:padding">@dimen/_10sdp</item>
         <item name="android:textAlignment">viewStart</item>
@@ -127,7 +131,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/_16sdp</item>
         <item name="android:layout_marginEnd">@dimen/_16sdp</item>
-        <item name="android:layout_marginTop">@dimen/_32sdp</item>
+        <item name="android:layout_marginTop">@dimen/_16sdp</item>
         <item name="android:layout_marginBottom">@dimen/_8sdp</item>
         <item name="android:textSize">14sp</item>
     </style>
@@ -152,6 +156,7 @@
         <item name="android:layout_marginEnd">@dimen/_147sdp</item>
         <item name="android:src">@drawable/reset_image</item>
     </style>
+
     <style name="cameraImageEditAccount">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -266,7 +271,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_marginBottom">@dimen/_4sdp</item>
-        <item name="android:layout_marginEnd">@dimen/_24sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
         <item name="android:layout_marginTop">@dimen/_16sdp</item>
     </style>
 
@@ -289,6 +294,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
     </style>
+
     <style name="titleNestedMeals">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -357,7 +363,6 @@
     </style>
 
 
-
     <style name="radioButtonNestedMeals">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
@@ -404,6 +409,7 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+
     <style name="linearAccountBody">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -434,7 +440,6 @@
     </style>
 
 
-
     <style name="titleAccountLinear">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -455,6 +460,14 @@
         <item name="android:textColor">@color/viewColor</item>
         <item name="android:layout_marginTop">@dimen/_8sdp</item>
         <item name="android:layout_marginBottom">@dimen/_8sdp</item>
+    </style>
+
+    <style name="viewAddLocation">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_1sdp</item>
+        <item name="android:background">@color/viewColor</item>
+        <item name="android:layout_marginStart">@dimen/_4sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_4sdp</item>
     </style>
 
     <style name="ratingValue">
@@ -511,7 +524,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/_4sdp</item>
-       <item name="android:textColor">@color/blackColor</item>
+        <item name="android:textColor">@color/blackColor</item>
         <item name="android:textSize">13sp</item>
     </style>
 
@@ -591,7 +604,6 @@
     </style>
 
 
-
     <style name="scrollSignIn">
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">match_parent</item>
@@ -651,7 +663,6 @@
     </style>
 
 
-
     <style name="linearFacebook">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -673,9 +684,9 @@
 
     <style name="recyclerStarting">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/_20sdp</item>
-        <item name="android:textColor">@color/facebookColor</item>
+        <item name="android:paddingTop">@dimen/_80sdp</item>
         <item name="android:textSize">14sp</item>
     </style>
 
@@ -696,8 +707,6 @@
         <item name="android:layout_marginTop">@dimen/_150sdp</item>
         <item name="android:layout_marginStart">@dimen/_40sdp</item>
     </style>
-
-
 
 
 </resources>

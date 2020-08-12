@@ -37,8 +37,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_order"
-            style="@style/recycler"
-            android:layout_marginBottom="@dimen/_40sdp" />
+            style="@style/recycler" />
     </androidx.cardview.widget.CardView>
 
 

@@ -13,6 +13,7 @@ import ps.ns.eatapp.databinding.ActivityMyAccountBinding;
 import ps.ns.eatapp.feature.EditPassword.view.EditPasswordActivity;
 import ps.ns.eatapp.feature.editAccount.view.EditAccountActivity;
 import ps.ns.eatapp.ui.Favorites.Favorites;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 import static ps.ns.eatapp.utils.ConstantApp.FROM_WHERE;
 
@@ -33,6 +34,8 @@ public class MyAccountActivity extends AppCompatActivity implements View.OnClick
         view = binding.getRoot();
         setContentView(view);
         viewListener();
+        AppSharedMethod.statusBarLight(this);
+
     }
 
     private void viewListener() {

@@ -15,6 +15,7 @@ import ps.ns.eatapp.MainActivity;
 import ps.ns.eatapp.R;
 import ps.ns.eatapp.databinding.ActivityFavoritesBinding;
 import ps.ns.eatapp.ui.Favorites.ui.main.SectionsPagerAdapter;
+import ps.ns.eatapp.utils.AppSharedMethod;
 
 public class Favorites extends AppCompatActivity implements View.OnClickListener{
     private View view;
@@ -26,7 +27,7 @@ public class Favorites extends AppCompatActivity implements View.OnClickListener
         binding = ActivityFavoritesBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         setContentView(view);
-
+        AppSharedMethod.statusBarLight(this);
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
