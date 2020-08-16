@@ -34,7 +34,7 @@ public class LoginPresenter {
 
     private LoginView mView;
     private Activity mActivity;
-    private CallbackManager callbackManager;
+    private CallbackManager callBackManager;
 
 
     public LoginPresenter(Activity mActivity, LoginView mView) {
@@ -55,13 +55,13 @@ public class LoginPresenter {
 //    }
 
     public void signInWithFacebook() {
-        callbackManager = CallbackManager.Factory.create();
+        callBackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().logInWithReadPermissions(mActivity, Arrays.asList("email", "user_photos", "public_profile"));
-        LoginManager.getInstance().registerCallback(callbackManager,
+        LoginManager.getInstance().registerCallback(callBackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                      //  String userId = loginResult.getAccessToken().getUserId();
+                        //  String userId = loginResult.getAccessToken().getUserId();
                     }
 
                     @Override

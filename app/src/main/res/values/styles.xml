@@ -663,8 +663,12 @@
 
 
     <style name="linearFacebook">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/_10sdp</item>
+        <item name="android:layout_marginStart">@dimen/_16sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_16sdp</item>
         <item name="android:layout_marginTop">@dimen/_30sdp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textColor">@color/hintColor</item>
@@ -684,8 +688,9 @@
     <style name="recyclerStarting">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/_20sdp</item>
-        <item name="android:paddingTop">@dimen/_80sdp</item>
+        <item name="android:layout_marginTop">@dimen/_40sdp</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:gravity">bottom</item>
         <item name="android:textSize">14sp</item>
     </style>
 
@@ -693,7 +698,8 @@
     <style name="linearButtonStarting">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/_70sdp</item>
-        <item name="android:layout_marginBottom">@dimen/_50sdp</item>
+        <item name="android:layout_marginBottom">@dimen/_30sdp</item>
+        <item name="android:layout_marginTop">@dimen/_16sdp</item>
         <item name="android:layout_marginStart">@dimen/_8sdp</item>
         <item name="android:layout_marginEnd">@dimen/_8sdp</item>
         <item name="android:orientation">horizontal</item>

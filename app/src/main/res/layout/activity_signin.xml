@@ -67,8 +67,8 @@
 
                 <LinearLayout
                     android:id="@+id/ll_sign_with_facebook"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    style="@style/linearFacebook">
+                    style="@style/linearFacebook"
+                    android:layout_marginTop="@dimen/_8sdp">
 
                     <ImageView
                         android:layout_width="20dp"
@@ -79,13 +79,6 @@
                         style="@style/textFacebook"
                         android:text="@string/sign_in_with_facebook" />
                 </LinearLayout>
-
-<!--                <com.facebook.login.widget.LoginButton-->
-<!--                    android:id="@+id/btn_facebook"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center_horizontal"-->
-<!--                    android:layout_marginTop="8dp"/>-->
 
                 <LinearLayout
                     style="@style/linearHaveAccount"
