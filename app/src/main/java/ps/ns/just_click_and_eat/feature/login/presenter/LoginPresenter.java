@@ -1,16 +1,22 @@
 package ps.ns.just_click_and_eat.feature.login.presenter;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.os.Handler;
 import android.util.ArrayMap;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.material.textfield.TextInputEditText;
+
+import org.json.JSONObject;
 
 import java.util.Arrays;
 
@@ -44,27 +50,47 @@ public class LoginPresenter {
         mActivity.startActivity(ForgetPasswordActivity.newInstance(mActivity, FROM_LOGIN));
     }
 
+//    public void goToMainActivity(){
+//        mActivity.startActivity(MainActivity.newInstance(mActivity, FROM_LOGIN));
+//    }
+
     public void signInWithFacebook() {
         callbackManager = CallbackManager.Factory.create();
+        LoginManager.getInstance().logInWithReadPermissions(mActivity, Arrays.asList("email", "user_photos", "public_profile"));
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        // App code
-                        LoginManager.getInstance().logInWithReadPermissions(mActivity, Arrays.asList("public_profile"));
+                      //  String userId = loginResult.getAccessToken().getUserId();
                     }
 
                     @Override
                     public void onCancel() {
-                        // App code
                     }
 
                     @Override
                     public void onError(FacebookException exception) {
-                        // App code
                     }
                 });
     }
+
+
+//    private void graphRequest(LoginResult loginResult){
+//        GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+//            @Override
+//            public void onCompleted(JSONObject object, GraphResponse response) {
+//                displayUserInfo(object);
+//            }
+//        });
+//        Bundle bundle = new Bundle();
+//        bundle.putString("fields", "first_name, last_name, email, id");
+//        graphRequest.setParameters(bundle);
+//        graphRequest.executeAsync();
+//    }
+//
+//    private void displayUserInfo(JSONObject object) {
+//        String first_name, last_name, email, id;
+//    }
 
 
     public void validateInputs(TextInputEditText etEmail, TextInputEditText etPassword) {

@@ -656,7 +656,6 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">@dimen/_16sdp</item>
-        <item name="android:layout_marginTop">@dimen/_20sdp</item>
         <item name="android:gravity">right</item>
         <item name="android:textColor">@color/hintColor</item>
         <item name="android:textSize">14sp</item>

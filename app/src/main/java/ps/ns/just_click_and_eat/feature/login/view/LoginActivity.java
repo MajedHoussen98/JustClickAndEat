@@ -3,9 +3,12 @@ package ps.ns.just_click_and_eat.feature.login.view;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.ArrayMap;
 import android.view.View;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -14,6 +17,7 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import ps.ns.just_click_and_eat.databinding.ActivitySigninBinding;
@@ -60,6 +64,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
         binding.tvSignUp.setOnClickListener(v -> presenter.goToSignUp());
         binding.tvForgetPassword.setOnClickListener(v -> presenter.goToForget());
         binding.llSignWithFacebook.setOnClickListener(v -> presenter.signInWithFacebook());
+
     }
 
     @Override
@@ -67,4 +72,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
 }
