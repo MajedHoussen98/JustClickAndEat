@@ -7,7 +7,7 @@
     android:layoutDirection="ltr"
     android:orientation="vertical"
     android:textDirection="ltr"
-    tools:context=".ui.MyAccountActivity">
+    tools:context=".feature.myAccount.view.MyAccountActivity">
 
 
     <androidx.cardview.widget.CardView android:id="@+id/cardView_toolbar"

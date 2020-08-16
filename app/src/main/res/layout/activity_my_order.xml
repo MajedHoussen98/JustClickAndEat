@@ -7,7 +7,7 @@
     android:layoutDirection="ltr"
     android:orientation="vertical"
     android:textDirection="ltr"
-    tools:context=".ui.MyOrderActivity">
+    tools:context=".feature.myOrder.view.MyOrderActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_toolbar"

@@ -5,7 +5,7 @@
     style="@style/HeightWidthMatch"
     android:layoutDirection="ltr"
     android:textDirection="ltr"
-    tools:context=".ui.MealsDetailsActivity">
+    tools:context=".feature.mealsDetails.view.MealsDetailsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -68,7 +68,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             style="@style/WidthHeight"
-            tools:context=".ui.ResturentDetailsActivity">
+            tools:context=".feature.resturentDetails.view.ResturentDetailsActivity">
 
             <LinearLayout
                 android:id="@+id/ll_part1"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:textDirection="ltr"
     android:layoutDirection="ltr"
-    tools:context=".ui.menu.Salads" >
+    tools:context=".feature.menu.Salads" >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_salads"

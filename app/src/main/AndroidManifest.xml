@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="ps.ns.eatapp">
+    package="ps.ns.just_click_and_eat">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <application
@@ -11,61 +11,80 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
         <activity
-            android:name=".ui.NotificationActivity"
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="ps.ns.just_click_and_eat.feature.notification.view.NotificationActivity"
             android:theme="@style/statusBarLight" />
         <activity
-            android:name=".ui.MyLocationActivity"
+            android:name="ps.ns.just_click_and_eat.feature.myLocation.view.MyLocationActivity"
             android:theme="@style/statusBarLight" />
         <activity
-            android:name=".ui.MyOrderActivity"
+            android:name="ps.ns.just_click_and_eat.feature.myOrder.view.MyOrderActivity"
             android:theme="@style/statusBarLight" />
         <activity
-            android:name=".ui.MyCartActivity"
+            android:name="ps.ns.just_click_and_eat.feature.myCart.view.MyCartActivity"
             android:theme="@style/statusBarLight" />
         <activity
-            android:name=".ui.MyAccountActivity"
+            android:name="ps.ns.just_click_and_eat.feature.myAccount.view.MyAccountActivity"
             android:theme="@style/statusBarLight" />
         <activity
-            android:name=".ui.OrderActivity"
+            android:name="ps.ns.just_click_and_eat.feature.order.view.OrderActivity"
             android:theme="@style/statusBarLight" />
         <activity
-            android:name=".ui.MealsDetailsActivity"
+            android:name="ps.ns.just_click_and_eat.feature.mealsDetails.view.MealsDetailsActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.AddLocationActivity"
+            android:name="ps.ns.just_click_and_eat.feature.addLocation.view.AddLocationActivity"
             android:theme="@style/statusBarLight"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".feature.EditPassword.view.EditPasswordActivity"
+            android:name="ps.ns.just_click_and_eat.feature.EditPassword.view.EditPasswordActivity"
             android:theme="@style/statusBarLight"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".feature.editAccount.view.EditAccountActivity"
+            android:name="ps.ns.just_click_and_eat.feature.editAccount.view.EditAccountActivity"
             android:theme="@style/statusBarLight"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.menu.MenuActivity"
+            android:name="ps.ns.just_click_and_eat.feature.menu.MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/statusBarLight" />
-        <activity android:name=".ui.ResturentDetailsActivity" />
+        <activity android:name="ps.ns.just_click_and_eat.feature.resturentDetails.view.ResturentDetailsActivity" />
         <activity
-            android:name=".ui.Favorites.Favorites"
+            android:name="ps.ns.just_click_and_eat.feature.Favorites.Favorites"
             android:label="@string/title_activity_favorites"
             android:theme="@style/statusBarLight" />
 
-        <activity android:name=".feature.verfication.view.VerificationActivity" />
+        <activity android:name="ps.ns.just_click_and_eat.feature.verfication.view.VerificationActivity" />
         <activity
-            android:name=".feature.forgetPassword.view.ForgetPasswordActivity"
+            android:name="ps.ns.just_click_and_eat.feature.forgetPassword.view.ForgetPasswordActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".feature.signUp.view.SignUpActivity" />
-        <activity android:name=".feature.login.view.LoginActivity" />
+        <activity android:name="ps.ns.just_click_and_eat.feature.signUp.view.SignUpActivity" />
+        <activity android:name="ps.ns.just_click_and_eat.feature.login.view.LoginActivity" />
         <activity
-            android:name=".feature.introApp.IntroAppActivity"
+            android:name="ps.ns.just_click_and_eat.feature.introApp.IntroAppActivity"
             android:theme="@style/statusBarLight" />
-        <activity android:name=".MainActivity" />
+        <activity android:name="ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity" />
         <activity
-            android:name=".feature.splash.SplashActivity"
+            android:name="ps.ns.just_click_and_eat.feature.splash.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

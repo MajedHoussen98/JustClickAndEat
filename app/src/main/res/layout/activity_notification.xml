@@ -7,7 +7,7 @@
     android:layoutDirection="ltr"
     android:orientation="vertical"
     android:textDirection="ltr"
-    tools:context=".ui.NotificationActivity">
+    tools:context=".feature.notification.view.NotificationActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_toolbar"

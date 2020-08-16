@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:textDirection="ltr"
     android:layoutDirection="ltr"
-    tools:context=".ui.Favorites.RestaurantsFavorites">
+    tools:context=".feature.Favorites.RestaurantsFavorites">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

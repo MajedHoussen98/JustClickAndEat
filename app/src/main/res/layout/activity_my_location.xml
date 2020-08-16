@@ -7,7 +7,7 @@
     android:layoutDirection="ltr"
     android:orientation="vertical"
     android:textDirection="ltr"
-    tools:context=".ui.MyLocationActivity">
+    tools:context=".feature.myLocation.view.MyLocationActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_toolbar"

@@ -8,7 +8,7 @@
     android:textDirection="ltr"
     android:layoutDirection="ltr"
     android:orientation="vertical"
-    tools:context=".dialogs.FilterDialogFragment"
+    tools:context=".feature.dialogs.FilterDialogFragment"
     android:focusable="true">
 
     <LinearLayout

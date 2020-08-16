@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:textDirection="ltr"
     android:layoutDirection="ltr"
-    tools:context=".ui.menu.MenuActivity">
+    tools:context=".feature.menu.MenuActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         style="@style/WidthHeight"
@@ -68,7 +68,7 @@
 
         <fragment
             android:id="@+id/fragment"
-            android:name="ps.ns.eatapp.ui.menu.StartersMenu"
+            android:name="ps.ns.just_click_and_eat.feature.menu.StartersMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

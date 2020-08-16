@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
     android:textDirection="ltr"
-    tools:context=".ui.AddLocationActivity">
+    tools:context=".feature.addLocation.view.AddLocationActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_toolbar"

@@ -80,6 +80,15 @@
                         android:text="@string/sign_in_with_facebook" />
                 </LinearLayout>
 
+<!--                <com.facebook.login.widget.LoginButton-->
+<!--                    android:id="@+id/btn_facebook"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@color/whiteColor"-->
+<!--                    android:layout_gravity="center_horizontal"-->
+<!--                    android:layout_marginTop="30dp"-->
+<!--                    android:layout_marginBottom="30dp" />-->
+
                 <LinearLayout
                     style="@style/linearHaveAccount"
                     android:layout_marginTop="@dimen/_10sdp">
