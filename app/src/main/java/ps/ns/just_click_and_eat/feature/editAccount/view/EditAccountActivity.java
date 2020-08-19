@@ -5,9 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
+
 import ps.ns.just_click_and_eat.databinding.ActivityEditAccountBinding;
 import ps.ns.just_click_and_eat.feature.editAccount.presenter.EditAccountPresenter;
+import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
+import ps.ns.just_click_and_eat.utils.SharedPreferencesManager;
 
 public class EditAccountActivity extends AppCompatActivity implements EditAccountView {
 
@@ -28,6 +32,8 @@ public class EditAccountActivity extends AppCompatActivity implements EditAccoun
     }
 
     private void initViews() {
+        Glide.with(this).load(SharedPreferencesManager.getProfileDataUser(EditAccountActivity.this).getString("profile_image", "profile_image")).into(binding.ivUser);
+        binding.etName.setText(SharedPreferencesManager.getProfileDataUser(EditAccountActivity.this).getString("user_name", "user_name"));
     }
 
 
@@ -36,7 +42,7 @@ public class EditAccountActivity extends AppCompatActivity implements EditAccoun
     }
 
     private void initListener() {
-        binding.bntSave.setOnClickListener(v -> presenter.validationInput(String.valueOf(binding.ivUser), binding.etName, binding.etEmail));
+        binding.bntSave.setOnClickListener(v -> presenter.validationInput(String.valueOf(binding.ivUser), binding.etName));
         binding.ibBack.setOnClickListener(v -> presenter.goToMyAccount());
     }
 

@@ -11,10 +11,10 @@ import java.util.ArrayList;
 
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.adapter.MyLocationAdapter;
+import ps.ns.just_click_and_eat.feature.myLocation.MyLocationAdapter;
 import ps.ns.just_click_and_eat.databinding.ActivityMyLocationBinding;
 import ps.ns.just_click_and_eat.feature.addLocation.view.AddLocationActivity;
-import ps.ns.just_click_and_eat.model.MyLocationModel;
+import ps.ns.just_click_and_eat.dataBase.MyLocationModel;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 public class MyLocationActivity extends AppCompatActivity implements MyLocationAdapter.ListItemClickListener, View.OnClickListener {

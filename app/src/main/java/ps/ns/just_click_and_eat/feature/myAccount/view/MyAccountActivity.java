@@ -10,9 +10,9 @@ import android.view.View;
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityMyAccountBinding;
-import ps.ns.just_click_and_eat.feature.EditPassword.view.EditPasswordActivity;
+import ps.ns.just_click_and_eat.feature.editPassword.view.EditPasswordActivity;
 import ps.ns.just_click_and_eat.feature.editAccount.view.EditAccountActivity;
-import ps.ns.just_click_and_eat.feature.Favorites.Favorites;
+import ps.ns.just_click_and_eat.feature.favorites.Favorites;
 import ps.ns.just_click_and_eat.feature.myLocation.view.MyLocationActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 

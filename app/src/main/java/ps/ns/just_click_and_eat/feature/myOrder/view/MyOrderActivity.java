@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.adapter.MyOrderAdapter;
+import ps.ns.just_click_and_eat.feature.myOrder.MyOrderAdapter;
 import ps.ns.just_click_and_eat.databinding.ActivityMyOrderBinding;
-import ps.ns.just_click_and_eat.model.MyOrderModel;
+import ps.ns.just_click_and_eat.dataBase.MyOrderModel;
 import ps.ns.just_click_and_eat.feature.order.view.OrderActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 

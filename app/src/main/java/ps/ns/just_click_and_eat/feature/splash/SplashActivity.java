@@ -8,22 +8,18 @@ import android.os.Handler;
 import android.view.View;
 
 import ps.ns.just_click_and_eat.databinding.ActivitySplashBinding;
-import ps.ns.just_click_and_eat.feature.introApp.IntroAppActivity;
+import ps.ns.just_click_and_eat.feature.introApp.view.IntroAppActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 public class SplashActivity extends AppCompatActivity {
-    private View view;
-    private ActivitySplashBinding binding;
-
-    private static int SPLASH_TIMER = 3000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivitySplashBinding.inflate(getLayoutInflater());
-        view = binding.getRoot();
+        ps.ns.just_click_and_eat.databinding.ActivitySplashBinding binding = ActivitySplashBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
         setContentView(view);
         AppSharedMethod.statusBarHide(view);
+        int SPLASH_TIMER = 3000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

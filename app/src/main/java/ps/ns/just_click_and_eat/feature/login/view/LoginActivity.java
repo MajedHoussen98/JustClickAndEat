@@ -31,12 +31,12 @@ public class LoginActivity extends BaseActivity implements LoginView {
     private LoginPresenter presenter;
     private CallbackManager callbackManager;
 
+
     public static Intent newInstance(Activity mActivity, int fromWhere) {
         Intent intent = new Intent(mActivity, LoginActivity.class);
         intent.putExtra(FROM_WHERE, fromWhere);
         return intent;
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
         initPresenter();
         viewListener();
     }
+
 
     private void initViews() {
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -63,15 +64,18 @@ public class LoginActivity extends BaseActivity implements LoginView {
         binding.btnSignIn.setOnClickListener(v -> presenter.validateInputs(binding.etEmail, binding.etPassword));
         binding.tvSignUp.setOnClickListener(v -> presenter.goToSignUp());
         binding.tvForgetPassword.setOnClickListener(v -> presenter.goToForget());
-        binding.llSignWithFacebook.setOnClickListener(v -> presenter.signInWithFacebook());
-
+        binding.llSignWithFacebook.setOnClickListener(v -> presenter.signInWithFacebook(callbackManager));
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-
+    @Override
+    public void showMessage(String msg) {
+        super.showMessage(msg);
+        snackErrorShow(binding.getRoot() , msg);
+    }
 }

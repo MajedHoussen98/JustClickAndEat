@@ -149,8 +149,8 @@
 
 
     <style name="ImageEditAccount">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">110dp</item>
+        <item name="android:layout_height">110dp</item>
         <item name="android:layout_marginStart">@dimen/_147sdp</item>
         <item name="android:layout_marginTop">@dimen/_15sdp</item>
         <item name="android:layout_marginEnd">@dimen/_147sdp</item>
@@ -160,7 +160,7 @@
     <style name="cameraImageEditAccount">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/_32sdp</item>
+        <item name="android:layout_marginTop">@dimen/_42sdp</item>
 
     </style>
 

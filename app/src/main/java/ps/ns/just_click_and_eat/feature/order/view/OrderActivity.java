@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.adapter.MyCartAdapter;
+import ps.ns.just_click_and_eat.feature.myCart.MyCartAdapter;
 import ps.ns.just_click_and_eat.databinding.ActivityOrderBinding;
 import ps.ns.just_click_and_eat.feature.mealsDetails.view.MealsDetailsActivity;
 import ps.ns.just_click_and_eat.feature.myCart.view.MyCartActivity;
-import ps.ns.just_click_and_eat.model.MyCartModel;
+import ps.ns.just_click_and_eat.dataBase.MyCartModel;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 public class OrderActivity extends AppCompatActivity implements MyCartAdapter.ListItemClickListener, View.OnClickListener {

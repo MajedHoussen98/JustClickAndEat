@@ -16,11 +16,9 @@ import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityResturentDetailsBinding;
 import ps.ns.just_click_and_eat.feature.menu.MenuActivity;
-import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 public class ResturentDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private View view;
     private ActivityResturentDetailsBinding binding;
     List<SlideModel> list = new ArrayList<>();
 
@@ -29,17 +27,13 @@ public class ResturentDetailsActivity extends AppCompatActivity implements View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityResturentDetailsBinding.inflate(getLayoutInflater());
-        view = binding.getRoot();
+        View view = binding.getRoot();
         setContentView(view);
-        addSilderImage();
+        addSliderImage();
         listenerViews();
-        AppSharedMethod.statusBarHide(view);
-
-
     }
 
-    private void addSilderImage() {
-
+    private void addSliderImage() {
         list.add(new SlideModel(R.drawable.slideimage1, ScaleTypes.CENTER_CROP));
         list.add(new SlideModel(R.drawable.slideimage2, ScaleTypes.CENTER_CROP));
         binding.imageSlider.setImageList(list, ScaleTypes.CENTER_CROP);

@@ -1,10 +1,12 @@
 package ps.ns.just_click_and_eat.utils;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 public class SharedPreferencesManager {
+
     private static final String SHARED_PREF_NAME = "my_shared_preferences";
     @SuppressLint("StaticFieldLeak")
     private static SharedPreferencesManager manager;
@@ -21,36 +23,41 @@ public class SharedPreferencesManager {
         return manager;
     }
 
-//    public void saveUser(DataUser user, String password) {
-//        Log.e("user", user.toString());
-//        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.putInt("id", user.getId());
-//        editor.putInt("user_no", user.getUser_no());
-//        editor.putString("name", user.getName());
-//        editor.putString("pic", user.getPic());
-//        editor.putString("token", user.getToken());
-//        editor.putString("password", password);
-//
-//        editor.apply();
-//    }
-
-    public boolean isLoggedIn() {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.getInt("id", -1) != -1;
+    public static void saveUser(Activity activity, String token, boolean isLogin) {
+        SharedPreferences sharedPreferences = activity.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("token", token);
+        editor.putBoolean("isLogin", isLogin);
+        editor.apply();
     }
 
-//    public DataUser getUser() {
-//        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-//        return new DataUser(
-//                sharedPreferences.getInt("id", -1),
-//                sharedPreferences.getInt("user_no", -1),
-//                sharedPreferences.getString("name", null),
-//                sharedPreferences.getString("pic", null),
-//                sharedPreferences.getString("token", null),
-//                sharedPreferences.getString("password", null)
-//
-//        );
+    public static void profileDataUserSaved(Activity activity, String profileImage, String userName) {
+        SharedPreferences sharedPreferences = activity.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("profile_image", profileImage);
+        editor.putString("user_name", userName);
+        editor.apply();
+    }
+
+    public static SharedPreferences getProfileDataUser(Activity activity) {
+        return activity.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+    }
+
+    public static void savedUserEmail(Activity activity, String email) {
+        SharedPreferences sharedPreferences = activity.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("email", email);
+        editor.apply();
+    }
+
+    public static SharedPreferences getUserEmail(Activity activity) {
+        return activity.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+    }
+
+    public static boolean isLoggedIn(Activity activity) {
+        SharedPreferences sharedPreferences = activity.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean("isLogin", false);
+    }
 
     public void clear() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);

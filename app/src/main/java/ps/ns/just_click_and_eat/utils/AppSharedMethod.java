@@ -1,6 +1,8 @@
 package ps.ns.just_click_and_eat.utils;
 
 import android.app.Activity;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -11,6 +13,8 @@ import android.widget.EditText;
 import com.mukesh.OtpView;
 
 import ps.ns.just_click_and_eat.R;
+
+import static androidx.core.content.ContextCompat.getSystemService;
 
 public class AppSharedMethod {
 
@@ -51,7 +55,6 @@ public class AppSharedMethod {
         otpView.setError(message);
         otpView.requestFocus();
     }
-
 
     public static void statusBarLight(Activity activity){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

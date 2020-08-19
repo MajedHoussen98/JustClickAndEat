@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.adapter.NotificationAdapter;
+import ps.ns.just_click_and_eat.feature.notification.NotificationAdapter;
 import ps.ns.just_click_and_eat.databinding.ActivityNotificationBinding;
-import ps.ns.just_click_and_eat.model.MyNotificationModel;
+import ps.ns.just_click_and_eat.dataBase.MyNotificationModel;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 public class NotificationActivity extends AppCompatActivity implements NotificationAdapter.ListItemClickListener, View.OnClickListener {

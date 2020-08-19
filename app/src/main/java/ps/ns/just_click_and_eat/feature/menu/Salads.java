@@ -15,8 +15,7 @@ import java.util.ArrayList;
 import ps.ns.just_click_and_eat.databinding.FragmentSaladsBinding;
 import ps.ns.just_click_and_eat.feature.mealsDetails.view.MealsDetailsActivity;
 import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.adapter.MenuAdapter;
-import ps.ns.just_click_and_eat.model.MenuModel;
+import ps.ns.just_click_and_eat.dataBase.MenuModel;
 
 public class Salads extends Fragment implements MenuAdapter.ListItemClickListener {
 

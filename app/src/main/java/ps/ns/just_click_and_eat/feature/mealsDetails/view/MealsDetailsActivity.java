@@ -30,7 +30,6 @@ public class MealsDetailsActivity extends AppCompatActivity implements View.OnCl
         view = binding.getRoot();
         addSliderImage();
         listenerViews();
-        AppSharedMethod.statusBarHide(view);
         setContentView(view);
     }
 

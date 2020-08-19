@@ -26,7 +26,7 @@ public class EditAccountPresenter {
         mActivity.startActivity(MyAccountActivity.newInstance(mActivity, FROM_EDIT_ACCOUNT));
     }
 
-    public void validationInput(String image, EditText etName, EditText etEmail) {
+    public void validationInput(String image, EditText etName) {
         if (TextUtils.isEmpty(image)) {
             return;
         }
@@ -36,23 +36,12 @@ public class EditAccountPresenter {
             return;
         }
 
-        if (AppSharedMethod.isEmptyEditText(etEmail)) {
-            AppSharedMethod.setErrorEditText(etEmail, mActivity.getString(R.string.emty_email));
-
-            return;
-        }
-
-        if (AppSharedMethod.isInvalidEmail(etEmail)) {
-            AppSharedMethod.setErrorEditText(etEmail, mActivity.getString(R.string.errorEmail));
-            return;
-        }
 
 
         ArrayMap<String, Object> params = new ArrayMap<>();
 
         params.put("image", image);
         params.put("name", AppSharedMethod.getTextFromEditText(etName));
-        params.put("email", AppSharedMethod.getTextFromEditText(etEmail));
 
         editAccountRequest();
 

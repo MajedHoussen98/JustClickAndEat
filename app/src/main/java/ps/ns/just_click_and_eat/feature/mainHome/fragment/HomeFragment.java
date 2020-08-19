@@ -14,10 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import java.util.ArrayList;
 
 import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.adapter.HomeAdapter;
+import ps.ns.just_click_and_eat.feature.mainHome.adapter.HomeAdapter;
 import ps.ns.just_click_and_eat.databinding.FragmentHomeBinding;
 import ps.ns.just_click_and_eat.feature.dialogs.FilterDialogFragment;
-import ps.ns.just_click_and_eat.model.HomeModel;
+import ps.ns.just_click_and_eat.network.asp.model.HomeModel;
 import ps.ns.just_click_and_eat.feature.resturentDetails.view.ResturentDetailsActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 

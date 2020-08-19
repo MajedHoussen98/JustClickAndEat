@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,52 +17,60 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.navigation.NavigationView;
 
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityMainBinding;
-import ps.ns.just_click_and_eat.feature.Favorites.Favorites;
+import ps.ns.just_click_and_eat.feature.favorites.Favorites;
+import ps.ns.just_click_and_eat.feature.introApp.view.IntroAppActivity;
 import ps.ns.just_click_and_eat.feature.myAccount.view.MyAccountActivity;
 import ps.ns.just_click_and_eat.feature.myCart.view.MyCartActivity;
 import ps.ns.just_click_and_eat.feature.myLocation.view.MyLocationActivity;
 import ps.ns.just_click_and_eat.feature.notification.view.NotificationActivity;
 import ps.ns.just_click_and_eat.feature.myOrder.view.MyOrderActivity;
+import ps.ns.just_click_and_eat.utils.SharedPreferencesManager;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
     public static Intent newInstance(Activity mActivity, int fromWhere) {
         Intent intent = new Intent(mActivity, MainActivity.class);
         intent.putExtra(FROM_WHERE, fromWhere);
         return intent;
     }
 
-    private ActivityMainBinding binding;
-
+    private ImageView userImage;
+    private TextView userName, userEmail;
     private ImageView iconsMenu;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private NavController navController;
 
+    @SuppressLint("CheckResult")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        ps.ns.just_click_and_eat.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
         initViews();
         initListeners();
-
     }
 
+
     private void initViews() {
+        navigationView = findViewById(R.id.nav_view);
+        View header = navigationView.getHeaderView(0);
+        userImage = header.findViewById(R.id.iv_user);
+        userEmail = header.findViewById(R.id.tv_user_email);
+        userName = header.findViewById(R.id.tv_user_name);
         iconsMenu = findViewById(R.id.icons_menu);
         drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navigationView, navController);
+        loadHeaderData();
     }
 
     private void initListeners() {
@@ -92,6 +101,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 } else if (item.getItemId() == R.id.nav_favorites) {
                     startActivity(new Intent(MainActivity.this, Favorites.class));
+                } else if (item.getItemId() == R.id.nav_log_out) {
+                    SharedPreferencesManager.getInstance(MainActivity.this).clear();
+                    startActivity(new Intent(MainActivity.this, IntroAppActivity.class));
+                    finish();
                 }
                 drawer.closeDrawer(Gravity.LEFT);
                 return true;
@@ -99,6 +112,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    @SuppressLint("CheckResult")
+    private void loadHeaderData() {
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.reset_image);
+        Glide.with(this).load(SharedPreferencesManager.getProfileDataUser(MainActivity.this).getString("profile_image", "profile_image")).apply(requestOptions).into(userImage);
+        userName.setText(SharedPreferencesManager.getProfileDataUser(MainActivity.this).getString("user_name", "user name"));
+        userEmail.setText(SharedPreferencesManager.getUserEmail(MainActivity.this).getString("email", "email@example.com"));
+    }
+
+    @SuppressLint("RtlHardcoded")
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.icons_menu) {
