@@ -16,7 +16,7 @@ import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityIntroAppBinding;
 import ps.ns.just_click_and_eat.dataBase.IntroModel;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
-import ps.ns.just_click_and_eat.utils.SharedPreferencesManager;
+import ps.ns.just_click_and_eat.utils.AppSharedData;
 
 public class IntroAppActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -61,7 +61,7 @@ public class IntroAppActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onStart() {
         super.onStart();
-        if (SharedPreferencesManager.isLoggedIn(IntroAppActivity.this)) {
+        if (AppSharedData.isLoggedIn(IntroAppActivity.this)) {
             startActivity(new Intent(getBaseContext(), MainActivity.class));
             finish();
         }

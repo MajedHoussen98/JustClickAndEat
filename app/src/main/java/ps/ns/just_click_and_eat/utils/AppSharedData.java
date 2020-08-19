@@ -4,23 +4,38 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
-public class SharedPreferencesManager {
+import ps.ns.just_click_and_eat.network.asp.model.UserData;
+
+public class AppSharedData {
 
     private static final String SHARED_PREF_NAME = "my_shared_preferences";
     @SuppressLint("StaticFieldLeak")
-    private static SharedPreferencesManager manager;
+    private static AppSharedData manager;
     private Context context;
 
-    public SharedPreferencesManager(Context context) {
+    public AppSharedData(Context context) {
         this.context = context;
     }
 
-    public static synchronized SharedPreferencesManager getInstance(Context context) {
+    public static synchronized AppSharedData getInstance(Context context) {
         if (context != null) {
-            manager = new SharedPreferencesManager(context);
+            manager = new AppSharedData(context);
         }
         return manager;
+    }
+
+    public void saveUser(UserData user, String password) {
+        Log.e("user", user.toString());
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("id", user.getId());
+        editor.putString("name", user.getName());
+        editor.putString("email", user.getEmail());
+        editor.putString("pic", user.getAvatar());
+        editor.putString("password", password);
+        editor.apply();
     }
 
     public static void saveUser(Activity activity, String token, boolean isLogin) {

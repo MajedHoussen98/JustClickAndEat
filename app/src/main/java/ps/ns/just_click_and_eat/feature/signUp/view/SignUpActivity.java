@@ -46,4 +46,10 @@ public class SignUpActivity extends BaseActivity implements SignUpView {
         binding.tvBackSignIn.setOnClickListener(v -> presenter.goToLogin());
     }
 
+    @Override
+    public void showMessage(String msg) {
+        super.showMessage(msg);
+        snackErrorShow(binding.getRoot() , msg);
+    }
+
 }

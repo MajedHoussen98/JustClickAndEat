@@ -30,7 +30,7 @@ import ps.ns.just_click_and_eat.feature.myCart.view.MyCartActivity;
 import ps.ns.just_click_and_eat.feature.myLocation.view.MyLocationActivity;
 import ps.ns.just_click_and_eat.feature.notification.view.NotificationActivity;
 import ps.ns.just_click_and_eat.feature.myOrder.view.MyOrderActivity;
-import ps.ns.just_click_and_eat.utils.SharedPreferencesManager;
+import ps.ns.just_click_and_eat.utils.AppSharedData;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else if (item.getItemId() == R.id.nav_favorites) {
                     startActivity(new Intent(MainActivity.this, Favorites.class));
                 } else if (item.getItemId() == R.id.nav_log_out) {
-                    SharedPreferencesManager.getInstance(MainActivity.this).clear();
+                    AppSharedData.getInstance(MainActivity.this).clear();
                     startActivity(new Intent(MainActivity.this, IntroAppActivity.class));
                     finish();
                 }
@@ -116,9 +116,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void loadHeaderData() {
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(R.drawable.reset_image);
-        Glide.with(this).load(SharedPreferencesManager.getProfileDataUser(MainActivity.this).getString("profile_image", "profile_image")).apply(requestOptions).into(userImage);
-        userName.setText(SharedPreferencesManager.getProfileDataUser(MainActivity.this).getString("user_name", "user name"));
-        userEmail.setText(SharedPreferencesManager.getUserEmail(MainActivity.this).getString("email", "email@example.com"));
+        Glide.with(this).load(AppSharedData.getProfileDataUser(MainActivity.this).getString("profile_image", "profile_image")).apply(requestOptions).into(userImage);
+        userName.setText(AppSharedData.getProfileDataUser(MainActivity.this).getString("user_name", "user name"));
+        userEmail.setText(AppSharedData.getUserEmail(MainActivity.this).getString("email", "email@example.com"));
     }
 
     @SuppressLint("RtlHardcoded")

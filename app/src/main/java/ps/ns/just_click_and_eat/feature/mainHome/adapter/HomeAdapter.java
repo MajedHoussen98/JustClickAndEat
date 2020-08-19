@@ -46,17 +46,17 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.ViewHolder holder, int position) {
         final HomeModel data = list.get(position);
-        Glide.with(context).load(data.getResturantPic()).into(holder.resturant_pic);
-        holder.resturant_name.setText(data.getResturant_name());
-        holder.resturant_status.setText(data.getResturant_status());
-        holder.resturant_address.setText(data.getResturant_address());
-        holder.rating_number.setText(String.valueOf(data.getRating_number()));
-        holder.resturant_rating.getNumStars();
+        Glide.with(context).load(data.getLogoUrl()).into(holder.restaurant_pic);
+        holder.restaurant_name.setText(data.getName());
+        holder.restaurant_status.setText(data.getStatus());
+        holder.restaurant_address.setText(data.getAddress());
+        holder.rating_number.setText(String.valueOf(data.getRating()));
+        holder.restaurant_rating.setRating(data.getRating());
 
-        if (data.getResturant_status().equals("Open")){
-            holder.resturant_status.setTextColor(Color.parseColor("#74B743"));
+        if (data.getStatus().equals("Open")){
+            holder.restaurant_status.setTextColor(Color.parseColor("#74B743"));
         }else {
-            holder.resturant_status.setTextColor(Color.parseColor("#C11313"));
+            holder.restaurant_status.setTextColor(Color.parseColor("#C11313"));
         }
     }
 
@@ -66,20 +66,20 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView resturant_pic;
-        TextView resturant_name, resturant_status, resturant_address, rating_number;
-        RatingBar resturant_rating;
+        ImageView restaurant_pic;
+        TextView restaurant_name, restaurant_status, restaurant_address, rating_number;
+        RatingBar restaurant_rating;
         private LinearLayout ll_home;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            resturant_pic = itemView.findViewById(R.id.iv_resturant);
-            resturant_name = itemView.findViewById(R.id.tv_resturant_name);
-            resturant_status = itemView.findViewById(R.id.tv_resturant_status);
-            resturant_address = itemView.findViewById(R.id.tv_resturant_address);
-            resturant_rating = itemView.findViewById(R.id.rb_resturant);
+            restaurant_pic = itemView.findViewById(R.id.iv_resturant);
+            restaurant_name = itemView.findViewById(R.id.tv_resturant_name);
+            restaurant_status = itemView.findViewById(R.id.tv_resturant_status);
+            restaurant_address = itemView.findViewById(R.id.tv_resturant_address);
+            restaurant_rating = itemView.findViewById(R.id.rb_resturant);
             rating_number = itemView.findViewById(R.id.tv_rating_value);
             ll_home = itemView.findViewById(R.id.ll_home);
             ll_home.setOnClickListener(this);

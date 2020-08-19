@@ -4,9 +4,7 @@ import android.app.Activity;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.se.omapi.Session;
 import android.util.ArrayMap;
-import android.util.Log;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -15,7 +13,6 @@ import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.Profile;
-import com.facebook.internal.ImageRequest;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.material.textfield.TextInputEditText;
@@ -25,7 +22,6 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
-import ps.ns.just_click_and_eat.feature.login.view.LoginActivity;
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.forgetPassword.view.ForgetPasswordActivity;
@@ -33,9 +29,8 @@ import ps.ns.just_click_and_eat.feature.login.view.LoginView;
 import ps.ns.just_click_and_eat.feature.signUp.view.SignUpActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 import ps.ns.just_click_and_eat.utils.BaseActivity;
-import ps.ns.just_click_and_eat.utils.SharedPreferencesManager;
+import ps.ns.just_click_and_eat.utils.AppSharedData;
 
-import static androidx.constraintlayout.widget.Constraints.TAG;
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_LOGIN;
 
 public class LoginPresenter {
@@ -109,7 +104,7 @@ public class LoginPresenter {
             @Override
             public void onCompleted(JSONObject object, GraphResponse response) {
                 try {
-                    SharedPreferencesManager.savedUserEmail(mActivity, object.getString("email"));
+                    AppSharedData.savedUserEmail(mActivity, object.getString("email"));
                     goToMainActivity();
                     mActivity.finish();
                 } catch (JSONException e) {
@@ -129,7 +124,7 @@ public class LoginPresenter {
         assert accessToken != null;
         // Log.e("KEY", "" + accessToken.getToken());
         if (isLoggedIn) {
-            SharedPreferencesManager.saveUser(mActivity, accessToken.getToken(), true);
+            AppSharedData.saveUser(mActivity, accessToken.getToken(), true);
             mActivity.finish();
         }
     }
@@ -139,7 +134,7 @@ public class LoginPresenter {
         if (profile != null) {
             String profileImage = profile.getProfilePictureUri(300, 300).toString();
             String fullName = profile.getName();
-            SharedPreferencesManager.profileDataUserSaved(mActivity, profileImage, fullName);
+            AppSharedData.profileDataUserSaved(mActivity, profileImage, fullName);
         }
     }
 

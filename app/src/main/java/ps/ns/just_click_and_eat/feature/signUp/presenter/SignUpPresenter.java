@@ -2,13 +2,17 @@ package ps.ns.just_click_and_eat.feature.signUp.presenter;
 
 import android.app.Activity;
 import android.os.Handler;
-import android.util.ArrayMap;
 import android.widget.EditText;
+
+import androidx.collection.ArrayMap;
 
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.login.view.LoginActivity;
 import ps.ns.just_click_and_eat.feature.signUp.view.SignUpView;
 import ps.ns.just_click_and_eat.feature.verfication.view.VerificationActivity;
+import ps.ns.just_click_and_eat.network.asp.feature.Registration;
+import ps.ns.just_click_and_eat.network.asp.model.UserData;
+import ps.ns.just_click_and_eat.network.utils.RequestListener;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_SIGN_UP;
@@ -17,6 +21,7 @@ public class SignUpPresenter {
 
     private SignUpView mView;
     private Activity mActivity;
+    private Registration registration = new Registration();
 
     public SignUpPresenter(Activity mActivity, SignUpView mView) {
         this.mView = mView;
@@ -89,19 +94,33 @@ public class SignUpPresenter {
     }
 
     private void signUpRequest(ArrayMap<String, Object> params) {
-        if (mView != null) {
-            mView.showProgress();
-        }
 
-        new Handler().postDelayed(new Runnable() {
+        registration.registration(params, new RequestListener<UserData>() {
             @Override
-            public void run() {
-                if (mView != null) {
-                    mView.hideProgress();
-                }
+            public void onSuccess(UserData data) {
+                mView.showMessage("Successful Register...");
             }
-        }, 3000);
 
-        mActivity.startActivity(VerificationActivity.newInstance(mActivity, FROM_SIGN_UP));
+            @Override
+            public void onFail(String message, int code) {
+                mView.showMessage("Failure Register..." + message);
+            }
+        });
+//        if (mView != null) {
+//            mView.showProgress();
+//
+//        }
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (mView != null) {
+//                    mView.hideProgress();
+//                }
+//            }
+//        }, 3000);
+
+        //mView.showMessage("Successful Register...");
+
+      //  mActivity.startActivity(VerificationActivity.newInstance(mActivity, FROM_SIGN_UP));
     }
 }
