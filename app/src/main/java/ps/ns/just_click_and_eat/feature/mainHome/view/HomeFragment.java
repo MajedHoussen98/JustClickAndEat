@@ -1,7 +1,9 @@
 package ps.ns.just_click_and_eat.feature.mainHome.view;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,30 +22,26 @@ import ps.ns.just_click_and_eat.feature.dialogs.FilterDialogFragment;
 import ps.ns.just_click_and_eat.feature.mainHome.homePresenter.HomePresenter;
 import ps.ns.just_click_and_eat.feature.mainHome.view.HomeView;
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
+import ps.ns.just_click_and_eat.network.asp.feature.General;
 import ps.ns.just_click_and_eat.network.asp.model.HomeModel;
 import ps.ns.just_click_and_eat.feature.resturentDetails.view.ResturentDetailsActivity;
+import ps.ns.just_click_and_eat.network.utils.RequestListener;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
+import ps.ns.just_click_and_eat.utils.BaseFragment;
 
-public class HomeFragment extends Fragment implements HomeAdapter.ListItemClickListener, View.OnClickListener {
+public class HomeFragment extends BaseFragment implements HomeAdapter.ListItemClickListener, HomeView {
 
-
-    private HomeAdapter adapter;
-    private ArrayList<HomeModel> list;
-    private View view;
     private FragmentHomeBinding binding;
     private HomePresenter presenter;
-    private MainActivity mainActivity;
 
+    @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        TextView titleBar = getActivity().findViewById(R.id.title_bar);
-        titleBar.setText("Home");
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
-        view = binding.getRoot();
+        View view = binding.getRoot();
         initViews();
         listenerViews();
         return view;
-
     }
 
     @Override
@@ -53,13 +51,12 @@ public class HomeFragment extends Fragment implements HomeAdapter.ListItemClickL
     }
 
     private void initViews() {
-        list = new ArrayList<>();
-       presenter = new HomePresenter(HomeFragment.this, MainActivity.class);
-       getDataHome();
+        presenter = new HomePresenter(this, this);
+        getDataHome();
     }
 
     private void listenerViews() {
-        binding.icFilter.setOnClickListener(this);
+        binding.icFilter.setOnClickListener(v -> AppSharedMethod.openFilterDialog());
     }
 
     private void getDataHome() {
@@ -68,27 +65,10 @@ public class HomeFragment extends Fragment implements HomeAdapter.ListItemClickL
 
     @Override
     public void onListItemClicked(int position, int viewId) {
-
         if (viewId == R.id.ll_home) {
             Intent intent = new Intent(getActivity(), ResturentDetailsActivity.class);
             startActivity(intent);
         }
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.ic_filter:
-                openDialog();
-            //    AppSharedMethod.statusBarHide(view);
-                break;
-        }
-    }
-
-    private void openDialog() {
-        FilterDialogFragment dialog = new FilterDialogFragment();
-      //  dialog.setStyle(DialogFragment.STYLE_NORMAL,0);
-        dialog.show(getChildFragmentManager(), "FilterDialog");
     }
 
 }

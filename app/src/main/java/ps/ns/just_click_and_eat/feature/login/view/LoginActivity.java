@@ -76,6 +76,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     public void showMessage(String msg) {
         super.showMessage(msg);
-        snackErrorShow(binding.getRoot() , msg);
+        snackErrorShow(binding.getRoot(), msg);
     }
 }

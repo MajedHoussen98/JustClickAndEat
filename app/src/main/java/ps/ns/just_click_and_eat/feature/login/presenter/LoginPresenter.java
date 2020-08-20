@@ -37,7 +37,6 @@ public class LoginPresenter {
 
     private LoginView mView;
     private Activity mActivity;
-    private BaseActivity activity = new BaseActivity();
 
 
     public LoginPresenter(Activity mActivity, LoginView mView) {
@@ -59,25 +58,25 @@ public class LoginPresenter {
 
     public void signInWithFacebook(CallbackManager callBackManager) {
 
-            LoginManager.getInstance().logInWithReadPermissions(mActivity, Arrays.asList("email", "public_profile"));
-            LoginManager.getInstance().registerCallback(callBackManager,
-                    new FacebookCallback<LoginResult>() {
-                        @Override
-                        public void onSuccess(LoginResult loginResult) {
-                            setGraphRequest(loginResult);
-                            checkTokenSignIn();
-                        }
+        LoginManager.getInstance().logInWithReadPermissions(mActivity, Arrays.asList("email", "public_profile"));
+        LoginManager.getInstance().registerCallback(callBackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        setGraphRequest(loginResult);
+                        checkTokenSignIn();
+                    }
 
-                        @Override
-                        public void onCancel() {
-                        }
+                    @Override
+                    public void onCancel() {
+                    }
 
-                        @Override
-                        public void onError(FacebookException exception) {
-                            mView.showMessage("No internet connection please try again...");
-                        }
-                    });
-        }
+                    @Override
+                    public void onError(FacebookException exception) {
+                        mView.showMessage("No internet connection please try again...");
+                    }
+                });
+    }
 
     public void validateInputs(TextInputEditText etEmail, TextInputEditText etPassword) {
         if (AppSharedMethod.isEmptyEditText(etEmail)) {

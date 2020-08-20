@@ -22,8 +22,8 @@ public class BaseActivity extends AppCompatActivity implements BaseView {
     }
 
     private void initView() {
-       dialog = new ProgressDialog(this);
-       dialog.setMessage("Please wait...");
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Please wait...");
     }
 
 

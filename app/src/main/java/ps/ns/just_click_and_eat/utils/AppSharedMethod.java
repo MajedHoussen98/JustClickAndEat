@@ -10,9 +10,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 
+import androidx.fragment.app.FragmentManager;
+
 import com.mukesh.OtpView;
 
 import ps.ns.just_click_and_eat.R;
+import ps.ns.just_click_and_eat.feature.dialogs.FilterDialogFragment;
 
 import static androidx.core.content.ContextCompat.getSystemService;
 
@@ -74,5 +77,10 @@ public class AppSharedMethod {
 
     public static void statusBarShow(Activity activity){
         activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
+    public static void openFilterDialog() {
+        FilterDialogFragment dialog = new FilterDialogFragment();
+        dialog.show(dialog.getChildFragmentManager(), "FilterDialog");
     }
 }

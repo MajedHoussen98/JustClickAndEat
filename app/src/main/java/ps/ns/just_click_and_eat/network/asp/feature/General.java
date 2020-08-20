@@ -2,6 +2,7 @@ package ps.ns.just_click_and_eat.network.asp.feature;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
