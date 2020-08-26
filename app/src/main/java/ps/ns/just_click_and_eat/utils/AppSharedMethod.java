@@ -83,4 +83,14 @@ public class AppSharedMethod {
         FilterDialogFragment dialog = new FilterDialogFragment();
         dialog.show(dialog.getChildFragmentManager(), "FilterDialog");
     }
+
+    public static String clientSecret(){
+        return "j0RpbY9ij8fBBEYh1OPdDE6mqiVCFEhy4VLMLgQB";
+    }
+
+    public static String clientId(){
+        return "2";
+    }
+
+
 }

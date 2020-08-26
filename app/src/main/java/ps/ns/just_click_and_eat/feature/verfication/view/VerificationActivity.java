@@ -6,17 +6,22 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.collection.ArrayMap;
 
 import ps.ns.just_click_and_eat.databinding.ActivityVerificationCodeBinding;
 import ps.ns.just_click_and_eat.feature.verfication.verficationPresenter.VerificationPresenter;
+import ps.ns.just_click_and_eat.utils.BaseActivity;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
-public class VerificationActivity extends AppCompatActivity implements VerificationView {
+public class VerificationActivity extends BaseActivity implements VerificationView {
 
 
     private ActivityVerificationCodeBinding binding;
     private VerificationPresenter presenter;
+    private int userId;
+    private String userEmail, userMobile;
+    private ArrayMap<String, Object> paramsEmail;
 
 
     public static Intent newInstance(Activity mActivity, int fromWhere) {
@@ -38,6 +43,18 @@ public class VerificationActivity extends AppCompatActivity implements Verificat
     }
 
     private void initViews() {
+        userId = getIntent().getExtras().getInt("user_id");
+        userEmail = getIntent().getExtras().getString("email");
+        userMobile = getIntent().getExtras().getString("mobile");
+
+        binding.tvMobileNumber.setText(userMobile);
+
+        paramsEmail = new ArrayMap<>();
+        paramsEmail.put("user_id", userId);
+        paramsEmail.put("email", userEmail);
+
+
+
     }
 
     private void initPresenter() {
@@ -46,21 +63,19 @@ public class VerificationActivity extends AppCompatActivity implements Verificat
 
     private void initListener() {
         binding.otpView.setOtpCompletionListener(otp -> presenter.validationInputs(binding.otpView));
+        binding.verificationByEmail.setOnClickListener(v -> {
+            presenter.verificationRequest(paramsEmail);
+        });
     }
 
-
-    @Override
-    public void showProgress() {
-
-    }
-
-    @Override
-    public void hideProgress() {
-
-    }
+//    private void verificationByEmail() {
+//
+//   }
 
     @Override
     public void showMessage(String msg) {
-
+        super.showMessage(msg);
+        snackErrorShow(binding.getRoot() , msg);
     }
+
 }

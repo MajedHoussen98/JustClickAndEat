@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else if (item.getItemId() == R.id.nav_favorites) {
                     startActivity(new Intent(MainActivity.this, Favorites.class));
                 } else if (item.getItemId() == R.id.nav_log_out) {
-                    AppSharedData.getInstance(MainActivity.this).clear();
+                  //  AppSharedData.getInstance(MainActivity.this).clear();
                     startActivity(new Intent(MainActivity.this, IntroAppActivity.class));
                     finish();
                 }
@@ -115,10 +116,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressLint("CheckResult")
     private void loadHeaderData() {
         RequestOptions requestOptions = new RequestOptions();
-        requestOptions.placeholder(R.drawable.reset_image);
-        Glide.with(this).load(AppSharedData.getProfileDataUser(MainActivity.this).getString("profile_image", "profile_image")).apply(requestOptions).into(userImage);
-        userName.setText(AppSharedData.getProfileDataUser(MainActivity.this).getString("user_name", "user name"));
-        userEmail.setText(AppSharedData.getUserEmail(MainActivity.this).getString("email", "email@example.com"));
+        requestOptions.placeholder(R.drawable.useravatar);
+        Glide.with(this).load(AppSharedData.getProfileUser()).apply(requestOptions).into(userImage);
+        userName.setText(AppSharedData.getUserInfo().getUserData().getName());
+        userEmail.setText(AppSharedData.getUserInfo().getUserData().getEmail());
+//        Log.e("emailH", AppSharedData.getUserEmail().getEmail());
     }
 
     @SuppressLint("RtlHardcoded")

@@ -19,8 +19,6 @@ import ps.ns.just_click_and_eat.utils.BaseActivity;
 public class HomePresenter {
     private HomeView mView;
     private Fragment mFragment;
-    private General general = new General();
-    // private NetworkShared.ASP asp = new NetworkShared.ASP();
 
 
     public HomePresenter(HomeView mView, Fragment mFragment) {
@@ -29,9 +27,11 @@ public class HomePresenter {
     }
 
     public void getRestaurantData(RecyclerView recyclerView) {
-        general.restaurantResponse(new RequestListener<ArrayList<HomeModel>>() {
+       // mView.showProgress();
+        NetworkShared.getAsp().getRestaurant().restaurantResponse(new RequestListener<ArrayList<HomeModel>>() {
             @Override
             public void onSuccess(ArrayList<HomeModel> data) {
+           //     mView.hideProgress();
                 HomeAdapter adapter = new HomeAdapter(mFragment.getContext(), data, (HomeAdapter.ListItemClickListener) mFragment);
                 recyclerView.setLayoutManager(new LinearLayoutManager(mFragment.getContext()));
                 recyclerView.setAdapter(adapter);
@@ -39,7 +39,8 @@ public class HomePresenter {
 
             @Override
             public void onFail(String message, int code) {
-                Toast.makeText(mFragment.getContext(), "error is: " + message, Toast.LENGTH_SHORT).show();
+           //     mView.hideProgress();
+                mView.showMessage(message);
             }
         });
     }

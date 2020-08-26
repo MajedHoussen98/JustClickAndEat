@@ -13,14 +13,17 @@ import ps.ns.just_click_and_eat.databinding.ActivityMyAccountBinding;
 import ps.ns.just_click_and_eat.feature.editPassword.view.EditPasswordActivity;
 import ps.ns.just_click_and_eat.feature.editAccount.view.EditAccountActivity;
 import ps.ns.just_click_and_eat.feature.favorites.Favorites;
+import ps.ns.just_click_and_eat.feature.myAccount.presenter.MyAccountPresenter;
 import ps.ns.just_click_and_eat.feature.myLocation.view.MyLocationActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
+import ps.ns.just_click_and_eat.utils.BaseActivity;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
-public class MyAccountActivity extends AppCompatActivity implements View.OnClickListener {
-    private View view;
+public class MyAccountActivity extends BaseActivity implements MyAccountView {
+
     private ActivityMyAccountBinding binding;
+    private MyAccountPresenter presenter;
 
     public static Intent newInstance(Activity mActivity, int fromWhere) {
         Intent intent = new Intent(mActivity, MyAccountActivity.class);
@@ -32,39 +35,24 @@ public class MyAccountActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMyAccountBinding.inflate(getLayoutInflater());
-        view = binding.getRoot();
+        View view = binding.getRoot();
         setContentView(view);
+        initPresenter();
         viewListener();
         AppSharedMethod.statusBarLight(this);
 
     }
 
-    private void viewListener() {
-        binding.ibBack.setOnClickListener(this);
-        binding.llEditAccount.setOnClickListener(this);
-        binding.llChangePassword.setOnClickListener(this);
-        binding.llEditAddress.setOnClickListener(this);
-        binding.llFavorites.setOnClickListener(this);
+    public void initPresenter(){
+        presenter = new MyAccountPresenter(this, this);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.ll_edit_account:
-                startActivity(new Intent(MyAccountActivity.this, EditAccountActivity.class));
-                break;
-            case R.id.ll_change_password:
-                startActivity(new Intent(MyAccountActivity.this, EditPasswordActivity.class));
-                break;
-            case R.id.ll_edit_address:
-                startActivity(new Intent(MyAccountActivity.this, MyLocationActivity.class));
-                break;
-            case R.id.ll_favorites:
-                startActivity(new Intent(MyAccountActivity.this, Favorites.class));
-                break;
-            case R.id.ib_back:
-                startActivity(new Intent(MyAccountActivity.this, MainActivity.class));
-                finish();
-        }
+    private void viewListener() {
+        binding.ibBack.setOnClickListener(v -> presenter.goToHome());
+        binding.llEditAccount.setOnClickListener(v -> presenter.goToEditAccount());
+        binding.llChangePassword.setOnClickListener(v -> presenter.goToChangePassword());
+        binding.llEditAddress.setOnClickListener(v -> presenter.goToAddress());
+        binding.llFavorites.setOnClickListener(v -> presenter.goToFavorites());
     }
+
 }

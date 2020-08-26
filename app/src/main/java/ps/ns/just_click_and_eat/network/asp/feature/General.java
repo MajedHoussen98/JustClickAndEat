@@ -28,8 +28,31 @@ public class General {
 
     @SuppressLint("CheckResult")
     public void restaurantResponse(RequestListener<ArrayList<HomeModel>> listener) {
-
         retrofitModel.getRestaurant().subscribe(appResponse -> {
+                    Log.e(TAG_SUCCESS, appResponse.getStatus().toString() + "");
+                    if (appResponse.getStatus()) {
+//                        JsonReader reader = new JsonReader(new StringReader(appResponse.getResult()));
+//                        reader.setLenient(true);
+                        PaginationBean bean = gson.fromJson(appResponse.getResult(), PaginationBean.class);
+                        Type listType = new TypeToken<ArrayList<HomeModel>>() {
+                        }.getType();
+                        ArrayList<HomeModel> list = gson.fromJson(bean.getResult(), listType);
+                        listener.onSuccess(list);
+                    } else {
+                        listener.onFail(appResponse.getMessage(), appResponse.getStatusCode());
+                    }
+                }, throwable -> {
+                    listener.onFail(throwable.getMessage(), -1);
+                    Log.e(TAG_ERROR, throwable.getMessage() + "");
+                }
+        );
+    }
+
+
+    @SuppressLint("CheckResult")
+    public void restaurantResponseById(String token, int id,  RequestListener<ArrayList<HomeModel>> listener) {
+
+        retrofitModel.getRestaurantById(token, id).subscribe(appResponse -> {
                     Log.e(TAG_SUCCESS, appResponse.getStatus().toString() + "");
                     if (appResponse.getStatus()) {
 //                        JsonReader reader = new JsonReader(new StringReader(appResponse.getResult()));

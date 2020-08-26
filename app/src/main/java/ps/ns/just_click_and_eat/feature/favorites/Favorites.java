@@ -1,5 +1,6 @@
 package ps.ns.just_click_and_eat.feature.favorites;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,11 +15,20 @@ import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityFavoritesBinding;
 import ps.ns.just_click_and_eat.feature.favorites.ui.main.SectionsPagerAdapter;
+import ps.ns.just_click_and_eat.feature.signUp.view.SignUpActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
+
+import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
 public class Favorites extends AppCompatActivity implements View.OnClickListener{
     private View view;
     private ActivityFavoritesBinding binding;
+
+    public static Intent newInstance(Activity mActivity, int fromWhere) {
+        Intent intent = new Intent(mActivity, Favorites.class);
+        intent.putExtra(FROM_WHERE, fromWhere);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

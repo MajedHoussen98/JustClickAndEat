@@ -228,6 +228,7 @@
     <string name="enter_name">Enter Your Name please</string>
     <string name="error_mobile">Enter valid phone number please</string>
     <string name="password_less">Password must contain 8 characters</string>
+    <string name="mobile_less">Password must contain 10 characters</string>
     <string name="password_not_match">Password does not match</string>
     <string name="test">test</string>
     <string name="enter_currentPassword">Enter your password please</string>

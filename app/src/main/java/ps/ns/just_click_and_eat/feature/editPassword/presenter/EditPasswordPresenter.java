@@ -1,12 +1,18 @@
 package ps.ns.just_click_and_eat.feature.editPassword.presenter;
 
 import android.app.Activity;
-import android.util.ArrayMap;
+import android.content.Intent;
 import android.widget.EditText;
+
+import androidx.collection.ArrayMap;
 
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.editPassword.view.EditPasswordView;
+import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.feature.myAccount.view.MyAccountActivity;
+import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
+import ps.ns.just_click_and_eat.network.utils.RequestListener;
+import ps.ns.just_click_and_eat.utils.AppSharedData;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_EDIT_ACCOUNT;
@@ -57,15 +63,32 @@ public class EditPasswordPresenter {
             return;
         }
 
-        ArrayMap<String, Object> params = new ArrayMap<>();
+        ArrayMap<String, String> params = new ArrayMap<>();
 
-        params.put("currentPassword", AppSharedMethod.getTextFromEditText(etCurrentPassword));
-        params.put("newPassword", AppSharedMethod.getTextFromEditText(etNewPassword));
-        params.put("confirmPassword", AppSharedMethod.getTextFromEditText(etConfirmPassword));
+        params.put("old_password", AppSharedMethod.getTextFromEditText(etCurrentPassword));
+        params.put("new_password", AppSharedMethod.getTextFromEditText(etNewPassword));
+        params.put("confirm_password", AppSharedMethod.getTextFromEditText(etConfirmPassword));
 
-        ChangePasswordRequest();
+
+        ChangePasswordRequest(AppSharedData.getUserInfo().getTokenData().getAccessToken(), params);
     }
 
-    private void ChangePasswordRequest() {
+    private void ChangePasswordRequest(String token, ArrayMap<String, String> params) {
+        mView.showProgress();
+        NetworkShared.getAsp().getUser().updatePassword(token, params, new RequestListener<String>() {
+            @Override
+            public void onSuccess(String data) {
+                mView.hideProgress();
+                mView.showMessage("Password changed...");
+                mActivity.startActivity(new Intent(mActivity, MainActivity.class));
+                mActivity.finish();
+            }
+
+            @Override
+            public void onFail(String message, int code) {
+                mView.hideProgress();
+                mView.showMessage(message);
+            }
+        });
     }
 }

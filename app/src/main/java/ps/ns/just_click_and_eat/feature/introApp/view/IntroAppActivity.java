@@ -61,7 +61,7 @@ public class IntroAppActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onStart() {
         super.onStart();
-        if (AppSharedData.isLoggedIn(IntroAppActivity.this)) {
+        if (AppSharedData.isUserLogin()) {
             startActivity(new Intent(getBaseContext(), MainActivity.class));
             finish();
         }

@@ -1,12 +1,18 @@
 package ps.ns.just_click_and_eat.feature.verfication.verficationPresenter;
 
 import android.app.Activity;
-import android.util.ArrayMap;
+import android.content.Intent;
+
+
+import androidx.collection.ArrayMap;
 
 import com.mukesh.OtpView;
 
 import ps.ns.just_click_and_eat.R;
+import ps.ns.just_click_and_eat.feature.login.view.LoginActivity;
 import ps.ns.just_click_and_eat.feature.verfication.view.VerificationView;
+import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
+import ps.ns.just_click_and_eat.network.utils.RequestListener;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 public class VerificationPresenter {
@@ -35,6 +41,21 @@ public class VerificationPresenter {
 
     }
 
-    private void verificationRequest(ArrayMap<String, Object> params) {
+
+
+
+    public void verificationRequest(ArrayMap<String, Object> params) {
+        mView.showMessage("open email and verify it...");
+        NetworkShared.getAsp().getUser().verifyAccountUser(params, new RequestListener<String>() {
+            @Override
+            public void onSuccess(String data) {
+                mActivity.startActivity(new Intent(mActivity, LoginActivity.class));
+                mActivity.finish();
+            }
+
+            @Override
+            public void onFail(String message, int code) {
+            }
+        });
     }
 }

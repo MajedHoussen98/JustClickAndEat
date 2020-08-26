@@ -2,16 +2,28 @@ package ps.ns.just_click_and_eat.feature.editPassword.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import ps.ns.just_click_and_eat.databinding.ActivityEditPasswordBinding;
 import ps.ns.just_click_and_eat.feature.editPassword.presenter.EditPasswordPresenter;
+import ps.ns.just_click_and_eat.feature.signUp.view.SignUpActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
+import ps.ns.just_click_and_eat.utils.BaseActivity;
 
-public class EditPasswordActivity extends AppCompatActivity implements EditPasswordView {
+import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
+
+public class EditPasswordActivity extends BaseActivity implements EditPasswordView {
     private EditPasswordPresenter presenter;
     private ActivityEditPasswordBinding binding;
+
+    public static Intent newInstance(Activity mActivity, int fromWhere) {
+        Intent intent = new Intent(mActivity, EditPasswordActivity.class);
+        intent.putExtra(FROM_WHERE, fromWhere);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,18 +52,9 @@ public class EditPasswordActivity extends AppCompatActivity implements EditPassw
         binding.ibBack.setOnClickListener(v -> presenter.goToMyAccount());
     }
 
-
-    @Override
-    public void showProgress() {
-
-    }
-
-    @Override
-    public void hideProgress() {
-
-    }
-
     @Override
     public void showMessage(String msg) {
+        super.showMessage(msg);
+        snackErrorShow(binding.getRoot(), msg);
     }
 }

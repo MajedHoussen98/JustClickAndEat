@@ -1,12 +1,18 @@
 package ps.ns.just_click_and_eat.feature.forgetPassword.presenter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Handler;
-import android.util.ArrayMap;
 import android.widget.EditText;
+
+import androidx.collection.ArrayMap;
 
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.forgetPassword.view.ForgetPasswordView;
+import ps.ns.just_click_and_eat.feature.login.view.LoginActivity;
+import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
+import ps.ns.just_click_and_eat.network.asp.model.UserData;
+import ps.ns.just_click_and_eat.network.utils.RequestListener;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 public class ForgetPasswordPresenter {
@@ -31,24 +37,27 @@ public class ForgetPasswordPresenter {
             return;
         }
 
-        ArrayMap<String, Object> params = new ArrayMap<>();
-        params.put("email", AppSharedMethod.getTextFromEditText(etEmail));
-
+        String params = AppSharedMethod.getTextFromEditText(etEmail);
         forgetPasswordRequest(params);
     }
 
-    private void forgetPasswordRequest(ArrayMap<String, Object> params) {
-        if (mView != null) {
-            mView.showProgress();
-        }
+    private void forgetPasswordRequest(String params) {
 
-        new Handler().postDelayed(new Runnable() {
+        mView.showProgress();
+        NetworkShared.getAsp().getUser().forgetPassword(params, new RequestListener<String>() {
             @Override
-            public void run() {
-                if (mView != null) {
-                    mView.hideProgress();
-                }
+            public void onSuccess(String data) {
+                mView.hideProgress();
+                mView.showMessage("Check your email to reset password...");
+                mActivity.startActivity(new Intent(mActivity, LoginActivity.class));
+                mActivity.finish();
             }
-        },3000);
+
+            @Override
+            public void onFail(String message, int code) {
+                mView.hideProgress();
+                mView.showMessage(message);
+            }
+        });
     }
 }

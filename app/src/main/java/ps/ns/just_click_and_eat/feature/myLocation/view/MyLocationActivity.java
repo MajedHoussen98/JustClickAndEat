@@ -3,6 +3,7 @@ package ps.ns.just_click_and_eat.feature.myLocation.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,13 +16,22 @@ import ps.ns.just_click_and_eat.feature.myLocation.MyLocationAdapter;
 import ps.ns.just_click_and_eat.databinding.ActivityMyLocationBinding;
 import ps.ns.just_click_and_eat.feature.addLocation.view.AddLocationActivity;
 import ps.ns.just_click_and_eat.dataBase.MyLocationModel;
+import ps.ns.just_click_and_eat.feature.signUp.view.SignUpActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
+
+import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
 public class MyLocationActivity extends AppCompatActivity implements MyLocationAdapter.ListItemClickListener, View.OnClickListener {
     private View view;
     private ActivityMyLocationBinding binding;
     private MyLocationAdapter adapter;
     private ArrayList<MyLocationModel> list;
+
+    public static Intent newInstance(Activity mActivity, int fromWhere) {
+        Intent intent = new Intent(mActivity, MyLocationActivity.class);
+        intent.putExtra(FROM_WHERE, fromWhere);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,10 +1,9 @@
 package ps.ns.just_click_and_eat.feature.resturentDetails.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -12,16 +11,27 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityResturentDetailsBinding;
-import ps.ns.just_click_and_eat.feature.menu.MenuActivity;
+import ps.ns.just_click_and_eat.feature.resturentDetails.presenter.RestaurantDetailsPresenter;
+import ps.ns.just_click_and_eat.feature.verfication.view.VerificationActivity;
+import ps.ns.just_click_and_eat.utils.BaseActivity;
 
-public class ResturentDetailsActivity extends AppCompatActivity implements View.OnClickListener {
+import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
+
+public class ResturentDetailsActivity extends BaseActivity implements RestaurantView {
 
     private ActivityResturentDetailsBinding binding;
     List<SlideModel> list = new ArrayList<>();
+    private RestaurantDetailsPresenter presenter;
+    int restaurantId;
 
+
+    public static Intent newInstance(Activity mActivity, int fromWhere) {
+        Intent intent = new Intent(mActivity, VerificationActivity.class);
+        intent.putExtra(FROM_WHERE, fromWhere);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +39,15 @@ public class ResturentDetailsActivity extends AppCompatActivity implements View.
         binding = ActivityResturentDetailsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        intViews();
         addSliderImage();
         listenerViews();
+    }
+
+    private void intViews(){
+        presenter = new RestaurantDetailsPresenter(this, this);
+        restaurantId = getIntent().getExtras().getInt("restaurant_id");
+       // presenter.getRestaurantById(restaurantId);
     }
 
     private void addSliderImage() {
@@ -40,24 +57,8 @@ public class ResturentDetailsActivity extends AppCompatActivity implements View.
     }
 
     private void listenerViews() {
-        binding.ibBack.setOnClickListener(this);
-        binding.icFav.setOnClickListener(this);
-        binding.icShare.setOnClickListener(this);
-        binding.btnMenu.setOnClickListener(this);
+        binding.ibBack.setOnClickListener(v ->presenter.goToHome());
+        binding.btnMenu.setOnClickListener(v -> presenter.goToMenu());
     }
 
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.ib_back:
-                startActivity(new Intent(ResturentDetailsActivity.this, MainActivity.class));
-                finish();
-                break;
-
-            case R.id.btn_menu:
-                startActivity(new Intent(ResturentDetailsActivity.this, MenuActivity.class));
-                break;
-        }
-    }
 }

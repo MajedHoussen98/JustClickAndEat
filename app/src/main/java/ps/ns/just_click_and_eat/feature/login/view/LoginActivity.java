@@ -63,7 +63,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
     private void viewListener() {
         binding.btnSignIn.setOnClickListener(v -> presenter.validateInputs(binding.etEmail, binding.etPassword));
         binding.tvSignUp.setOnClickListener(v -> presenter.goToSignUp());
-        binding.tvForgetPassword.setOnClickListener(v -> presenter.goToForget());
+        binding.tvForgetPassword.setOnClickListener(v -> presenter.goToForget(binding.etEmail));
         binding.llSignWithFacebook.setOnClickListener(v -> presenter.signInWithFacebook(callbackManager));
     }
 

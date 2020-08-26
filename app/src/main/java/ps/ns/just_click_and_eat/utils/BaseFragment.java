@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.FragmentHomeBinding;
 
@@ -19,6 +21,7 @@ public class BaseFragment extends Fragment implements BaseView {
 
     FragmentHomeBinding binding;
     private ProgressDialog dialog;
+    private Snackbar snackbar;
 
 
     @SuppressLint("SetTextI18n")
@@ -33,7 +36,7 @@ public class BaseFragment extends Fragment implements BaseView {
     }
 
     private void initViews() {
-        dialog = new ProgressDialog(getContext());
+        dialog = new ProgressDialog(binding.getRoot().getContext());
         dialog.setMessage("Please wait...");
     }
 
@@ -50,5 +53,10 @@ public class BaseFragment extends Fragment implements BaseView {
     @Override
     public void showMessage(String msg) {
         Log.e("MESSAGE", msg);
+    }
+
+    public void snackErrorShow(View view, String text) {
+        snackbar = Snackbar.make(view, text, Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 }

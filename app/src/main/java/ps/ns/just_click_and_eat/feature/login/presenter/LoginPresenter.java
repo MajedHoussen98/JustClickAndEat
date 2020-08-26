@@ -2,9 +2,11 @@ package ps.ns.just_click_and_eat.feature.login.presenter;
 
 import android.app.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.ArrayMap;
+import android.widget.EditText;
+
+import androidx.collection.ArrayMap;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -27,8 +29,10 @@ import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.forgetPassword.view.ForgetPasswordActivity;
 import ps.ns.just_click_and_eat.feature.login.view.LoginView;
 import ps.ns.just_click_and_eat.feature.signUp.view.SignUpActivity;
+import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
+import ps.ns.just_click_and_eat.network.asp.model.UserInfo;
+import ps.ns.just_click_and_eat.network.utils.RequestListener;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
-import ps.ns.just_click_and_eat.utils.BaseActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedData;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_LOGIN;
@@ -48,8 +52,10 @@ public class LoginPresenter {
         mActivity.startActivity(SignUpActivity.newInstance(mActivity, FROM_LOGIN));
     }
 
-    public void goToForget() {
-        mActivity.startActivity(ForgetPasswordActivity.newInstance(mActivity, FROM_LOGIN));
+    public void goToForget(EditText etEmail) {
+        Intent intent = new Intent(ForgetPasswordActivity.newInstance(mActivity, FROM_LOGIN));
+        intent.putExtra("email", AppSharedMethod.getTextFromEditText(etEmail));
+        mActivity.startActivity(intent);
     }
 
     public void goToMainActivity() {
@@ -92,8 +98,13 @@ public class LoginPresenter {
             return;
         }
         ArrayMap<String, Object> params = new ArrayMap<>();
+        params.put("grant_type", "password");
         params.put("email", AppSharedMethod.getTextFromEditText(etEmail));
         params.put("password", AppSharedMethod.getTextFromEditText(etPassword));
+        params.put("device_type", "android");
+        params.put("device_id", AppSharedData.getDeviceId());
+        params.put("client_id", "2");
+        params.put("client_secret", "j0RpbY9ij8fBBEYh1OPdDE6mqiVCFEhy4VLMLgQB");
         loginRequest(params);
     }
 
@@ -103,7 +114,7 @@ public class LoginPresenter {
             @Override
             public void onCompleted(JSONObject object, GraphResponse response) {
                 try {
-                    AppSharedData.savedUserEmail(mActivity, object.getString("email"));
+                    AppSharedData.setUserEmailSocial(object.getString("email"));
                     goToMainActivity();
                     mActivity.finish();
                 } catch (JSONException e) {
@@ -123,7 +134,7 @@ public class LoginPresenter {
         assert accessToken != null;
         // Log.e("KEY", "" + accessToken.getToken());
         if (isLoggedIn) {
-            AppSharedData.saveUser(mActivity, accessToken.getToken(), true);
+            AppSharedData.getUserInfo().getTokenData().getAccessToken();
             mActivity.finish();
         }
     }
@@ -133,23 +144,28 @@ public class LoginPresenter {
         if (profile != null) {
             String profileImage = profile.getProfilePictureUri(300, 300).toString();
             String fullName = profile.getName();
-            AppSharedData.profileDataUserSaved(mActivity, profileImage, fullName);
+            AppSharedData.setProfileUser(profileImage, fullName);
         }
     }
 
+    private static final String TAG = "errorLogin";
+
     private void loginRequest(ArrayMap<String, Object> params) {
-        if (mView != null) {
-            mView.showProgress();
-        }
-        new Handler().postDelayed(new Runnable() {
+        mView.showProgress();
+        NetworkShared.getAsp().getUser().login(params, new RequestListener<UserInfo>() {
             @Override
-            public void run() {
-                if (mView != null) {
-                    mView.hideProgress();
-                }
+            public void onSuccess(UserInfo data) {
+                mView.hideProgress();
+                AppSharedData.setUserInfo(data);
+                mActivity.startActivity(MainActivity.newInstance(mActivity, FROM_LOGIN));
             }
-        }, 3000);
-        mActivity.startActivity(MainActivity.newInstance(mActivity, FROM_LOGIN));
+
+            @Override
+            public void onFail(String message, int code) {
+                mView.hideProgress();
+                mView.showMessage(message);
+            }
+        });
     }
 
 }

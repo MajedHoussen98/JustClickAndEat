@@ -1,7 +1,9 @@
 package ps.ns.just_click_and_eat.feature.mainHome.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,13 +20,13 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 import ps.ns.just_click_and_eat.R;
+import ps.ns.just_click_and_eat.feature.resturentDetails.view.ResturentDetailsActivity;
 import ps.ns.just_click_and_eat.network.asp.model.HomeModel;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     Context context;
     List<HomeModel> list;
-
     final private ListItemClickListener mOnClickListener;
 
     public interface ListItemClickListener {
@@ -45,7 +49,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.ViewHolder holder, int position) {
-        final HomeModel data = list.get(position);
+        HomeModel data = list.get(position);
         Glide.with(context).load(data.getLogoUrl()).into(holder.restaurant_pic);
         holder.restaurant_name.setText(data.getName());
         holder.restaurant_status.setText(data.getStatus());
@@ -87,6 +91,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
+            if (v.getId() == R.id.ll_home){
+                int id = list.get(getAdapterPosition()).getId();
+                Intent intent = new Intent(context, ResturentDetailsActivity.class);
+                intent.putExtra("restaurant_id", id);
+                context.startActivity(intent);
+            }
             mOnClickListener.onListItemClicked(getAdapterPosition(), v.getId());
         }
     }

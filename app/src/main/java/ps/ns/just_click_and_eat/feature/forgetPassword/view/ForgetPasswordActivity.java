@@ -36,6 +36,7 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
     }
 
     private void initViews() {
+        binding.etEmail.setText(getIntent().getExtras().getString("email"));
     }
 
     private void initPresenter() {
@@ -46,4 +47,9 @@ public class ForgetPasswordActivity extends BaseActivity implements ForgetPasswo
         binding.btnSend.setOnClickListener(v -> presenter.validationInputs(binding.etEmail));
     }
 
+    @Override
+    public void showMessage(String msg) {
+        super.showMessage(msg);
+        snackErrorShow(binding.getRoot(), msg);
+    }
 }

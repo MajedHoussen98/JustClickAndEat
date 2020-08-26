@@ -8,4 +8,8 @@ public interface ConstantApp {
     int FROM_FORGET_PASSWORD = 3;
     int FROM_LOGIN= 4;
     int FROM_EDIT_ACCOUNT= 5;
+    int FROM_FAVORITES= 6;
+    int FROM_LOCATION= 7;
+    int FROM_CHANGE_PASSWORD= 8;
+
 }

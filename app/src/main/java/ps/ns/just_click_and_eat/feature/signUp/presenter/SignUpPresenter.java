@@ -1,7 +1,8 @@
 package ps.ns.just_click_and_eat.feature.signUp.presenter;
 
 import android.app.Activity;
-import android.os.Handler;
+import android.content.Intent;
+import android.util.Log;
 import android.widget.EditText;
 
 import androidx.collection.ArrayMap;
@@ -10,9 +11,11 @@ import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.login.view.LoginActivity;
 import ps.ns.just_click_and_eat.feature.signUp.view.SignUpView;
 import ps.ns.just_click_and_eat.feature.verfication.view.VerificationActivity;
-import ps.ns.just_click_and_eat.network.asp.feature.Registration;
+import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
 import ps.ns.just_click_and_eat.network.asp.model.UserData;
+import ps.ns.just_click_and_eat.network.asp.model.UserInfo;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
+import ps.ns.just_click_and_eat.utils.AppSharedData;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_SIGN_UP;
@@ -21,7 +24,6 @@ public class SignUpPresenter {
 
     private SignUpView mView;
     private Activity mActivity;
-    private Registration registration = new Registration();
 
     public SignUpPresenter(Activity mActivity, SignUpView mView) {
         this.mView = mView;
@@ -52,6 +54,11 @@ public class SignUpPresenter {
 
         if (AppSharedMethod.isEmptyEditText(etMobile)) {
             AppSharedMethod.setErrorEditText(etMobile, mActivity.getString(R.string.error_mobile));
+            return;
+        }
+
+        if (AppSharedMethod.getTextFromEditText(etMobile).length() != 10) {
+            AppSharedMethod.setErrorEditText(etMobile, mActivity.getString(R.string.mobile_less));
             return;
         }
 
@@ -87,40 +94,41 @@ public class SignUpPresenter {
         params.put("email", AppSharedMethod.getTextFromEditText(etEmail));
         params.put("mobile", AppSharedMethod.getTextFromEditText(etMobile));
         params.put("password", AppSharedMethod.getTextFromEditText(etPassword));
-        params.put("confirmPassword", AppSharedMethod.getTextFromEditText(etConfirmPassword));
+        params.put("password_confirmation", AppSharedMethod.getTextFromEditText(etConfirmPassword));
 
         signUpRequest(params);
 
     }
 
-    private void signUpRequest(ArrayMap<String, Object> params) {
+    private static final String TAG = "SignUpPresenter";
 
-        registration.registration(params, new RequestListener<UserData>() {
+    private void signUpRequest(ArrayMap<String, Object> params) {
+        mView.showProgress();
+        NetworkShared.getAsp().getUser().signUp(params, new RequestListener<UserData>() {
             @Override
             public void onSuccess(UserData data) {
-                mView.showMessage("Successful Register...");
+                Log.d(TAG, "onSuccess: " + data.getEmail());
+                int id = data.getId();
+                String email = data.getEmail(), mobile = data.getMobile();
+                Intent intent = new Intent(VerificationActivity.newInstance(mActivity, FROM_SIGN_UP));
+                intent.putExtra("user_id", id);
+                intent.putExtra("mobile", mobile);
+                intent.putExtra("email", email);
+                AppSharedData.setUserData(data);
+                mView.hideProgress();
+                mActivity.startActivity(intent);
+                mActivity.finish();
             }
-
             @Override
             public void onFail(String message, int code) {
-                mView.showMessage("Failure Register..." + message);
+                mView.hideProgress();
+                mView.showMessage(message);
             }
         });
-//        if (mView != null) {
-//            mView.showProgress();
-//
-//        }
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (mView != null) {
-//                    mView.hideProgress();
-//                }
-//            }
-//        }, 3000);
-
-        //mView.showMessage("Successful Register...");
-
-      //  mActivity.startActivity(VerificationActivity.newInstance(mActivity, FROM_SIGN_UP));
     }
 }
+
+
+
+
+

@@ -13,18 +13,30 @@ import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.Interceptor;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
+import ps.ns.just_click_and_eat.utils.AppSharedData;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.ACCEPT_TYPE;
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.AUTHORIZATION;
 import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.BASE_URL;
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.BEARER;
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.CONTENT_TYPE;
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.CONTENT_TYPE_MULTI_PART;
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.HEADER_ACCEPT_TYPE;
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.HEADER_CONTENT_TYPE;
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.HTTP_DELETE_TYPE;
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.HTTP_METHOD_OVERRIDE;
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.HTTP_PUT_TYPE;
 
 
 public class RetrofitModel {
 
-    // main variables
+    //main variables
     private RetrofitApis api;
     private Scheduler subscribeOn;
     private Scheduler observeOn;
@@ -33,18 +45,72 @@ public class RetrofitModel {
             .setLenient()
             .create();
 
+    public RetrofitModel(Boolean isAppRegistered) {
+        Interceptor interceptorToHeaderData;
+        if (isAppRegistered) {
+            interceptorToHeaderData = chain -> {
+                Request.Builder builder = chain.request().newBuilder()
+                        .addHeader(HEADER_CONTENT_TYPE, CONTENT_TYPE)
+                        //  .addHeader(LANGUAGE, AppSharedData.getLanguage())
+                        .addHeader(HEADER_ACCEPT_TYPE, ACCEPT_TYPE)
+                        .addHeader(AUTHORIZATION, AppSharedData.getUserInfo() == null ? "" : BEARER + AppSharedData.getUserInfo().getTokenData().getAccessToken());
+                return chain.proceed(builder.build());
+            };
+        } else {
+            interceptorToHeaderData = chain -> {
+                Request.Builder builder = chain.request().newBuilder()
+                        .addHeader(HEADER_CONTENT_TYPE, CONTENT_TYPE)
+                        //  .addHeader(LANGUAGE, AppSharedData.getLanguage())
+                        .addHeader(HEADER_ACCEPT_TYPE, ACCEPT_TYPE);
+                return chain.proceed(builder.build());
+            };
+        }
+        init(interceptorToHeaderData);
+    }
 
     public RetrofitModel() {
         Interceptor interceptorToHeaderData;
         interceptorToHeaderData = chain -> {
-            Request.Builder builder = chain.request().newBuilder();
-            //       .addHeader(HEADER_ACCEPT_TYPE, ACCEPT_TYPE);
-            //       .addHeader(AUTHORIZATION, AppSharedData.getUserData() == null ? "" : BEARER + AppSharedData.getUserData().getToken().getAccessToken())
+            Request.Builder builder = chain.request().newBuilder()
+                    //.addHeader(LANGUAGE, AppSharedData.getLanguage())
+                    .addHeader(HEADER_ACCEPT_TYPE, ACCEPT_TYPE);
             return chain.proceed(builder.build());
         };
         init(interceptorToHeaderData);
     }
 
+    public RetrofitModel(String type, Boolean withAuth) {
+        Interceptor interceptorToHeaderData = null;
+        if (type.equals(HTTP_PUT_TYPE) && withAuth) {
+            interceptorToHeaderData = chain -> {
+                Request.Builder builder = chain.request().newBuilder()
+                        .addHeader(HEADER_CONTENT_TYPE, CONTENT_TYPE_MULTI_PART)
+                        //.addHeader(LANGUAGE, AppSharedData.getLanguage())
+                        .addHeader(AUTHORIZATION, AppSharedData.getUserInfo() == null ? "" : BEARER + AppSharedData.getUserInfo().getTokenData().getAccessToken())
+                        .addHeader(HTTP_METHOD_OVERRIDE, HTTP_PUT_TYPE);
+                return chain.proceed(builder.build());
+            };
+        } else if (type.equals(HTTP_PUT_TYPE) && !withAuth) {
+            interceptorToHeaderData = chain -> {
+                Request.Builder builder = chain.request().newBuilder()
+                        .addHeader(HEADER_CONTENT_TYPE, CONTENT_TYPE_MULTI_PART)
+                        //.addHeader(LANGUAGE, AppSharedData.getLanguage())
+                        .addHeader(HTTP_METHOD_OVERRIDE, HTTP_PUT_TYPE);
+                return chain.proceed(builder.build());
+            };
+        } else if (type.equals(HTTP_DELETE_TYPE)) {
+            interceptorToHeaderData = chain -> {
+                Request.Builder builder = chain.request().newBuilder()
+                        .addHeader(HEADER_CONTENT_TYPE, CONTENT_TYPE)
+                        //.addHeader(LANGUAGE, AppSharedData.getLanguage())
+                        .addHeader(HTTP_METHOD_OVERRIDE, HTTP_DELETE_TYPE)
+                        .addHeader(AUTHORIZATION, AppSharedData.getUserInfo() == null ? "" : BEARER + AppSharedData.getUserInfo().getTokenData().getAccessToken());
+                return chain.proceed(builder.build());
+            };
+        }
+
+        init(interceptorToHeaderData);
+    }
 
     private void init(Interceptor interceptorToHeaderData) {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
@@ -79,9 +145,46 @@ public class RetrofitModel {
                 .observeOn(observeOn);
     }
 
+    public Observable<AppResponse> getRestaurantById(String token, int id) {
+        return api.getRestaurantById(BEARER + AppSharedData.getUserInfo().getTokenData().getAccessToken(), id)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
     public Observable<AppResponse> registration(ArrayMap<String, Object> params) {
         return api.SendDataRegister(params)
                 .subscribeOn(subscribeOn)
                 .observeOn(observeOn);
     }
+
+    public Observable<AppResponse> verifyAccountUser(ArrayMap<String, Object> params) {
+        return api.verifyAccountUser(params)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+    public Observable<AppResponse> login(ArrayMap<String, Object> params) {
+        return api.login(params)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+    public Observable<AppResponse> forgetPassword(String params) {
+        return api.forgetPassword(params)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+    public Observable<AppResponse> updatePassword(String token, ArrayMap<String, String> params) {
+        return api.updatePassword("Bearer " + token, params)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+    public Observable<AppResponse> updateProfile(String token, ArrayMap<String, String> params, MultipartBody.Part multipartBody) {
+        return api.updateProfile("Bearer " + token, params, multipartBody)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
 }
