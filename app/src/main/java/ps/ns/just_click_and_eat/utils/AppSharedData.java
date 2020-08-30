@@ -1,17 +1,14 @@
 package ps.ns.just_click_and_eat.utils;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
-
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Locale;
 
-import ps.ns.just_click_and_eat.network.asp.model.UserData;
-import ps.ns.just_click_and_eat.network.asp.model.UserInfo;
+import ps.ns.just_click_and_eat.network.asp.model.User.UserData;
+import ps.ns.just_click_and_eat.network.asp.model.User.UserInfo;
+import ps.ns.just_click_and_eat.network.asp.model.menu.MenuList;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -127,6 +124,7 @@ public class AppSharedData {
 
     public static final String SHARED_APP_DATA = "app_data";
     public static final String SHARED_USER_DATA = "user";
+    public static final String SHARED_MENU_LIST = "menu_list";
     public static final String SHARED_SETTINGS = "settings";
     private static final String SHARED_IS_APP_OPENED_BEFORE = "is_app_opened_before";
     private static final String SHARED_IS_USER_LOGIN_BY_SOCIAL = "login_social";
@@ -195,6 +193,19 @@ public class AppSharedData {
                 .getString(SHARED_USER_DATA, null), UserData.class);
         return mUser;
     }
+
+    public static void setMenuList(ArrayList<MenuList> list){
+        JustClickApp.getInstance().getSharedPreferences(SHARED_APP_DATA, MODE_PRIVATE)
+                .edit().putStringSet(SHARED_MENU_LIST, Collections.singleton(gson.toJson(list))).apply();
+    }
+
+    public static MenuList getMenuList() {
+        MenuList mList = gson.fromJson(JustClickApp.getInstance().getSharedPreferences(SHARED_APP_DATA, MODE_PRIVATE)
+                .getString(SHARED_USER_DATA, null), MenuList.class);
+        return mList;
+    }
+
+
 
     public static void setUserEmailSocial(String userEmail) {
         JustClickApp.getInstance().getSharedPreferences(SHARED_APP_DATA, MODE_PRIVATE)

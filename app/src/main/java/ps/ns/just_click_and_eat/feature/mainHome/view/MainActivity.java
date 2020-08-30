@@ -26,21 +26,28 @@ import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityMainBinding;
 import ps.ns.just_click_and_eat.feature.favorites.Favorites;
 import ps.ns.just_click_and_eat.feature.introApp.view.IntroAppActivity;
+import ps.ns.just_click_and_eat.feature.mainHome.homePresenter.HomePresenter;
+import ps.ns.just_click_and_eat.feature.mainHome.homePresenter.MainPresenter;
 import ps.ns.just_click_and_eat.feature.myAccount.view.MyAccountActivity;
 import ps.ns.just_click_and_eat.feature.myCart.view.MyCartActivity;
 import ps.ns.just_click_and_eat.feature.myLocation.view.MyLocationActivity;
 import ps.ns.just_click_and_eat.feature.notification.view.NotificationActivity;
 import ps.ns.just_click_and_eat.feature.myOrder.view.MyOrderActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedData;
+import ps.ns.just_click_and_eat.utils.BaseActivity;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements HomeView {
+
     public static Intent newInstance(Activity mActivity, int fromWhere) {
         Intent intent = new Intent(mActivity, MainActivity.class);
         intent.putExtra(FROM_WHERE, fromWhere);
         return intent;
     }
+
+    private MainPresenter presenter;
+    private HomeView view;
 
     private ImageView userImage;
     private TextView userName, userEmail;
@@ -60,8 +67,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initListeners();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadHeaderData();
+    }
 
     private void initViews() {
+        presenter = new MainPresenter(this, this);
         navigationView = findViewById(R.id.nav_view);
         View header = navigationView.getHeaderView(0);
         userImage = header.findViewById(R.id.iv_user);
@@ -74,9 +87,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loadHeaderData();
     }
 
+    @SuppressLint("RtlHardcoded")
     private void initListeners() {
 
-        iconsMenu.setOnClickListener(this);
+        iconsMenu.setOnClickListener(v ->drawer.openDrawer(Gravity.LEFT));
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("RtlHardcoded")
@@ -87,25 +101,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 } else if (item.getItemId() == R.id.nav_cart) {
                     startActivity(new Intent(MainActivity.this, MyCartActivity.class));
+                    finish();
 
                 } else if (item.getItemId() == R.id.nav_account) {
                     startActivity(new Intent(MainActivity.this, MyAccountActivity.class));
+                    finish();
 
                 } else if (item.getItemId() == R.id.nav_order) {
                     startActivity(new Intent(MainActivity.this, MyOrderActivity.class));
+                    finish();
 
                 } else if (item.getItemId() == R.id.nav_location) {
                     startActivity(new Intent(MainActivity.this, MyLocationActivity.class));
+                    finish();
 
                 } else if (item.getItemId() == R.id.nav_notification) {
                     startActivity(new Intent(MainActivity.this, NotificationActivity.class));
+                    finish();
 
                 } else if (item.getItemId() == R.id.nav_favorites) {
                     startActivity(new Intent(MainActivity.this, Favorites.class));
-                } else if (item.getItemId() == R.id.nav_log_out) {
-                  //  AppSharedData.getInstance(MainActivity.this).clear();
-                    startActivity(new Intent(MainActivity.this, IntroAppActivity.class));
                     finish();
+
+                } else if (item.getItemId() == R.id.nav_log_out) {
+                    Log.e("token", AppSharedData.getUserInfo().getTokenData().getAccessToken());
+                    presenter.logout(AppSharedData.getUserInfo().getTokenData().getAccessToken(), AppSharedData.getUserInfo().getUserData().getId());
                 }
                 drawer.closeDrawer(Gravity.LEFT);
                 return true;
@@ -113,21 +133,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+
+    @Override
+    public void showMessage(String msg) {
+        super.showMessage(msg);
+        snackErrorShow(this.navigationView, msg);
+    }
+
     @SuppressLint("CheckResult")
     private void loadHeaderData() {
-        RequestOptions requestOptions = new RequestOptions();
-        requestOptions.placeholder(R.drawable.useravatar);
-        Glide.with(this).load(AppSharedData.getProfileUser()).apply(requestOptions).into(userImage);
+//        RequestOptions requestOptions = new RequestOptions();
+//        requestOptions.placeholder(R.drawable.useravatar);
+//        Glide.with(this).load(AppSharedData.getProfileUser()).apply(requestOptions).into(userImage);
+
+        Glide.with(this).load(AppSharedData.getUserInfo().getUserData().getPhotoThumb()).into(userImage);
         userName.setText(AppSharedData.getUserInfo().getUserData().getName());
         userEmail.setText(AppSharedData.getUserInfo().getUserData().getEmail());
 //        Log.e("emailH", AppSharedData.getUserEmail().getEmail());
     }
 
-    @SuppressLint("RtlHardcoded")
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.icons_menu) {
-            drawer.openDrawer(Gravity.LEFT);
-        }
-    }
 }

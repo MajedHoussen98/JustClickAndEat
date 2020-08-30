@@ -19,8 +19,6 @@ public class VerificationActivity extends BaseActivity implements VerificationVi
 
     private ActivityVerificationCodeBinding binding;
     private VerificationPresenter presenter;
-    private int userId;
-    private String userEmail, userMobile;
     private ArrayMap<String, Object> paramsEmail;
 
 
@@ -43,9 +41,9 @@ public class VerificationActivity extends BaseActivity implements VerificationVi
     }
 
     private void initViews() {
-        userId = getIntent().getExtras().getInt("user_id");
-        userEmail = getIntent().getExtras().getString("email");
-        userMobile = getIntent().getExtras().getString("mobile");
+        int userId = getIntent().getExtras().getInt("user_id");
+        String userEmail = getIntent().getExtras().getString("email");
+        String userMobile = getIntent().getExtras().getString("mobile");
 
         binding.tvMobileNumber.setText(userMobile);
 

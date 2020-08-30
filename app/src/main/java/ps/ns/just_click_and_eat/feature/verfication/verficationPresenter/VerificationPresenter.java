@@ -42,8 +42,6 @@ public class VerificationPresenter {
     }
 
 
-
-
     public void verificationRequest(ArrayMap<String, Object> params) {
         mView.showMessage("open email and verify it...");
         NetworkShared.getAsp().getUser().verifyAccountUser(params, new RequestListener<String>() {

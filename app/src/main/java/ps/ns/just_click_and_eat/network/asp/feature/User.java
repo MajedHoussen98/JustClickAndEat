@@ -11,10 +11,13 @@ import com.google.gson.stream.JsonReader;
 import java.io.StringReader;
 
 import okhttp3.MultipartBody;
-import ps.ns.just_click_and_eat.network.asp.model.UserData;
-import ps.ns.just_click_and_eat.network.asp.model.UserInfo;
+import ps.ns.just_click_and_eat.network.asp.model.User.UserData;
+import ps.ns.just_click_and_eat.network.asp.model.User.UserInfo;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
 import ps.ns.just_click_and_eat.network.utils.RetrofitModel;
+
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.HTTP_DELETE_TYPE;
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.HTTP_PUT_TYPE;
 
 public class User {
 
@@ -24,19 +27,20 @@ public class User {
 
     public User() {
     }
-//    private final RetrofitModel retrofitModelBeforeLogin = new RetrofitModel(false);
-//    private final RetrofitModel retrofitModelAfterLogin = new RetrofitModel(true);
-//    private final RetrofitModel retrofitModelMultiPart = new RetrofitModel();
-//    private final RetrofitModel retrofitModelPutTypeWithAuth = new RetrofitModel(HTTP_PUT_TYPE, true);
-//    private final RetrofitModel retrofitModelPutTypeWithoutAuth = new RetrofitModel(HTTP_PUT_TYPE, false);
-//    private final RetrofitModel retrofitModelDeleteType = new RetrofitModel(HTTP_DELETE_TYPE, true);
+
+    private final RetrofitModel retrofitModelBeforeLogin = new RetrofitModel(false);
+    private final RetrofitModel retrofitModelAfterLogin = new RetrofitModel(true);
+    private final RetrofitModel retrofitModelMultiPart = new RetrofitModel();
+    private final RetrofitModel retrofitModelPutTypeWithAuth = new RetrofitModel(HTTP_PUT_TYPE, true);
+    private final RetrofitModel retrofitModelPutTypeWithoutAuth = new RetrofitModel(HTTP_PUT_TYPE, false);
+    private final RetrofitModel retrofitModelDeleteType = new RetrofitModel(HTTP_DELETE_TYPE, true);
 
     private final RetrofitModel retrofitModel = new RetrofitModel();
     private Gson gson = new Gson();
 
 
     @SuppressLint("CheckResult")
-    public void signUp(ArrayMap<String, Object> params, final RequestListener<UserData> mRequestListener) {
+    public void signUp(ArrayMap<String, Object> params, final RequestListener<UserData> mRequestListener)   {
         Log.e(TAG_PARAMS, params.toString());
         retrofitModel.registration(params)
                 .subscribe(appResponse -> {
@@ -96,20 +100,20 @@ public class User {
     @SuppressLint("CheckResult")
     public void login(ArrayMap<String, Object> params, final RequestListener<UserInfo> mRequestListener) {
         Log.e(TAG_PARAMS, params.toString());
-        retrofitModel.login(params)
+        retrofitModelBeforeLogin.login(params)
                 .subscribe(appResponse -> {
                     Log.e(TAG_SUCCESS, appResponse.getStatus().toString() + "");
                     if (appResponse.getStatus()) {
-                        JsonReader reader = new JsonReader(new StringReader(appResponse.getResult()));
-                        reader.setLenient(true);
-                        UserInfo userData = gson.fromJson(appResponse.getResult(), UserInfo.class);
-                        mRequestListener.onSuccess(userData);
+//                        JsonReader reader = new JsonReader(new StringReader(appResponse.getResult()));
+//                        reader.setLenient(true);
+                        UserInfo userInfo = gson.fromJson(appResponse.getResult(), UserInfo.class);
+                        mRequestListener.onSuccess(userInfo);
                     } else {
                         if (appResponse.getStatusCode() == 406) {
                             JsonReader reader = new JsonReader(new StringReader(appResponse.getResult()));
                             reader.setLenient(true);
-                            UserInfo userData = gson.fromJson(reader, UserInfo.class);
-                            mRequestListener.onSuccess(userData);
+                            UserInfo userInfo = gson.fromJson(reader, UserInfo.class);
+                            mRequestListener.onSuccess(userInfo);
                         } else {
                             mRequestListener.onFail(appResponse.getMessage(), appResponse.getStatusCode());
                         }
@@ -117,9 +121,34 @@ public class User {
                 }, throwable -> {
                     Log.e(TAG_ERROR, throwable.getMessage() + "");
                     mRequestListener.onFail(throwable.getMessage(), -1);
-
                 });
     }
+
+
+    @SuppressLint("CheckResult")
+    public void logout(String token, int id, final RequestListener<Integer> mRequestListener) {
+        retrofitModel.logout(token, id)
+                .subscribe(appResponse -> {
+                    Log.e(TAG_SUCCESS, appResponse.getStatus().toString() + "");
+                    if (appResponse.getStatus()) {
+//                        JsonReader reader = new JsonReader(new StringReader(appResponse.getResult()));
+//                        reader.setLenient(true);
+                        mRequestListener.onSuccess(1);
+                    } else {
+                        if (appResponse.getStatusCode() == 406) {
+                            JsonReader reader = new JsonReader(new StringReader(appResponse.getResult()));
+                            reader.setLenient(true);
+                            mRequestListener.onSuccess(-1);
+                        } else {
+                            mRequestListener.onFail(appResponse.getMessage(), appResponse.getStatusCode());
+                        }
+                    }
+                }, throwable -> {
+                    Log.e(TAG_ERROR, throwable.getMessage() + "");
+                    mRequestListener.onFail(throwable.getMessage(), -1);
+                });
+    }
+
 
     @SuppressLint("CheckResult")
     public void forgetPassword(String params, final RequestListener<String> mRequestListener) {

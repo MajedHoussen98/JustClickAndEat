@@ -2,6 +2,7 @@ package ps.ns.just_click_and_eat.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.text.TextUtils;
@@ -14,10 +15,20 @@ import androidx.fragment.app.FragmentManager;
 
 import com.mukesh.OtpView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.dialogs.FilterDialogFragment;
 
 import static androidx.core.content.ContextCompat.getSystemService;
+import static com.facebook.FacebookSdk.getCacheDir;
 
 public class AppSharedMethod {
 
@@ -91,6 +102,44 @@ public class AppSharedMethod {
     public static String clientId(){
         return "2";
     }
+
+    //TODO: Convert Bitmap to MultiPart
+    public static MultipartBody.Part bitmapToMultipartBodyPart(Bitmap bitmap, String name) {
+        if (bitmap == null) {
+            return null;
+        }
+        //create a file to write bitmap data
+        int iUniqueId = (int) (System.currentTimeMillis() & 0xfffffff);
+        File file = new File(getCacheDir(), iUniqueId + ".jpg");
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //Convert bitmap to byte array
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+        byte[] bitmapdata = bos.toByteArray();
+
+        //write the bytes in file
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //pass it like this
+        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        return MultipartBody.Part.createFormData(name, file.getName(), requestFile);
+    }
+
 
 
 }

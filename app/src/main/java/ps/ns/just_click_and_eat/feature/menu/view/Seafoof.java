@@ -1,4 +1,4 @@
-package ps.ns.just_click_and_eat.feature.menu;
+package ps.ns.just_click_and_eat.feature.menu.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import ps.ns.just_click_and_eat.databinding.FragmentSeafoofBinding;
 import ps.ns.just_click_and_eat.feature.mealsDetails.view.MealsDetailsActivity;
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.dataBase.MenuModel;
+import ps.ns.just_click_and_eat.feature.menu.adapter.MenuAdapter;
 
 public class Seafoof extends Fragment implements MenuAdapter.ListItemClickListener {
     private MenuAdapter adapter;

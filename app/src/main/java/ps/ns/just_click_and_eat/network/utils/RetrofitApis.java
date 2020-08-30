@@ -20,18 +20,12 @@ import retrofit2.http.QueryMap;
 
 public interface RetrofitApis {
 
+    @GET("app_info")
+    Observable<AppResponse> getAppInfo();
+
     @FormUrlEncoded
     @POST("signUp")
     Observable<AppResponse> SendDataRegister(@FieldMap ArrayMap<String, Object> params);
-
-    @GET("restaurants")
-    Observable<AppResponse> getRestaurantData();
-
-    @GET("restaurants/{id}")
-    Observable<AppResponse> getRestaurantById(
-            @Header("Authorization") String authorization,
-            @Path("id") int id
-    );
 
     @FormUrlEncoded
     @POST("verifyAccount")
@@ -42,8 +36,25 @@ public interface RetrofitApis {
     Observable<AppResponse> login(@FieldMap ArrayMap<String, Object> params);
 
     @FormUrlEncoded
+    @POST("logout")
+    Observable<AppResponse> logout(
+            @Header("Authorization") String authorization,
+            @Field("device_id") int params
+            );
+
+    @FormUrlEncoded
     @POST("forget")
     Observable<AppResponse> forgetPassword(@Field("email") String params);
+
+    @GET("restaurants")
+    Observable<AppResponse> getRestaurantData();
+
+//    @GET("restaurants/{id}")
+//    Observable<AppResponse> getRestaurantById(
+//            @Header("Authorization") String authorization,
+//            @Path("id") int id
+//    );
+
 
     @FormUrlEncoded
     @POST("changePassword")
@@ -52,11 +63,18 @@ public interface RetrofitApis {
             @FieldMap ArrayMap<String, String> params
     );
 
+    @FormUrlEncoded
+    @POST("search_restaurant")
+    Observable<AppResponse> search(@Field("name") String params);
+
 
     @Multipart
-    @POST("update")
+    @POST("profile")
     Observable<AppResponse> updateProfile(@Header("Authorization") String authorization,
-                                          @FieldMap ArrayMap<String, String> params,
+                                          @QueryMap ArrayMap<String, String> params,
                                           @Part MultipartBody.Part avatar);
+
+    @GET("restaurant/{id}/menu")
+    Observable<AppResponse> getMenuList(@Path("id") int id);
 
 }

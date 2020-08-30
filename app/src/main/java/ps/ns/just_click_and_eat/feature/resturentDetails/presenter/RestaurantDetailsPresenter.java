@@ -1,20 +1,14 @@
 package ps.ns.just_click_and_eat.feature.resturentDetails.presenter;
 
 import android.app.Activity;
+import android.content.Intent;
 
-import java.util.ArrayList;
-
-import ps.ns.just_click_and_eat.feature.mainHome.view.HomeFragment;
-import ps.ns.just_click_and_eat.feature.menu.MenuActivity;
+import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
+import ps.ns.just_click_and_eat.feature.menu.view.MenuActivity;
 import ps.ns.just_click_and_eat.feature.resturentDetails.view.RestaurantView;
-import ps.ns.just_click_and_eat.network.asp.feature.General;
-import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
-import ps.ns.just_click_and_eat.network.asp.model.HomeModel;
-import ps.ns.just_click_and_eat.network.utils.RequestListener;
-import ps.ns.just_click_and_eat.utils.AppSharedData;
 
 
-import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_LOGIN;
+import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_HOME;
 
 public class RestaurantDetailsPresenter {
 
@@ -26,27 +20,29 @@ public class RestaurantDetailsPresenter {
         this.mActivity = mActivity;
     }
 
-    public void goToMenu(){
-        mActivity.startActivity(MenuActivity.newInstance(mActivity, FROM_LOGIN));
+    public void goToMenu(int restaurantId){
+        Intent intent = new Intent(mActivity, MenuActivity.class);
+        intent.putExtra("restaurant_id", restaurantId );
+        mActivity.startActivity(intent);
     }
 
     public void goToHome() {
-        mActivity.startActivity(HomeFragment.newInstance(mActivity, FROM_LOGIN));
+        mActivity.startActivity(MainActivity.newInstance(mActivity, FROM_HOME));
     }
 
-    public void getRestaurantById( int id) {
-
-        NetworkShared.getAsp().getRestaurant().restaurantResponseById(AppSharedData.getUserInfo().getTokenData().getAccessToken(), id, new RequestListener<ArrayList<HomeModel>>() {
-            @Override
-            public void onSuccess(ArrayList<HomeModel> data) {
-
-            }
-
-            @Override
-            public void onFail(String message, int code) {
-
-            }
-        });
+//    public void getRestaurantById( int id) {
+//
+//        NetworkShared.getAsp().getRestaurant().restaurantResponseById(AppSharedData.getUserInfo().getTokenData().getAccessToken(), id, new RequestListener<ArrayList<HomeModel>>() {
+//            @Override
+//            public void onSuccess(ArrayList<HomeModel> data) {
+//
+//            }
+//
+//            @Override
+//            public void onFail(String message, int code) {
+//
+//            }
+//        });
 
 //        general.restaurantResponseById(id,new RequestListener<ArrayList<HomeModel>>() {
 //            @Override
@@ -62,4 +58,4 @@ public class RestaurantDetailsPresenter {
 //            }
 //        });
     }
-}
+

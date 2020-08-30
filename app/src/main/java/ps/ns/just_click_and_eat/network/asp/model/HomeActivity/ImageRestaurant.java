@@ -1,9 +1,9 @@
-package ps.ns.just_click_and_eat.network.asp.model;
+package ps.ns.just_click_and_eat.network.asp.model.HomeActivity;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ImageModelRestaurant {
+public class ImageRestaurant {
 
     @SerializedName("id")
     @Expose

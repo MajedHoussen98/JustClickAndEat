@@ -2,16 +2,12 @@ package ps.ns.just_click_and_eat.feature.forgetPassword.presenter;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Handler;
 import android.widget.EditText;
-
-import androidx.collection.ArrayMap;
 
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.forgetPassword.view.ForgetPasswordView;
 import ps.ns.just_click_and_eat.feature.login.view.LoginActivity;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
-import ps.ns.just_click_and_eat.network.asp.model.UserData;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 

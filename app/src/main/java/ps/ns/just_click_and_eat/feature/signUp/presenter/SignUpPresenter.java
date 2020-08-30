@@ -2,7 +2,6 @@ package ps.ns.just_click_and_eat.feature.signUp.presenter;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.EditText;
 
 import androidx.collection.ArrayMap;
@@ -12,8 +11,7 @@ import ps.ns.just_click_and_eat.feature.login.view.LoginActivity;
 import ps.ns.just_click_and_eat.feature.signUp.view.SignUpView;
 import ps.ns.just_click_and_eat.feature.verfication.view.VerificationActivity;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
-import ps.ns.just_click_and_eat.network.asp.model.UserData;
-import ps.ns.just_click_and_eat.network.asp.model.UserInfo;
+import ps.ns.just_click_and_eat.network.asp.model.User.UserData;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
 import ps.ns.just_click_and_eat.utils.AppSharedData;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
@@ -107,7 +105,6 @@ public class SignUpPresenter {
         NetworkShared.getAsp().getUser().signUp(params, new RequestListener<UserData>() {
             @Override
             public void onSuccess(UserData data) {
-                Log.d(TAG, "onSuccess: " + data.getEmail());
                 int id = data.getId();
                 String email = data.getEmail(), mobile = data.getMobile();
                 Intent intent = new Intent(VerificationActivity.newInstance(mActivity, FROM_SIGN_UP));

@@ -62,6 +62,7 @@
                     android:id="@+id/iv_camera"
                     style="@style/cameraImageEditAccount"
                     app:layout_constraintEnd_toEndOf="@+id/iv_user"
+                    android:visibility="gone"
                     app:layout_constraintHorizontal_bias="0.492"
                     app:layout_constraintStart_toStartOf="@+id/iv_user"
                     app:layout_constraintTop_toTopOf="@+id/iv_user"

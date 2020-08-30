@@ -48,7 +48,7 @@ public class EditAccountActivity extends BaseActivity implements EditAccountView
         initViews();
         initPresenter();
         initListener();
-        imageClicked();
+        // imageClicked();
         AppSharedMethod.statusBarLight(this);
 
     }
@@ -58,7 +58,7 @@ public class EditAccountActivity extends BaseActivity implements EditAccountView
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(R.drawable.useravatar);
 //        Glide.with(this).load(AppSharedData.getProfileDataUser(EditAccountActivity.this).getString("profile_image", "profile_image")).into(binding.ivUser);
-        Glide.with(this).load(AppSharedData.getProfileUser()).into(binding.ivUser);
+        Glide.with(this).load(AppSharedData.getUserInfo().getUserData().getPhotoThumb()).into(binding.ivUser);
         binding.etName.setText(AppSharedData.getUserInfo().getUserData().getName());
     }
 
@@ -68,39 +68,29 @@ public class EditAccountActivity extends BaseActivity implements EditAccountView
     }
 
     private void initListener() {
-        //binding.ivUser.setOnClickListener(v -> presenter.selectImage());
-      //  binding.bntSave.setOnClickListener(v -> presenter.validationInput(String.valueOf(binding.ivUser), binding.etName));
+        binding.ivUser.setOnClickListener(v -> presenter.selectImage());
+        binding.bntSave.setOnClickListener(v -> presenter.validationInput(binding.etName, binding.ivUser));
         binding.ibBack.setOnClickListener(v -> presenter.goToMyAccount());
     }
 
-    private void imageClicked() {
-        binding.ivUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT)
-                        .setType("image/*");
-                startActivityForResult(Intent.createChooser(intent, "Select Image"), REQUEST_IMAGE);
-            }
-        });
 
-    }
-
-    private static final String TAG = "EditAccountActivity";
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK) {
-            if (data.getData() ==null){
+            assert data != null;
+            if (data.getData() == null) {
                 return;
             }
             Uri uri = data.getData();
             binding.ivUser.setImageURI(uri);
-
-            Log.d(TAG, "onActivityResult: "+uri.getPath());
-          //  presenter.selectImageToUpland(uri, auth , name);
-        }else{
-
         }
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        super.showMessage(msg);
+        snackErrorShow(binding.getRoot(), msg);
     }
 }

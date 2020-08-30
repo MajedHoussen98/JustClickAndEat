@@ -1,4 +1,4 @@
-package ps.ns.just_click_and_eat.feature.menu;
+package ps.ns.just_click_and_eat.feature.menu.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

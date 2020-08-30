@@ -36,7 +36,7 @@ public class BaseFragment extends Fragment implements BaseView {
     }
 
     private void initViews() {
-        dialog = new ProgressDialog(binding.getRoot().getContext());
+        dialog = new ProgressDialog(getContext());
         dialog.setMessage("Please wait...");
     }
 
@@ -49,6 +49,7 @@ public class BaseFragment extends Fragment implements BaseView {
     public void hideProgress() {
         dialog.hide();
     }
+
 
     @Override
     public void showMessage(String msg) {

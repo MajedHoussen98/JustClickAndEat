@@ -1,31 +1,33 @@
-package ps.ns.just_click_and_eat.feature.menu;
+package ps.ns.just_click_and_eat.feature.menu.view;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityMenuBinding;
-import ps.ns.just_click_and_eat.feature.resturentDetails.view.ResturentDetailsActivity;
-import ps.ns.just_click_and_eat.feature.menu.ui.main.SectionsPagerAdapter;
-import ps.ns.just_click_and_eat.feature.verfication.view.VerificationActivity;
+import ps.ns.just_click_and_eat.feature.menu.presenter.MenuPresenter;
+import ps.ns.just_click_and_eat.feature.menu.adapter.SectionsPagerAdapter;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
+import ps.ns.just_click_and_eat.utils.BaseActivity;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
-public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
+public class MenuActivity extends BaseActivity implements MenuView {
 
     private View view;
+    private MenuPresenter presenter;
     private ActivityMenuBinding binding;
+    private int restaurantId;
 
     public static Intent newInstance(Activity mActivity, int fromWhere) {
-        Intent intent = new Intent(mActivity, VerificationActivity.class);
+        Intent intent = new Intent(mActivity, MenuActivity.class);
         intent.putExtra(FROM_WHERE, fromWhere);
         return intent;
     }
@@ -42,22 +44,20 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-
+        initViews();
         viewListener();
 
     }
 
-    private void viewListener() {
-        binding.ibBack.setOnClickListener(this);
+    private void initViews() {
+        presenter = new MenuPresenter(this, this);
+        restaurantId = getIntent().getExtras().getInt("restaurant_id");
+        Log.e("id", "the id: " +restaurantId);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.ib_back:
-                startActivity(new Intent(MenuActivity.this, ResturentDetailsActivity.class));
-                finish();
-                break;
-        }
+    private void viewListener() {
+        presenter.getMenuList(restaurantId);
+        binding.ibBack.setOnClickListener(v -> presenter.goToRestaurantDetails());
     }
+
 }

@@ -1,7 +1,5 @@
 package ps.ns.just_click_and_eat.network.asp.feature;
 
-import ps.ns.just_click_and_eat.network.asp.model.UserData;
-
 public class NetworkShared {
 
     private static ASP asp;
@@ -23,7 +21,7 @@ public class NetworkShared {
             mUser = new User();
         }
 
-        public General getRestaurant() {
+        public General getGeneral() {
             return mGeneral;
         }
         public User getUser (){

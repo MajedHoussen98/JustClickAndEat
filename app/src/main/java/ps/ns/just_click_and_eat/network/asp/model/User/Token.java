@@ -1,4 +1,4 @@
-package ps.ns.just_click_and_eat.network.asp.model;
+package ps.ns.just_click_and_eat.network.asp.model.User;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -30,6 +30,7 @@ public class MyAccountPresenter {
     }
 
     public void goToEditAccount() {
+
         mActivity.startActivity(EditAccountActivity.newInstance(mActivity, FROM_EDIT_ACCOUNT));
     }
 

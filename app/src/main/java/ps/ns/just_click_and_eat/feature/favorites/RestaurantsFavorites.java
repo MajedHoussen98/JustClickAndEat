@@ -16,7 +16,7 @@ import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.favorites.adapter.RestaurantsFavoritesAdapter;
 import ps.ns.just_click_and_eat.databinding.FragmentRestaurantsFavoritesBinding;
 import ps.ns.just_click_and_eat.dataBase.RestaurantsFavoritesModel;
-import ps.ns.just_click_and_eat.feature.resturentDetails.view.ResturentDetailsActivity;
+import ps.ns.just_click_and_eat.feature.resturentDetails.view.RestaurantDetailsActivity;
 
 
 public class RestaurantsFavorites extends Fragment implements RestaurantsFavoritesAdapter.ListItemClickListener {
@@ -59,7 +59,7 @@ public class RestaurantsFavorites extends Fragment implements RestaurantsFavorit
     public void onListItemClicked(int position, int viewId) {
         switch (viewId){
             case R.id.ll_restaurants_fav:
-                startActivity(new Intent(getContext(), ResturentDetailsActivity.class));
+                startActivity(new Intent(getContext(), RestaurantDetailsActivity.class));
                 break;
         }
     }

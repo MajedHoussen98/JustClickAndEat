@@ -30,7 +30,7 @@ import ps.ns.just_click_and_eat.feature.forgetPassword.view.ForgetPasswordActivi
 import ps.ns.just_click_and_eat.feature.login.view.LoginView;
 import ps.ns.just_click_and_eat.feature.signUp.view.SignUpActivity;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
-import ps.ns.just_click_and_eat.network.asp.model.UserInfo;
+import ps.ns.just_click_and_eat.network.asp.model.User.UserInfo;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 import ps.ns.just_click_and_eat.utils.AppSharedData;

@@ -1,17 +1,20 @@
-package ps.ns.just_click_and_eat.network.asp.model;
+package ps.ns.just_click_and_eat.network.asp.model.User;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import ps.ns.just_click_and_eat.network.asp.model.User.Token;
+import ps.ns.just_click_and_eat.network.asp.model.User.UserData;
 
 public class UserInfo {
 
     @SerializedName("token")
     @Expose
-    private Token  token;
+    private Token token;
 
     @SerializedName("user")
     @Expose
-    private  UserData userData;
+    private UserData userData;
 
     public UserInfo(Token token, UserData userData) {
         this.token = token;

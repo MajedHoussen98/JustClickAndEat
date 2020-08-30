@@ -72,10 +72,10 @@
             android:theme="@style/statusBarLight"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.menu.MenuActivity"
+            android:name="ps.ns.just_click_and_eat.feature.menu.view.MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/statusBarLight" />
-        <activity android:name="ps.ns.just_click_and_eat.feature.resturentDetails.view.ResturentDetailsActivity" />
+        <activity android:name="ps.ns.just_click_and_eat.feature.resturentDetails.view.RestaurantDetailsActivity" />
         <activity
             android:name="ps.ns.just_click_and_eat.feature.favorites.Favorites"
             android:label="@string/title_activity_favorites"

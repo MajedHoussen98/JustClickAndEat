@@ -17,7 +17,6 @@
             style="@style/HeightWidthMatch"
             android:background="@color/colorAccent"
             app:contentScrim="?attr/colorPrimary"
-            app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
             app:toolbarId="@+id/toolbar">
@@ -76,7 +75,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             style="@style/HeightWidthMatch"
-            tools:context=".feature.resturentDetails.view.ResturentDetailsActivity">
+            tools:context=".feature.resturentDetails.view.RestaurantDetailsActivity">
 
             <LinearLayout
                 android:id="@+id/ll_part1"

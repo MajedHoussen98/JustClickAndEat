@@ -69,7 +69,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             style="@style/WidthHeight"
-            tools:context=".feature.resturentDetails.view.ResturentDetailsActivity">
+            tools:context=".feature.resturentDetails.view.RestaurantDetailsActivity">
 
             <LinearLayout
                 android:id="@+id/ll_part1"

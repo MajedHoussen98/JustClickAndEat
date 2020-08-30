@@ -3,7 +3,7 @@ package ps.ns.just_click_and_eat.feature.mainHome.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.util.Log;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,29 +11,31 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.feature.resturentDetails.view.ResturentDetailsActivity;
-import ps.ns.just_click_and_eat.network.asp.model.HomeModel;
+import ps.ns.just_click_and_eat.feature.resturentDetails.view.RestaurantDetailsActivity;
+import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.Home;
+import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.ImageRestaurant;
 
-public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>  {
 
     Context context;
-    List<HomeModel> list;
+    List<Home> list;
     final private ListItemClickListener mOnClickListener;
 
     public interface ListItemClickListener {
         void onListItemClicked(int position, int viewId);
     }
 
-    public HomeAdapter(Context context, List<HomeModel> list, HomeAdapter.ListItemClickListener mOnClickListener) {
+    public HomeAdapter(Context context, List<Home> list, HomeAdapter.ListItemClickListener mOnClickListener) {
         this.context = context;
         this.list = list;
         this.mOnClickListener = mOnClickListener;
@@ -49,7 +51,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.ViewHolder holder, int position) {
-        HomeModel data = list.get(position);
+        Home data = list.get(position);
         Glide.with(context).load(data.getLogoUrl()).into(holder.restaurant_pic);
         holder.restaurant_name.setText(data.getName());
         holder.restaurant_status.setText(data.getStatus());
@@ -93,11 +95,34 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         public void onClick(View v) {
             if (v.getId() == R.id.ll_home){
                 int id = list.get(getAdapterPosition()).getId();
-                Intent intent = new Intent(context, ResturentDetailsActivity.class);
+                String name = list.get(getAdapterPosition()).getName();
+                String address = list.get(getAdapterPosition()).getAddress();
+                int rating_number = list.get(getAdapterPosition()).getRating();
+                String mobile = list.get(getAdapterPosition()).getMobile();
+                String status = list.get(getAdapterPosition()).getStatus();
+                String category = list.get(getAdapterPosition()).getCategory();
+                String hours = list.get(getAdapterPosition()).getWorkHour();
+                String features = list.get(getAdapterPosition()).getFeature();
+               // List<ImageRestaurant> imageRestaurants = list.get(getAdapterPosition()).getImages();
+
+                Intent intent = new Intent(context, RestaurantDetailsActivity.class);
+
                 intent.putExtra("restaurant_id", id);
+               // intent.putExtra("imageRestaurants", (Serializable) imageRestaurants);
+                intent.putExtra("restaurant_name", name);
+                intent.putExtra("address", address);
+                intent.putExtra("rating_number", rating_number);
+                intent.putExtra("mobile", mobile);
+                intent.putExtra("status", status);
+                intent.putExtra("category", category);
+                intent.putExtra("hours", hours);
+                intent.putExtra("features", features);
+
                 context.startActivity(intent);
             }
             mOnClickListener.onListItemClicked(getAdapterPosition(), v.getId());
         }
     }
+
+
 }

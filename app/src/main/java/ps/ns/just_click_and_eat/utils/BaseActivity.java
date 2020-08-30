@@ -37,6 +37,7 @@ public class BaseActivity extends AppCompatActivity implements BaseView {
         dialog.dismiss();
     }
 
+
     @Override
     public void showMessage(String msg) {
         Log.e("MESSAGE", msg);

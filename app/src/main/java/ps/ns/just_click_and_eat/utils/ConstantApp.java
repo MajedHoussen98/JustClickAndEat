@@ -11,5 +11,6 @@ public interface ConstantApp {
     int FROM_FAVORITES= 6;
     int FROM_LOCATION= 7;
     int FROM_CHANGE_PASSWORD= 8;
+    int FROM_Restaurant_Details = 9;
 
 }

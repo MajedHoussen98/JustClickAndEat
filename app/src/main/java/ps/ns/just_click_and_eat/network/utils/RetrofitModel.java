@@ -86,7 +86,7 @@ public class RetrofitModel {
                 Request.Builder builder = chain.request().newBuilder()
                         .addHeader(HEADER_CONTENT_TYPE, CONTENT_TYPE_MULTI_PART)
                         //.addHeader(LANGUAGE, AppSharedData.getLanguage())
-                        .addHeader(AUTHORIZATION, AppSharedData.getUserInfo() == null ? "" : BEARER + AppSharedData.getUserInfo().getTokenData().getAccessToken())
+                        .addHeader(AUTHORIZATION, AppSharedData.getUserInfo() == null ? "" : BEARER + AppSharedData.getUserInfo())
                         .addHeader(HTTP_METHOD_OVERRIDE, HTTP_PUT_TYPE);
                 return chain.proceed(builder.build());
             };
@@ -138,15 +138,8 @@ public class RetrofitModel {
         observeOn = AndroidSchedulers.mainThread();
     }
 
-
-    public Observable<AppResponse> getRestaurant() {
-        return api.getRestaurantData()
-                .subscribeOn(subscribeOn)
-                .observeOn(observeOn);
-    }
-
-    public Observable<AppResponse> getRestaurantById(String token, int id) {
-        return api.getRestaurantById(BEARER + AppSharedData.getUserInfo().getTokenData().getAccessToken(), id)
+    public Observable<AppResponse> getAppInfo() {
+        return api.getAppInfo()
                 .subscribeOn(subscribeOn)
                 .observeOn(observeOn);
     }
@@ -169,20 +162,54 @@ public class RetrofitModel {
                 .observeOn(observeOn);
     }
 
-    public Observable<AppResponse> forgetPassword(String params) {
-        return api.forgetPassword(params)
+    public Observable<AppResponse> forgetPassword(String email) {
+        return api.forgetPassword(email)
                 .subscribeOn(subscribeOn)
                 .observeOn(observeOn);
     }
+
+
+    public Observable<AppResponse> logout(String token, int deviceId) {
+        return api.logout(BEARER + token, deviceId)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+
+    public Observable<AppResponse> getRestaurant() {
+        return api.getRestaurantData()
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+
+    public Observable<AppResponse> search(String keyword) {
+        return api.search(keyword)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+//    public Observable<AppResponse> getRestaurantById(String token, int id) {
+//        return api.getRestaurantById(BEARER + AppSharedData.getUserInfo().getTokenData().getAccessToken(), id)
+//                .subscribeOn(subscribeOn)
+//                .observeOn(observeOn);
+//    }
+
 
     public Observable<AppResponse> updatePassword(String token, ArrayMap<String, String> params) {
-        return api.updatePassword("Bearer " + token, params)
+        return api.updatePassword(BEARER + token, params)
                 .subscribeOn(subscribeOn)
                 .observeOn(observeOn);
     }
 
-    public Observable<AppResponse> updateProfile(String token, ArrayMap<String, String> params, MultipartBody.Part multipartBody) {
-        return api.updateProfile("Bearer " + token, params, multipartBody)
+    public Observable<AppResponse> updateProfile(String token, ArrayMap<String, String> params, MultipartBody.Part part) {
+        return api.updateProfile(BEARER + token, params, part)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+        public Observable<AppResponse> getMenuList(int id) {
+        return api.getMenuList(id)
                 .subscribeOn(subscribeOn)
                 .observeOn(observeOn);
     }

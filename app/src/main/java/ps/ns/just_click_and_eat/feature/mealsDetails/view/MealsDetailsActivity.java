@@ -14,8 +14,7 @@ import java.util.List;
 
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityMealsDetailsBinding;
-import ps.ns.just_click_and_eat.feature.menu.MenuActivity;
-import ps.ns.just_click_and_eat.utils.AppSharedMethod;
+import ps.ns.just_click_and_eat.feature.menu.view.MenuActivity;
 
 public class MealsDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 

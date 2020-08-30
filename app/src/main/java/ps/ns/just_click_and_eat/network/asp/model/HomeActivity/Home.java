@@ -1,11 +1,11 @@
-package ps.ns.just_click_and_eat.network.asp.model;
+package ps.ns.just_click_and_eat.network.asp.model.HomeActivity;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class HomeModel {
+public class Home {
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -152,15 +152,15 @@ public class HomeModel {
 
     @SerializedName("work_hour")
     @Expose
-    private Object workHour;
+    private String workHour;
 
     @SerializedName("week_workHour")
     @Expose
-    private List<WeekWorkModel> weekWorkHour = null;
+    private List<WeekWork> weekWorkHour = null;
 
     @SerializedName("images")
     @Expose
-    private List<ImageModelRestaurant> images = null;
+    private List<ImageRestaurant> images = null;
 
     public Integer getId() {
         return id;
@@ -450,27 +450,27 @@ public class HomeModel {
         this.cartItemsCount = cartItemsCount;
     }
 
-    public Object getWorkHour() {
+    public String getWorkHour() {
         return workHour;
     }
 
-    public void setWorkHour(Object workHour) {
+    public void setWorkHour(String workHour) {
         this.workHour = workHour;
     }
 
-    public List<WeekWorkModel> getWeekWorkHour() {
+    public List<WeekWork> getWeekWorkHour() {
         return weekWorkHour;
     }
 
-    public void setWeekWorkHour(List<WeekWorkModel> weekWorkHour) {
+    public void setWeekWorkHour(List<WeekWork> weekWorkHour) {
         this.weekWorkHour = weekWorkHour;
     }
 
-    public List<ImageModelRestaurant> getImages() {
+    public List<ImageRestaurant> getImages() {
         return images;
     }
 
-    public void setImages(List<ImageModelRestaurant> images) {
+    public void setImages(List<ImageRestaurant> images) {
         this.images = images;
     }
 }

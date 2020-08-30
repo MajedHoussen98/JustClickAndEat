@@ -6,6 +6,8 @@
         <item name="colorPrimaryDark">#2C32BE</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
+<!--        <item name="android:windowTranslucentNavigation">true</item>-->
     </style>
 
 
@@ -390,8 +392,7 @@
 
     <style name="searchMenu">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/_40sdp</item>
-        <item name="android:layout_marginTop">@dimen/_16sdp</item>
+        <item name="android:layout_height">45dp</item>
         <item name="android:ems">10</item>
         <item name="android:drawableLeft">@drawable/icons_search</item>
         <item name="android:drawablePadding">@dimen/_15sdp</item>
@@ -686,11 +687,11 @@
 
 
     <style name="recyclerStarting">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/_40sdp</item>
-        <item name="android:layout_gravity">bottom</item>
-        <item name="android:gravity">bottom</item>
+<!--        <item name="android:layout_marginTop">70dp</item>-->
+<!--        <item name="android:layout_gravity">bottom</item>-->
+<!--        <item name="android:gravity">bottom</item>-->
         <item name="android:textSize">14sp</item>
     </style>
 

@@ -4,31 +4,20 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
-import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.mainHome.adapter.HomeAdapter;
 import ps.ns.just_click_and_eat.databinding.FragmentHomeBinding;
-import ps.ns.just_click_and_eat.feature.dialogs.FilterDialogFragment;
 import ps.ns.just_click_and_eat.feature.mainHome.homePresenter.HomePresenter;
-import ps.ns.just_click_and_eat.feature.mainHome.view.HomeView;
-import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.feature.verfication.view.VerificationActivity;
-import ps.ns.just_click_and_eat.network.asp.feature.General;
-import ps.ns.just_click_and_eat.network.asp.model.HomeModel;
-import ps.ns.just_click_and_eat.feature.resturentDetails.view.ResturentDetailsActivity;
-import ps.ns.just_click_and_eat.network.utils.RequestListener;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 import ps.ns.just_click_and_eat.utils.BaseFragment;
 
@@ -63,16 +52,36 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.ListItemCl
 
     private void initViews() {
         presenter = new HomePresenter(this, this);
-        getDataHome();
+        presenter.getRestaurantData(binding.rvHome);
     }
 
     private void listenerViews() {
         binding.icFilter.setOnClickListener(v -> AppSharedMethod.openFilterDialog());
+
+        binding.icSearch.setOnClickListener(v -> presenter.search(AppSharedMethod.getTextFromEditText(binding.etSearchHome), binding.rvHome));
+        binding.etSearchHome.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (!String.valueOf(s).isEmpty()) {
+                    binding.rvHome.setVisibility(View.VISIBLE);
+                    presenter.search(String.valueOf(s), binding.rvHome);
+                } else {
+                    binding.rvHome.setVisibility(View.GONE);
+                }
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
-    private void getDataHome() {
-        presenter.getRestaurantData(binding.rvHome);
-    }
 
     @Override
     public void onListItemClicked(int position, int viewId) {

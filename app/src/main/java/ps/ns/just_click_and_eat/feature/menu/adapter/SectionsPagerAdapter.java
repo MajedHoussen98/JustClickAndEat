@@ -1,4 +1,4 @@
-package ps.ns.just_click_and_eat.feature.menu.ui.main;
+package ps.ns.just_click_and_eat.feature.menu.adapter;
 
 import android.content.Context;
 
@@ -7,13 +7,21 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import ps.ns.just_click_and_eat.feature.menu.Beverages;
-import ps.ns.just_click_and_eat.feature.menu.GrilledMeat;
-import ps.ns.just_click_and_eat.feature.menu.Salads;
-import ps.ns.just_click_and_eat.feature.menu.Seafoof;
-import ps.ns.just_click_and_eat.feature.menu.StartersMenu;
+import java.util.ArrayList;
+
+import ps.ns.just_click_and_eat.feature.menu.presenter.MenuPresenter;
+import ps.ns.just_click_and_eat.feature.menu.view.Beverages;
+import ps.ns.just_click_and_eat.feature.menu.view.GrilledMeat;
+import ps.ns.just_click_and_eat.feature.menu.view.Salads;
+import ps.ns.just_click_and_eat.feature.menu.view.Seafoof;
+import ps.ns.just_click_and_eat.feature.menu.view.StartersMenu;
+import ps.ns.just_click_and_eat.feature.menu.view.Appetizers;
+import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
+import ps.ns.just_click_and_eat.network.asp.model.menu.MenuList;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+    private MenuPresenter presenter;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
@@ -24,7 +32,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
 
         Fragment fragment = null;
-        switch (position){
+        switch (position) {
             case 0:
                 fragment = new StartersMenu();
                 break;
@@ -41,6 +49,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 4:
                 fragment = new Beverages();
                 break;
+            case 5:
+                fragment = new Appetizers();
         }
 
         return fragment;
@@ -49,7 +59,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position){
+
+        switch (position) {
             case 0:
                 return "Starters";
             case 1:
@@ -60,12 +71,14 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return "Grilled Meat";
             case 4:
                 return "Beverages";
+            case 5:
+                return "Appetizers";
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 5;
+        return 6;
     }
 }
