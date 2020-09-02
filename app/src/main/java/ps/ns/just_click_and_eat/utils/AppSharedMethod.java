@@ -1,17 +1,13 @@
 package ps.ns.just_click_and_eat.utils;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.net.ConnectivityManager;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
-
-import androidx.fragment.app.FragmentManager;
 
 import com.mukesh.OtpView;
 
@@ -25,9 +21,8 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.feature.dialogs.FilterDialogFragment;
+import ps.ns.just_click_and_eat.feature.filterDialogFragment.FilterDialogFragment;
 
-import static androidx.core.content.ContextCompat.getSystemService;
 import static com.facebook.FacebookSdk.getCacheDir;
 
 public class AppSharedMethod {

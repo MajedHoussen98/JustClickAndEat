@@ -52,13 +52,11 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.ListItemCl
 
     private void initViews() {
         presenter = new HomePresenter(this, this);
-        presenter.getRestaurantData(binding.rvHome);
+        presenter.getRestaurantData(binding.rvHome, binding.progressBar);
     }
 
     private void listenerViews() {
         binding.icFilter.setOnClickListener(v -> AppSharedMethod.openFilterDialog());
-
-        binding.icSearch.setOnClickListener(v -> presenter.search(AppSharedMethod.getTextFromEditText(binding.etSearchHome), binding.rvHome));
         binding.etSearchHome.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -66,7 +64,8 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.ListItemCl
                     binding.rvHome.setVisibility(View.VISIBLE);
                     presenter.search(String.valueOf(s), binding.rvHome);
                 } else {
-                    binding.rvHome.setVisibility(View.GONE);
+                    presenter.getRestaurantData(binding.rvHome, binding.progressBar);
+//                    binding.rvHome.setVisibility(View.GONE);
                 }
 
             }
@@ -75,6 +74,7 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.ListItemCl
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
+
             @Override
             public void afterTextChanged(Editable s) {
 
@@ -85,7 +85,7 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.ListItemCl
 
     @Override
     public void onListItemClicked(int position, int viewId) {
-        }
+    }
 
     @Override
     public void showMessage(String msg) {

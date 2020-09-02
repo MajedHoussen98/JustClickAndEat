@@ -18,7 +18,9 @@ import ps.ns.just_click_and_eat.databinding.ActivityResturentDetailsBinding;
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.feature.resturentDetails.presenter.RestaurantDetailsPresenter;
 import ps.ns.just_click_and_eat.feature.verfication.view.VerificationActivity;
+import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.Home;
 import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.ImageRestaurant;
+import ps.ns.just_click_and_eat.utils.AppSharedData;
 import ps.ns.just_click_and_eat.utils.BaseActivity;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
@@ -28,10 +30,7 @@ public class RestaurantDetailsActivity extends BaseActivity implements Restauran
     private ActivityResturentDetailsBinding binding;
     List<SlideModel> list = new ArrayList<>();
     private RestaurantDetailsPresenter presenter;
-    int restaurantId, rating_number;
-    String restaurantName, address, mobile, status, category, hours, features;
-  //  Serializable imageRestaurants;
-
+    int restaurantId;
 
     public static Intent newInstance(Activity mActivity, int fromWhere) {
         Intent intent = new Intent(mActivity, RestaurantDetailsActivity.class);
@@ -46,7 +45,6 @@ public class RestaurantDetailsActivity extends BaseActivity implements Restauran
         View view = binding.getRoot();
         setContentView(view);
         intViews();
-        addSliderImage();
         listenerViews();
     }
 
@@ -56,11 +54,6 @@ public class RestaurantDetailsActivity extends BaseActivity implements Restauran
 
     }
 
-    private void addSliderImage() {
-        list.add(new SlideModel(R.drawable.slideimage1, ScaleTypes.CENTER_CROP));
-        list.add(new SlideModel(R.drawable.slideimage2, ScaleTypes.CENTER_CROP));
-        binding.imageSlider.setImageList(list, ScaleTypes.CENTER_CROP);
-    }
 
     private void listenerViews() {
         binding.ibBack.setOnClickListener(v -> presenter.goToHome());
@@ -69,29 +62,24 @@ public class RestaurantDetailsActivity extends BaseActivity implements Restauran
 
     private void getDetailsRestaurant() {
         restaurantId = getIntent().getExtras().getInt("restaurant_id");
-       // imageRestaurants = getIntent().getSerializableExtra("imageRestaurants");
-        restaurantName = getIntent().getExtras().getString("restaurant_name");
-        address = getIntent().getExtras().getString("address");
-        rating_number = getIntent().getExtras().getInt("rating_number");
-        mobile = getIntent().getExtras().getString("mobile");
-        status = getIntent().getExtras().getString("status");
-        category = getIntent().getExtras().getString("category");
-        hours = getIntent().getExtras().getString("hours");
-        features = getIntent().getExtras().getString("features");
-
-     //   Log.e("imagesR", imageRestaurants.toString());
-
-        binding.tvResturantName.setText(restaurantName);
-        binding.tvAddress.setText(address);
-        binding.ratingBar.setRating(rating_number);
-        binding.tvRatingValue.setText(String.valueOf(rating_number));
-        binding.tvResturantAddress.setText(address);
-        binding.tvMobileNumber.setText(mobile);
-        binding.tvResturantStatus.setText(status);
-        binding.tvCategory.setText(category);
-        binding.tvWorkTime.setText(hours);
-        binding.tvFeatures.setText(features);
-
+        presenter.getRestaurantById(restaurantId,
+                AppSharedData.getUserInfo().getTokenData().getAccessToken(),
+                binding.tvResturantName,
+                binding.tvAddress,
+                binding.ratingBar,
+                binding.tvRatingValue,
+                binding.tvResturantAddress,
+                binding.tvMobileNumber,
+                binding.tvStatus,
+                binding.tvCategory,
+                binding.tvWorkTime,
+                binding.tvFeatures,
+                binding.nested,
+                binding.appbar,
+                binding.progressBar,
+                list,
+                binding.imageSlider);
     }
+
 
 }

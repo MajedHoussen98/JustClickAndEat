@@ -20,12 +20,13 @@ import com.bumptech.glide.Glide;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.resturentDetails.view.RestaurantDetailsActivity;
 import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.Home;
 import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.ImageRestaurant;
 
-public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>  {
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     Context context;
     List<Home> list;
@@ -44,8 +45,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>  {
     @NonNull
     @Override
     public HomeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-         View view = LayoutInflater.from(context).inflate(R.layout.home_item, parent, false);
-         return new ViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.home_item, parent, false);
+        return new ViewHolder(view);
 
     }
 
@@ -59,9 +60,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>  {
         holder.rating_number.setText(String.valueOf(data.getRating()));
         holder.restaurant_rating.setRating(data.getRating());
 
-        if (data.getStatus().equals("Open")){
+        if (data.getStatus().equals("Open")) {
             holder.restaurant_status.setTextColor(Color.parseColor("#74B743"));
-        }else {
+        } else {
             holder.restaurant_status.setTextColor(Color.parseColor("#C11313"));
         }
     }
@@ -93,31 +94,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder>  {
 
         @Override
         public void onClick(View v) {
-            if (v.getId() == R.id.ll_home){
+            if (v.getId() == R.id.ll_home) {
                 int id = list.get(getAdapterPosition()).getId();
-                String name = list.get(getAdapterPosition()).getName();
-                String address = list.get(getAdapterPosition()).getAddress();
-                int rating_number = list.get(getAdapterPosition()).getRating();
-                String mobile = list.get(getAdapterPosition()).getMobile();
-                String status = list.get(getAdapterPosition()).getStatus();
-                String category = list.get(getAdapterPosition()).getCategory();
-                String hours = list.get(getAdapterPosition()).getWorkHour();
-                String features = list.get(getAdapterPosition()).getFeature();
-               // List<ImageRestaurant> imageRestaurants = list.get(getAdapterPosition()).getImages();
-
                 Intent intent = new Intent(context, RestaurantDetailsActivity.class);
-
                 intent.putExtra("restaurant_id", id);
-               // intent.putExtra("imageRestaurants", (Serializable) imageRestaurants);
-                intent.putExtra("restaurant_name", name);
-                intent.putExtra("address", address);
-                intent.putExtra("rating_number", rating_number);
-                intent.putExtra("mobile", mobile);
-                intent.putExtra("status", status);
-                intent.putExtra("category", category);
-                intent.putExtra("hours", hours);
-                intent.putExtra("features", features);
-
                 context.startActivity(intent);
             }
             mOnClickListener.onListItemClicked(getAdapterPosition(), v.getId());

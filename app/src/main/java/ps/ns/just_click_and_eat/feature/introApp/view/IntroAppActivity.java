@@ -44,7 +44,6 @@ public class IntroAppActivity extends BaseActivity implements IntroView {
         presenter = new IntroPresenter(this, this);
         viewListener();
         getDataIntro();
-
     }
 
 
@@ -55,7 +54,7 @@ public class IntroAppActivity extends BaseActivity implements IntroView {
     }
 
     private void getDataIntro() {
-        presenter.getAppIntro(binding.viewPager, binding.springDotsIndicator);
+        presenter.getAppIntro(binding.viewPager, binding.springDotsIndicator, binding.progressBar);
     }
 
 }

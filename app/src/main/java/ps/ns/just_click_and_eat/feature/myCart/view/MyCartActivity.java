@@ -15,7 +15,7 @@ import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.myCart.MyCartAdapter;
 import ps.ns.just_click_and_eat.databinding.ActivityMyCartBinding;
-import ps.ns.just_click_and_eat.feature.dialogs.CartDialogFragment;
+import ps.ns.just_click_and_eat.feature.cartDialogFragment.view.CartDialogFragment;
 import ps.ns.just_click_and_eat.dataBase.MyCartModel;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 

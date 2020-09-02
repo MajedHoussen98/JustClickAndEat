@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ps.ns.just_click_and_eat.feature.menu.presenter.MenuPresenter;
 import ps.ns.just_click_and_eat.feature.menu.view.Beverages;
@@ -17,11 +18,14 @@ import ps.ns.just_click_and_eat.feature.menu.view.Seafoof;
 import ps.ns.just_click_and_eat.feature.menu.view.StartersMenu;
 import ps.ns.just_click_and_eat.feature.menu.view.Appetizers;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
+import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.Home;
 import ps.ns.just_click_and_eat.network.asp.model.menu.MenuList;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    private MenuPresenter presenter;
+   private Context context;
+   private List<Home> list;
+
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);

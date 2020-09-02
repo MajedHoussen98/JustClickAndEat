@@ -49,11 +49,11 @@ public interface RetrofitApis {
     @GET("restaurants")
     Observable<AppResponse> getRestaurantData();
 
-//    @GET("restaurants/{id}")
-//    Observable<AppResponse> getRestaurantById(
-//            @Header("Authorization") String authorization,
-//            @Path("id") int id
-//    );
+    @GET("restaurants/{id}")
+    Observable<AppResponse> getRestaurantById(
+            @Header("Authorization") String authorization,
+            @Path("id") int id
+    );
 
 
     @FormUrlEncoded
@@ -76,5 +76,8 @@ public interface RetrofitApis {
 
     @GET("restaurant/{id}/menu")
     Observable<AppResponse> getMenuList(@Path("id") int id);
+
+    @GET("user_address")
+    Observable<AppResponse> getMyLocation(@Header("Authorization") String authorization);
 
 }

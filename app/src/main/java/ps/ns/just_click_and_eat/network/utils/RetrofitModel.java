@@ -189,11 +189,11 @@ public class RetrofitModel {
                 .observeOn(observeOn);
     }
 
-//    public Observable<AppResponse> getRestaurantById(String token, int id) {
-//        return api.getRestaurantById(BEARER + AppSharedData.getUserInfo().getTokenData().getAccessToken(), id)
-//                .subscribeOn(subscribeOn)
-//                .observeOn(observeOn);
-//    }
+    public Observable<AppResponse> getRestaurantById(String token, int id) {
+        return api.getRestaurantById(BEARER + token, id)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
 
 
     public Observable<AppResponse> updatePassword(String token, ArrayMap<String, String> params) {
@@ -208,8 +208,14 @@ public class RetrofitModel {
                 .observeOn(observeOn);
     }
 
-        public Observable<AppResponse> getMenuList(int id) {
+    public Observable<AppResponse> getMenuList(int id) {
         return api.getMenuList(id)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+    public Observable<AppResponse> getMyLocation(String token) {
+        return api.getMyLocation(BEARER + token)
                 .subscribeOn(subscribeOn)
                 .observeOn(observeOn);
     }

@@ -1,6 +1,5 @@
 package ps.ns.just_click_and_eat.feature.myLocation.view;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.Activity;
@@ -10,22 +9,20 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
-import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.feature.myLocation.MyLocationAdapter;
+import ps.ns.just_click_and_eat.feature.myLocation.adapter.MyLocationAdapter;
 import ps.ns.just_click_and_eat.databinding.ActivityMyLocationBinding;
-import ps.ns.just_click_and_eat.feature.addLocation.view.AddLocationActivity;
-import ps.ns.just_click_and_eat.dataBase.MyLocationModel;
-import ps.ns.just_click_and_eat.feature.signUp.view.SignUpActivity;
+import ps.ns.just_click_and_eat.network.asp.model.MyLocation;
+import ps.ns.just_click_and_eat.feature.myLocation.presenter.MyLocationPresenter;
+import ps.ns.just_click_and_eat.utils.AppSharedData;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
+import ps.ns.just_click_and_eat.utils.BaseActivity;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
-public class MyLocationActivity extends AppCompatActivity implements MyLocationAdapter.ListItemClickListener, View.OnClickListener {
+public class MyLocationActivity extends BaseActivity implements MyLocationAdapter.ListItemClickListener, MyLocationView {
     private View view;
     private ActivityMyLocationBinding binding;
-    private MyLocationAdapter adapter;
-    private ArrayList<MyLocationModel> list;
+    private MyLocationPresenter presenter;
 
     public static Intent newInstance(Activity mActivity, int fromWhere) {
         Intent intent = new Intent(mActivity, MyLocationActivity.class);
@@ -44,24 +41,15 @@ public class MyLocationActivity extends AppCompatActivity implements MyLocationA
         AppSharedMethod.statusBarLight(this);
 
     }
+
     private void initViews() {
-        list = new ArrayList<>();
-        getLocationData();
+        presenter = new MyLocationPresenter(this, this);
+        presenter.getMyLocation(AppSharedData.getUserInfo().getTokenData().getAccessToken(), binding.rvLocation, binding.progressBar);
     }
 
     private void listenerViews() {
-        binding.ibBack.setOnClickListener(this);
-        binding.btnAddAddress.setOnClickListener(this);
-    }
-
-    private void getLocationData() {
-        list.add(new MyLocationModel("Home address", "Piata Unirii 2, Apartment 23…"));
-        list.add(new MyLocationModel("Work address", "Piata Unirii 3, Apartment 26…"));
-
-
-        binding.rvLocation.setLayoutManager(new LinearLayoutManager(MyLocationActivity.this));
-        adapter = new MyLocationAdapter(MyLocationActivity.this, list, MyLocationActivity.this);
-        binding.rvLocation.setAdapter(adapter);
+        binding.ibBack.setOnClickListener(v -> presenter.goTOHome());
+        binding.btnAddAddress.setOnClickListener(v -> presenter.goToAddLocation());
     }
 
     @Override
@@ -70,15 +58,8 @@ public class MyLocationActivity extends AppCompatActivity implements MyLocationA
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn_add_address:
-                startActivity(new Intent(MyLocationActivity.this, AddLocationActivity.class));
-                break;
-            case R.id.ib_back:
-                startActivity(new Intent(MyLocationActivity.this, MainActivity.class));
-                finish();
-                break;
-        }
+    public void showMessage(String msg) {
+        super.showMessage(msg);
+        snackErrorShow(binding.getRoot(), msg);
     }
 }

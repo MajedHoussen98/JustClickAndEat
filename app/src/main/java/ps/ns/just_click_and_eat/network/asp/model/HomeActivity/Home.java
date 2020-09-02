@@ -112,7 +112,7 @@ public class Home {
 
     @SerializedName("last_offline_date")
     @Expose
-    private Object lastOfflineDate;
+    private String lastOfflineDate;
 
     @SerializedName("deleted_at")
     @Expose
@@ -161,6 +161,7 @@ public class Home {
     @SerializedName("images")
     @Expose
     private List<ImageRestaurant> images = null;
+
 
     public Integer getId() {
         return id;
@@ -370,11 +371,11 @@ public class Home {
         this.extraChargeIngredients = extraChargeIngredients;
     }
 
-    public Object getLastOfflineDate() {
+    public String getLastOfflineDate() {
         return lastOfflineDate;
     }
 
-    public void setLastOfflineDate(Object lastOfflineDate) {
+    public void setLastOfflineDate(String lastOfflineDate) {
         this.lastOfflineDate = lastOfflineDate;
     }
 

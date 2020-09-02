@@ -1,4 +1,4 @@
-package ps.ns.just_click_and_eat.feature.myLocation;
+package ps.ns.just_click_and_eat.feature.myLocation.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,11 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.dataBase.MyLocationModel;
+import ps.ns.just_click_and_eat.network.asp.model.MyLocation;
 
 public class MyLocationAdapter extends RecyclerView.Adapter<MyLocationAdapter.ViewHolder> {
     Context context;
-    List<MyLocationModel> list;
+    List<MyLocation> list;
     final private MyLocationAdapter.ListItemClickListener mOnClickListener;
     private boolean showHide;
 
@@ -30,11 +30,11 @@ public class MyLocationAdapter extends RecyclerView.Adapter<MyLocationAdapter.Vi
         this.showHide = showHide;
     }
 
-    public interface ListItemClickListener{
+    public interface ListItemClickListener {
         void onListItemClicked(int position, int viewId);
     }
 
-    public MyLocationAdapter(Context context, List<MyLocationModel> list, ListItemClickListener mOnClickListener) {
+    public MyLocationAdapter(Context context, List<MyLocation> list, ListItemClickListener mOnClickListener) {
         this.context = context;
         this.list = list;
         this.mOnClickListener = mOnClickListener;
@@ -50,13 +50,13 @@ public class MyLocationAdapter extends RecyclerView.Adapter<MyLocationAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull MyLocationAdapter.ViewHolder holder, int position) {
-        final MyLocationModel data = list.get(position);
-        holder.addressName.setText(data.getAddressName());
-        holder.addressDetails.setText(data.getDetailsAddress());
+        final MyLocation data = list.get(position);
+        holder.addressName.setText(data.getLocationTitle());
+        holder.addressDetails.setText(data.getAddress());
 
-        if (showHide){
+        if (showHide) {
             holder.changeAddress.setVisibility(View.GONE);
-        }else {
+        } else {
             holder.changeAddress.setVisibility(View.VISIBLE);
         }
     }

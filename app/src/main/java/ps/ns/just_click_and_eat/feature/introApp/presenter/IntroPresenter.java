@@ -1,6 +1,8 @@
 package ps.ns.just_click_and_eat.feature.introApp.presenter;
 
 import android.app.Activity;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,13 +42,15 @@ public class IntroPresenter {
         mActivity.startActivity(LoginActivity.newInstance(mActivity, FROM_LOGIN));
     }
 
-    public void getAppIntro(ViewPager viewPager, SpringDotsIndicator springDotsIndicator) {
+    public void getAppIntro(ViewPager viewPager, SpringDotsIndicator springDotsIndicator, ProgressBar progressBar) {
         NetworkShared.getAsp().getGeneral().getAppInfo(new RequestListener<ArrayList<IntroApp>>() {
             @Override
             public void onSuccess(ArrayList<IntroApp> data) {
                 IntroAdapter adapter = new IntroAdapter(mActivity, data);
                 viewPager.setAdapter(adapter);
                 springDotsIndicator.setViewPager(viewPager);
+                springDotsIndicator.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override

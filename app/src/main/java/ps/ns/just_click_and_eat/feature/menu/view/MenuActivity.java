@@ -52,12 +52,11 @@ public class MenuActivity extends BaseActivity implements MenuView {
     private void initViews() {
         presenter = new MenuPresenter(this, this);
         restaurantId = getIntent().getExtras().getInt("restaurant_id");
-        Log.e("id", "the id: " +restaurantId);
     }
 
     private void viewListener() {
         presenter.getMenuList(restaurantId);
-        binding.ibBack.setOnClickListener(v -> presenter.goToRestaurantDetails());
+        binding.ibBack.setOnClickListener(v -> presenter.goToRestaurantDetails(restaurantId));
     }
 
 }

@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import ps.ns.just_click_and_eat.feature.menu.adapter.SectionsPagerAdapter;
 import ps.ns.just_click_and_eat.feature.menu.view.MenuView;
 import ps.ns.just_click_and_eat.feature.resturentDetails.view.RestaurantDetailsActivity;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
@@ -22,17 +23,16 @@ public class MenuPresenter {
     private MenuView mView;
     private Activity mActivity;
 
-    public MenuPresenter(){
-
-    }
 
     public MenuPresenter(MenuView mView, Activity mActivity) {
         this.mView = mView;
         this.mActivity = mActivity;
     }
 
-    public void goToRestaurantDetails(){
-        mActivity.startActivity(new Intent(RestaurantDetailsActivity.newInstance(mActivity, FROM_Restaurant_Details)));
+    public void goToRestaurantDetails(int restaurant_id){
+        Intent intent = new Intent(mActivity, RestaurantDetailsActivity.class);
+        intent.putExtra("restaurant_id", restaurant_id);
+        mActivity.startActivity(intent);
     }
 
     private static final String TAGS = "MenuPresenterS";
@@ -44,6 +44,7 @@ public class MenuPresenter {
             public void onSuccess(ArrayList<MenuList> data) {
 
                 AppSharedData.setMenuList(data);
+
                // Toast.makeText(mActivity, "success", Toast.LENGTH_SHORT).show();
                // Toast.makeText(mActivity, data.get(1).getName(), Toast.LENGTH_SHORT).show();
             }

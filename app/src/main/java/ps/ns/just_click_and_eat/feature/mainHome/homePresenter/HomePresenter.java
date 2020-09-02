@@ -1,7 +1,9 @@
 package ps.ns.just_click_and_eat.feature.mainHome.homePresenter;
 
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -28,7 +30,7 @@ public class HomePresenter {
         this.mFragment = mFragment;
     }
 
-    public void getRestaurantData(RecyclerView recyclerView) {
+    public void getRestaurantData(RecyclerView recyclerView , ProgressBar progressBar) {
         //   mView.showProgress();
         NetworkShared.getAsp().getGeneral().getRestaurants(new RequestListener<ArrayList<Home>>() {
             @Override
@@ -37,12 +39,15 @@ public class HomePresenter {
                 HomeAdapter adapter = new HomeAdapter(mFragment.getContext(), data, (HomeAdapter.ListItemClickListener) mFragment);
                 recyclerView.setLayoutManager(new LinearLayoutManager(mFragment.getContext()));
                 recyclerView.setAdapter(adapter);
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
             public void onFail(String message, int code) {
                 //     mView.hideProgress();
                 mView.showMessage(message);
+                progressBar.setVisibility(View.GONE);
+
             }
         });
     }

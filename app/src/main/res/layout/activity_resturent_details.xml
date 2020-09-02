@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/restaurants_details"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:layoutDirection="ltr"
@@ -11,11 +12,12 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         style="@style/hightSlirder"
+        android:visibility="gone"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             style="@style/HeightWidthMatch"
-            android:background="@color/colorAccent"
+            android:background="@color/whiteColor"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
@@ -27,16 +29,13 @@
                 style="@style/hightSlirder"
                 app:iss_auto_cycle="true"
                 app:iss_delay="0"
-                app:iss_error_image="@drawable/loading_res"
-                app:iss_period="1000"
-                app:iss_placeholder="@drawable/loading_res"
+                app:iss_period="3000"
                 app:iss_selected_dot="@drawable/dot_selected"
                 app:iss_text_align="@string/app_name"
                 app:iss_unselected_dot="@drawable/dot_unselected">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                    style="@style/barSlider">
-
                     <ImageButton
                         android:id="@+id/ib_back"
                         style="@style/backImageSlider"
@@ -69,8 +68,8 @@
 
     <androidx.core.widget.NestedScrollView
         style="@style/WidthHeight"
-
-
+        android:id="@+id/nested"
+        android:visibility="gone"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -226,6 +225,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="match_parent" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

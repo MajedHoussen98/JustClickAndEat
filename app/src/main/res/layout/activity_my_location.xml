@@ -33,6 +33,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/colorAccent"
+        tools:targetApi="lollipop" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_location"
@@ -44,10 +51,10 @@
     <Button
         android:id="@+id/btn_add_address"
         style="@style/MainButton"
-        android:background="@drawable/get_start"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/get_start"
         android:text="@string/add_another_address" />
 
 

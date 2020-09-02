@@ -1,4 +1,4 @@
-package ps.ns.just_click_and_eat.feature.dialogs;
+package ps.ns.just_click_and_eat.feature.filterDialogFragment;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -41,13 +41,11 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
     @Override
     public void onResume() {
         super.onResume();
-
         Window window = getDialog().getWindow();
         window.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         WindowManager.LayoutParams params = window.getAttributes();
-
         window.setAttributes(params);
     }
 
@@ -75,6 +73,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
         RangeSeekBar rangeSeekBarTextColorWithCode = (RangeSeekBar) viewMain.findViewById(R.id.seekbar_placeholder);
         rangeSeekBarTextColorWithCode.setTextAboveThumbsColorResource(android.R.color.holo_blue_bright);*/
     }
+
     private void listenerViews() {
         binding.btnClear.setOnClickListener(this);
         binding.ctvTopRated.setOnClickListener(this);
@@ -83,6 +82,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
         binding.etSearchFilter.setOnClickListener(this);
         binding.ctvOpenNow.setOnClickListener(this);
     }
+
     @Override
     public void onClick(View v) {
 
