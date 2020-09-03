@@ -16,6 +16,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 public interface RetrofitApis {
@@ -40,7 +41,7 @@ public interface RetrofitApis {
     Observable<AppResponse> logout(
             @Header("Authorization") String authorization,
             @Field("device_id") int params
-            );
+    );
 
     @FormUrlEncoded
     @POST("forget")

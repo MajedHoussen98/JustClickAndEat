@@ -194,16 +194,16 @@ public class AppSharedData {
         return mUser;
     }
 
-    public static void setMenuList(ArrayList<MenuList> list){
-        JustClickApp.getInstance().getSharedPreferences(SHARED_APP_DATA, MODE_PRIVATE)
-                .edit().putStringSet(SHARED_MENU_LIST, Collections.singleton(gson.toJson(list))).apply();
-    }
-
-    public static MenuList getMenuList() {
-        MenuList mList = gson.fromJson(JustClickApp.getInstance().getSharedPreferences(SHARED_APP_DATA, MODE_PRIVATE)
-                .getString(SHARED_USER_DATA, null), MenuList.class);
-        return mList;
-    }
+//    public static void setMenuList(ArrayList<MenuList> list){
+//        JustClickApp.getInstance().getSharedPreferences(SHARED_APP_DATA, MODE_PRIVATE)
+//                .edit().putStringSet(SHARED_MENU_LIST, Collections.singleton(gson.toJson(list))).apply();
+//    }
+//
+//    public static MenuList getMenuList() {
+//        MenuList mList = gson.fromJson(JustClickApp.getInstance().getSharedPreferences(SHARED_APP_DATA, MODE_PRIVATE)
+//                .getString(SHARED_USER_DATA, null), MenuList.class);
+//        return mList;
+//    }
 
 
 

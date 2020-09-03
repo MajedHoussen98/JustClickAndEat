@@ -1,9 +1,9 @@
 package ps.ns.just_click_and_eat.feature.mainHome.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,14 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.feature.resturentDetails.view.RestaurantDetailsActivity;
+import ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantDetailsActivity;
 import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.Home;
-import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.ImageRestaurant;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
@@ -84,7 +81,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
             restaurant_pic = itemView.findViewById(R.id.iv_resturant);
             restaurant_name = itemView.findViewById(R.id.tv_resturant_name);
-            restaurant_status = itemView.findViewById(R.id.tv_resturant_status);
+            restaurant_status = itemView.findViewById(R.id.tv_restaurant_status);
             restaurant_address = itemView.findViewById(R.id.tv_resturant_address);
             restaurant_rating = itemView.findViewById(R.id.rb_resturant);
             rating_number = itemView.findViewById(R.id.tv_rating_value);
@@ -99,10 +96,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
                 Intent intent = new Intent(context, RestaurantDetailsActivity.class);
                 intent.putExtra("restaurant_id", id);
                 context.startActivity(intent);
+//                ((Activity)context).finish();
             }
             mOnClickListener.onListItemClicked(getAdapterPosition(), v.getId());
         }
     }
-
 
 }

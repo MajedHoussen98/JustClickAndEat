@@ -16,7 +16,7 @@ import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.favorites.adapter.RestaurantsFavoritesAdapter;
 import ps.ns.just_click_and_eat.databinding.FragmentRestaurantsFavoritesBinding;
 import ps.ns.just_click_and_eat.dataBase.RestaurantsFavoritesModel;
-import ps.ns.just_click_and_eat.feature.resturentDetails.view.RestaurantDetailsActivity;
+import ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantDetailsActivity;
 
 
 public class RestaurantsFavorites extends Fragment implements RestaurantsFavoritesAdapter.ListItemClickListener {

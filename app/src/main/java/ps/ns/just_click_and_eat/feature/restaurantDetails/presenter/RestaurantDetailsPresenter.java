@@ -1,4 +1,4 @@
-package ps.ns.just_click_and_eat.feature.resturentDetails.presenter;
+package ps.ns.just_click_and_eat.feature.restaurantDetails.presenter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,7 +8,6 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.widget.NestedScrollView;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -16,13 +15,12 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.appbar.AppBarLayout;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.feature.menu.view.MenuActivity;
-import ps.ns.just_click_and_eat.feature.resturentDetails.view.RestaurantDetailsActivity;
-import ps.ns.just_click_and_eat.feature.resturentDetails.view.RestaurantView;
+import ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantDetailsActivity;
+import ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantView;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
 import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.Home;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
@@ -50,6 +48,7 @@ public class RestaurantDetailsPresenter {
 
     public void goToHome() {
         mActivity.startActivity(MainActivity.newInstance(mActivity, FROM_HOME));
+        mActivity.finish();
     }
 
     public void getRestaurantById(int id,
@@ -80,7 +79,7 @@ public class RestaurantDetailsPresenter {
                 tvMobileNumber.setText(data.getMobile());
                 tvStatus.setText(data.getStatus());
                 tvCategory.setText(data.getCategory());
-                tvHours.setText(data.getOpenTime());
+                tvHours.setText(data.getWorkHour());
                 tvFeatures.setText(data.getFeature());
                 nested.setVisibility(View.VISIBLE);
                 appBarLayout.setVisibility(View.VISIBLE);

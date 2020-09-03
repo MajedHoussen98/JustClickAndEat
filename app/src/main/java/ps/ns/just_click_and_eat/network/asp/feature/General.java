@@ -54,7 +54,7 @@ public class General {
     }
 
     @SuppressLint("CheckResult")
-    public void getRestaurants(RequestListener<ArrayList<Home>> listener) {
+    public void getRestaurants( RequestListener<ArrayList<Home>> listener) {
         retrofitModel.getRestaurant().subscribe(appResponse -> {
                     Log.e(TAG_SUCCESS, appResponse.getStatus().toString() + "");
                     if (appResponse.getStatus()) {

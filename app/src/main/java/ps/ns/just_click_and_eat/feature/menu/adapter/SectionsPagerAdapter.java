@@ -23,9 +23,6 @@ import ps.ns.just_click_and_eat.network.asp.model.menu.MenuList;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-   private Context context;
-   private List<Home> list;
-
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);

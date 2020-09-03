@@ -238,8 +238,9 @@
 
     <style name="hightSlirder">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/_250sdp</item>
+        <item name="android:layout_height">@dimen/_270sdp</item>
     </style>
+
 
     <style name="barSlider">
         <item name="android:layout_width">wrap_content</item>

@@ -2,12 +2,15 @@ package ps.ns.just_click_and_eat.utils;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+
+import androidx.annotation.RequiresApi;
 
 import com.mukesh.OtpView;
 
@@ -79,6 +82,13 @@ public class AppSharedMethod {
         view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                                   |View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                                   |View.SYSTEM_UI_FLAG_FULLSCREEN);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public static void statusTRANSPARENT(Activity activity){
+       activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        activity.getWindow().setStatusBarColor(Color.TRANSPARENT);
     }
 
     public static void statusBarShow(Activity activity){

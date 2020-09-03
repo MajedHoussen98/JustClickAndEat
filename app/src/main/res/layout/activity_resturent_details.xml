@@ -74,7 +74,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             style="@style/HeightWidthMatch"
-            tools:context=".feature.resturentDetails.view.RestaurantDetailsActivity">
+            tools:context=".feature.restaurantDetails.view.RestaurantDetailsActivity">
 
             <LinearLayout
                 android:id="@+id/ll_part1"
@@ -168,7 +168,7 @@
                     android:text="@string/status" />
 
                 <TextView
-                    android:id="@+id/tv_resturant_status"
+                    android:id="@+id/tv_restaurant_status"
                     style="@style/addressType"
                     android:text="@string/tv_resturant_status"
                     android:textColor="@color/colorAccent" />

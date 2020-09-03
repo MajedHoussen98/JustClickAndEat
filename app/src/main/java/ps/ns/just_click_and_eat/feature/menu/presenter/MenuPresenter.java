@@ -3,25 +3,23 @@ package ps.ns.just_click_and_eat.feature.menu.presenter;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
+
+import androidx.fragment.app.FragmentManager;
 
 import java.util.ArrayList;
 
-import ps.ns.just_click_and_eat.feature.menu.adapter.SectionsPagerAdapter;
 import ps.ns.just_click_and_eat.feature.menu.view.MenuView;
-import ps.ns.just_click_and_eat.feature.resturentDetails.view.RestaurantDetailsActivity;
+import ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantDetailsActivity;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
 import ps.ns.just_click_and_eat.network.asp.model.menu.MenuList;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
-import ps.ns.just_click_and_eat.utils.AppSharedData;
-
-import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_Restaurant_Details;
 
 
 public class MenuPresenter {
 
     private MenuView mView;
     private Activity mActivity;
+    private FragmentManager manager;
 
 
     public MenuPresenter(MenuView mView, Activity mActivity) {
@@ -33,6 +31,7 @@ public class MenuPresenter {
         Intent intent = new Intent(mActivity, RestaurantDetailsActivity.class);
         intent.putExtra("restaurant_id", restaurant_id);
         mActivity.startActivity(intent);
+        mActivity.finish();
     }
 
     private static final String TAGS = "MenuPresenterS";
@@ -42,9 +41,6 @@ public class MenuPresenter {
         NetworkShared.getAsp().getGeneral().getMenuList(id, new RequestListener<ArrayList<MenuList>>() {
             @Override
             public void onSuccess(ArrayList<MenuList> data) {
-
-                AppSharedData.setMenuList(data);
-
                // Toast.makeText(mActivity, "success", Toast.LENGTH_SHORT).show();
                // Toast.makeText(mActivity, data.get(1).getName(), Toast.LENGTH_SHORT).show();
             }

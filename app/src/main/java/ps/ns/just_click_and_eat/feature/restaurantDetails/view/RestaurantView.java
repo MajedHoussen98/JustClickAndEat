@@ -1,4 +1,4 @@
-package ps.ns.just_click_and_eat.feature.resturentDetails.view;
+package ps.ns.just_click_and_eat.feature.restaurantDetails.view;
 
 import ps.ns.just_click_and_eat.utils.BaseView;
 

@@ -6,23 +6,29 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.mainHome.adapter.HomeAdapter;
 import ps.ns.just_click_and_eat.feature.mainHome.view.HomeView;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
 import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.Home;
+import ps.ns.just_click_and_eat.network.asp.model.PaginationBean;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 public class HomePresenter {
     private HomeView mView;
     private Fragment mFragment;
+    private boolean isLoading = true;
+    private int past, visible, total, previous = 0;
+    private int view = 10;
 
 
     public HomePresenter(HomeView mView, Fragment mFragment) {
@@ -30,12 +36,11 @@ public class HomePresenter {
         this.mFragment = mFragment;
     }
 
-    public void getRestaurantData(RecyclerView recyclerView , ProgressBar progressBar) {
-        //   mView.showProgress();
+    public void getRestaurantData(RecyclerView recyclerView, ProgressBar progressBar) {
+
         NetworkShared.getAsp().getGeneral().getRestaurants(new RequestListener<ArrayList<Home>>() {
             @Override
             public void onSuccess(ArrayList<Home> data) {
-                //mView.hideProgress();
                 HomeAdapter adapter = new HomeAdapter(mFragment.getContext(), data, (HomeAdapter.ListItemClickListener) mFragment);
                 recyclerView.setLayoutManager(new LinearLayoutManager(mFragment.getContext()));
                 recyclerView.setAdapter(adapter);
@@ -44,7 +49,6 @@ public class HomePresenter {
 
             @Override
             public void onFail(String message, int code) {
-                //     mView.hideProgress();
                 mView.showMessage(message);
                 progressBar.setVisibility(View.GONE);
 
@@ -52,8 +56,7 @@ public class HomePresenter {
         });
     }
 
-
-    public void search(String keyword, RecyclerView recyclerView){
+    public void search(String keyword, RecyclerView recyclerView) {
         NetworkShared.getAsp().getGeneral().search(keyword, new RequestListener<ArrayList<Home>>() {
             @Override
             public void onSuccess(ArrayList<Home> data) {

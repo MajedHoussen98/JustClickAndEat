@@ -1,26 +1,24 @@
-package ps.ns.just_click_and_eat.feature.resturentDetails.view;
+package ps.ns.just_click_and_eat.feature.restaurantDetails.view;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
-import com.denzcoskun.imageslider.constants.ScaleTypes;
+import androidx.annotation.RequiresApi;
+
 import com.denzcoskun.imageslider.models.SlideModel;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityResturentDetailsBinding;
-import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
-import ps.ns.just_click_and_eat.feature.resturentDetails.presenter.RestaurantDetailsPresenter;
-import ps.ns.just_click_and_eat.feature.verfication.view.VerificationActivity;
-import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.Home;
-import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.ImageRestaurant;
+import ps.ns.just_click_and_eat.feature.restaurantDetails.presenter.RestaurantDetailsPresenter;
 import ps.ns.just_click_and_eat.utils.AppSharedData;
+import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 import ps.ns.just_click_and_eat.utils.BaseActivity;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
@@ -38,12 +36,14 @@ public class RestaurantDetailsActivity extends BaseActivity implements Restauran
         return intent;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityResturentDetailsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        AppSharedMethod.statusTRANSPARENT(RestaurantDetailsActivity.this);
         intViews();
         listenerViews();
     }
@@ -70,7 +70,7 @@ public class RestaurantDetailsActivity extends BaseActivity implements Restauran
                 binding.tvRatingValue,
                 binding.tvResturantAddress,
                 binding.tvMobileNumber,
-                binding.tvStatus,
+                binding.tvRestaurantStatus,
                 binding.tvCategory,
                 binding.tvWorkTime,
                 binding.tvFeatures,
