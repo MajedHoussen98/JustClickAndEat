@@ -3,10 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ps.ns.just_click_and_eat">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
 
     <application
         android:name=".utils.JustClickApp"
@@ -17,6 +22,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".feature.maps.view.MapsActivity"
+            android:label="@string/title_activity_maps">
+        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -34,68 +56,64 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
-
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.notification.view.NotificationActivity"
+            android:name=".feature.notification.view.NotificationActivity"
             android:theme="@style/statusBarLight" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.myLocation.view.MyLocationActivity"
+            android:name=".feature.myLocation.view.MyLocationActivity"
             android:theme="@style/statusBarLight" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.myOrder.view.MyOrderActivity"
+            android:name=".feature.myOrder.view.MyOrderActivity"
             android:theme="@style/statusBarLight" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.myCart.view.MyCartActivity"
+            android:name=".feature.myCart.view.MyCartActivity"
             android:theme="@style/statusBarLight" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.myAccount.view.MyAccountActivity"
+            android:name=".feature.myAccount.view.MyAccountActivity"
             android:theme="@style/statusBarLight" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.order.view.OrderActivity"
+            android:name=".feature.order.view.OrderActivity"
             android:theme="@style/statusBarLight" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.mealsDetails.view.MealsDetailsActivity"
+            android:name=".feature.mealsDetails.view.MealsDetailsActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.addLocation.view.AddLocationActivity"
+            android:name=".feature.addLocation.view.AddLocationActivity"
             android:theme="@style/statusBarLight"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.editPassword.view.EditPasswordActivity"
+            android:name=".feature.editPassword.view.EditPasswordActivity"
             android:theme="@style/statusBarLight"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.editAccount.view.EditAccountActivity"
+            android:name=".feature.editAccount.view.EditAccountActivity"
             android:theme="@style/statusBarLight"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.menu.view.MenuActivity"
+            android:name=".feature.menu.view.MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/statusBarLight" />
+        <activity android:name=".feature.restaurantDetails.view.RestaurantDetailsActivity" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantDetailsActivity"/>
-        <activity
-            android:name="ps.ns.just_click_and_eat.feature.favorites.Favorites"
+            android:name=".feature.favorites.Favorites"
             android:label="@string/title_activity_favorites"
             android:theme="@style/statusBarLight" />
-
-        <activity android:name="ps.ns.just_click_and_eat.feature.verfication.view.VerificationActivity" />
+        <activity android:name=".feature.verfication.view.VerificationActivity" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.forgetPassword.view.ForgetPasswordActivity"
+            android:name=".feature.forgetPassword.view.ForgetPasswordActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name="ps.ns.just_click_and_eat.feature.signUp.view.SignUpActivity" />
-        <activity android:name="ps.ns.just_click_and_eat.feature.login.view.LoginActivity" />
+        <activity android:name=".feature.signUp.view.SignUpActivity" />
+        <activity android:name=".feature.login.view.LoginActivity" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.introApp.view.IntroAppActivity"
+            android:name=".feature.introApp.view.IntroAppActivity"
             android:theme="@style/statusBarLight" />
-        <activity android:name="ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity" />
+        <activity android:name=".feature.mainHome.view.MainActivity" />
         <activity
-            android:name="ps.ns.just_click_and_eat.feature.splash.SplashActivity"
+            android:name=".feature.splash.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -104,18 +122,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.com.vansuita.pickimage.provider"
-            android:exported="false"
-            android:grantUriPermissions="true"
-            tools:replace="android:authorities">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/picker_provider_paths" />
-        </provider>
-
     </application>
 
 </manifest>

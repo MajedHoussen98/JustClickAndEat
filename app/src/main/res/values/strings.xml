@@ -233,5 +233,7 @@
     <string name="test">test</string>
     <string name="enter_currentPassword">Enter your password please</string>
     <string name="enter_new_password">Enter your password please</string>
+    <string name="enter_address">Enter the address place!</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

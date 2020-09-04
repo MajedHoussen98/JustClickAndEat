@@ -26,7 +26,7 @@ public interface RetrofitApis {
 
     @FormUrlEncoded
     @POST("signUp")
-    Observable<AppResponse> SendDataRegister(@FieldMap ArrayMap<String, Object> params);
+    Observable<AppResponse> sendDataRegister(@FieldMap ArrayMap<String, Object> params);
 
     @FormUrlEncoded
     @POST("verifyAccount")
@@ -80,5 +80,10 @@ public interface RetrofitApis {
 
     @GET("user_address")
     Observable<AppResponse> getMyLocation(@Header("Authorization") String authorization);
+
+    @FormUrlEncoded
+    @POST("user_address")
+    Observable<AppResponse> sendMyLocation(@Header("Authorization") String authorization,
+                                           @FieldMap ArrayMap<String, Object> params);
 
 }

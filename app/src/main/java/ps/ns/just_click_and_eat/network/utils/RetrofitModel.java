@@ -145,7 +145,7 @@ public class RetrofitModel {
     }
 
     public Observable<AppResponse> registration(ArrayMap<String, Object> params) {
-        return api.SendDataRegister(params)
+        return api.sendDataRegister(params)
                 .subscribeOn(subscribeOn)
                 .observeOn(observeOn);
     }
@@ -216,6 +216,12 @@ public class RetrofitModel {
 
     public Observable<AppResponse> getMyLocation(String token) {
         return api.getMyLocation(BEARER + token)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+    public Observable<AppResponse> sendMyLocation(String token, ArrayMap<String, Object> params) {
+        return api.sendMyLocation(BEARER + token, params)
                 .subscribeOn(subscribeOn)
                 .observeOn(observeOn);
     }

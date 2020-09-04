@@ -2,13 +2,11 @@ package ps.ns.just_click_and_eat.utils;
 
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
 
 import ps.ns.just_click_and_eat.network.asp.model.User.UserData;
 import ps.ns.just_click_and_eat.network.asp.model.User.UserInfo;
-import ps.ns.just_click_and_eat.network.asp.model.menu.MenuList;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -124,13 +122,15 @@ public class AppSharedData {
 
     public static final String SHARED_APP_DATA = "app_data";
     public static final String SHARED_USER_DATA = "user";
-    public static final String SHARED_MENU_LIST = "menu_list";
+    public static final String SHARED_USER_Location = "user_location";
+    public static final String SHARED_LOCATION_LIST = "location";
     public static final String SHARED_SETTINGS = "settings";
     private static final String SHARED_IS_APP_OPENED_BEFORE = "is_app_opened_before";
     private static final String SHARED_IS_USER_LOGIN_BY_SOCIAL = "login_social";
     private static final String SHARED_IS_USER_LOGIN = "is_user_login";
     private static Gson gson = new Gson();
     private static final String DEVICE_ID = "device_id";
+    private static final String LAT = "lat";
     private static final String SHARED_BADGE_COUNT = "BadgeCount";
     private static final String LANGUAGE = "language";
     private static final String SHARED_TABS = "tabs";
@@ -194,17 +194,15 @@ public class AppSharedData {
         return mUser;
     }
 
-//    public static void setMenuList(ArrayList<MenuList> list){
-//        JustClickApp.getInstance().getSharedPreferences(SHARED_APP_DATA, MODE_PRIVATE)
-//                .edit().putStringSet(SHARED_MENU_LIST, Collections.singleton(gson.toJson(list))).apply();
-//    }
-//
-//    public static MenuList getMenuList() {
-//        MenuList mList = gson.fromJson(JustClickApp.getInstance().getSharedPreferences(SHARED_APP_DATA, MODE_PRIVATE)
-//                .getString(SHARED_USER_DATA, null), MenuList.class);
-//        return mList;
-//    }
+    public static void setLocation(Double lat) {
+        JustClickApp.getInstance().getSharedPreferences(SHARED_APP_DATA, MODE_PRIVATE)
+                .edit().putStringSet(SHARED_LOCATION_LIST, Collections.singleton(gson.toJson(lat))).apply();
+    }
 
+    public static Float getLocation() {
+       return JustClickApp.getInstance().getSharedPreferences(SHARED_APP_DATA, MODE_PRIVATE)
+               .getFloat(LAT, 0.11f);
+    }
 
 
     public static void setUserEmailSocial(String userEmail) {

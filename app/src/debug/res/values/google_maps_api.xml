@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=D9:0C:3A:46:28:24:31:9A:04:A0:9A:1B:F4:A4:80:CA:67:FA:A8:93%3Bps.ns.just_click_and_eat.feature.maps.view
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    ps.ns.just_click_and_eat.feature.maps.view
+
+    SHA-1 certificate fingerprint:
+    D9:0C:3A:46:28:24:31:9A:04:A0:9A:1B:F4:A4:80:CA:67:FA:A8:93
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDhzjA4Au0Gt-7_XqRdsdVlT0p-yZisu1U</string>
+</resources>
