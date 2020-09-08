@@ -51,6 +51,8 @@ public class RestaurantsFavoritesPresenter {
             @Override
             public void onSuccess(ArrayList<Restaurants> data) {
                 Toast.makeText(mFragment.getContext(), "The Favorite has been removed", Toast.LENGTH_SHORT).show();
+//                mFragment.getActivity().finish();
+//                mFragment.getActivity().startActivity(mFragment.getActivity().getIntent());
             }
 
             @Override
