@@ -3,7 +3,7 @@ package ps.ns.just_click_and_eat.network.asp.model.menu;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MenuList {
+public class Menu {
     @SerializedName("id")
     @Expose
     private Integer id;

@@ -55,7 +55,8 @@ public class IntroPresenter {
 
             @Override
             public void onFail(String message, int code) {
-
+                progressBar.setVisibility(View.GONE);
+                mView.showMessage(message);
             }
         });
     }

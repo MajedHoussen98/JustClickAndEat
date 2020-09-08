@@ -9,15 +9,12 @@ import ps.ns.just_click_and_eat.feature.favorites.Favorites;
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.feature.myAccount.view.MyAccountView;
 import ps.ns.just_click_and_eat.feature.myLocation.view.MyLocationActivity;
-import ps.ns.just_click_and_eat.feature.signUp.view.SignUpActivity;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_CHANGE_PASSWORD;
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_EDIT_ACCOUNT;
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_FAVORITES;
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_HOME;
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_LOCATION;
-import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_LOGIN;
-import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
 public class MyAccountPresenter {
 

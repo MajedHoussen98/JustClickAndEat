@@ -1,11 +1,11 @@
-package ps.ns.just_click_and_eat.network.asp.model.HomeActivity;
+package ps.ns.just_click_and_eat.network.asp.model.restaurants;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Home {
+public class Restaurants {
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -160,7 +160,7 @@ public class Home {
 
     @SerializedName("images")
     @Expose
-    private List<ImageRestaurant> images = null;
+    private List<Images> images = null;
 
 
     public Integer getId() {
@@ -467,11 +467,11 @@ public class Home {
         this.weekWorkHour = weekWorkHour;
     }
 
-    public List<ImageRestaurant> getImages() {
+    public List<Images> getImages() {
         return images;
     }
 
-    public void setImages(List<ImageRestaurant> images) {
+    public void setImages(List<Images> images) {
         this.images = images;
     }
 }

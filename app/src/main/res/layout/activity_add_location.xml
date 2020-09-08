@@ -34,6 +34,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageButton
+                android:id="@+id/btn_delete"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@null"
+                android:visibility="gone"
+                android:src="@drawable/ic_delete"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
@@ -50,7 +61,8 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/WidthHeight">
+                style="@style/WidthHeight"
+                android:layout_marginTop="@dimen/_8sdp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_address_name"
@@ -69,11 +81,18 @@
 
             <View style="@style/viewAddLocation"/>
 
-            <RadioButton
-                android:id="@+id/rb_make_default"
-                style="@style/radioButtonStyle"
-                android:text="@string/make_this_my_default_address"
-                android:textColor="@color/titleColor" />
+
+            <RadioGroup
+                android:id="@+id/rg_make_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+                <RadioButton
+                    android:id="@+id/rb_make_default"
+                    android:buttonTint="@color/colorAccent"
+                    style="@style/radioButtonStyle"
+                    android:text="@string/make_this_my_default_address"
+                    android:textColor="@color/titleColor" />
+            </RadioGroup>
 
 
         </LinearLayout>

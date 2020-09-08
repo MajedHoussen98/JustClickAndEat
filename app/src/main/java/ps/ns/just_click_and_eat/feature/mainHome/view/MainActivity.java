@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,21 +11,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.navigation.NavigationView;
 
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityMainBinding;
 import ps.ns.just_click_and_eat.feature.favorites.Favorites;
-import ps.ns.just_click_and_eat.feature.introApp.view.IntroAppActivity;
-import ps.ns.just_click_and_eat.feature.mainHome.homePresenter.HomePresenter;
+import ps.ns.just_click_and_eat.feature.login.view.LoginActivity;
 import ps.ns.just_click_and_eat.feature.mainHome.homePresenter.MainPresenter;
 import ps.ns.just_click_and_eat.feature.myAccount.view.MyAccountActivity;
 import ps.ns.just_click_and_eat.feature.myCart.view.MyCartActivity;
@@ -90,7 +86,7 @@ public class MainActivity extends BaseActivity implements HomeView {
     @SuppressLint("RtlHardcoded")
     private void initListeners() {
 
-        iconsMenu.setOnClickListener(v ->drawer.openDrawer(Gravity.LEFT));
+        iconsMenu.setOnClickListener(v -> drawer.openDrawer(Gravity.LEFT));
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("RtlHardcoded")
@@ -124,8 +120,12 @@ public class MainActivity extends BaseActivity implements HomeView {
                     finish();
 
                 } else if (item.getItemId() == R.id.nav_log_out) {
-                    Log.e("token", AppSharedData.getUserInfo().getTokenData().getAccessToken());
-                    presenter.logout(AppSharedData.getUserInfo().getTokenData().getAccessToken(), AppSharedData.getUserInfo().getUserData().getId());
+                    if (AppSharedData.isUserLogin()) {
+                        presenter.logout(AppSharedData.getUserInfo().getTokenData().getAccessToken());
+                    } else {
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        finish();
+                    }
                 }
                 drawer.closeDrawer(Gravity.LEFT);
                 return true;
@@ -142,13 +142,22 @@ public class MainActivity extends BaseActivity implements HomeView {
 
     @SuppressLint("CheckResult")
     private void loadHeaderData() {
-//        RequestOptions requestOptions = new RequestOptions();
-//        requestOptions.placeholder(R.drawable.useravatar);
-//        Glide.with(this).load(AppSharedData.getProfileUser()).apply(requestOptions).into(userImage);
 
-        Glide.with(this).load(AppSharedData.getUserInfo().getUserData().getPhotoThumb()).into(userImage);
-        userName.setText(AppSharedData.getUserInfo().getUserData().getName());
-        userEmail.setText(AppSharedData.getUserInfo().getUserData().getEmail());
+
+//        Glide.with(this).load(AppSharedData.getUserInfo().getUserData().getPhotoThumb()).into(userImage);
+
+        if (AppSharedData.isUserLogin()) {
+            userName.setText(AppSharedData.getUserInfo().getUserData().getName());
+            userEmail.setText(AppSharedData.getUserInfo().getUserData().getEmail());
+            Glide.with(this).load(AppSharedData.getUserInfo().getUserData().getPhotoThumb()).placeholder(R.drawable.useravatar).into(userImage);
+
+
+        } else {
+            userName.setText(R.string.default_name);
+            userEmail.setText(R.string.default_email);
+            userImage.setImageResource(R.drawable.useravatar);
+        }
+
 //        Log.e("emailH", AppSharedData.getUserEmail().getEmail());
     }
 

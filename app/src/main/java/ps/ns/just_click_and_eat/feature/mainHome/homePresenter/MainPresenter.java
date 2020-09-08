@@ -7,6 +7,7 @@ import ps.ns.just_click_and_eat.feature.login.view.LoginActivity;
 import ps.ns.just_click_and_eat.feature.mainHome.view.HomeView;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
+import ps.ns.just_click_and_eat.utils.AppSharedData;
 
 public class MainPresenter {
 
@@ -18,14 +19,15 @@ public class MainPresenter {
         this.mActivity = mActivity;
     }
 
-    public void logout(String token, int id){
+    public void logout(String token){
         mView.showProgress();
-        NetworkShared.getAsp().getUser().logout(token, id, new RequestListener<Integer>() {
+        NetworkShared.getAsp().getUser().logout(token, new RequestListener<Integer>() {
             @Override
             public void onSuccess(Integer data) {
                 mView.hideProgress();
                 mActivity.startActivity(new Intent(mActivity, LoginActivity.class));
                 mActivity.finish();
+                AppSharedData.setUserLogin(false);
             }
 
             @Override

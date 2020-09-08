@@ -18,7 +18,6 @@ public interface ConstantRetrofit {
     String HTTP_PUT_TYPE = "PUT";
     String HTTP_DELETE_TYPE = "DELETE";
     String HEADER_ACCEPT_TYPE = "Accept";
-    // String BEARER = "";
     String CLIENT_SECRET = "client_secret";
     String CLIENT_SECRET_VALUE = "Fb5oeK1kIgMA7SgXwP80eL54wmNchnq4gerKuru7";
     String GRANT_TYPE_KEY = "grant_type";

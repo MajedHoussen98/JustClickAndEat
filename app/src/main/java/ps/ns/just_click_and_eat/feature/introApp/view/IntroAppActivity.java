@@ -57,4 +57,9 @@ public class IntroAppActivity extends BaseActivity implements IntroView {
         presenter.getAppIntro(binding.viewPager, binding.springDotsIndicator, binding.progressBar);
     }
 
+    @Override
+    public void showMessage(String msg) {
+        super.showMessage(msg);
+        snackErrorShow(binding.getRoot(), msg);
+    }
 }

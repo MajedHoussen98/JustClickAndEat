@@ -1,13 +1,10 @@
 package ps.ns.just_click_and_eat.network.utils;
 
 import androidx.collection.ArrayMap;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-
 import java.util.concurrent.TimeUnit;
-
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -169,8 +166,8 @@ public class RetrofitModel {
     }
 
 
-    public Observable<AppResponse> logout(String token, int deviceId) {
-        return api.logout(BEARER + token, deviceId)
+    public Observable<AppResponse> logout(String token) {
+        return api.logout(BEARER + token)
                 .subscribeOn(subscribeOn)
                 .observeOn(observeOn);
     }
@@ -226,4 +223,27 @@ public class RetrofitModel {
                 .observeOn(observeOn);
     }
 
+    public Observable<AppResponse> removeMyLocation(String token, int id) {
+        return api.removeMyLocation(BEARER + token, id)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+    public Observable<AppResponse> getFavorite(String token, String type) {
+        return api.getFavorite(BEARER + token, type)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+    public Observable<AppResponse> deleteAddRestaurantFavorite(String token, ArrayMap<String, Object> params) {
+        return api.deleteAddFavorite(BEARER + token, params)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+    public Observable<AppResponse> deleteAddMealsFavorite(String token, ArrayMap<String, Object> params) {
+        return api.deleteAddFavorite(BEARER + token, params)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
 }

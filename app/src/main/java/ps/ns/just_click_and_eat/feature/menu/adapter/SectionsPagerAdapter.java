@@ -7,19 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import ps.ns.just_click_and_eat.feature.menu.presenter.MenuPresenter;
 import ps.ns.just_click_and_eat.feature.menu.view.Beverages;
 import ps.ns.just_click_and_eat.feature.menu.view.GrilledMeat;
 import ps.ns.just_click_and_eat.feature.menu.view.Salads;
 import ps.ns.just_click_and_eat.feature.menu.view.Seafoof;
 import ps.ns.just_click_and_eat.feature.menu.view.StartersMenu;
 import ps.ns.just_click_and_eat.feature.menu.view.Appetizers;
-import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
-import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.Home;
-import ps.ns.just_click_and_eat.network.asp.model.menu.MenuList;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 

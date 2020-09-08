@@ -1,12 +1,9 @@
 package ps.ns.just_click_and_eat.network.utils;
 
 import androidx.collection.ArrayMap;
-
-import java.util.Map;
-
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
-import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -16,7 +13,6 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 public interface RetrofitApis {
@@ -36,12 +32,8 @@ public interface RetrofitApis {
     @POST("login")
     Observable<AppResponse> login(@FieldMap ArrayMap<String, Object> params);
 
-    @FormUrlEncoded
     @POST("logout")
-    Observable<AppResponse> logout(
-            @Header("Authorization") String authorization,
-            @Field("device_id") int params
-    );
+    Observable<AppResponse> logout(@Header("Authorization") String authorization);
 
     @FormUrlEncoded
     @POST("forget")
@@ -56,7 +48,6 @@ public interface RetrofitApis {
             @Path("id") int id
     );
 
-
     @FormUrlEncoded
     @POST("changePassword")
     Observable<AppResponse> updatePassword(
@@ -67,7 +58,6 @@ public interface RetrofitApis {
     @FormUrlEncoded
     @POST("search_restaurant")
     Observable<AppResponse> search(@Field("name") String params);
-
 
     @Multipart
     @POST("profile")
@@ -81,9 +71,24 @@ public interface RetrofitApis {
     @GET("user_address")
     Observable<AppResponse> getMyLocation(@Header("Authorization") String authorization);
 
+    @DELETE("user_address/{id}")
+    Observable<AppResponse> removeMyLocation(@Header("Authorization") String authorization,
+                                             @Path("id") int id);
+
     @FormUrlEncoded
     @POST("user_address")
     Observable<AppResponse> sendMyLocation(@Header("Authorization") String authorization,
                                            @FieldMap ArrayMap<String, Object> params);
+
+    @FormUrlEncoded
+    @POST("getFavorite")
+    Observable<AppResponse> getFavorite(@Header("Authorization") String authorization,
+                                        @Field("type") String params);
+
+    @FormUrlEncoded
+    @POST("favorite")
+    Observable<AppResponse> deleteAddFavorite(@Header("Authorization") String authorization,
+                                              @FieldMap ArrayMap<String, Object> params);
+
 
 }

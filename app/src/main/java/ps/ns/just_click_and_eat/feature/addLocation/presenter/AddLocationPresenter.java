@@ -1,8 +1,10 @@
 package ps.ns.just_click_and_eat.feature.addLocation.presenter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.collection.ArrayMap;
@@ -20,7 +22,6 @@ import ps.ns.just_click_and_eat.utils.AppSharedData;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_MY_LOCATION;
-import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_Maps;
 
 public class AddLocationPresenter {
 
@@ -37,38 +38,61 @@ public class AddLocationPresenter {
         mActivity.finish();
     }
 
-    public void goToMap() {
-        mActivity.startActivity(MapsActivity.newInstance(mActivity, FROM_Maps));
+    public void goToMap(int LAUNCH_MAPS_ACTIVITY, String details) {
+        Intent i = new Intent(mActivity, MapsActivity.class);
+        i.putExtra("details", details);
+        mActivity.startActivityForResult(i, LAUNCH_MAPS_ACTIVITY);
     }
 
-    public void validationInputs(EditText etAddressName) {
 
+    public void validationInputs(EditText etAddressName, String details, Double lat, Double log, int makeDefault) {
         if (AppSharedMethod.isEmptyEditText(etAddressName)) {
             AppSharedMethod.setErrorEditText(etAddressName, mActivity.getString(R.string.enter_address));
             return;
         }
-
+        Log.e("det", details + "");
         ArrayMap<String, Object> params = new ArrayMap<>();
         params.put("title", AppSharedMethod.getTextFromEditText(etAddressName));
-        params.put("address", "Test");
-        params.put("lat", AppSharedData.getLocation());
-        Log.e("lat", AppSharedData.getLocation()+"");
-        params.put("long", 34.4621056);
-        params.put("is_default", 0);
+        params.put("address", details);
+        params.put("lat", lat);
+        params.put("long", log);
+        params.put("is_default", makeDefault);
 
         saveAddressRequest(AppSharedData.getUserInfo().getTokenData().getAccessToken(), params);
     }
 
     private void saveAddressRequest(String token, ArrayMap<String, Object> params) {
-        NetworkShared.getAsp().getUser().addLocation(token, params, new RequestListener<ArrayList<MyLocation>>() {
+        mView.showProgress();
+        NetworkShared.getAsp().getLocation().addLocation(token, params, new RequestListener<ArrayList<MyLocation>>() {
             @Override
             public void onSuccess(ArrayList<MyLocation> data) {
-                Toast.makeText(mActivity, "Success", Toast.LENGTH_SHORT).show();
+                mView.hideProgress();
+                mActivity.startActivity(new Intent(mActivity, MyLocationActivity.class));
+                Toast.makeText(mActivity, "The location is added", Toast.LENGTH_SHORT).show();
+                mActivity.finish();
             }
 
             @Override
             public void onFail(String message, int code) {
                 Log.e("fail", message);
+            }
+        });
+    }
+
+
+    public void deleteLocation(String token, int id) {
+        mView.showProgress();
+        NetworkShared.getAsp().getLocation().removeLocation(token, id, new RequestListener<ArrayList<MyLocation>>() {
+            @Override
+            public void onSuccess(ArrayList<MyLocation> data) {
+                mView.hideProgress();
+                mActivity.startActivity(new Intent(mActivity, MyLocationActivity.class));
+                Toast.makeText(mActivity, "The Location is Deleted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFail(String message, int code) {
+
             }
         });
     }

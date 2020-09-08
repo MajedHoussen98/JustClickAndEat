@@ -14,8 +14,7 @@ import android.view.View;
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityFavoritesBinding;
-import ps.ns.just_click_and_eat.feature.favorites.ui.main.SectionsPagerAdapter;
-import ps.ns.just_click_and_eat.feature.signUp.view.SignUpActivity;
+import ps.ns.just_click_and_eat.feature.favorites.adapter.SectionsPagerAdapter;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;

@@ -1,4 +1,4 @@
-package ps.ns.just_click_and_eat.feature.favorites.ui.main;
+package ps.ns.just_click_and_eat.feature.favorites.adapter;
 
 import android.content.Context;
 
@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import ps.ns.just_click_and_eat.feature.favorites.MealsFavorites;
-import ps.ns.just_click_and_eat.feature.favorites.RestaurantsFavorites;
+import ps.ns.just_click_and_eat.feature.favorites.mealsFavorites.view.MealsFavorites;
+import ps.ns.just_click_and_eat.feature.favorites.restaurantsFavorites.view.RestaurantsFavorites;
 
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {

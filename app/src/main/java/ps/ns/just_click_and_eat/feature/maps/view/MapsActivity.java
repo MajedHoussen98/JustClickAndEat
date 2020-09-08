@@ -1,6 +1,7 @@
 package ps.ns.just_click_and_eat.feature.maps.view;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -9,8 +10,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -27,19 +30,25 @@ import com.google.android.gms.tasks.Task;
 import java.util.ArrayList;
 
 import ps.ns.just_click_and_eat.R;
+import ps.ns.just_click_and_eat.databinding.ActivityMapsBinding;
 import ps.ns.just_click_and_eat.feature.myLocation.view.MyLocationActivity;
 import ps.ns.just_click_and_eat.network.asp.model.MyLocation;
 import ps.ns.just_click_and_eat.utils.AppSharedData;
+import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    ActivityMapsBinding binding;
+    private View view;
+
     private GoogleMap mMap;
     private Location currentLocation;
     private FusedLocationProviderClient fusedLocationProviderClient;
-    private ArrayList<MyLocation> list = new ArrayList<>();
     private static final int REQUEST_CODE = 101;
+    private Double lat, log;
+    private String addressDetails = "Your Location";
 
     public static Intent newInstance(Activity mActivity, int fromWhere) {
         Intent intent = new Intent(mActivity, MapsActivity.class);
@@ -47,13 +56,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return intent;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        binding = ActivityMapsBinding.inflate(getLayoutInflater());
+        view = binding.getRoot();
+        setContentView(view);
+        initView();
+        listenerView();
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         fetchLastLocation();
+    }
+
+    private void initView() {
+        AppSharedMethod.statusBarLight(this);
+        addressDetails = getIntent().getExtras().getString("details");
+        binding.etDetails.setText(addressDetails);
+    }
+
+    private void listenerView() {
+        binding.btnDetails.setOnClickListener(v -> {
+            if (AppSharedMethod.getTextFromEditText(binding.etDetails).isEmpty()) {
+                AppSharedMethod.setErrorEditText(binding.etDetails, this.getString(R.string.enter_address_details));
+                return;
+            }
+            addressDetails = AppSharedMethod.getTextFromEditText(binding.etDetails);
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra("lat", lat);
+            returnIntent.putExtra("long", log);
+            returnIntent.putExtra("details", addressDetails);
+            setResult(Activity.RESULT_OK, returnIntent);
+            finish();
+        });
     }
 
     private void fetchLastLocation() {
@@ -67,9 +102,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onSuccess(Location location) {
                 if (location != null) {
                     currentLocation = location;
-                    Toast.makeText(MapsActivity.this, currentLocation.getLatitude() + " " + currentLocation.getLongitude(), Toast.LENGTH_SHORT).show();
-
-                    // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+                    lat = currentLocation.getLatitude();
+                    log = currentLocation.getLongitude();
+                    Toast.makeText(MapsActivity.this, "Your location has been taken, go back to save your location", Toast.LENGTH_SHORT).show();
                     SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                             .findFragmentById(R.id.map);
                     if (mapFragment != null) {
@@ -81,27 +116,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        // Add a marker in Sydney and move the camera
         LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        Log.e("lat", latLng.latitude+ "");
-        AppSharedData.setLocation(latLng.latitude);
         mMap.addMarker(new MarkerOptions().position(latLng).title("MyLocation"));
         mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+      //  mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 5));
         mMap.getUiSettings().setZoomControlsEnabled(true);
+
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-                Toast.makeText(MapsActivity.this, latLng.latitude + " " + latLng.longitude, Toast.LENGTH_SHORT).show();
+                lat = latLng.latitude;
+                log = latLng.longitude;
+                Toast.makeText(MapsActivity.this, "Your location has been taken, go back to save your location", Toast.LENGTH_SHORT).show();
                 mMap.clear();
                 mMap.addMarker(new MarkerOptions().position(latLng).title("MyLocation"));
 
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

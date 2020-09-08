@@ -2,9 +2,11 @@ package ps.ns.just_click_and_eat.utils;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
 
+import ps.ns.just_click_and_eat.network.asp.model.MyLocation;
 import ps.ns.just_click_and_eat.network.asp.model.User.UserData;
 import ps.ns.just_click_and_eat.network.asp.model.User.UserInfo;
 
@@ -122,6 +124,7 @@ public class AppSharedData {
 
     public static final String SHARED_APP_DATA = "app_data";
     public static final String SHARED_USER_DATA = "user";
+    public static final String SHARED_USER_LOCATION= "location";
     public static final String SHARED_USER_Location = "user_location";
     public static final String SHARED_LOCATION_LIST = "location";
     public static final String SHARED_SETTINGS = "settings";

@@ -63,7 +63,7 @@ public class CartDialogPresenter {
     }
 
     public void getMyLocation(String token, RecyclerView recyclerView, ProgressBar progressBar) {
-        NetworkShared.getAsp().getGeneral().getMyLocation(token, new RequestListener<ArrayList<MyLocation>>() {
+        NetworkShared.getAsp().getLocation().getMyLocation(token, new RequestListener<ArrayList<MyLocation>>() {
             @Override
             public void onSuccess(ArrayList<MyLocation> data) {
                 MyLocationAdapter adapter = new MyLocationAdapter(mFragment.getContext(), data, (MyLocationAdapter.ListItemClickListener) mFragment);

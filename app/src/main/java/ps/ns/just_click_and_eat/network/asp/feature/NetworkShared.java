@@ -14,20 +14,31 @@ public class NetworkShared {
 
         private General mGeneral;
         private User mUser;
+        private Location mLocation;
+        private Favorites mFavorites;
 
         private ASP() {
             mGeneral = new General();
-            mGeneral = new General();
             mUser = new User();
+            mLocation = new Location();
+            mFavorites = new Favorites();
         }
 
         public General getGeneral() {
             return mGeneral;
         }
-        public User getUser (){
+
+        public User getUser() {
             return mUser;
         }
 
+        public Location getLocation() {
+            return mLocation;
+        }
+
+        public Favorites getFavorites() {
+            return mFavorites;
+        }
 
     }
 }

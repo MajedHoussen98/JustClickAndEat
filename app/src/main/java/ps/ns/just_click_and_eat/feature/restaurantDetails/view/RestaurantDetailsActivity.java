@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import androidx.annotation.RequiresApi;
+import androidx.collection.ArrayMap;
 
 import com.denzcoskun.imageslider.models.SlideModel;
 
@@ -29,6 +30,7 @@ public class RestaurantDetailsActivity extends BaseActivity implements Restauran
     List<SlideModel> list = new ArrayList<>();
     private RestaurantDetailsPresenter presenter;
     int restaurantId;
+    private ArrayMap<String, Object> params = new ArrayMap<>();
 
     public static Intent newInstance(Activity mActivity, int fromWhere) {
         Intent intent = new Intent(mActivity, RestaurantDetailsActivity.class);
@@ -51,13 +53,15 @@ public class RestaurantDetailsActivity extends BaseActivity implements Restauran
     private void intViews() {
         presenter = new RestaurantDetailsPresenter(this, this);
         getDetailsRestaurant();
-
+        params.put("item_id", restaurantId);
+        params.put("type", "restaurant");
     }
 
 
     private void listenerViews() {
         binding.ibBack.setOnClickListener(v -> presenter.goToHome());
         binding.btnMenu.setOnClickListener(v -> presenter.goToMenu(restaurantId));
+        binding.icFav.setOnClickListener(v -> presenter.addRestaurantToFavorite(AppSharedData.getUserInfo().getTokenData().getAccessToken(),params));
     }
 
     private void getDetailsRestaurant() {

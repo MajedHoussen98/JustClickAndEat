@@ -16,19 +16,19 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.dataBase.MenuModel;
+import ps.ns.just_click_and_eat.network.asp.model.meals.Meals;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
     Context context;
-    List<MenuModel> list;
+    List<Meals> list;
     final private MenuAdapter.ListItemClickListener mOnClickListener;
 
     public interface ListItemClickListener {
         void onListItemClicked(int position, int viewId);
     }
 
-    public MenuAdapter(Context context, List<MenuModel> list, ListItemClickListener mOnClickListener) {
+    public MenuAdapter(Context context, List<Meals> list, ListItemClickListener mOnClickListener) {
         this.context = context;
         this.list = list;
         this.mOnClickListener = mOnClickListener;
@@ -44,12 +44,12 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MenuAdapter.ViewHolder holder, int position) {
 
-        final MenuModel data = list.get(position);
+        final Meals data = list.get(position);
 
-        Glide.with(context).load(data.getMealsPic()).into(holder.mealsPic);
-        holder.mealsName.setText(data.getMealsName());
-        holder.mealsBody.setText(data.getMealsBody());
-        holder.mealsPrice.setText(data.getMealsPrice());
+        Glide.with(context).load(data.getImageUrl()).into(holder.mealsPic);
+        holder.mealsName.setText(data.getName());
+        holder.mealsBody.setText(data.getName());
+        holder.mealsPrice.setText(String.valueOf(data.getPrice()));
     }
 
     @Override

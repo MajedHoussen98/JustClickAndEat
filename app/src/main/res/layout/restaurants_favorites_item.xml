@@ -7,7 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:id="@+id/ll_restaurants_fav"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="16dp"
@@ -26,6 +25,7 @@
 
 
         <LinearLayout
+            android:id="@+id/ll_restaurants_fav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="4"
@@ -52,7 +52,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/iv_fav_click"
+            android:id="@+id/iv_fav_click_r"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

@@ -1,6 +1,8 @@
 package ps.ns.just_click_and_eat.feature.myLocation.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ps.ns.just_click_and_eat.R;
+import ps.ns.just_click_and_eat.feature.addLocation.view.AddLocationActivity;
+import ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantDetailsActivity;
 import ps.ns.just_click_and_eat.network.asp.model.MyLocation;
 
 public class MyLocationAdapter extends RecyclerView.Adapter<MyLocationAdapter.ViewHolder> {
@@ -53,6 +57,11 @@ public class MyLocationAdapter extends RecyclerView.Adapter<MyLocationAdapter.Vi
         final MyLocation data = list.get(position);
         holder.addressName.setText(data.getLocationTitle());
         holder.addressDetails.setText(data.getAddress());
+        if (data.getIsDefault() == 1) {
+            holder.addressDetails.setChecked(true);
+        } else {
+            holder.addressDetails.setChecked(false);
+        }
 
         if (showHide) {
             holder.changeAddress.setVisibility(View.GONE);
@@ -82,6 +91,25 @@ public class MyLocationAdapter extends RecyclerView.Adapter<MyLocationAdapter.Vi
 
         @Override
         public void onClick(View v) {
+            if (v.getId() == R.id.btn_change_address) {
+                String locationName = list.get(getAdapterPosition()).getLocationTitle();
+                String locationDetails = list.get(getAdapterPosition()).getAddress();
+                int isDefault = list.get(getAdapterPosition()).getIsDefault();
+                int id  = list.get(getAdapterPosition()).getId();
+                Double lat = Double.valueOf(list.get(getAdapterPosition()).getLat());
+                Double log = Double.valueOf(list.get(getAdapterPosition()).getLong());
+
+                Intent intent = new Intent(context, AddLocationActivity.class);
+                intent.putExtra("locationName", locationName);
+                intent.putExtra("isDefault", isDefault);
+                intent.putExtra("lat", lat);
+                intent.putExtra("log", log);
+                intent.putExtra("details", locationDetails);
+                intent.putExtra("icDelete", 1);
+                intent.putExtra("id", id);
+                context.startActivity(intent);
+                ((Activity) context).finish();
+            }
             mOnClickListener.onListItemClicked(getAdapterPosition(), v.getId());
 
         }

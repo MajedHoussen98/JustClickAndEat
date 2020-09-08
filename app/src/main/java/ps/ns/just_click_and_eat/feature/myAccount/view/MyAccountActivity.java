@@ -1,20 +1,12 @@
 package ps.ns.just_click_and_eat.feature.myAccount.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
-import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityMyAccountBinding;
-import ps.ns.just_click_and_eat.feature.editPassword.view.EditPasswordActivity;
-import ps.ns.just_click_and_eat.feature.editAccount.view.EditAccountActivity;
-import ps.ns.just_click_and_eat.feature.favorites.Favorites;
 import ps.ns.just_click_and_eat.feature.myAccount.presenter.MyAccountPresenter;
-import ps.ns.just_click_and_eat.feature.myLocation.view.MyLocationActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 import ps.ns.just_click_and_eat.utils.BaseActivity;
 

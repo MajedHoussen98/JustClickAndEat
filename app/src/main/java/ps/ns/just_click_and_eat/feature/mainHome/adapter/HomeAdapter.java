@@ -1,6 +1,5 @@
 package ps.ns.just_click_and_eat.feature.mainHome.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -21,19 +20,19 @@ import java.util.List;
 
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantDetailsActivity;
-import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.Home;
+import ps.ns.just_click_and_eat.network.asp.model.restaurants.Restaurants;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     Context context;
-    List<Home> list;
+    List<Restaurants> list;
     final private ListItemClickListener mOnClickListener;
 
     public interface ListItemClickListener {
         void onListItemClicked(int position, int viewId);
     }
 
-    public HomeAdapter(Context context, List<Home> list, HomeAdapter.ListItemClickListener mOnClickListener) {
+    public HomeAdapter(Context context, List<Restaurants> list, HomeAdapter.ListItemClickListener mOnClickListener) {
         this.context = context;
         this.list = list;
         this.mOnClickListener = mOnClickListener;
@@ -49,7 +48,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.ViewHolder holder, int position) {
-        Home data = list.get(position);
+        Restaurants data = list.get(position);
         Glide.with(context).load(data.getLogoUrl()).into(holder.restaurant_pic);
         holder.restaurant_name.setText(data.getName());
         holder.restaurant_status.setText(data.getStatus());

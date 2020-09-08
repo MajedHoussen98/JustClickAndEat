@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -14,22 +15,41 @@ import java.util.List;
 
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityMealsDetailsBinding;
+import ps.ns.just_click_and_eat.feature.favorites.Favorites;
 import ps.ns.just_click_and_eat.feature.menu.view.MenuActivity;
+import ps.ns.just_click_and_eat.network.asp.model.restaurants.Images;
 
 public class MealsDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ActivityMealsDetailsBinding binding;
     private View view;
     private List<SlideModel> list = new ArrayList<>();
+    int mealsId, restaurant_id, code;
+    ArrayList<Images> mealsList;
+    String mealsName, mealsDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMealsDetailsBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
+        setContentView(view);
         addSliderImage();
         listenerViews();
-        setContentView(view);
+        getMealDetails();
+    }
+
+    private void getMealDetails() {
+        mealsId = getIntent().getExtras().getInt("meal_id");
+        restaurant_id = getIntent().getExtras().getInt("restaurant_id");
+        code = getIntent().getExtras().getInt("code");
+        mealsList = (ArrayList<Images>) getIntent().getExtras().getSerializable("images");
+        mealsName = getIntent().getExtras().getString("name");
+        mealsDescription = getIntent().getExtras().getString("description");
+
+        Log.e("idd", mealsId+"");
+        binding.tvMealsName.setText(mealsName);
+        binding.tvDescriptionMeal.setText(mealsDescription);
     }
 
     private void addSliderImage() {
@@ -46,11 +66,16 @@ public class MealsDetailsActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.ib_back:
-                startActivity(new Intent(MealsDetailsActivity.this, MenuActivity.class));
+        if (v.getId() == R.id.ib_back) {
+            Log.e("code", code+"");
+            if (code == 1){
+                Intent intent = new Intent(MealsDetailsActivity.this, Favorites.class);
+                startActivity(intent);
                 finish();
-                break;
+            }
+//            Intent intent = new Intent(MealsDetailsActivity.this, MenuActivity.class);
+//            startActivity(intent);
+//            finish();
         }
     }
 }

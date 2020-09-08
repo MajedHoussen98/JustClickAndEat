@@ -1,6 +1,5 @@
 package ps.ns.just_click_and_eat.feature.myLocation.view;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,10 +8,11 @@ import android.view.View;
 
 import java.util.ArrayList;
 
+import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.myLocation.adapter.MyLocationAdapter;
 import ps.ns.just_click_and_eat.databinding.ActivityMyLocationBinding;
-import ps.ns.just_click_and_eat.network.asp.model.MyLocation;
 import ps.ns.just_click_and_eat.feature.myLocation.presenter.MyLocationPresenter;
+import ps.ns.just_click_and_eat.network.asp.model.MyLocation;
 import ps.ns.just_click_and_eat.utils.AppSharedData;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 import ps.ns.just_click_and_eat.utils.BaseActivity;
@@ -39,7 +39,6 @@ public class MyLocationActivity extends BaseActivity implements MyLocationAdapte
         initViews();
         listenerViews();
         AppSharedMethod.statusBarLight(this);
-
     }
 
     private void initViews() {
@@ -54,8 +53,8 @@ public class MyLocationActivity extends BaseActivity implements MyLocationAdapte
 
     @Override
     public void onListItemClicked(int position, int viewId) {
-
     }
+
 
     @Override
     public void showMessage(String msg) {

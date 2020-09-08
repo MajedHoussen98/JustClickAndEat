@@ -41,7 +41,6 @@ public class SignUpPresenter {
 
         if (AppSharedMethod.isEmptyEditText(etEmail)) {
             AppSharedMethod.setErrorEditText(etEmail, mActivity.getString(R.string.emty_email));
-
             return;
         }
 

@@ -12,19 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.collection.ArrayMap;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.editAccount.view.EditAccountView;
 import ps.ns.just_click_and_eat.feature.myAccount.view.MyAccountActivity;
@@ -32,8 +20,6 @@ import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
 import ps.ns.just_click_and_eat.utils.AppSharedData;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
-
-import static com.facebook.FacebookSdk.getCacheDir;
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_EDIT_ACCOUNT;
 
 public class EditAccountPresenter {
@@ -58,20 +44,15 @@ public class EditAccountPresenter {
         mActivity.startActivityForResult(Intent.createChooser(intent, "Select Image"), REQUEST_IMAGE);
     }
 
-        public void validationInput(EditText etName, ImageView userImage) {
-
+    public void validationInput(EditText etName, ImageView userImage) {
         if (AppSharedMethod.isEmptyEditText(etName)) {
             AppSharedMethod.setErrorEditText(etName, mActivity.getString(R.string.enter_name));
             return;
         }
-
         BitmapDrawable drawable = (BitmapDrawable) userImage.getDrawable();
         bitmap = drawable.getBitmap();
-
         ArrayMap<String, String> params = new ArrayMap<>();
         params.put("name", AppSharedMethod.getTextFromEditText(etName));
-
-
         editAccountRequest(
                 AppSharedData.getUserInfo().getTokenData().getAccessToken(),
                 params,
@@ -94,6 +75,5 @@ public class EditAccountPresenter {
             }
         });
     }
-
 
 }

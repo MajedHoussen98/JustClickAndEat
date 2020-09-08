@@ -52,8 +52,6 @@
         android:id="@+id/btn_add_address"
         style="@style/MainButton"
         android:layout_gravity="bottom"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/get_start"
         android:text="@string/add_another_address" />
 

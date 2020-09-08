@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import ps.ns.just_click_and_eat.feature.menu.view.MenuView;
 import ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantDetailsActivity;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
-import ps.ns.just_click_and_eat.network.asp.model.menu.MenuList;
+import ps.ns.just_click_and_eat.network.asp.model.menu.Menu;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
 
 
@@ -38,9 +38,9 @@ public class MenuPresenter {
     private static final String TAGF = "MenuPresenterF";
 
     public void getMenuList(int id) {
-        NetworkShared.getAsp().getGeneral().getMenuList(id, new RequestListener<ArrayList<MenuList>>() {
+        NetworkShared.getAsp().getGeneral().getMenuList(id, new RequestListener<ArrayList<Menu>>() {
             @Override
-            public void onSuccess(ArrayList<MenuList> data) {
+            public void onSuccess(ArrayList<Menu> data) {
                // Toast.makeText(mActivity, "success", Toast.LENGTH_SHORT).show();
                // Toast.makeText(mActivity, data.get(1).getName(), Toast.LENGTH_SHORT).show();
             }

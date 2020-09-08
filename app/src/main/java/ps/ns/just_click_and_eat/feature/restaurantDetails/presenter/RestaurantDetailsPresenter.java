@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.collection.ArrayMap;
 import androidx.core.widget.NestedScrollView;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -15,6 +17,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.appbar.AppBarLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
@@ -22,7 +25,7 @@ import ps.ns.just_click_and_eat.feature.menu.view.MenuActivity;
 import ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantDetailsActivity;
 import ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantView;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
-import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.Home;
+import ps.ns.just_click_and_eat.network.asp.model.restaurants.Restaurants;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
 
 
@@ -51,26 +54,14 @@ public class RestaurantDetailsPresenter {
         mActivity.finish();
     }
 
-    public void getRestaurantById(int id,
-                                  String token,
-                                  TextView tvName,
-                                  TextView tvAddress,
-                                  RatingBar ratingBar,
-                                  TextView rbTextView,
-                                  TextView tvSubAddress,
-                                  TextView tvMobileNumber,
-                                  TextView tvStatus,
-                                  TextView tvCategory,
-                                  TextView tvHours,
-                                  TextView tvFeatures,
-                                  NestedScrollView nested,
-                                  AppBarLayout appBarLayout,
-                                  ProgressBar progressBar,
-                                  List<SlideModel> list,
-                                  ImageSlider imageSlider) {
-        NetworkShared.getAsp().getGeneral().getRestaurantsById(id, token, new RequestListener<Home>() {
+
+    public void  getRestaurantById(int id, String token, TextView tvName, TextView tvAddress, RatingBar ratingBar,
+                                  TextView rbTextView, TextView tvSubAddress, TextView tvMobileNumber, TextView tvStatus,
+                                  TextView tvCategory, TextView tvHours, TextView tvFeatures, NestedScrollView nested,
+                                  AppBarLayout appBarLayout, ProgressBar progressBar, List<SlideModel> list, ImageSlider imageSlider) {
+        NetworkShared.getAsp().getGeneral().getRestaurantsById(id, token, new RequestListener<Restaurants>() {
             @Override
-            public void onSuccess(Home data) {
+            public void onSuccess(Restaurants data) {
                 tvName.setText(data.getName());
                 tvAddress.setText(data.getAddress());
                 ratingBar.setRating(data.getRating());
@@ -97,6 +88,20 @@ public class RestaurantDetailsPresenter {
             @Override
             public void onFail(String message, int code) {
                 Log.e("response", "fail" + message);
+            }
+        });
+    }
+
+    public void addRestaurantToFavorite(String token, ArrayMap<String, Object> params) {
+        NetworkShared.getAsp().getFavorites().deleteRestaurantFavorite(token, params, new RequestListener<ArrayList<Restaurants>>() {
+            @Override
+            public void onSuccess(ArrayList<Restaurants> data) {
+                Toast.makeText(mActivity, "The Favorite has been add", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFail(String message, int code) {
+                Toast.makeText(mActivity, message, Toast.LENGTH_SHORT).show();
             }
         });
     }

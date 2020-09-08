@@ -2,26 +2,19 @@ package ps.ns.just_click_and_eat.feature.mainHome.homePresenter;
 
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.feature.mainHome.adapter.HomeAdapter;
 import ps.ns.just_click_and_eat.feature.mainHome.view.HomeView;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
-import ps.ns.just_click_and_eat.network.asp.model.HomeActivity.Home;
-import ps.ns.just_click_and_eat.network.asp.model.PaginationBean;
+import ps.ns.just_click_and_eat.network.asp.model.restaurants.Restaurants;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
-import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 public class HomePresenter {
     private HomeView mView;
@@ -38,9 +31,9 @@ public class HomePresenter {
 
     public void getRestaurantData(RecyclerView recyclerView, ProgressBar progressBar) {
 
-        NetworkShared.getAsp().getGeneral().getRestaurants(new RequestListener<ArrayList<Home>>() {
+        NetworkShared.getAsp().getGeneral().getRestaurants(new RequestListener<ArrayList<Restaurants>>() {
             @Override
-            public void onSuccess(ArrayList<Home> data) {
+            public void onSuccess(ArrayList<Restaurants> data) {
                 HomeAdapter adapter = new HomeAdapter(mFragment.getContext(), data, (HomeAdapter.ListItemClickListener) mFragment);
                 recyclerView.setLayoutManager(new LinearLayoutManager(mFragment.getContext()));
                 recyclerView.setAdapter(adapter);
@@ -57,9 +50,9 @@ public class HomePresenter {
     }
 
     public void search(String keyword, RecyclerView recyclerView) {
-        NetworkShared.getAsp().getGeneral().search(keyword, new RequestListener<ArrayList<Home>>() {
+        NetworkShared.getAsp().getGeneral().search(keyword, new RequestListener<ArrayList<Restaurants>>() {
             @Override
-            public void onSuccess(ArrayList<Home> data) {
+            public void onSuccess(ArrayList<Restaurants> data) {
                 HomeAdapter adapter = new HomeAdapter(mFragment.getContext(), data, (HomeAdapter.ListItemClickListener) mFragment);
                 recyclerView.setLayoutManager(new LinearLayoutManager(mFragment.getContext()));
                 recyclerView.setAdapter(adapter);
