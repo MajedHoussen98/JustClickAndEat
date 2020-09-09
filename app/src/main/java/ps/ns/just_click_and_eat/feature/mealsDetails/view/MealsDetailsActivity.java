@@ -1,8 +1,10 @@
 package ps.ns.just_click_and_eat.feature.mealsDetails.view;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,70 +14,60 @@ import com.denzcoskun.imageslider.models.SlideModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityMealsDetailsBinding;
 import ps.ns.just_click_and_eat.feature.favorites.Favorites;
+import ps.ns.just_click_and_eat.feature.mealsDetails.presenter.MealsDetailsPresenter;
 import ps.ns.just_click_and_eat.feature.menu.view.MenuActivity;
+import ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantDetailsActivity;
 import ps.ns.just_click_and_eat.network.asp.model.restaurants.Images;
+import ps.ns.just_click_and_eat.utils.AppSharedMethod;
+import ps.ns.just_click_and_eat.utils.BaseActivity;
 
-public class MealsDetailsActivity extends AppCompatActivity implements View.OnClickListener {
+public class MealsDetailsActivity extends BaseActivity implements MealsDetailsView {
 
     private ActivityMealsDetailsBinding binding;
-    private View view;
     private List<SlideModel> list = new ArrayList<>();
+    private MealsDetailsPresenter presenter;
     int mealsId, restaurant_id, code;
-    ArrayList<Images> mealsList;
-    String mealsName, mealsDescription;
+    String mealsName, mealsDescription, image;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMealsDetailsBinding.inflate(getLayoutInflater());
-        view = binding.getRoot();
+        View view = binding.getRoot();
         setContentView(view);
-        addSliderImage();
+        AppSharedMethod.statusTRANSPARENT(MealsDetailsActivity.this);
         listenerViews();
         getMealDetails();
+        addSliderImage();
     }
 
     private void getMealDetails() {
-        mealsId = getIntent().getExtras().getInt("meal_id");
+        mealsId = Objects.requireNonNull(getIntent().getExtras()).getInt("meal_id");
+        Log.e("id", mealsId+"");
         restaurant_id = getIntent().getExtras().getInt("restaurant_id");
-        code = getIntent().getExtras().getInt("code");
-        mealsList = (ArrayList<Images>) getIntent().getExtras().getSerializable("images");
+        code = getIntent().getExtras().getInt("CODE");
+        image = getIntent().getExtras().getString("image");
         mealsName = getIntent().getExtras().getString("name");
         mealsDescription = getIntent().getExtras().getString("description");
-
-        Log.e("idd", mealsId+"");
         binding.tvMealsName.setText(mealsName);
         binding.tvDescriptionMeal.setText(mealsDescription);
+        presenter.getMealIngredients(mealsId);
     }
 
     private void addSliderImage() {
-        list.add(new SlideModel(R.drawable.slideimage1, ScaleTypes.CENTER_CROP));
-        list.add(new SlideModel(R.drawable.slideimage2, ScaleTypes.CENTER_CROP));
+        list.add(new SlideModel(image, ScaleTypes.CENTER_CROP));
         binding.imageSlider.setImageList(list, ScaleTypes.CENTER_CROP);
     }
 
     private void listenerViews() {
-        binding.ibBack.setOnClickListener(this);
-        binding.icFav.setOnClickListener(this);
-        binding.icShare.setOnClickListener(this);
+        presenter = new MealsDetailsPresenter(this, this);
+        binding.ibBack.setOnClickListener(v -> presenter.goToFavoriteActivity(code));
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.ib_back) {
-            Log.e("code", code+"");
-            if (code == 1){
-                Intent intent = new Intent(MealsDetailsActivity.this, Favorites.class);
-                startActivity(intent);
-                finish();
-            }
-//            Intent intent = new Intent(MealsDetailsActivity.this, MenuActivity.class);
-//            startActivity(intent);
-//            finish();
-        }
-    }
 }

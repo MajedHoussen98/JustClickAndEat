@@ -2,6 +2,7 @@ package ps.ns.just_click_and_eat.feature.myAccount.presenter;
 
 
 import android.app.Activity;
+import android.content.Intent;
 
 import ps.ns.just_click_and_eat.feature.editAccount.view.EditAccountActivity;
 import ps.ns.just_click_and_eat.feature.editPassword.view.EditPasswordActivity;
@@ -36,14 +37,18 @@ public class MyAccountPresenter {
     }
 
     public void goToAddress() {
-        mActivity.startActivity(MyLocationActivity.newInstance(mActivity, FROM_LOCATION));
-    }
+        Intent intent = new Intent(mActivity, MyLocationActivity.class);
+        intent.putExtra("CODE", 1);
+        mActivity.startActivity(intent);    }
 
     public void goToFavorites() {
-        mActivity.startActivity(Favorites.newInstance(mActivity, FROM_FAVORITES));
+        Intent intent = new Intent(mActivity, Favorites.class);
+        intent.putExtra("CODE", 1);
+        mActivity.startActivity(intent);
     }
 
     public void goToHome() {
         mActivity.startActivity(MainActivity.newInstance(mActivity, FROM_HOME));
     }
+
 }

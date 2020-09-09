@@ -11,16 +11,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 
+import java.util.Objects;
+
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityFavoritesBinding;
 import ps.ns.just_click_and_eat.feature.favorites.adapter.SectionsPagerAdapter;
+import ps.ns.just_click_and_eat.feature.myAccount.view.MyAccountActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
 public class Favorites extends AppCompatActivity implements View.OnClickListener{
-    private View view;
     private ActivityFavoritesBinding binding;
 
     public static Intent newInstance(Activity mActivity, int fromWhere) {
@@ -33,7 +35,7 @@ public class Favorites extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityFavoritesBinding.inflate(getLayoutInflater());
-        view = binding.getRoot();
+        View view = binding.getRoot();
         setContentView(view);
         AppSharedMethod.statusBarLight(this);
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
@@ -42,6 +44,7 @@ public class Favorites extends AppCompatActivity implements View.OnClickListener
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         listenerView();
+
 
     }
 
@@ -52,9 +55,15 @@ public class Favorites extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        int CODE = Objects.requireNonNull(getIntent().getExtras()).getInt("CODE");
         if (v.getId() == R.id.ib_back){
-            startActivity(new Intent(Favorites.this, MainActivity.class));
+            if (CODE == 1){
+                startActivity(new Intent(Favorites.this, MyAccountActivity.class));
+            }else {
+                startActivity(new Intent(Favorites.this, MainActivity.class));
+            }
             finish();
+
         }
     }
 }

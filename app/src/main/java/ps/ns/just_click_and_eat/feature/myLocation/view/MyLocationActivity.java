@@ -20,9 +20,9 @@ import ps.ns.just_click_and_eat.utils.BaseActivity;
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
 public class MyLocationActivity extends BaseActivity implements MyLocationAdapter.ListItemClickListener, MyLocationView {
-    private View view;
     private ActivityMyLocationBinding binding;
     private MyLocationPresenter presenter;
+    private int CODE;
 
     public static Intent newInstance(Activity mActivity, int fromWhere) {
         Intent intent = new Intent(mActivity, MyLocationActivity.class);
@@ -34,7 +34,7 @@ public class MyLocationActivity extends BaseActivity implements MyLocationAdapte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMyLocationBinding.inflate(getLayoutInflater());
-        view = binding.getRoot();
+        View view = binding.getRoot();
         setContentView(view);
         initViews();
         listenerViews();
@@ -44,10 +44,15 @@ public class MyLocationActivity extends BaseActivity implements MyLocationAdapte
     private void initViews() {
         presenter = new MyLocationPresenter(this, this);
         presenter.getMyLocation(AppSharedData.getUserInfo().getTokenData().getAccessToken(), binding.rvLocation, binding.progressBar);
+        CODE = getIntent().getExtras().getInt("CODE");
     }
 
     private void listenerViews() {
-        binding.ibBack.setOnClickListener(v -> presenter.goTOHome());
+        if (CODE == 1){
+            binding.ibBack.setOnClickListener(v -> presenter.goTOMyAccount());
+        }else {
+            binding.ibBack.setOnClickListener(v -> presenter.goTOHome());
+        }
         binding.btnAddAddress.setOnClickListener(v -> presenter.goToAddLocation());
     }
 

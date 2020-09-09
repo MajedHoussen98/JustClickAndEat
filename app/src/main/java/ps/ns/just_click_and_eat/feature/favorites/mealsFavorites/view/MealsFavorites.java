@@ -48,9 +48,7 @@ public class MealsFavorites extends BaseFragment implements MealsFavoritesAdapte
             params.put("item_id", id);
             params.put("type", "meal");
             presenter.deleteMealsFavorites(AppSharedData.getUserInfo().getTokenData().getAccessToken(), params);
+            presenter.getMealsFavorites(AppSharedData.getUserInfo().getTokenData().getAccessToken(), MEALS_TYPE, binding.rvMealsFavorites, binding.progressBar);
         }
-//        if (viewId == R.id.ll_meal_fav) {
-//            startActivity(new Intent(getContext(), MealsDetailsActivity.class));
-//        }
     }
 }

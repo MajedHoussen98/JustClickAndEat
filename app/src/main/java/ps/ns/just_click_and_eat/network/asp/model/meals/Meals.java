@@ -81,6 +81,9 @@ public class Meals {
     @SerializedName("menu")
     @Expose
     private Menu menu;
+    @SerializedName("ingredients")
+    @Expose
+    private List<Ingredient> ingredients = null;
 
     public Integer getId() {
         return id;
@@ -273,4 +276,5 @@ public class Meals {
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
+
 }

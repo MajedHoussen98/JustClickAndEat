@@ -1,6 +1,7 @@
 package ps.ns.just_click_and_eat.network.utils;
 
 import androidx.collection.ArrayMap;
+
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import retrofit2.http.DELETE;
@@ -90,5 +91,6 @@ public interface RetrofitApis {
     Observable<AppResponse> deleteAddFavorite(@Header("Authorization") String authorization,
                                               @FieldMap ArrayMap<String, Object> params);
 
-
+    @GET("meal/{id}/ingredients")
+    Observable<AppResponse> getMealIngredients(@Path("id") int id);
 }

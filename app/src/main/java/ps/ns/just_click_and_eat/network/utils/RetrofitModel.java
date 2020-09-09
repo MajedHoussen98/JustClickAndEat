@@ -246,4 +246,10 @@ public class RetrofitModel {
                 .subscribeOn(subscribeOn)
                 .observeOn(observeOn);
     }
+
+    public Observable<AppResponse> getMealIngredients(int id) {
+        return api.getMealIngredients(id)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
 }

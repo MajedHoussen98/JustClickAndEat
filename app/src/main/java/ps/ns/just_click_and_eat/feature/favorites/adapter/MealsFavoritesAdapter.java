@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,18 +91,18 @@ public class MealsFavoritesAdapter extends RecyclerView.Adapter<MealsFavoritesAd
             if (v.getId() == R.id.ll_meal_fav) {
                 int id = list.get(getAdapterPosition()).getId();
                 int re_id = list.get(getAdapterPosition()).getMenu().getRstId();
-                int code = 1;
-
-                ArrayList<Images> images = (ArrayList<Images>) list.get(getAdapterPosition()).getImages();
+                int code = 0;
+                String image = list.get(getAdapterPosition()).getImageUrl();
                 String name = list.get(getAdapterPosition()).getName();
                 String description = list.get(getAdapterPosition()).getDesc();
+
                 Intent intent = new Intent(context, MealsDetailsActivity.class);
+                intent.putExtra("image", image);
                 intent.putExtra("meal_id", id);
-                intent.putExtra("code", code);
+                intent.putExtra("CODE", code);
                 intent.putExtra("restaurant_id", re_id);
                 intent.putExtra("name", name);
                 intent.putExtra("description", description);
-
                 context.startActivity(intent);
 
             }

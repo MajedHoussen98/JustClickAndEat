@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import ps.ns.just_click_and_eat.network.asp.model.meals.Meals;
 import ps.ns.just_click_and_eat.network.asp.model.restaurants.Restaurants;
 import ps.ns.just_click_and_eat.network.asp.model.IntroApp;
 import ps.ns.just_click_and_eat.network.asp.model.PaginationBean;
@@ -51,7 +52,7 @@ public class General {
     }
 
     @SuppressLint("CheckResult")
-    public void getRestaurants( RequestListener<ArrayList<Restaurants>> listener) {
+    public void getRestaurants(RequestListener<ArrayList<Restaurants>> listener) {
         retrofitModel.getRestaurant().subscribe(appResponse -> {
                     Log.e(TAG_SUCCESS, appResponse.getStatus().toString() + "");
                     if (appResponse.getStatus()) {
@@ -125,6 +126,27 @@ public class General {
                         Type listType = new TypeToken<ArrayList<Menu>>() {
                         }.getType();
                         ArrayList<Menu> list = gson.fromJson(appResponse.getResult(), listType);
+                        listener.onSuccess(list);
+                    } else {
+                        listener.onFail(appResponse.getMessage(), appResponse.getStatusCode());
+                    }
+                }, throwable -> {
+                    listener.onFail(throwable.getMessage(), -1);
+                    Log.e(TAG_ERROR, throwable.getMessage() + "");
+                }
+        );
+    }
+
+    @SuppressLint("CheckResult")
+    public void getMealIngredients(int id, RequestListener<ArrayList<Meals>> listener) {
+        retrofitModel.getMenuList(id).subscribe(appResponse -> {
+                    Log.e(TAG_SUCCESS, appResponse.getStatus().toString() + "");
+                    if (appResponse.getStatus()) {
+//                        JsonReader reader = new JsonReader(new StringReader(appResponse.getResult()));
+//                        reader.setLenient(true);
+                        Type listType = new TypeToken<ArrayList<Meals>>() {
+                        }.getType();
+                        ArrayList<Meals> list = gson.fromJson(appResponse.getResult(), listType);
                         listener.onSuccess(list);
                     } else {
                         listener.onFail(appResponse.getMessage(), appResponse.getStatusCode());

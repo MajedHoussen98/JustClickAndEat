@@ -108,7 +108,9 @@ public class MainActivity extends BaseActivity implements HomeView {
                     finish();
 
                 } else if (item.getItemId() == R.id.nav_location) {
-                    startActivity(new Intent(MainActivity.this, MyLocationActivity.class));
+                    Intent intent = new Intent(MainActivity.this, MyLocationActivity.class);
+                    intent.putExtra("CODE", 0);
+                    startActivity(intent);
                     finish();
 
                 } else if (item.getItemId() == R.id.nav_notification) {
@@ -116,7 +118,9 @@ public class MainActivity extends BaseActivity implements HomeView {
                     finish();
 
                 } else if (item.getItemId() == R.id.nav_favorites) {
-                    startActivity(new Intent(MainActivity.this, Favorites.class));
+                    Intent intent = new Intent(MainActivity.this, Favorites.class);
+                    intent.putExtra("CODE", 0);
+                    startActivity(intent);
                     finish();
 
                 } else if (item.getItemId() == R.id.nav_log_out) {

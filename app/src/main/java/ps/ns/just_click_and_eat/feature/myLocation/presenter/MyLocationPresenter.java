@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import ps.ns.just_click_and_eat.feature.addLocation.view.AddLocationActivity;
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
+import ps.ns.just_click_and_eat.feature.myAccount.view.MyAccountActivity;
 import ps.ns.just_click_and_eat.feature.myLocation.adapter.MyLocationAdapter;
 import ps.ns.just_click_and_eat.feature.myLocation.view.MyLocationView;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
@@ -40,6 +41,12 @@ public class MyLocationPresenter {
         mActivity.startActivity(MainActivity.newInstance(mActivity, FROM_HOME));
         mActivity.finish();
     }
+
+    public void goTOMyAccount() {
+        mActivity.startActivity(MyAccountActivity.newInstance(mActivity, FROM_HOME));
+        mActivity.finish();
+    }
+
 
     public void goToAddLocation() {
         Intent intent = new Intent(AddLocationActivity.newInstance(mActivity, FROM_ADD_LOCATION));
