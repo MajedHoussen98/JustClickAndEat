@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import java.util.Objects;
 
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityAddLocationBinding;
@@ -20,7 +23,6 @@ import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_WHERE;
 
 public class AddLocationActivity extends BaseActivity implements AddLocationView {
 
-    private View view;
     private ActivityAddLocationBinding binding;
     private AddLocationPresenter presenter;
     int LAUNCH_MAPS_ACTIVITY = 1;
@@ -38,7 +40,7 @@ public class AddLocationActivity extends BaseActivity implements AddLocationView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityAddLocationBinding.inflate(getLayoutInflater());
-        view = binding.getRoot();
+        View view = binding.getRoot();
         setContentView(view);
         initView();
         listenerViews();
@@ -62,6 +64,7 @@ public class AddLocationActivity extends BaseActivity implements AddLocationView
 
     private void initView() {
         presenter = new AddLocationPresenter(this, this);
+        icDelete = getIntent().getExtras().getInt("icDelete");
         showIconDelete();
         getDataFromIntent();
         setDefaultLocation();
@@ -79,21 +82,21 @@ public class AddLocationActivity extends BaseActivity implements AddLocationView
         });
         binding.ibBack.setOnClickListener(v -> presenter.goToMyLocation());
         binding.btnUseMap.setOnClickListener(v -> presenter.goToMap(LAUNCH_MAPS_ACTIVITY, addressDetails));
-        binding.btnSaveAddress.setOnClickListener(v -> presenter.validationInputs(binding.etAddressName, addressDetails, lat, log, makeDefault));
+        binding.btnSaveAddress.setOnClickListener(v -> presenter.validationInputs(locationId, icDelete, binding.etAddressName, addressDetails, lat, log, makeDefault));
         binding.btnDelete.setOnClickListener(v -> presenter.deleteLocation(AppSharedData.getUserInfo().getTokenData().getAccessToken(), locationId));
     }
 
     private void showIconDelete() {
-        icDelete = getIntent().getExtras().getInt("icDelete");
         if (icDelete == 0) {
             binding.btnDelete.setVisibility(View.GONE);
         } else if (icDelete == 1) {
             binding.btnDelete.setVisibility(View.VISIBLE);
+            binding.btnSaveAddress.setText(R.string.save_change);
         }
     }
 
     private void getDataFromIntent() {
-        locationId = getIntent().getExtras().getInt("id");
+        locationId = Objects.requireNonNull(getIntent().getExtras()).getInt("id");
         locationName = getIntent().getExtras().getString("locationName");
         addressDetails = getIntent().getExtras().getString("details");
         lat = getIntent().getExtras().getDouble("lat");
@@ -101,7 +104,7 @@ public class AddLocationActivity extends BaseActivity implements AddLocationView
     }
 
     private void setDefaultLocation() {
-        makeDefault = getIntent().getExtras().getInt("isDefault");
+        makeDefault = Objects.requireNonNull(getIntent().getExtras()).getInt("isDefault");
         binding.etAddressName.setText(locationName);
         if (makeDefault == 1) {
             binding.rbMakeDefault.setChecked(true);

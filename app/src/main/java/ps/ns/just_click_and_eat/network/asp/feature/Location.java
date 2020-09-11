@@ -109,4 +109,35 @@ public class Location {
 
                 });
     }
+
+    @SuppressLint("CheckResult")
+    public void updateLocation(String token, int id, ArrayMap<String, Object> params, final RequestListener<ArrayList<MyLocation>> mRequestListener) {
+        Log.e(TAG_PARAMS, params.toString());
+        retrofitModel.updateMyLocation(token, id, params)
+                .subscribe(appResponse -> {
+                    Log.e(TAG_SUCCESS, params + "");
+                    Log.e(TAG_SUCCESS, appResponse.getStatus().toString() + "");
+                    if (appResponse.getStatus()) {
+//                        JsonReader reader = new JsonReader(new StringReader(appResponse.getResult()));
+//                        reader.setLenient(true);
+                        Type listType = new TypeToken<ArrayList<MyLocation>>() {
+                        }.getType();
+                        ArrayList<MyLocation> myLocation = gson.fromJson(appResponse.getResult(), listType);
+                        mRequestListener.onSuccess(myLocation);
+                    } else {
+                        if (appResponse.getStatusCode() == 406) {
+                            JsonReader reader = new JsonReader(new StringReader(appResponse.getResult()));
+                            reader.setLenient(true);
+                            ArrayList<MyLocation> myLocation = gson.fromJson(reader, MyLocation.class);
+                            mRequestListener.onSuccess(myLocation);
+                        } else {
+                            mRequestListener.onFail(appResponse.getMessage(), appResponse.getStatusCode());
+                        }
+                    }
+                }, throwable -> {
+                    mRequestListener.onFail(throwable.getMessage(), -1);
+                    Log.e(TAG_ERROR, throwable.getMessage() + "");
+
+                });
+    }
 }

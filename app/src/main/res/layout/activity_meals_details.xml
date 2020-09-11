@@ -103,40 +103,10 @@
                         android:text="@string/ingredient" />
 
 
-                    <RadioButton
-                        android:id="@+id/rb_1"
-                        style="@style/radioButtonNestedMeals"
-                        android:text="@string/rb_1" />
-
-                    <RadioButton
-                        android:id="@+id/rb_2"
-                        style="@style/radioButtonNestedMeals"
-                        android:text="@string/rb_2" />
-
-                    <RadioButton
-                        android:id="@+id/rb_3"
-                        style="@style/radioButtonNestedMeals"
-                        android:text="@string/rb_3" />
-
-                    <RadioButton
-                        android:id="@+id/rb_4"
-                        style="@style/radioButtonNestedMeals"
-                        android:text="@string/rb_4" />
-
-                    <RadioButton
-                        android:id="@+id/rb_5"
-                        style="@style/radioButtonNestedMeals"
-                        android:text="@string/rb_5" />
-
-                    <RadioButton
-                        android:id="@+id/rb_6"
-                        style="@style/radioButtonNestedMeals"
-                        android:text="@string/rb_6" />
-
-                    <RadioButton
-                        android:id="@+id/rb_7"
-                        style="@style/radioButtonNestedMeals"
-                        android:text="@string/rb_7" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_ingredient"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
                     <com.google.android.material.textfield.TextInputLayout style="@style/EditText">
 

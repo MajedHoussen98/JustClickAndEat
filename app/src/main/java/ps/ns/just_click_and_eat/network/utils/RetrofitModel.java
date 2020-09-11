@@ -1,10 +1,13 @@
 package ps.ns.just_click_and_eat.network.utils;
 
 import androidx.collection.ArrayMap;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
 import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -225,6 +228,12 @@ public class RetrofitModel {
 
     public Observable<AppResponse> removeMyLocation(String token, int id) {
         return api.removeMyLocation(BEARER + token, id)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+    public Observable<AppResponse> updateMyLocation(String token, int id, ArrayMap<String, Object> params) {
+        return api.updateMyLocation(BEARER + token, id, params)
                 .subscribeOn(subscribeOn)
                 .observeOn(observeOn);
     }

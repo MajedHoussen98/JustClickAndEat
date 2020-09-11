@@ -37,7 +37,6 @@
 
         <activity
             android:name=".feature.maps.view.MapsActivity"
-            android:theme="@style/statusBarLight"
             android:label="@string/title_activity_maps">
         </activity>
 

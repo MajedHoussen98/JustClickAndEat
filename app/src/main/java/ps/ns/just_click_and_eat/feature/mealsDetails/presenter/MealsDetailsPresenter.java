@@ -3,9 +3,13 @@ package ps.ns.just_click_and_eat.feature.mealsDetails.presenter;
 import android.content.Intent;
 import android.util.Log;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
 import ps.ns.just_click_and_eat.feature.favorites.Favorites;
+import ps.ns.just_click_and_eat.feature.mealsDetails.adapter.IngredientAdapter;
 import ps.ns.just_click_and_eat.feature.mealsDetails.view.MealsDetailsActivity;
 import ps.ns.just_click_and_eat.feature.mealsDetails.view.MealsDetailsView;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
@@ -31,13 +35,14 @@ public class MealsDetailsPresenter {
         }
     }
 
-    public void getMealIngredients(int id) {
+    public void getMealIngredients(int id, RecyclerView recyclerView) {
         Log.e("ids", id + "");
         NetworkShared.getAsp().getGeneral().getMealIngredients(id, new RequestListener<ArrayList<Meals>>() {
             @Override
             public void onSuccess(ArrayList<Meals> data) {
-                Log.e("Ingredients", "success1");
-                Log.e("id", id + "");
+                IngredientAdapter adapter = new IngredientAdapter(mActivity, data, (IngredientAdapter.ListItemClickListener) mActivity);
+                recyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
+                recyclerView.setAdapter(adapter);
             }
 
             @Override

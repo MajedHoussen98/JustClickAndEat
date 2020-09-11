@@ -92,10 +92,10 @@ public class MyLocationAdapter extends RecyclerView.Adapter<MyLocationAdapter.Vi
         @Override
         public void onClick(View v) {
             if (v.getId() == R.id.btn_change_address) {
+                int id  = list.get(getAdapterPosition()).getId();
                 String locationName = list.get(getAdapterPosition()).getLocationTitle();
                 String locationDetails = list.get(getAdapterPosition()).getAddress();
                 int isDefault = list.get(getAdapterPosition()).getIsDefault();
-                int id  = list.get(getAdapterPosition()).getId();
                 Double lat = Double.valueOf(list.get(getAdapterPosition()).getLat());
                 Double log = Double.valueOf(list.get(getAdapterPosition()).getLong());
 

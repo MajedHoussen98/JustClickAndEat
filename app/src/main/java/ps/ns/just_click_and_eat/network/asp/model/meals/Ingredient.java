@@ -15,4 +15,28 @@ public class Ingredient {
     @SerializedName("data")
     @Expose
     private List<IngredientData> data = null;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getMaxFreeIngredients() {
+        return maxFreeIngredients;
+    }
+
+    public void setMaxFreeIngredients(Integer maxFreeIngredients) {
+        this.maxFreeIngredients = maxFreeIngredients;
+    }
+
+    public List<IngredientData> getData() {
+        return data;
+    }
+
+    public void setData(List<IngredientData> data) {
+        this.data = data;
+    }
 }

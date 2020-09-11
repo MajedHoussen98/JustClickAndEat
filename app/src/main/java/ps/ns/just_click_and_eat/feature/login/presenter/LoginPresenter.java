@@ -157,10 +157,12 @@ public class LoginPresenter {
         NetworkShared.getAsp().getUser().login(params, new RequestListener<UserInfo>() {
             @Override
             public void onSuccess(UserInfo data) {
+                Log.e("token", data.getTokenData().getAccessToken()+"");
                 AppSharedData.setUserLogin(true);
                 mView.hideProgress();
                 AppSharedData.setUserInfo(data);
                 mActivity.startActivity(MainActivity.newInstance(mActivity, FROM_LOGIN));
+                mActivity.finish();
             }
 
             @Override

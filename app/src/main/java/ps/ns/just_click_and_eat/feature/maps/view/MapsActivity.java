@@ -70,7 +70,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void initView() {
-        AppSharedMethod.statusBarLight(this);
         addressDetails = getIntent().getExtras().getString("details");
         binding.etDetails.setText(addressDetails);
     }

@@ -238,5 +238,7 @@
     <string name="default_name">Your name</string>
     <string name="default_email">example@example.com</string>
     <string name="enter_address_details">Enter Address Details</string>
+    <string name="rb_ingredient">2 tablespoons butter</string>
+    <string name="save_change">Save Change</string>
 
 </resources>

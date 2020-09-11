@@ -19,6 +19,7 @@ import java.util.Objects;
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.ActivityMealsDetailsBinding;
 import ps.ns.just_click_and_eat.feature.favorites.Favorites;
+import ps.ns.just_click_and_eat.feature.mealsDetails.adapter.IngredientAdapter;
 import ps.ns.just_click_and_eat.feature.mealsDetails.presenter.MealsDetailsPresenter;
 import ps.ns.just_click_and_eat.feature.menu.view.MenuActivity;
 import ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantDetailsActivity;
@@ -26,7 +27,7 @@ import ps.ns.just_click_and_eat.network.asp.model.restaurants.Images;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 import ps.ns.just_click_and_eat.utils.BaseActivity;
 
-public class MealsDetailsActivity extends BaseActivity implements MealsDetailsView {
+public class MealsDetailsActivity extends BaseActivity implements IngredientAdapter.ListItemClickListener, MealsDetailsView {
 
     private ActivityMealsDetailsBinding binding;
     private List<SlideModel> list = new ArrayList<>();
@@ -57,7 +58,7 @@ public class MealsDetailsActivity extends BaseActivity implements MealsDetailsVi
         mealsDescription = getIntent().getExtras().getString("description");
         binding.tvMealsName.setText(mealsName);
         binding.tvDescriptionMeal.setText(mealsDescription);
-        presenter.getMealIngredients(mealsId);
+        presenter.getMealIngredients(mealsId, binding.rvIngredient);
     }
 
     private void addSliderImage() {
@@ -70,4 +71,8 @@ public class MealsDetailsActivity extends BaseActivity implements MealsDetailsVi
         binding.ibBack.setOnClickListener(v -> presenter.goToFavoriteActivity(code));
     }
 
+    @Override
+    public void onListItemClicked(int position, int viewId, int id) {
+
+    }
 }

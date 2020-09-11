@@ -34,7 +34,9 @@ public class AddLocationPresenter {
     }
 
     public void goToMyLocation() {
-        mActivity.startActivity(MyLocationActivity.newInstance(mActivity, FROM_MY_LOCATION));
+        Intent intent = new Intent(MyLocationActivity.newInstance(mActivity, FROM_MY_LOCATION));
+        intent.putExtra("CODE", 1);
+        mActivity.startActivity(intent);
         mActivity.finish();
     }
 
@@ -44,13 +46,12 @@ public class AddLocationPresenter {
         mActivity.startActivityForResult(i, LAUNCH_MAPS_ACTIVITY);
     }
 
-
-    public void validationInputs(EditText etAddressName, String details, Double lat, Double log, int makeDefault) {
+    public void validationInputs(int locationId, int code, EditText etAddressName, String details, Double lat, Double log, int makeDefault) {
         if (AppSharedMethod.isEmptyEditText(etAddressName)) {
             AppSharedMethod.setErrorEditText(etAddressName, mActivity.getString(R.string.enter_address));
             return;
         }
-        Log.e("det", details + "");
+
         ArrayMap<String, Object> params = new ArrayMap<>();
         params.put("title", AppSharedMethod.getTextFromEditText(etAddressName));
         params.put("address", details);
@@ -58,7 +59,11 @@ public class AddLocationPresenter {
         params.put("long", log);
         params.put("is_default", makeDefault);
 
-        saveAddressRequest(AppSharedData.getUserInfo().getTokenData().getAccessToken(), params);
+        if (code == 1) {
+            updateLocation(AppSharedData.getUserInfo().getTokenData().getAccessToken(), locationId, params);
+        } else {
+            saveAddressRequest(AppSharedData.getUserInfo().getTokenData().getAccessToken(), params);
+        }
     }
 
     private void saveAddressRequest(String token, ArrayMap<String, Object> params) {
@@ -67,7 +72,9 @@ public class AddLocationPresenter {
             @Override
             public void onSuccess(ArrayList<MyLocation> data) {
                 mView.hideProgress();
-                mActivity.startActivity(new Intent(mActivity, MyLocationActivity.class));
+                Intent intent = new Intent(mActivity, MyLocationActivity.class);
+                intent.putExtra("CODE", 1);
+                mActivity.startActivity(intent);
                 Toast.makeText(mActivity, "The location is added", Toast.LENGTH_SHORT).show();
                 mActivity.finish();
             }
@@ -79,20 +86,40 @@ public class AddLocationPresenter {
         });
     }
 
-
     public void deleteLocation(String token, int id) {
         mView.showProgress();
         NetworkShared.getAsp().getLocation().removeLocation(token, id, new RequestListener<ArrayList<MyLocation>>() {
             @Override
             public void onSuccess(ArrayList<MyLocation> data) {
                 mView.hideProgress();
-                mActivity.startActivity(new Intent(mActivity, MyLocationActivity.class));
+                Intent intent = new Intent(new Intent(mActivity, MyLocationActivity.class));
+                intent.putExtra("CODE", 1);
+                mActivity.startActivity(intent);
                 Toast.makeText(mActivity, "The Location is Deleted", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFail(String message, int code) {
 
+            }
+        });
+    }
+
+    private void updateLocation(String token, int id, ArrayMap<String, Object> params) {
+        mView.showProgress();
+        NetworkShared.getAsp().getLocation().updateLocation(token, id, params, new RequestListener<ArrayList<MyLocation>>() {
+            @Override
+            public void onSuccess(ArrayList<MyLocation> data) {
+                mView.hideProgress();
+                Intent intent = new Intent(new Intent(mActivity, MyLocationActivity.class));
+                intent.putExtra("CODE", 1);
+                mActivity.startActivity(intent);
+                Toast.makeText(mActivity, "The Location is Updated", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFail(String message, int code) {
+                Log.e("msg", message);
             }
         });
     }
