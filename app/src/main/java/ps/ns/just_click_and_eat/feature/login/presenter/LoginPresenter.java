@@ -37,6 +37,10 @@ import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 import ps.ns.just_click_and_eat.utils.AppSharedData;
 
 import static ps.ns.just_click_and_eat.utils.ConstantApp.FROM_LOGIN;
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.ANDROID;
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.CLIENT_ID_VALUE;
+import static ps.ns.just_click_and_eat.network.utils.ConstantRetrofit.CLIENT_SECRET_VALUE;
+
 
 public class LoginPresenter {
 
@@ -102,10 +106,10 @@ public class LoginPresenter {
         params.put("grant_type", "password");
         params.put("email", AppSharedMethod.getTextFromEditText(etEmail));
         params.put("password", AppSharedMethod.getTextFromEditText(etPassword));
-        params.put("device_type", "android");
+        params.put("device_type", ANDROID);
         params.put("device_id", AppSharedData.getDeviceId());
-        params.put("client_id", "2");
-        params.put("client_secret", "j0RpbY9ij8fBBEYh1OPdDE6mqiVCFEhy4VLMLgQB");
+        params.put("client_id", CLIENT_ID_VALUE);
+        params.put("client_secret", CLIENT_SECRET_VALUE);
         loginRequest(params);
     }
 
@@ -150,7 +154,6 @@ public class LoginPresenter {
         }
     }
 
-    private static final String TAG = "errorLogin";
 
     private void loginRequest(ArrayMap<String, Object> params) {
         mView.showProgress();

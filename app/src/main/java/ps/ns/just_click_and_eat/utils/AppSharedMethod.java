@@ -9,104 +9,88 @@ import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
-
 import androidx.annotation.RequiresApi;
-
 import com.mukesh.OtpView;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.feature.filterDialogFragment.FilterDialogFragment;
-
 import static com.facebook.FacebookSdk.getCacheDir;
 
 public class AppSharedMethod {
 
     //TODO: Check Edit Text
-    public static boolean isEmptyEditText(EditText editText){
+    public static boolean isEmptyEditText(EditText editText) {
         return TextUtils.isEmpty(editText.getText().toString().trim());
     }
 
     //TODO: Check Email Patterns
-    public static boolean isInvalidEmail(EditText editText){
+    public static boolean isInvalidEmail(EditText editText) {
         return !Patterns.EMAIL_ADDRESS.matcher(editText.getText().toString().trim()).matches();
     }
 
     //TODO: Get Text From Edit Text
-    public static String getTextFromEditText(EditText editText){
+    public static String getTextFromEditText(EditText editText) {
         return editText.getText().toString().trim();
-   }
+    }
 
     //TODO: Check Otp (Verification)
-    public static boolean checkOtpView(OtpView otpView){
+    public static boolean checkOtpView(OtpView otpView) {
         return TextUtils.isEmpty(otpView.getText().toString().trim());
     }
 
     //TODO: Get Text From Otp (Verification)
-    public static String getTextFromOtp(OtpView otpView){
+    public static String getTextFromOtp(OtpView otpView) {
         return otpView.getText().toString().trim();
     }
 
 
     //TODO: Set Error EditText
-    public static void setErrorEditText(EditText editText, String message){
+    public static void setErrorEditText(EditText editText, String message) {
         editText.setError(message);
         editText.requestFocus();
     }
 
     //TODO: Set Error Code
-    public static void setErrorVerification(OtpView otpView, String message){
+    public static void setErrorVerification(OtpView otpView, String message) {
         otpView.setError(message);
         otpView.requestFocus();
     }
 
-    public static void statusBarLight(Activity activity){
+    //TODO: Set Status Bar Light
+    public static void statusBarLight(Activity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             activity.getWindow().setStatusBarColor(activity.getResources().getColor(R.color.whiteColor, activity.getTheme()));
-
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().setStatusBarColor(activity.getResources().getColor(R.color.whiteColor));
         }
     }
 
-
-    public static void statusBarHide(View view){
+    //TODO: Hide Status Bar
+    public static void statusBarHide(View view) {
         view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                                  |View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                                  |View.SYSTEM_UI_FLAG_FULLSCREEN);
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                | View.SYSTEM_UI_FLAG_FULLSCREEN);
     }
 
+    //TODO: Set Status Bar Transparent
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public static void statusTRANSPARENT(Activity activity){
-       activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+    public static void statusTRANSPARENT(Activity activity) {
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         activity.getWindow().setStatusBarColor(Color.TRANSPARENT);
     }
 
-    public static void statusBarShow(Activity activity){
+    //TODO: Show Status Bar
+    public static void statusBarShow(Activity activity) {
         activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-    public static void openFilterDialog() {
-        FilterDialogFragment dialog = new FilterDialogFragment();
-        dialog.show(dialog.getChildFragmentManager(), "FilterDialog");
-    }
-
-    public static String clientSecret(){
-        return "j0RpbY9ij8fBBEYh1OPdDE6mqiVCFEhy4VLMLgQB";
-    }
-
-    public static String clientId(){
-        return "2";
-    }
 
     //TODO: Convert Bitmap to MultiPart
     public static MultipartBody.Part bitmapToMultipartBodyPart(Bitmap bitmap, String name) {
@@ -144,7 +128,6 @@ public class AppSharedMethod {
         RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
         return MultipartBody.Part.createFormData(name, file.getName(), requestFile);
     }
-
 
 
 }

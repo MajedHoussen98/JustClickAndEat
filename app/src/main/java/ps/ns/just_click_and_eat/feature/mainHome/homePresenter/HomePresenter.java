@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import ps.ns.just_click_and_eat.feature.filterDialogFragment.FilterDialogFragment;
 import ps.ns.just_click_and_eat.feature.mainHome.adapter.HomeAdapter;
 import ps.ns.just_click_and_eat.feature.mainHome.view.HomeView;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
@@ -28,6 +29,7 @@ public class HomePresenter {
         this.mView = mView;
         this.mFragment = mFragment;
     }
+
 
     public void getRestaurantData(RecyclerView recyclerView, ProgressBar progressBar) {
 

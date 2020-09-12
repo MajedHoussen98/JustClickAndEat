@@ -7,7 +7,7 @@
     android:layoutDirection="ltr"
     android:orientation="vertical"
     android:textDirection="ltr"
-    tools:context=".feature.splash.SplashActivity">
+    tools:context=".feature.splash.view.SplashActivity">
 
     <ImageView
         android:id="@+id/imageView4"

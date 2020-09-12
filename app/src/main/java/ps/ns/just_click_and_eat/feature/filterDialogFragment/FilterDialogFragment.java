@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import android.util.Log;
@@ -16,6 +17,8 @@ import android.view.WindowManager;
 
 import org.florescu.android.rangeseekbar.RangeSeekBar;
 
+import java.util.Objects;
+
 import ps.ns.just_click_and_eat.R;
 import ps.ns.just_click_and_eat.databinding.FragmentFilterDialogkBinding;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
@@ -27,7 +30,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
     private FragmentFilterDialogkBinding binding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentFilterDialogkBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
@@ -41,8 +44,8 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
     @Override
     public void onResume() {
         super.onResume();
-        Window window = getDialog().getWindow();
-        window.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
+        Window window = Objects.requireNonNull(getDialog()).getWindow();
+        Objects.requireNonNull(window).setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         WindowManager.LayoutParams params = window.getAttributes();

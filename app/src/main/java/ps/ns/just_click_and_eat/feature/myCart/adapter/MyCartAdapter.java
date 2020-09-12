@@ -1,4 +1,4 @@
-package ps.ns.just_click_and_eat.feature.myCart;
+package ps.ns.just_click_and_eat.feature.myCart.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

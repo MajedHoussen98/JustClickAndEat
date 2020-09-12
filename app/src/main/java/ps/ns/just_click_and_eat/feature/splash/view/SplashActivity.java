@@ -1,4 +1,4 @@
-package ps.ns.just_click_and_eat.feature.splash;
+package ps.ns.just_click_and_eat.feature.splash.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +12,6 @@ import ps.ns.just_click_and_eat.databinding.ActivitySplashBinding;
 import ps.ns.just_click_and_eat.feature.introApp.view.IntroAppActivity;
 import ps.ns.just_click_and_eat.feature.login.view.LoginActivity;
 import ps.ns.just_click_and_eat.feature.mainHome.view.MainActivity;
-import ps.ns.just_click_and_eat.feature.maps.view.MapsActivity;
 import ps.ns.just_click_and_eat.utils.AppSharedData;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 

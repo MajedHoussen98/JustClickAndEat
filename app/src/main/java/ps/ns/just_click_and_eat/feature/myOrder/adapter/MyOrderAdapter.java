@@ -1,4 +1,4 @@
-package ps.ns.just_click_and_eat.feature.myOrder;
+package ps.ns.just_click_and_eat.feature.myOrder.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

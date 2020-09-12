@@ -10,7 +10,6 @@
     android:textDirection="ltr"
     tools:context=".feature.login.view.LoginActivity">
 
-
     <ScrollView
         style="@style/scrollSignIn"
         android:background="@drawable/backsign"

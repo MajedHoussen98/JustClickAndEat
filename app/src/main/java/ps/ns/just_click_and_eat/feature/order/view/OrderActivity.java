@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ps.ns.just_click_and_eat.R;
-import ps.ns.just_click_and_eat.feature.myCart.MyCartAdapter;
+import ps.ns.just_click_and_eat.feature.myCart.adapter.MyCartAdapter;
 import ps.ns.just_click_and_eat.databinding.ActivityOrderBinding;
 import ps.ns.just_click_and_eat.feature.mealsDetails.view.MealsDetailsActivity;
 import ps.ns.just_click_and_eat.feature.myCart.view.MyCartActivity;

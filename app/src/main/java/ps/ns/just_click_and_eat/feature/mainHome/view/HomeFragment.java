@@ -14,6 +14,8 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import ps.ns.just_click_and_eat.feature.cartDialogFragment.view.CartDialogFragment;
+import ps.ns.just_click_and_eat.feature.filterDialogFragment.FilterDialogFragment;
 import ps.ns.just_click_and_eat.feature.mainHome.adapter.HomeAdapter;
 import ps.ns.just_click_and_eat.databinding.FragmentHomeBinding;
 import ps.ns.just_click_and_eat.feature.mainHome.homePresenter.HomePresenter;
@@ -56,7 +58,7 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.ListItemCl
     }
 
     private void listenerViews() {
-        binding.icFilter.setOnClickListener(v -> AppSharedMethod.openFilterDialog());
+        binding.icFilter.setOnClickListener(v -> openFilterDialog());
         binding.etSearchHome.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -91,5 +93,11 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.ListItemCl
     public void showMessage(String msg) {
         super.showMessage(msg);
         snackErrorShow(binding.getRoot(), msg);
+    }
+
+
+    public  void openFilterDialog() {
+        FilterDialogFragment dialog = new FilterDialogFragment();
+        dialog.show(getParentFragmentManager(), "FilterDialog");
     }
 }
