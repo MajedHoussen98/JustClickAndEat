@@ -75,7 +75,6 @@ public class RestaurantDetailsPresenter {
                 nested.setVisibility(View.VISIBLE);
                 appBarLayout.setVisibility(View.VISIBLE);
 
-
                 String image;
                 for (int i = 0; i <= data.getImages().size(); i++) {
                     image = data.getImages().get(i).getImageUrl();

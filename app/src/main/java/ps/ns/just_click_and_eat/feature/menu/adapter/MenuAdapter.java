@@ -1,6 +1,7 @@
 package ps.ns.just_click_and_eat.feature.menu.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import ps.ns.just_click_and_eat.R;
+import ps.ns.just_click_and_eat.feature.mealsDetails.view.MealsDetailsActivity;
 import ps.ns.just_click_and_eat.network.asp.model.meals.Meals;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
@@ -25,7 +27,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     final private MenuAdapter.ListItemClickListener mOnClickListener;
 
     public interface ListItemClickListener {
-        void onListItemClicked(int position, int viewId);
+        void onListItemClicked(int position, int viewId, List<Meals> list);
     }
 
     public MenuAdapter(Context context, List<Meals> list, ListItemClickListener mOnClickListener) {
@@ -76,7 +78,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
-            mOnClickListener.onListItemClicked(getAdapterPosition(), v.getId());
+            mOnClickListener.onListItemClicked(getAdapterPosition(), v.getId(), list);
         }
     }
 }

@@ -19,7 +19,7 @@ public interface ConstantRetrofit {
     String HTTP_DELETE_TYPE = "DELETE";
     String HEADER_ACCEPT_TYPE = "Accept";
     String CLIENT_SECRET = "client_secret";
-    String CLIENT_SECRET_VALUE = "Fb5oeK1kIgMA7SgXwP80eL54wmNchnq4gerKuru7";
+    String CLIENT_SECRET_VALUE = "j0RpbY9ij8fBBEYh1OPdDE6mqiVCFEhy4VLMLgQB";
     String GRANT_TYPE_KEY = "grant_type";
     String PASSWORD_GRANT_TYPE_VALUE = "password";
     String SOCIAL_GRANT_TYPE_VALUE = "social";

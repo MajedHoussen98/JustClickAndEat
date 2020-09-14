@@ -50,7 +50,6 @@ public class MealsDetailsActivity extends BaseActivity implements IngredientAdap
 
     private void getMealDetails() {
         mealsId = Objects.requireNonNull(getIntent().getExtras()).getInt("meal_id");
-        Log.e("id", mealsId+"");
         restaurant_id = getIntent().getExtras().getInt("restaurant_id");
         code = getIntent().getExtras().getInt("CODE");
         image = getIntent().getExtras().getString("image");
@@ -58,7 +57,7 @@ public class MealsDetailsActivity extends BaseActivity implements IngredientAdap
         mealsDescription = getIntent().getExtras().getString("description");
         binding.tvMealsName.setText(mealsName);
         binding.tvDescriptionMeal.setText(mealsDescription);
-        presenter.getMealIngredients(mealsId, binding.rvIngredient);
+        presenter.getMealIngredients(mealsId, binding.rvIngredient, binding.tvIngredient);
     }
 
     private void addSliderImage() {
@@ -68,7 +67,7 @@ public class MealsDetailsActivity extends BaseActivity implements IngredientAdap
 
     private void listenerViews() {
         presenter = new MealsDetailsPresenter(this, this);
-        binding.ibBack.setOnClickListener(v -> presenter.goToFavoriteActivity(code));
+        binding.ibBack.setOnClickListener(v -> presenter.goToActivity(code, restaurant_id));
     }
 
     @Override

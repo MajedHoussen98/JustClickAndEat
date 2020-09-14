@@ -62,6 +62,10 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.ListItemCl
         binding.etSearchHome.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!String.valueOf(s).isEmpty()) {
                     binding.rvHome.setVisibility(View.VISIBLE);
                     presenter.search(String.valueOf(s), binding.rvHome);
@@ -69,12 +73,6 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.ListItemCl
                     presenter.getRestaurantData(binding.rvHome, binding.progressBar);
 //                    binding.rvHome.setVisibility(View.GONE);
                 }
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -96,7 +94,7 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.ListItemCl
     }
 
 
-    public  void openFilterDialog() {
+    public void openFilterDialog() {
         FilterDialogFragment dialog = new FilterDialogFragment();
         dialog.show(getParentFragmentManager(), "FilterDialog");
     }

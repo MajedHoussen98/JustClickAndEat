@@ -39,4 +39,13 @@ public class Ingredient {
     public void setData(List<IngredientData> data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return "Ingredient{" +
+                "name='" + name + '\'' +
+                ", maxFreeIngredients=" + maxFreeIngredients +
+                ", data=" + data +
+                '}';
+    }
 }

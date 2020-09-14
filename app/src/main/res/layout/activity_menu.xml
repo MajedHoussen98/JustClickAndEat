@@ -8,6 +8,8 @@
     android:layoutDirection="ltr"
     tools:context=".feature.menu.view.MenuActivity">
 
+
+
     <com.google.android.material.appbar.AppBarLayout
         style="@style/WidthHeight"
         android:background="@color/whiteColor"
@@ -59,7 +61,16 @@
             app:tabTextColor="@color/blackColor"
             android:background="@color/whiteColor" />
 
+
+
     </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_meals_search"
+        android:layout_width="match_parent"
+        android:layout_marginTop="155dp"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
@@ -68,7 +79,7 @@
 
         <fragment
             android:id="@+id/fragment"
-            android:name="ps.ns.just_click_and_eat.feature.menu.view.StartersMenu"
+            android:name="ps.ns.just_click_and_eat.feature.menu.view.MealsMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

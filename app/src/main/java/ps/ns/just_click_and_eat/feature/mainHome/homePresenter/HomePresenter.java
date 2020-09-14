@@ -20,9 +20,6 @@ import ps.ns.just_click_and_eat.network.utils.RequestListener;
 public class HomePresenter {
     private HomeView mView;
     private Fragment mFragment;
-    private boolean isLoading = true;
-    private int past, visible, total, previous = 0;
-    private int view = 10;
 
 
     public HomePresenter(HomeView mView, Fragment mFragment) {

@@ -172,7 +172,7 @@
 
     <!-- TODO: MealFavItem Text -->
     <string name="meal_body">The restaurant made a new meal</string>
-    <string name="price_meal">$29.50</string>
+    <string name="price_meal">29.50</string>
 
     <!-- TODO: CartItem Text -->
     <string name="meal_body_cart">2x tuna sahimi, 3x vegetables</string>
@@ -240,5 +240,6 @@
     <string name="enter_address_details">Enter Address Details</string>
     <string name="rb_ingredient">2 tablespoons butter</string>
     <string name="save_change">Save Change</string>
+    <string name="dolar">$</string>
 
 </resources>

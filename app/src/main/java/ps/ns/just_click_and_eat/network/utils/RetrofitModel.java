@@ -261,4 +261,16 @@ public class RetrofitModel {
                 .subscribeOn(subscribeOn)
                 .observeOn(observeOn);
     }
+
+    public Observable<AppResponse> getMeals(String token, int id) {
+        return api.getMeals(BEARER + token, id)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
+    public Observable<AppResponse> searchMeals(String name, int id) {
+        return api.searchMeals(name, id)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
 }

@@ -100,4 +100,14 @@ public interface RetrofitApis {
 
     @GET("meal/{id}/ingredients")
     Observable<AppResponse> getMealIngredients(@Path("id") int id);
+
+    @GET("menu/{id}/meals")
+    Observable<AppResponse> getMeals(@Header("Authorization") String authorization,
+                                     @Path("id") int id);
+
+    @FormUrlEncoded
+    @POST("search_meal")
+    Observable<AppResponse> searchMeals(@Field("name") String name,
+                                        @Field("restaurant_id") int id);
+
 }

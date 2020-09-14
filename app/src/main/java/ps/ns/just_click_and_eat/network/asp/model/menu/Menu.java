@@ -159,4 +159,23 @@ public class Menu {
     public void setIsActive(Integer isActive) {
         this.isActive = isActive;
     }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id=" + id +
+                ", rstId=" + rstId +
+                ", name='" + name + '\'' +
+                ", langId=" + langId +
+                ", isPromotion=" + isPromotion +
+                ", day1=" + day1 +
+                ", day2=" + day2 +
+                ", day3=" + day3 +
+                ", day4=" + day4 +
+                ", day5=" + day5 +
+                ", day6=" + day6 +
+                ", day7=" + day7 +
+                ", isActive=" + isActive +
+                '}';
+    }
 }

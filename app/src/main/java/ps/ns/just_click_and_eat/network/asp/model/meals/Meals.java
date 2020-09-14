@@ -284,4 +284,5 @@ public class Meals {
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
+
 }
