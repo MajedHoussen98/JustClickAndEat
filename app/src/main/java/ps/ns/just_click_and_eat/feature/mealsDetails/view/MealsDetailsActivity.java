@@ -2,6 +2,7 @@ package ps.ns.just_click_and_eat.feature.mealsDetails.view;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.collection.ArrayMap;
 
 import android.content.Intent;
 import android.os.Build;
@@ -24,6 +25,7 @@ import ps.ns.just_click_and_eat.feature.mealsDetails.presenter.MealsDetailsPrese
 import ps.ns.just_click_and_eat.feature.menu.view.MenuActivity;
 import ps.ns.just_click_and_eat.feature.restaurantDetails.view.RestaurantDetailsActivity;
 import ps.ns.just_click_and_eat.network.asp.model.restaurants.Images;
+import ps.ns.just_click_and_eat.utils.AppSharedData;
 import ps.ns.just_click_and_eat.utils.AppSharedMethod;
 import ps.ns.just_click_and_eat.utils.BaseActivity;
 
@@ -43,9 +45,14 @@ public class MealsDetailsActivity extends BaseActivity implements IngredientAdap
         View view = binding.getRoot();
         setContentView(view);
         AppSharedMethod.statusTRANSPARENT(MealsDetailsActivity.this);
+        initViews();
         listenerViews();
         getMealDetails();
         addSliderImage();
+
+    }
+
+    private void initViews() {
     }
 
     private void getMealDetails() {

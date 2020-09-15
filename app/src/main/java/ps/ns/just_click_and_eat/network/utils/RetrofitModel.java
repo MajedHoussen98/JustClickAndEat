@@ -273,4 +273,11 @@ public class RetrofitModel {
                 .subscribeOn(subscribeOn)
                 .observeOn(observeOn);
     }
+
+    public Observable<AppResponse> getCart(String token) {
+        return api.getCart(BEARER + token)
+                .subscribeOn(subscribeOn)
+                .observeOn(observeOn);
+    }
+
 }

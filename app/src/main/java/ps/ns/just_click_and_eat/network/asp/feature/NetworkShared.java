@@ -16,12 +16,14 @@ public class NetworkShared {
         private User mUser;
         private Location mLocation;
         private Favorites mFavorites;
+        private Cart mCart;
 
         private ASP() {
             mGeneral = new General();
             mUser = new User();
             mLocation = new Location();
             mFavorites = new Favorites();
+            mCart = new Cart();
         }
 
         public General getGeneral() {
@@ -40,5 +42,8 @@ public class NetworkShared {
             return mFavorites;
         }
 
+        public Cart getCart() {
+            return mCart;
+        }
     }
 }

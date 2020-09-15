@@ -33,6 +33,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:indeterminateTint="@color/colorAccent"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        tools:targetApi="lollipop" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_cart"
         style="@style/recycler"

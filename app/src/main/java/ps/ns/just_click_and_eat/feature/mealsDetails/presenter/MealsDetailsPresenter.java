@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.collection.ArrayMap;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +19,8 @@ import ps.ns.just_click_and_eat.feature.mealsDetails.view.MealsDetailsView;
 import ps.ns.just_click_and_eat.feature.menu.view.MenuActivity;
 import ps.ns.just_click_and_eat.network.asp.feature.NetworkShared;
 import ps.ns.just_click_and_eat.network.asp.model.meals.Ingredient;
+import ps.ns.just_click_and_eat.network.asp.model.meals.Meals;
+import ps.ns.just_click_and_eat.network.asp.model.restaurants.Restaurants;
 import ps.ns.just_click_and_eat.network.utils.RequestListener;
 
 public class MealsDetailsPresenter {
@@ -35,7 +39,7 @@ public class MealsDetailsPresenter {
             intent.putExtra("CODE", CODE);
             mActivity.startActivity(intent);
             mActivity.finish();
-        }else if (CODE == 1){
+        } else if (CODE == 1) {
             Intent intent = new Intent(mActivity, MenuActivity.class);
             intent.putExtra("CODE", CODE);
             intent.putExtra("restaurant_id", resId);
@@ -48,11 +52,11 @@ public class MealsDetailsPresenter {
         NetworkShared.getAsp().getGeneral().getMealIngredients(id, new RequestListener<ArrayList<Ingredient>>() {
             @Override
             public void onSuccess(ArrayList<Ingredient> data) {
-                if (data.size() != 0){
+                if (data.size() != 0) {
                     IngredientAdapter adapter = new IngredientAdapter(mActivity, data.get(0).getData(), (IngredientAdapter.ListItemClickListener) mActivity);
                     recyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
                     recyclerView.setAdapter(adapter);
-                }else {
+                } else {
                     tvIngredient.setVisibility(View.GONE);
                 }
 
@@ -63,4 +67,21 @@ public class MealsDetailsPresenter {
             }
         });
     }
+
+    public void addMealToFavorite(String token, ArrayMap<String, Object> params) {
+        NetworkShared.getAsp().getFavorites().deleteMealsFavorite(token, params, new RequestListener<ArrayList<Meals>>() {
+            @Override
+            public void onSuccess(ArrayList<Meals> data) {
+                Toast.makeText(mActivity, "The Favorite has been add", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFail(String message, int code) {
+                Toast.makeText(mActivity, message, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
 }

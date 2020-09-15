@@ -110,4 +110,8 @@ public interface RetrofitApis {
     Observable<AppResponse> searchMeals(@Field("name") String name,
                                         @Field("restaurant_id") int id);
 
+    @GET("cart")
+    Observable<AppResponse> getCart(@Header("Authorization") String authorization);
+
+
 }
